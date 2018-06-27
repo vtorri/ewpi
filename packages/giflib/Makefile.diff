@@ -1,0 +1,8 @@
+--- giflib-5.0.5/Makefile.am	2013-08-29 21:56:39.000000000 +0200
++++ giflib-5.0.5/Makefile.am.new	2018-06-16 15:08:31.275000000 +0200
+@@ -1,4 +1,4 @@
+-SUBDIRS = lib util pic
++SUBDIRS = lib pic
+ 
+ # Pacify autoreconf.  We don't actually use this.
+ ACLOCAL_AMFLAGS = -I m4

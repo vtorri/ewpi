@@ -1,0 +1,5 @@
+name: pixman
+version: 0.34.0
+url: https://www.cairographics.org/releases/pixman-0.34.0.tar.gz
+deps:
+installed: no

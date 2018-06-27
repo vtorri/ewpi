@@ -1,0 +1,5 @@
+name: cairo
+version: 1.15.12
+url: https://www.cairographics.org/snapshots/cairo-1.15.12.tar.xz
+deps: pixman
+installed: no

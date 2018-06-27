@@ -1,0 +1,5 @@
+name: libpsl
+version: 0.20.2
+url: https://github.com/rockdaboot/libpsl/releases/download/libpsl-0.20.2/libpsl-0.20.2.tar.gz
+deps: libunistring libidn2
+installed: no

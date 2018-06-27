@@ -1,0 +1,5 @@
+name: libressl
+version: 2.7.4
+url: https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.7.4.tar.gz
+deps:
+installed: no

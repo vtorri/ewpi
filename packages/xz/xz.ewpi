@@ -1,0 +1,5 @@
+name: xz
+version: 5.2.4
+url: https://tukaani.org/xz/xz-5.2.4.tar.xz
+deps:
+installed: no
