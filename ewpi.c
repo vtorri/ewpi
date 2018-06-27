@@ -1,3 +1,4 @@
+#define _DEFAULT_SOURCE
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -8,6 +9,7 @@
 #ifdef _WIN32
 # include <windows.h>
 #else
+# include <linux/limits.h>
 # include <sys/mman.h>
 # include <unistd.h>
 # include <dirent.h>
@@ -538,7 +540,7 @@ ewpi_list_fill(void)
             }
         }
     }
-    fprintf(stderr, " * max name length : %d\n", _ewpi_max_name_length);
+    fprintf(stderr, " * max name length : %d\n", (int)_ewpi_max_name_length);
     fprintf(stderr, " * pkgs list count : %d\n", _ewpi_pkgs_list_count);
 }
 
@@ -569,7 +571,7 @@ _ewpi_char_to_wchar(const char *text)
 
     return wtext;
 #else
-    return strdup(str);
+    return strdup(text);
 #endif
 }
 

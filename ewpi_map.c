@@ -3,6 +3,7 @@
 #ifdef _WIN32
 # include <windows.h>
 #else
+# include <stdio.h>
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <sys/mman.h>
