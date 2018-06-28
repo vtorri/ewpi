@@ -6,3 +6,4 @@ EFL Windows package installer
  * autotools
  * cmake
  * nasm
+ * libcurl development package
