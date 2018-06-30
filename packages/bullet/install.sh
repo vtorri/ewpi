@@ -13,6 +13,8 @@ rm -rf build && \
 mkdir build && \
 cd build && \
 cmake \
+    -DCMAKE_SYSTEM_NAME=Generic \
+    -DCMAKE_CROSSCOMPILING=1 \
     -DCMAKE_INSTALL_PREFIX=$3 \
     -DCMAKE_VERBOSE_MAKEFILE=TRUE \
     -DCMAKE_C_COMPILER=$4-gcc \
@@ -31,7 +33,7 @@ cmake \
     -DBUILD_BULLET3:BOOL=OFF \
     -DBUILD_EXTRAS:BOOL=OFF \
     -LAH \
-    -G "MSYS Makefiles" \
+    -G "Unix Makefiles" \
     .. > ../config.log 2>&1
 
 make -j install > ../make.log 2>&1

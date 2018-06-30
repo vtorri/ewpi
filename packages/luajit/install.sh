@@ -9,4 +9,8 @@
 cd packages/$1
 dir_name=`tar $5 $2 | head -1 | cut -f1 -d"/"`
 cd $dir_name
-make -j install prefix=$3 HOST_CC=gcc CROSS=$4- TARGET_SYS=Windows > ../make.log 2>&1
+arch=
+if test "x$4" = "xi686-w64-mingw32"; then
+    arch="-m32"
+fi
+make -j install prefix=$3 HOST_CC="gcc $arch" CROSS=$4- TARGET_SYS=Windows > ../make.log 2>&1
