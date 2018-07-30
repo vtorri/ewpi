@@ -2,7 +2,7 @@
 EFL Windows package installer
 
 # Requirements:
- * mingw-w64 toolchain
+ * mingw-w64 toolchain (rename ar, ranlib, strip and windres with the host prefix when compiling on Windows)
  * autotools
  * cmake
  * nasm
@@ -11,7 +11,7 @@ EFL Windows package installer
 
 # Installation of requirement on Fedora
 
-dnf install aotoconf automake libtool cmake nasm libcurl-devel patch
+dnf install autoconf automake libtool cmake nasm libcurl-devel patch
 
 for the 32-bit cross toolchain :
 
