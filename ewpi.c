@@ -61,10 +61,9 @@ static Ewpi_Path *_ewpi_pkg_dir = NULL;
 static int _ewpi_pkgs_count = 0;
 static int _ewpi_pkgs_list_count = 0;
 static Package *_ewpi_pkgs = NULL;
-static int **_ewpi_matrix = NULL;
-static int _pkg_col = -1;
-static int *_ewpi_index = NULL;
 static size_t _ewpi_max_name_length = 0;
+static int _ewpi_deps_count = 0;
+static int *_ewpi_deps_index = NULL;
 
 #define EWPI_NAME(it) \
     (it[0] == 'n') && \
@@ -153,7 +152,8 @@ _ewpi_strcat(Ewpi_Path *dst, const Ewpi_Path *src)
 #endif
 }
 
-int ewpi_pkg_dir_set()
+static int
+ewpi_pkg_dir_set()
 {
     Ewpi_Path buf[PATH_MAX];
     size_t l1;
@@ -181,7 +181,8 @@ int ewpi_pkg_dir_set()
     return (_ewpi_pkg_dir != NULL);
 }
 
-void ewpi_packages_count()
+static void
+ewpi_packages_count()
 {
 #ifdef _WIN32
     Ewpi_Path buf[PATH_MAX];
@@ -230,7 +231,8 @@ void ewpi_packages_count()
 #endif
 }
 
-void ewpi_packages_fill(Map *map, int i)
+static void
+ewpi_packages_fill(Map *map, int i)
 {
     const unsigned char *iter;
 
@@ -312,7 +314,8 @@ void ewpi_packages_fill(Map *map, int i)
     }
 }
 
-int ewpi_packages_list()
+static int
+ewpi_packages_list()
 {
     Ewpi_Path buf[PATH_MAX];
 #ifdef _WIN32
@@ -444,104 +447,50 @@ int ewpi_packages_list()
 #endif
 }
 
-static void
-ewpi_matrix_fill(void)
+static int
+_ewpi_pkg_index_get(const char *name)
 {
-    int i;
-    int j;
-    int k;
-
-    _ewpi_matrix = (int **)calloc(_ewpi_pkgs_count, sizeof(int *));
-    for (i = 0; i < _ewpi_pkgs_count; i++)
-        _ewpi_matrix[i] = (int *)calloc(_ewpi_pkgs_count, sizeof(int));
-
-    /* we fill the columns */
-    for (j = 0; j < _ewpi_pkgs_count; j++)
-    {
-        for (i = 0; i < _ewpi_pkgs[j].deps_count; i++)
-        {
-            for (k = 0; k < _ewpi_pkgs_count; k++)
-            {
-                fprintf(stderr, " %s  %s\n", _ewpi_pkgs[j].deps[i], _ewpi_pkgs[k].name);
-                if (strcmp(_ewpi_pkgs[j].deps[i], _ewpi_pkgs[k].name) == 0)
-                    _ewpi_matrix[k][j] = 1;
-            }
-        }
-    }
-#if EWPI_DEBUG
-    for (i = 0; i < _ewpi_pkgs_count; i++)
-    {
-        fprintf(stderr, " %2d %s  ", i, _ewpi_pkgs[i].name);
-        for (j = 0; j < _ewpi_pkgs_count; j++)
-            fprintf(stderr, "%d ", _ewpi_matrix[i][j]);
-        fprintf(stderr, "\n");
-    }
-#endif
-}
-
-static void
-ewpi_matrix_fill2(const char *name)
-{
-    int i;
-
-    for (i = 0; i < _pkg_col + 1; i++)
+    for (int i = 0; i < _ewpi_pkgs_count; i++)
     {
         if (strcmp(name, _ewpi_pkgs[i].name) == 0)
-            return;
+            return i;
     }
 
-    _pkg_col++;
-    if (strcmp(name, _ewpi_pkgs[_pkg_col].name) != 0)
-    {
-        for (i = _pkg_col + 1; i < _ewpi_pkgs_count; i++)
-        {
-            if (strcmp(name, _ewpi_pkgs[i].name) == 0)
-            {
-                Package pkg;
-
-                pkg = _ewpi_pkgs[_pkg_col];
-                _ewpi_pkgs[_pkg_col] = _ewpi_pkgs[i];
-                _ewpi_pkgs[i] = pkg;
-                break;
-            }
-        }
-    }
-
-    if (_pkg_col == _ewpi_pkgs_count)
-        return;
-
-    /* look for the package */
-    for (i = 0; i < _ewpi_pkgs[_pkg_col].deps_count; i++)
-    {
-        ewpi_matrix_fill2(_ewpi_pkgs[_pkg_col].deps[i]);
-    }
+    return -1;
 }
 
-void
-ewpi_list_fill(void)
+static void
+_ewpi_list_fill(const char *name)
 {
-    int i;
-    int j;
+    Package pkg;
+    int idx;
+    int already_in = 0;
 
-    _ewpi_index = (int *)malloc(_ewpi_pkgs_count * sizeof(int));
+    idx = _ewpi_pkg_index_get(name);
+    pkg = _ewpi_pkgs[idx];
 
-    for (j = _ewpi_pkgs_count - 1; j >= 0; j--)
+    for (int i = 0; i < pkg.deps_count; i++)
+        _ewpi_list_fill(pkg.deps[i]);
+
+    for (int i = 0; i < _ewpi_deps_count; i++)
     {
-        for (i = _ewpi_pkgs_count - 1; i >= 0; i--)
-        {
-            if (_ewpi_matrix[i][j] == 1 && !_ewpi_pkgs[i].selected)
-            {
-                _ewpi_pkgs[i].selected = 1;
-                _ewpi_index[_ewpi_pkgs_list_count] = i;
-                if (strlen(_ewpi_pkgs[i].name) > _ewpi_max_name_length)
-                  _ewpi_max_name_length = strlen(_ewpi_pkgs[i].name);
-                fprintf(stderr, " * %s\n", _ewpi_pkgs[i].name);
-                _ewpi_pkgs_list_count++;
-            }
-        }
+        if (_ewpi_deps_index[i] == idx)
+            already_in = 1;
     }
-    fprintf(stderr, " * max name length : %d\n", (int)_ewpi_max_name_length);
-    fprintf(stderr, " * pkgs list count : %d\n", _ewpi_pkgs_list_count);
+
+    /* FIXME: check if selected also */
+
+    if (!already_in)
+    {
+        size_t len;
+
+        _ewpi_deps_index[_ewpi_deps_count] = idx;
+        _ewpi_deps_count++;
+        len = strlen(pkg.name);
+        if (len > _ewpi_max_name_length)
+            _ewpi_max_name_length = len;
+
+    }
 }
 
 static Ewpi_Path *
@@ -660,8 +609,8 @@ _ewpi_pkgs_download(CURL *curl, int i)
     Ewpi_Path *str;
     CURLcode ret;
 
-    name = _ewpi_pkgs[_ewpi_index[i]].name;
-    url = _ewpi_pkgs[_ewpi_index[i]].url;
+    name = _ewpi_pkgs[_ewpi_deps_index[i]].name;
+    url = _ewpi_pkgs[_ewpi_deps_index[i]].url;
     filename = strrchr(url, '/');
     filename++;
     _ewpi_strcpy(buf, _ewpi_pkg_dir);
@@ -812,8 +761,8 @@ _ewpi_pkgs_install(int i, const char *prefix, const char *host)
     char *filename;
     int ret;
 
-    name = _ewpi_pkgs[_ewpi_index[i]].name;
-    url = _ewpi_pkgs[_ewpi_index[i]].url;
+    name = _ewpi_pkgs[_ewpi_deps_index[i]].name;
+    url = _ewpi_pkgs[_ewpi_deps_index[i]].url;
 
     tarname = strrchr(url, '/');
     tarname++;
@@ -910,9 +859,16 @@ int main(int argc, char *argv[])
     fprintf(stderr, "count : %d\n", _ewpi_pkgs_count);
     ewpi_packages_list();
 
-    ewpi_matrix_fill2("efl");
-    ewpi_matrix_fill();
-    ewpi_list_fill();
+    _ewpi_deps_index = (int *)malloc(_ewpi_pkgs_count * sizeof(int));
+    _ewpi_list_fill("efl");
+
+    for (int i = 0; i < _ewpi_pkgs_count; i++)
+    {
+        fprintf(stderr, " ***** %s\n", _ewpi_pkgs[_ewpi_deps_index[i]].name);
+    }
+
+    /* remove te last one (as it is EFL itself) */
+    _ewpi_pkgs_list_count = _ewpi_pkgs_count - 1;
 
 #if 1
     fprintf(stderr, "Download packages :\n");
@@ -948,8 +904,8 @@ int main(int argc, char *argv[])
             size_t k;
             size_t j;
 
-            name = _ewpi_pkgs[_ewpi_index[i]].name;
-            url = _ewpi_pkgs[_ewpi_index[i]].url;
+            name = _ewpi_pkgs[_ewpi_deps_index[i]].name;
+            url = _ewpi_pkgs[_ewpi_deps_index[i]].url;
             _ewpi_pkgs_extract(name, url);
 
             for (k = 0; k < strlen(ext); k++)
@@ -1003,8 +959,8 @@ int main(int argc, char *argv[])
             size_t k;
             size_t j;
 
-            name = _ewpi_pkgs[_ewpi_index[i]].name;
-            url = _ewpi_pkgs[_ewpi_index[i]].url;
+            name = _ewpi_pkgs[_ewpi_deps_index[i]].name;
+            url = _ewpi_pkgs[_ewpi_deps_index[i]].url;
             _ewpi_pkgs_clean(name, url);
 
             for (k = 0; k < strlen(ext); k++)
