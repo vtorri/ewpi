@@ -1,0 +1,5 @@
+name: icu
+version: 62.1
+url: http://download.icu-project.org/files/icu4c/62.1/icu4c-62_1-src.tgz
+deps: pkg-config
+installed: no
