@@ -1,5 +1,5 @@
 name: libssh2
 version: 1.8.0
 url: https://www.libssh2.org/download/libssh2-1.8.0.tar.gz
-deps: zlib libressl
+deps: pkg-config zlib libressl
 installed: no
