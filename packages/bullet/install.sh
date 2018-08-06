@@ -20,7 +20,6 @@ cmake \
     -DCMAKE_C_COMPILER=$4-gcc \
     -DCMAKE_CXX_COMPILER=$4-g++ \
     -DCMAKE_RC_COMPILER=$4-windres \
-    -DLIB_SUFFIX=dll \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_SHARED_LIBS:BOOL=ON \
     -DINSTALL_LIBS:BOOL=ON \
