@@ -1,5 +1,5 @@
 name: flac
 version: 1.3.2
 url: https://ftp.osuosl.org/pub/xiph/releases/flac/flac-1.3.2.tar.xz
-deps: libogg
+deps: pkg-config libogg
 installed: no
