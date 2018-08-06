@@ -7,4 +7,4 @@
 
 cd packages/$1
 tar $2 $3 > pre.log 2>&1
-patch -p0 < Makefile.diff >> pre.log 2>&1
+#patch -p0 < Makefile.diff >> pre.log 2>&1
