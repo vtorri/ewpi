@@ -664,40 +664,32 @@ static void
 _ewpi_pkgs_extract(const char *name, const char *url)
 {
     char buf[PATH_MAX];
-    char tardir[PATH_MAX];
     const char *tarname;
     const char *taropt;
     const char *taropt2;
     char *filename;
-    int ret;
+    int ret = 0;
 
     tarname = strrchr(url, '/');
     tarname++;
 
     filename = strrchr(url, '.');
     filename++;
-    if (*filename == 'g')
+    if ((*filename == 'g') || (*filename =='t'))
     {
-        taropt = "zxf";
+        taropt = "xzf";
         taropt2 = "tzf";
     }
     else if (*filename == 'b')
     {
-        taropt = "jxf";
+        taropt = "xjf";
         taropt2 = "tjf";
     }
     else
     {
-        taropt = "Jxf";
+        taropt = "xJf";
         taropt2 = "tJf";
     }
-
-    filename = strrchr(url, '/');
-    filename++;
-    strcpy(tardir, filename);
-
-    filename = strstr(tardir, ".tar");
-    *filename = '\0';
 
     snprintf(buf, sizeof(buf),
              "sh ./packages/%s/pre.sh %s %s %s %s",
@@ -725,7 +717,7 @@ _ewpi_pkgs_clean(const char *name, const char *url)
 
     filename = strrchr(url, '.');
     filename++;
-    if (*filename == 'g')
+    if ((*filename == 'g') || (*filename =='t'))
     {
         taropt2 = "tzf";
     }
@@ -769,7 +761,7 @@ _ewpi_pkgs_install(int i, const char *prefix, const char *host)
 
     filename = strrchr(url, '.');
     filename++;
-    if (*filename == 'g')
+    if ((*filename == 'g') || (*filename =='t'))
     {
         taropt2 = "tzf";
     }
@@ -871,26 +863,26 @@ int main(int argc, char *argv[])
     _ewpi_pkgs_list_count = _ewpi_pkgs_count - 1;
 
 #if 1
-    fprintf(stderr, "Download packages :\n");
-    {
-        CURL *curl;
+    /* fprintf(stderr, "Download packages :\n"); */
+    /* { */
+    /*     CURL *curl; */
 
-        curl_global_init(CURL_GLOBAL_DEFAULT);
-        curl = curl_easy_init();
-        if (!curl)
-        {
-            fprintf(stderr, "fail to init curl, exiting.\n");
-            goto free_pkg_dir;
-        }
+    /*     curl_global_init(CURL_GLOBAL_DEFAULT); */
+    /*     curl = curl_easy_init(); */
+    /*     if (!curl) */
+    /*     { */
+    /*         fprintf(stderr, "fail to init curl, exiting.\n"); */
+    /*         goto free_pkg_dir; */
+    /*     } */
 
-        for (int i = 0; i < _ewpi_pkgs_list_count; i++)
-        {
-            _ewpi_pkgs_download(curl, i);
-        }
+    /*     for (int i = 0; i < _ewpi_pkgs_list_count; i++) */
+    /*     { */
+    /*         _ewpi_pkgs_download(curl, i); */
+    /*     } */
 
-        curl_easy_cleanup(curl);
-        curl_global_cleanup();
-    }
+    /*     curl_easy_cleanup(curl); */
+    /*     curl_global_cleanup(); */
+    /* } */
 
     /* Extracting */
     {
@@ -918,7 +910,7 @@ int main(int argc, char *argv[])
                 info[k] = ' ';
             info[k++] = ']';
             info[k++] = ' ';
-            if (i < 10)
+            if ((i+1) < 10)
             {
                 info[k++] = ' ';
                 info[k++] = '0' + (i + 1);
@@ -973,7 +965,7 @@ int main(int argc, char *argv[])
                 info[k] = ' ';
             info[k++] = ']';
             info[k++] = ' ';
-            if (i < 10)
+            if ((i + 1) < 10)
             {
                 info[k++] = ' ';
                 info[k++] = '0' + (i + 1);
