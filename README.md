@@ -8,6 +8,7 @@ EFL Windows package installer
  * nasm
  * libcurl development package
  * patch
+ * gperf
 
 # Installation of requirement on Fedora
 
