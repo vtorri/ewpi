@@ -1,5 +1,5 @@
 name: cairo
 version: 1.15.12
 url: https://www.cairographics.org/snapshots/cairo-1.15.12.tar.xz
-deps: pkg-config pixman freetype fontconfig icu
+deps: pkg-config pixman freetype fontconfig
 installed: no
