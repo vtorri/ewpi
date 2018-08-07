@@ -17,6 +17,8 @@ packages/freetype/freetype-2.9.1/
 packages/freetype_bootstrap/freetype-2.9.1/
 packages/fribidi/fribidi-1.0.4/
 packages/giflib/giflib-5.0.5/
+packages/gperf/gperf-3.1
+packages/harfbuzz/harfbuzz-1.8.4
 packages/iconv/win-iconv-0.0.8/
 packages/libidn2/libidn2-2.0.5/
 packages/libjpeg/libjpeg-turbo-1.5.3/
