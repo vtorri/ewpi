@@ -12,7 +12,7 @@ EFL Windows package installer
 
 # Installation of requirement on Fedora
 
-dnf install autoconf automake libtool cmake nasm libcurl-devel patch
+dnf install autoconf automake libtool cmake nasm libcurl-devel patch gperf
 
 for the 32-bit cross toolchain :
 
