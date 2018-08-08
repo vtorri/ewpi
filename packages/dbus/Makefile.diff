@@ -1,8 +1,0 @@
---- dbus-1.12.8/Makefile.am	2017-10-30 13:26:18.000000000 +0100
-+++ dbus-1.12.8/Makefile.am.new	2018-06-27 15:20:42.525000000 +0200
-@@ -1,4 +1,4 @@
--SUBDIRS=dbus bus tools test doc
-+SUBDIRS=dbus bus tools doc
- 
- pkgconfigdir = $(libdir)/pkgconfig
- pkgconfig_DATA = dbus-1.pc

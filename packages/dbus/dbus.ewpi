@@ -1,5 +1,5 @@
 name: dbus
 version: 1.12.8
 url: https://dbus.freedesktop.org/releases/dbus/dbus-1.12.8.tar.gz
-deps:
+deps: pkg-config expat
 installed: no
