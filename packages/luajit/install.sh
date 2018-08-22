@@ -13,4 +13,4 @@ arch=
 if test "x$4" = "xi686-w64-mingw32"; then
     arch="-m32"
 fi
-make -j install prefix=$3 HOST_CC="gcc $arch" CROSS=$4- TARGET_SYS=Windows > ../make.log 2>&1
+make -j install PREFIX=$3 HOST_CC="gcc $arch" CROSS=$4- TARGET_SYS=Windows > ../make.log 2>&1
