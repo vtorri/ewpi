@@ -25,3 +25,12 @@ dnf install mingw32-gcc mingw32-gcc-c++
 for the 64-bit cross toolchain :
 
 dnf install mingw64-gcc mingw64-gcc-c++
+
+# Usage
+
+./ewpi /path/to/prefix toolchain
+
+Examples :
+
+./ewpi $HOME/ewpi_32 i686-w64-mingw32
+./ewpi $HOME/ewpi_64 x86_64-w64-mingw32
