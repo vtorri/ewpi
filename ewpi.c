@@ -863,26 +863,26 @@ int main(int argc, char *argv[])
     _ewpi_pkgs_list_count = _ewpi_pkgs_count - 1;
 
 #if 1
-    /* fprintf(stderr, "Download packages :\n"); */
-    /* { */
-    /*     CURL *curl; */
+    fprintf(stderr, "Download packages :\n");
+    {
+        CURL *curl;
 
-    /*     curl_global_init(CURL_GLOBAL_DEFAULT); */
-    /*     curl = curl_easy_init(); */
-    /*     if (!curl) */
-    /*     { */
-    /*         fprintf(stderr, "fail to init curl, exiting.\n"); */
-    /*         goto free_pkg_dir; */
-    /*     } */
+        curl_global_init(CURL_GLOBAL_DEFAULT);
+        curl = curl_easy_init();
+        if (!curl)
+        {
+            fprintf(stderr, "fail to init curl, exiting.\n");
+            goto free_pkg_dir;
+        }
 
-    /*     for (int i = 0; i < _ewpi_pkgs_list_count; i++) */
-    /*     { */
-    /*         _ewpi_pkgs_download(curl, i); */
-    /*     } */
+        for (int i = 0; i < _ewpi_pkgs_list_count; i++)
+        {
+            _ewpi_pkgs_download(curl, i);
+        }
 
-    /*     curl_easy_cleanup(curl); */
-    /*     curl_global_cleanup(); */
-    /* } */
+        curl_easy_cleanup(curl);
+        curl_global_cleanup();
+    }
 
     /* Extracting */
     {
