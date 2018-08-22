@@ -10,6 +10,10 @@ EFL Windows package installer
  * patch
  * gperf
 
+# Compilation
+
+gcc -o ewpi ewpi.c ewpi_map.c `pkg-config --cflags --libs libcurl`
+
 # Installation of requirement on Fedora
 
 dnf install autoconf automake libtool cmake nasm libcurl-devel patch gperf
