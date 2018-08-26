@@ -4,8 +4,6 @@
 #include <string.h>
 #include <sys/stat.h>
 
-#include <curl/curl.h>
-
 #ifdef _WIN32
 # include <windows.h>
 #else
@@ -19,6 +17,7 @@
 #include "ewpi_map.h"
 
 #define EWPI_DEBUG 1
+#define EWPI_DELETE 0
 
 #ifdef _WIN32
 # ifdef PATH_MAX
@@ -49,13 +48,6 @@ typedef struct
     unsigned int installed : 1;
     unsigned int selected : 1;
 } Package;
-
-typedef struct
-{
-    curl_off_t lastruntime;
-    CURL *curl;
-    const char *name;
-} Progress;
 
 static Ewpi_Path *_ewpi_pkg_dir = NULL;
 static int _ewpi_pkgs_count = 0;
@@ -129,16 +121,6 @@ _ewpi_strlen(const Ewpi_Path *str)
     return (size_t)lstrlenW(str);
 #else
     return strlen(str);
-#endif
-}
-
-static Ewpi_Path *
-_ewpi_strcpy(Ewpi_Path *dst, const Ewpi_Path *src)
-{
-#ifdef _WIN32
-    return wcscpy(dst, src);
-#else
-    return strcpy(dst, src);
 #endif
 }
 
@@ -493,173 +475,6 @@ _ewpi_list_fill(const char *name)
     }
 }
 
-static Ewpi_Path *
-_ewpi_char_to_wchar(const char *text)
-{
-#ifdef _WIN32
-    wchar_t *wtext;
-    int      wsize;
-
-    if (!text)
-        return NULL;
-
-    wsize = MultiByteToWideChar(CP_ACP, 0, text, (int)strlen(text) + 1, NULL, 0);
-    if ((wsize == 0) ||
-        (wsize > (int)(ULONG_MAX / sizeof(wchar_t))))
-        return NULL;
-
-    wtext = malloc(wsize * sizeof(wchar_t));
-    if (!wtext)
-        return NULL;
-
-    if (!MultiByteToWideChar(CP_ACP, 0, text, (int)strlen(text) + 1, wtext, wsize))
-    {
-        free(wtext);
-        return NULL;
-    }
-
-    return wtext;
-#else
-    return strdup(text);
-#endif
-}
-
-static size_t write_data(void *ptr, size_t size, size_t nmemb, void *stream)
-{
-    size_t written;
-
-    written = fwrite(ptr, size, nmemb, (FILE *)stream);
-    return written;
-}
-
-static int xferinfo(void *p,
-                    curl_off_t dltotal, curl_off_t dlnow,
-                    curl_off_t ultotal, curl_off_t ulnow)
-{
-  Progress *myp = (Progress *)p;
-  char info[80];
-  CURL *curl = myp->curl;
-  double curtime = 0;
-  size_t i;
-  unsigned int j;
-  unsigned int sz;
-  unsigned int percent;
-
-  curl_easy_getinfo(curl, CURLINFO_TOTAL_TIME, &curtime);
-
-  for (i = 0; i < strlen(myp->name); i++)
-    info[i] = myp->name[i];
-  for (; i < _ewpi_max_name_length; i++)
-    info[i] = ' ';
-  info[i++] = ' ';
-  info[i++] = '[';
-  sz = 80 - 8 - _ewpi_max_name_length - 1;
-  if (dltotal == 0)
-    {
-      for (j = 0; j < sz; j++, i++)
-        info[i] = ' ';
-    }
-  else
-    {
-      for (j = 0; j < (sz * (unsigned int)dlnow) / (unsigned int)dltotal; j++, i++)
-        info[i] = '*';
-      for (; j < sz; j++, i++)
-        info[i] = ' ';
-    }
-  info[i++] = ']';
-  info[i++] = ' ';
-  percent = (dltotal > 0) ? (100 * (unsigned int)dlnow) / (unsigned int)dltotal : 0;
-  if (percent < 10)
-    {
-      info[i++] = ' ';
-      info[i++] = ' ';
-      info[i++] = '0' + percent;
-    }
-  else if (percent < 100)
-    {
-      info[i++] = ' ';
-      info[i++] = '0' + percent / 10;
-      info[i++] = '0' + percent % 10;
-    }
-  else
-    {
-      info[i++] = '1';
-      info[i++] = '0';
-      info[i++] = '0';
-    }
-  info[i++] = '%';
-  info[i++] = '\0';
-  fprintf(stderr, "%s\r", info);
-  fflush(stderr);
-  return 0;
-
-  (void)ultotal;
-  (void)ulnow;
-}
-
-static void
-_ewpi_pkgs_download(CURL *curl, int i)
-{
-    Ewpi_Path buf[PATH_MAX];
-    Progress prog;
-    FILE *f;
-    const char *name;
-    const char *url;
-    const char *filename;
-    Ewpi_Path *str;
-    CURLcode ret;
-
-    name = _ewpi_pkgs[_ewpi_deps_index[i]].name;
-    url = _ewpi_pkgs[_ewpi_deps_index[i]].url;
-    filename = strrchr(url, '/');
-    filename++;
-    _ewpi_strcpy(buf, _ewpi_pkg_dir);
-    _ewpi_strcat(buf, SEP_STR);
-    if (!(str = _ewpi_char_to_wchar(name)))
-        return;
-
-    _ewpi_strcat(buf, str);
-    free(str);
-    _ewpi_strcat(buf, SEP_STR);
-    if (!(str = _ewpi_char_to_wchar(filename)))
-        return;
-
-    _ewpi_strcat(buf, str);
-    free(str);
-
-#ifdef _WIN32
-    f = _wfopen(buf, L"wb");
-#else
-    f = fopen(buf, "wb");
-#endif
-    if (!f)
-        return;
-
-  prog.lastruntime = 0;
-  prog.curl = curl;
-  prog.name = name;
-
-  curl_easy_setopt(curl, CURLOPT_URL, url);
-  curl_easy_setopt(curl, CURLOPT_XFERINFOFUNCTION, xferinfo);
-  curl_easy_setopt(curl, CURLOPT_XFERINFODATA, &prog);
-  curl_easy_setopt(curl, CURLOPT_NOPROGRESS, 0L);
-  curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_data);
-  curl_easy_setopt(curl, CURLOPT_WRITEDATA, f);
-  curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
-  curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
-
-  ret = curl_easy_perform(curl);
-  if (ret != CURLE_OK)
-  {
-      const char* pError = curl_easy_strerror(ret);
-      fprintf(stderr, "  * %s : %s\n", name, pError);
-      exit(1);
-  }
-  fprintf(stderr, "\n");
-  fflush(stderr);
-  fclose(f);
-}
-
 static void
 _ewpi_pkgs_extract(const char *name, const char *url)
 {
@@ -862,26 +677,40 @@ int main(int argc, char *argv[])
     /* remove te last one (as it is EFL itself) */
     _ewpi_pkgs_list_count = _ewpi_pkgs_count - 1;
 
-#if 1
+#if ! EWPI_DELETE
     fprintf(stderr, "Download packages :\n");
     {
-        CURL *curl;
-
-        curl_global_init(CURL_GLOBAL_DEFAULT);
-        curl = curl_easy_init();
-        if (!curl)
-        {
-            fprintf(stderr, "fail to init curl, exiting.\n");
-            goto free_pkg_dir;
-        }
-
         for (int i = 0; i < _ewpi_pkgs_list_count; i++)
         {
-            _ewpi_pkgs_download(curl, i);
-        }
+            char buf1[1024];
+            char *name;
+            char *url;
+            size_t l1;
+            int ret;
 
-        curl_easy_cleanup(curl);
-        curl_global_cleanup();
+            name = _ewpi_pkgs[_ewpi_deps_index[i]].name;
+            url = _ewpi_pkgs[_ewpi_deps_index[i]].url;
+
+            l1 = strlen("wget -q --show-progress --no-check-certificate ");
+            memcpy(buf1, "wget -q --show-progress --no-check-certificate ", l1);
+            memcpy(buf1 + l1, url, strlen(url));
+            l1 += strlen(url);
+            memcpy(buf1 + l1, " -O packages/", strlen(" -O packages/"));
+            l1 += strlen(" -O packages/");
+            memcpy(buf1 + l1, name, strlen(name));
+            l1 += strlen(name);
+            memcpy(buf1 + l1, "/", 1);
+            l1 += 1;
+            url = strrchr(url, '/');
+            url++;
+            memcpy(buf1 + l1, url, strlen(url) + 1);
+            ret = system(buf1);
+            if (ret != 0)
+            {
+                fprintf(stderr, "error while downloading package %s (ret = %d)\n", name, ret);
+                exit(1);
+            }
+        }
     }
 
     /* Extracting */
@@ -938,6 +767,7 @@ int main(int argc, char *argv[])
             _ewpi_pkgs_install(i, prefix, host);
         }
     }
+#endif /* EWPI_DELETE */
 
     /* Cleaning */
     {
@@ -985,7 +815,6 @@ int main(int argc, char *argv[])
         fprintf(stderr, "\n");
         fflush(stderr);
     }
-#endif
 
     return 0;
 
