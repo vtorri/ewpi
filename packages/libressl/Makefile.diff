@@ -1,8 +1,0 @@
---- libressl-2.7.4/Makefile.am	2018-06-13 18:07:51.000000000 +0200
-+++ libressl-2.7.4/Makefile.am.new	2018-06-19 20:40:12.737500000 +0200
-@@ -1,4 +1,4 @@
--SUBDIRS = crypto ssl tls include apps tests man
-+SUBDIRS = crypto ssl tls include apps tests
- ACLOCAL_AMFLAGS = -I m4
- 
- pkgconfigdir = $(libdir)/pkgconfig
