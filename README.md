@@ -6,13 +6,13 @@ EFL Windows package installer
  * autotools
  * cmake
  * nasm
- * libcurl development package
+ * wget
  * patch
- * gperf
+ * gperf (on linux as it is compiled on Windows)
 
 # Compilation
 
-gcc -o ewpi ewpi.c ewpi_map.c `pkg-config --cflags --libs libcurl`
+gcc -o ewpi ewpi.c ewpi_map.c
 
 # Installation of requirement on Fedora
 
