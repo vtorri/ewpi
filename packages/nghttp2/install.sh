@@ -14,7 +14,5 @@ export PKG_CONFIG_LIBDIR=$3/lib/pkgconfig
 export PKG_CONFIG_SYSROOOT_DIR=$3
 export CPPFLAGS=-I$3/include
 export LDFLAGS=-L$3/lib
-./configure --prefix=$3 --host=$4 --disable-static --enable-lib-only
-# > ../config.log 2>&1
-make -j install
-# > ../make.log 2>&1
+./configure --prefix=$3 --host=$4 --disable-static --enable-lib-only > ../config.log 2>&1
+make -j install > ../make.log 2>&1
