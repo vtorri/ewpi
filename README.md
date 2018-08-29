@@ -7,8 +7,8 @@ EFL Windows package installer
  * cmake
  * nasm
  * wget
- * patch
  * gperf (on linux as it is compiled on Windows)
+ * python
 
 # Compilation
 
@@ -16,7 +16,7 @@ gcc -o ewpi ewpi.c ewpi_map.c
 
 # Installation of requirement on Fedora
 
-dnf install autoconf automake libtool cmake nasm libcurl-devel patch gperf
+dnf install autoconf automake libtool cmake nasm gperf python
 
 for the 32-bit cross toolchain :
 
