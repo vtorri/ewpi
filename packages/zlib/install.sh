@@ -11,3 +11,4 @@ dir_name=`tar $5 $2 | head -1 | cut -f1 -d"/"`
 cd $dir_name
 make -f win32/Makefile clean > /dev/null
 make -j -f win32/Makefile install prefix=$3 PREFIX=$4 > ../make.log 2>&1
+sed -i -e 's/installed: no/installed: yes/g' ../$1.ewpi
