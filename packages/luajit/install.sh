@@ -37,3 +37,4 @@ make \
     INSTALL_SOSHORT1=liblua.dll.a \
     > ../make.log 2>&1
 mv $3/bin/luajit.tmp $3/bin/luajit.exe
+sed -i -e 's/installed: no/installed: yes/g' ../$1.ewpi
