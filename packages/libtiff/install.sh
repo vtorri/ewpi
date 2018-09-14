@@ -17,3 +17,4 @@ export LDFLAGS=-L$3/lib
 autoreconf -vif  > ../config.log 2>&1 &&
 ./configure --prefix=$3 --host=$4 --disable-static --with-zlib-include-dir=$3/include --with-zlib-lib-dir=$3/lib --with-jpeg-include-dir=$3/include --with-jpeg-lib-dir=$3/lib --with-lzma-include-dir=$3/include --with-lzma-lib-dir=$3/lib >> ../config.log 2>&1
 make V=0 -j install > ../make.log 2>&1
+sed -i -e 's/installed: no/installed: yes/g' ../$1.ewpi
