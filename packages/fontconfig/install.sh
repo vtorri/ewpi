@@ -17,3 +17,4 @@ export CPPFLAGS=-I$3/include
 export LDFLAGS=-L$3/lib
 ./configure --prefix=$3 --host=$4 --disable-static --enable-iconv --with-libiconv=$3 --with-expat=$3 --disable-docs > ../config.log 2>&1
 make -j install > ../make.log 2>&1
+sed -i -e 's/installed: no/installed: yes/g' ../$1.ewpi
