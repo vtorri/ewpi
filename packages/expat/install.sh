@@ -12,3 +12,4 @@ cd $dir_name
 autoreconf -vif  > ../config.log 2>&1 && \
 ./configure --prefix=$3 --host=$4 --disable-static --with-docbook=no --without-xmlwf >> ../config.log 2>&1
 make -j install > ../make.log 2>&1
+sed -i -e 's/installed: no/installed: yes/g' ../$1.ewpi
