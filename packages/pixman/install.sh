@@ -11,3 +11,4 @@ dir_name=`tar $5 $2 | head -1 | cut -f1 -d"/"`
 cd $dir_name
 ./configure --prefix=$3 --host=$4 --disable-static --disable-gtk --disable-libpng > ../config.log 2>&1
 make -j install > ../make.log 2>&1
+sed -i -e 's/installed: no/installed: yes/g' ../$1.ewpi
