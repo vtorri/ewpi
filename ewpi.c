@@ -16,7 +16,7 @@
 
 #include "ewpi_map.h"
 
-#define EWPI_DEBUG 1
+#define EWPI_DEBUG 0
 #define EWPI_DELETE 0
 
 #ifdef _WIN32
@@ -688,6 +688,9 @@ int main(int argc, char *argv[])
             size_t l1;
             int ret;
 
+            if (_ewpi_pkgs[_ewpi_deps_index[i]].installed)
+              continue;
+
             name = _ewpi_pkgs[_ewpi_deps_index[i]].name;
             url = _ewpi_pkgs[_ewpi_deps_index[i]].url;
 
@@ -724,6 +727,9 @@ int main(int argc, char *argv[])
             const char *url;
             size_t k;
             size_t j;
+
+            if (_ewpi_pkgs[_ewpi_deps_index[i]].installed)
+              continue;
 
             name = _ewpi_pkgs[_ewpi_deps_index[i]].name;
             url = _ewpi_pkgs[_ewpi_deps_index[i]].url;
@@ -764,6 +770,9 @@ int main(int argc, char *argv[])
     {
         for (int i = 0; i < _ewpi_pkgs_list_count; i++)
         {
+            if (_ewpi_pkgs[_ewpi_deps_index[i]].installed)
+              continue;
+
             _ewpi_pkgs_install(i, prefix, host);
         }
     }
@@ -780,6 +789,9 @@ int main(int argc, char *argv[])
             const char *url;
             size_t k;
             size_t j;
+
+            if (_ewpi_pkgs[_ewpi_deps_index[i]].installed)
+              continue;
 
             name = _ewpi_pkgs[_ewpi_deps_index[i]].name;
             url = _ewpi_pkgs[_ewpi_deps_index[i]].url;
