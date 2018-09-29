@@ -18,6 +18,7 @@ sed -i -e 's%INSTALL_DYN= $(INSTALL_LIB)/$(INSTALL_SONAME)%INSTALL_DYN= $(INSTAL
 sed -i -e 's%$(SYMLINK) $(INSTALL_SONAME) $(INSTALL_SHORT1) &&%$(INSTALL_F) $(INSTALL_SOSHORT1) $(INSTALL_SHORT1) ||%g' Makefile
 sed -i -e 's%$(SYMLINK) $(INSTALL_SONAME) $(INSTALL_SHORT2) || :% :%g' Makefile
 sed -i -e 's%$(SYMLINK) $(INSTALL_TNAME) $(INSTALL_TSYM)%%g' Makefile
+sed -i -e 's%luajit-${abiver}%luajit%g' etc/luajit.pc
 make \
     install \
     PREFIX=$3 \
@@ -37,4 +38,6 @@ make \
     INSTALL_SOSHORT1=liblua.dll.a \
     > ../make.log 2>&1
 mv $3/bin/luajit.tmp $3/bin/luajit.exe
+cp src/lua51.dll $3/bin
+cp src/liblua.dll.a $3/lib
 sed -i -e 's/installed: no/installed: yes/g' ../$1.ewpi
