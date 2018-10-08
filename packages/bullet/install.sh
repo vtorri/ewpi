@@ -37,4 +37,4 @@ cmake \
 
 make -j install > ../make.log 2>&1
 
-sed -i -e 's/installed: no/installed: yes/g' ../../$1.ewpi
+sed -i -e 's/installed: no/installed: yes/g' ../$1.ewpi
