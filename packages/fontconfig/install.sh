@@ -9,7 +9,6 @@
 cd packages/$1 > /dev/null
 dir_name=`tar $5 $2 | head -1 | cut -f1 -d"/"`
 cd $dir_name
-export PATH=$3/bin:$PATH
 export PKG_CONFIG_DIR=
 export PKG_CONFIG_LIBDIR=$3/lib/pkgconfig
 export PKG_CONFIG_SYSROOOT_DIR=$3
