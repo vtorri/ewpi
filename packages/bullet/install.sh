@@ -9,19 +9,27 @@
 cd packages/$1 > /dev/null
 dir_name=`tar $5 $2 | head -1 | cut -f1 -d"/"`
 cd $dir_name
-rm -rf build && \
-mkdir build && \
-cd build && \
+EWPI_PWD=`pwd`
+EWPI_OS=`uname`
+case ${EWPI_OS} in
+    MSYS*|MINGW*)
+	prefix_unix=`cygpath -u $3`
+    ;;
+    *)
+	prefix_unix=$3
+    ;;
+esac
 cmake \
-    -DCMAKE_SYSTEM_NAME=Generic \
-    -DCMAKE_CROSSCOMPILING=1 \
-    -DCMAKE_INSTALL_PREFIX=$3 \
+    -DCMAKE_SYSTEM_NAME=Windows \
+    -DCMAKE_INSTALL_PREFIX=$prefix_unix \
     -DCMAKE_VERBOSE_MAKEFILE=TRUE \
     -DCMAKE_C_COMPILER=$4-gcc \
     -DCMAKE_CXX_COMPILER=$4-g++ \
     -DCMAKE_RC_COMPILER=$4-windres \
     -DCMAKE_BUILD_TYPE=Release \
+    -DTARGET_SUPPORTS_SHARED_LIBS=TRUE \
     -DBUILD_SHARED_LIBS:BOOL=ON \
+    -DCMAKE_CXX_FLAGS=-isystem\ $EWPI_PWD/src \
     -DINSTALL_LIBS:BOOL=ON \
     -DINSTALL_EXTRA_LIBS:BOOL=ON \
     -DBUILD_UNIT_TESTS:BOOL=OFF \
@@ -29,12 +37,13 @@ cmake \
     -DBUILD_OPENGL3_DEMOS:BOOL=OFF \
     -DBUILD_EXTRAS:BOOL=OFF \
     -DUSE_GLUT:BOOL=OFF \
-    -DBUILD_BULLET3:BOOL=OFF \
+    -DBUILD_BULLET3:BOOL=ON \
+    -DBUILD_PYBULLET:BOOL=OFF \
     -DBUILD_EXTRAS:BOOL=OFF \
     -LAH \
     -G "Unix Makefiles" \
-    .. > ../config.log 2>&1
+    . > config.log 2>&1
 
-make -j install > ../make.log 2>&1
+make -j install > make.log 2>&1
 
 sed -i -e 's/installed: no/installed: yes/g' ../$1.ewpi
