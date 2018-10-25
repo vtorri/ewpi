@@ -27,15 +27,11 @@
 # define SEP_STR L"\\"
 # define PACKAGES_STR L"\\packages"
 # define CD L"cd packages/"
-# define TAR_GZ L" && tar zxf "
-# define TAR_XZ L" && tar Jxf "
 typedef wchar_t Ewpi_Path;
 #else
 # define SEP_STR "/"
 # define PACKAGES_STR "/packages"
 # define CD "cd packages/"
-# define TAR_GZ " && tar zxf "
-# define TAR_XZ " && tar Jxf "
 typedef char Ewpi_Path;
 #endif
 
@@ -481,7 +477,6 @@ _ewpi_pkgs_extract(const char *name, const char *url)
     char buf[PATH_MAX];
     const char *tarname;
     const char *taropt;
-    const char *taropt2;
     char *filename;
     int ret = 0;
 
@@ -492,23 +487,20 @@ _ewpi_pkgs_extract(const char *name, const char *url)
     filename++;
     if ((*filename == 'g') || (*filename =='t'))
     {
-        taropt = "xzf";
-        taropt2 = "tzf";
+        taropt = "zf";
     }
     else if (*filename == 'b')
     {
-        taropt = "xjf";
-        taropt2 = "tjf";
+        taropt = "jf";
     }
     else
     {
-        taropt = "xJf";
-        taropt2 = "tJf";
+        taropt = "Jf";
     }
 
     snprintf(buf, sizeof(buf),
-             "sh ./packages/%s/pre.sh %s %s %s %s",
-             name, name, taropt, tarname, taropt2);
+             "sh ./packages/%s/pre.sh %s %s %s",
+             name, name, taropt, tarname);
     /* fprintf(stderr, "%s\n", buf); */
     ret = system(buf);
     if (ret != 0)
@@ -523,7 +515,7 @@ _ewpi_pkgs_clean(const char *name, const char *url)
 {
     char buf[PATH_MAX];
     const char *tarname;
-    const char *taropt2;
+    const char *taropt;
     char *filename;
     int ret;
 
@@ -534,20 +526,20 @@ _ewpi_pkgs_clean(const char *name, const char *url)
     filename++;
     if ((*filename == 'g') || (*filename =='t'))
     {
-        taropt2 = "tzf";
+        taropt = "zf";
     }
     else if (*filename == 'b')
     {
-        taropt2 = "tjf";
+        taropt = "jf";
     }
     else
     {
-        taropt2 = "tJf";
+        taropt = "Jf";
     }
 
     snprintf(buf, sizeof(buf),
              "sh ./packages/%s/post.sh %s %s %s",
-             name, name, tarname, taropt2);
+             name, name, tarname, taropt);
     ret = system(buf);
     if (ret != 0)
     {
@@ -564,7 +556,7 @@ _ewpi_pkgs_install(int i, const char *prefix, const char *host)
     const char *name;
     const char *url;
     const char *tarname;
-    const char *taropt2;
+    const char *taropt;
     char *filename;
     int ret;
 
@@ -578,20 +570,20 @@ _ewpi_pkgs_install(int i, const char *prefix, const char *host)
     filename++;
     if ((*filename == 'g') || (*filename =='t'))
     {
-        taropt2 = "tzf";
+        taropt = "zf";
     }
     else if (*filename == 'b')
     {
-        taropt2 = "tjf";
+        taropt = "jf";
     }
     else
     {
-        taropt2 = "tJf";
+        taropt = "Jf";
     }
 
     snprintf(buf, sizeof(buf),
              "sh ./packages/%s/install.sh %s %s %s %s %s",
-             name, name, tarname, prefix, host, taropt2);
+             name, name, tarname, prefix, host, taropt);
     /* fprintf(stderr, "%s\n", buf); */
     fprintf(stderr, "%s: compiling", name);
     fflush(stderr);

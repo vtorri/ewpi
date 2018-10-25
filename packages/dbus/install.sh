@@ -4,11 +4,12 @@
 # $2 : tarname
 # $3 : prefix
 # $4 : host
-# $5 : taropt2
+# $5 : taropt
 
 cd packages/$1 > /dev/null
-dir_name=`tar $5 $2 | head -1 | cut -f1 -d"/"`
+dir_name=`tar t$5 $2 | head -1 | cut -f1 -d"/"`
 cd $dir_name
+sed -i -e 's/SUBDIRS = dbus bus tools test doc/SUBDIRS = dbus bus tools doc/g' Makefile.in
 export PKG_CONFIG_DIR=
 export PKG_CONFIG_LIBDIR=$3/lib/pkgconfig
 export PKG_CONFIG_SYSROOOT_DIR=$3

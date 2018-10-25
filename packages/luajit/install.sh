@@ -4,10 +4,10 @@
 # $2 : tarname
 # $3 : prefix
 # $4 : host
-# $5 : taropt2
+# $5 : taropt
 
 cd packages/$1
-dir_name=`tar $5 $2 | head -1 | cut -f1 -d"/"`
+dir_name=`tar t$5 $2 | head -1 | cut -f1 -d"/"`
 cd $dir_name
 arch="-m64"
 if test "x$4" = "xi686-w64-mingw32"; then
