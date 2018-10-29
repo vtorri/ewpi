@@ -771,6 +771,7 @@ int main(int argc, char *argv[])
 #endif /* EWPI_DELETE */
 
     /* Cleaning */
+#if 0
     {
         char info[80];
 
@@ -819,6 +820,7 @@ int main(int argc, char *argv[])
         fprintf(stderr, "\n");
         fflush(stderr);
     }
+#endif
 
     return 0;
 

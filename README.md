@@ -13,15 +13,18 @@ EFL Windows package installer
 ## Windows with MSYS2
 
 1. Install MSYS2 : https://www.msys2.org/ (steps 1 to 6)
-2. run "pacman -S git autoconf automake libtool gettext-devel cmake nasm wget gperf python mingw-w64-x86_64-toolchain mingw-w64-i686-toolchain"
+2. run "pacman -S git autoconf automake libtool gettext-devel cmake nasm wget gperf python mingw-w64-x86_64-toolchain mingw-w64-i686-toolchain mingw-w64-x86_64-ninja mingw-w64-x86_64-python3-pip"
+3. run "pip3 install meson"
 
 ## Fedora 32 bits
 
-dnf install autoconf automake libtool cmake nasm gperf python mingw32-gcc mingw32-gcc-c++
+1. dnf install autoconf automake libtool cmake nasm gperf python ninja mingw32-gcc mingw32-gcc-c++
+2. run "pip3 install meson"
 
 ## Fedora 64 bits
 
-dnf install autoconf automake libtool cmake nasm gperf python mingw64-gcc mingw64-gcc-c++
+1. dnf install autoconf automake libtool cmake nasm gperf python ninja mingw64-gcc mingw64-gcc-c++
+2. run "pip3 install meson"
 
 # Compilation
 

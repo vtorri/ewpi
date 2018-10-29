@@ -2,4 +2,4 @@ name: cares
 version: 1.14.0
 url: https://c-ares.haxx.se/download/c-ares-1.14.0.tar.gz
 deps:
-installed: no
+installed: yes
