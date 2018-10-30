@@ -2,4 +2,4 @@ name: freetype_bootstrap
 version: 2.9.1
 url: https://freefr.dl.sourceforge.net/project/freetype/freetype2/2.9.1/freetype-2.9.1.tar.bz2
 deps: pkg-config zlib libpng
-installed: yes
+installed: no

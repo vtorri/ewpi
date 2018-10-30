@@ -2,4 +2,4 @@ name: libjpeg
 version: 1.5.3
 url: https://freefr.dl.sourceforge.net/project/libjpeg-turbo/1.5.3/libjpeg-turbo-1.5.3.tar.gz
 deps:
-installed: yes
+installed: no
