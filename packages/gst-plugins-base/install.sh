@@ -1,0 +1,31 @@
+#! /bin/sh
+
+# $1 : name
+# $2 : tarname
+# $3 : prefix
+# $4 : host
+# $5 : taropt
+
+cd packages/$1 > /dev/null
+dir_name=`tar t$5 $2 | head -1 | cut -f1 -d"/"`
+if test "x${host}" = "xi686-w64-mingw32" ; then
+    sed 's/@host@/i686-w64-mingw32/g;s/@cpu_family@/x86/g;s/@cpu@/i686/g' cross_toolchain.txt > $dir_name/cross_toolchain.txt
+else
+    sed 's/@host@/x86_64-w64-mingw32/g;s/@cpu_family@/x86_64/g;s/@cpu@/x86_64/g' cross_toolchain.txt > $dir_name/cross_toolchain.txt
+fi
+cd $dir_name
+upath=`cygpath -u $3`
+export PATH=$upath/bin:$PATH
+export PKG_CONFIG_DIR=
+export PKG_CONFIG_LIBDIR=$3/lib/pkgconfig
+export PKG_CONFIG_SYSROOOT_DIR=$3
+export CFLAGS=-I$3/include
+export LDFLAGS=-L$3/lib
+rm -rf builddir && mkdir builddir && cd builddir
+meson .. \
+      --prefix=$3 \
+      --strip \
+      --cross-file ../cross_toolchain.txt \
+      --default-library shared > ../config.log 2>&1
+ninja install > ../make.log 2>&1
+sed -i -e 's/installed: no/installed: yes/g' ../$1.ewpi
