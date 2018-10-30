@@ -12,3 +12,6 @@ system = 'windows'
 cpu_family = '@cpu_family@'
 cpu = '@cpu@'
 endian = 'little'
+
+[properties]
+c_link_args = ['-D_WIN32_WINNT=0x0601']

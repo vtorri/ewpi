@@ -21,8 +21,10 @@ export CPPFLAGS=-I$3/include
 export LDFLAGS=-L$3/lib
 mkdir builddir && cd builddir
 meson .. \
+      --prefix=$3 \
       --strip \
       --cross-file ../cross_toolchain.txt \
+      --default-library shared \
       -Dinternal_pcre=true > ../config.log 2>&1
-ninja > ../make.log 2>&1
+ninja install > ../make.log 2>&1
 sed -i -e 's/installed: no/installed: yes/g' ../../$1.ewpi
