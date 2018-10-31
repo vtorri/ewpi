@@ -19,7 +19,7 @@ export PKG_CONFIG_LIBDIR=$3/lib/pkgconfig
 export PKG_CONFIG_SYSROOOT_DIR=$3
 export CPPFLAGS=-I$3/include
 export LDFLAGS=-L$3/lib
-mkdir builddir && cd builddir
+rm -rf builddir && mkdir builddir && cd builddir
 meson .. \
       --prefix=$3 \
       --strip \
