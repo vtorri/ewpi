@@ -34,10 +34,10 @@ make \
     INSTALL_TSYMNAME=luajit.exe \
     FILE_SO=lua51.dll \
     INSTALL_SONAME=lua51.dll \
-    TARGET_XSHLDFLAGS="-shared -Wl,--out-implib,liblua.dll.a" \
-    INSTALL_SOSHORT1=liblua.dll.a \
+    TARGET_XSHLDFLAGS="-shared -Wl,--out-implib,libluajit.dll.a" \
+    INSTALL_SOSHORT1=libluajit.dll.a \
     > ../make.log 2>&1
 mv $3/bin/luajit.tmp $3/bin/luajit.exe
 cp src/lua51.dll $3/bin
-cp src/liblua.dll.a $3/lib
+cp src/libluajit.dll.a $3/lib
 sed -i -e 's/installed: no/installed: yes/g' ../$1.ewpi
