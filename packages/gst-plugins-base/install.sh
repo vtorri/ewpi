@@ -8,7 +8,7 @@
 
 cd packages/$1 > /dev/null
 dir_name=`tar t$5 $2 | head -1 | cut -f1 -d"/"`
-if test "x${host}" = "xi686-w64-mingw32" ; then
+if test "x$4" = "xi686-w64-mingw32" ; then
     sed 's/@host@/i686-w64-mingw32/g;s/@cpu_family@/x86/g;s/@cpu@/i686/g' cross_toolchain.txt > $dir_name/cross_toolchain.txt
 else
     sed 's/@host@/x86_64-w64-mingw32/g;s/@cpu_family@/x86_64/g;s/@cpu@/x86_64/g' cross_toolchain.txt > $dir_name/cross_toolchain.txt
