@@ -1,0 +1,5 @@
+name: libwebp
+version: 1.0.0
+url: https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-1.0.0.tar.gz
+deps: libpng libjpeg libtiff giflib
+installed: no
