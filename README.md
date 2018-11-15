@@ -32,9 +32,9 @@ gcc -std=c99 -o ewpi ewpi.c ewpi_map.c
 
 # Usage
 
-./ewpi /path/to/prefix toolchain
+./ewpi /path/to/prefix toolchain [number of make jobs]
 
 Examples :
 
  * ./ewpi $HOME/ewpi_32 i686-w64-mingw32
- * ./ewpi $HOME/ewpi_64 x86_64-w64-mingw32
+ * ./ewpi $HOME/ewpi_64 x86_64-w64-mingw32 4
