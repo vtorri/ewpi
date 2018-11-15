@@ -1,5 +1,7 @@
 #! /bin/sh
 
+set -e
+
 # $1 : name
 # $2 : tarname
 # $3 : prefix
