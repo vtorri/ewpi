@@ -37,7 +37,7 @@ make \
     INSTALL_SONAME=lua51.dll \
     TARGET_XSHLDFLAGS="-shared -Wl,--out-implib,libluajit.dll.a" \
     INSTALL_SOSHORT1=libluajit.dll.a \
-    > ../make.log 2>&1
+    -j $jobopt > ../make.log 2>&1
 mv $3/bin/luajit.tmp $3/bin/luajit.exe
 cp src/lua51.dll $3/bin
 cp src/libluajit.dll.a $3/lib
