@@ -18,12 +18,12 @@ EFL Windows package installer
 
 ## Fedora 32 bits
 
-1. dnf install autoconf automake libtool cmake nasm gperf python ninja mingw32-gcc mingw32-gcc-c++
+1. dnf install autoconf automake libtool cmake nasm gperf python ninja-build mingw32-gcc mingw32-gcc-c++ python3-pip
 2. run "pip3 install meson"
 
 ## Fedora 64 bits
 
-1. dnf install autoconf automake libtool cmake nasm gperf python ninja mingw64-gcc mingw64-gcc-c++
+1. dnf install autoconf automake libtool cmake nasm gperf python ninja-build mingw64-gcc mingw64-gcc-c++ python3-pip
 2. run "pip3 install meson"
 
 # Compilation
