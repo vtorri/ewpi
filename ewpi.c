@@ -550,7 +550,7 @@ _ewpi_pkgs_clean(const char *name, const char *url)
 }
 
 static void
-_ewpi_pkgs_install(int i, const char *prefix, const char *host)
+_ewpi_pkgs_install(int i, const char *prefix, const char *host, const char *jobopt)
 {
     char buf[PATH_MAX];
     const char *name;
@@ -582,8 +582,8 @@ _ewpi_pkgs_install(int i, const char *prefix, const char *host)
     }
 
     snprintf(buf, sizeof(buf),
-             "sh ./packages/%s/install.sh %s %s %s %s %s",
-             name, name, tarname, prefix, host, taropt);
+             "sh ./packages/%s/install.sh %s %s %s %s %s %s",
+             name, name, tarname, prefix, host, taropt, jobopt);
     /* fprintf(stderr, "%s\n", buf); */
     fprintf(stderr, "%s: compiling", name);
     fflush(stderr);
@@ -600,8 +600,8 @@ _ewpi_pkgs_install(int i, const char *prefix, const char *host)
 static void
 usage(const char *argv0)
 {
-    fprintf(stderr, "Usage: %s prefix host\n", argv0);
-    fprintf(stderr, "Example: %s $HOME/ewpi i686-w64-mingw32\n", argv0);
+    fprintf(stderr, "Usage: %s prefix host [number of make jobs]\n", argv0);
+    fprintf(stderr, "Example: %s $HOME/ewpi i686-w64-mingw32 4\n", argv0);
     fprintf(stderr, "The prefix must be an absolute directory\n");
     fprintf(stderr, "Possible values for host: i686-w64-mingw32 and x86_64-w64-mingw32\n");
 }
@@ -610,8 +610,9 @@ int main(int argc, char *argv[])
 {
     char *prefix = NULL;
     char *host = NULL;
+    char *jobopt = "";
 
-    if (argc != 3)
+    if (argc < 3)
     {
         usage(argv[0]);
         return 1;
@@ -647,6 +648,9 @@ int main(int argc, char *argv[])
         fprintf(stderr, "Possible values for host: i686-w64-mingw32 and x86_64-w64-mingw32\n");
         return 1;
     }
+
+    if (argv[3])
+        jobopt = argv[3];
 
     if (!ewpi_pkg_dir_set())
     {
@@ -765,7 +769,7 @@ int main(int argc, char *argv[])
             if (_ewpi_pkgs[_ewpi_deps_index[i]].installed)
               continue;
 
-            _ewpi_pkgs_install(i, prefix, host);
+            _ewpi_pkgs_install(i, prefix, host, jobopt);
         }
     }
 #endif /* EWPI_DELETE */
