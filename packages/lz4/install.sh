@@ -20,14 +20,14 @@ sed -i \
     -e 's/dlltool/$(DLLTOOL)/g' \
     -e 's|dll\\|dll/|g' \
     lib/Makefile
-make -j $jobopt PREFIX=$3 BUILD_STATIC=no CC=$4-gcc AR=$4-ar DLLTOOL=$4-dlltool SHARED_EXT_VER=1 V=1 OS=Windows_NT > ../make.log 2>&1
+make -j $jobopt PREFIX=$3 BUILD_STATIC=no CC=$4-gcc DLLTOOL=$4-dlltool SHARED_EXT_VER=1 V=1 OS=Windows_NT > ../make.log 2>&1
 mkdir -p $3/{bin,include,lib/pkgconfig}
 cp lz4.exe $3/bin
 cd lib
 cp dll/liblz4.1.dll $3/bin/liblz4-1.dll
 $4-dlltool -D $3/bin/liblz4-1.dll -d dll/liblz4.def -l $3/lib/liblz4.dll.a >> ../make.log 2>&1
 cp lz4.h lz4hc.h lz4frame.h $3/include
-make liblz4.pc PREFIX=$3 BUILD_STATIC=no CC=$4-gcc AR=86_64-w64-mingw32-ar SHARED_EXT_VER=1 V=1 OS=Windows_NT >> ../make.log 2>&1
+make liblz4.pc PREFIX=$3 BUILD_STATIC=no CC=$4-gcc SHARED_EXT_VER=1 V=1 OS=Windows_NT >> ../make.log 2>&1
 cp liblz4.pc $3/lib/pkgconfig
 cd ..
 
