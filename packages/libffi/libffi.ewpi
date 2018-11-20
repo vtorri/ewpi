@@ -1,5 +1,5 @@
 name: libffi
 version: 3.2.1
-url: ftp://sourceware.org/pub/libffi/libffi-3.2.1.tar.gz
+url: https://github.com/libffi/libffi/archive/v3.2.1.tar.gz
 deps:
 installed: no
