@@ -5,6 +5,7 @@
 # $3 : prefix
 # $4 : host
 # $5 : taropt
+# $6 : jobopt
 
 cd packages/$1 > /dev/null
 dir_name=`tar t$5 $2 | head -1 | cut -f1 -d"/"`
@@ -39,6 +40,6 @@ cmake \
     -G "Unix Makefiles" \
     . > ../config.log 2>&1
 
-make -j install > ../make.log 2>&1
+make -j $jobopt install > ../make.log 2>&1
 
 sed -i -e 's/installed: no/installed: yes/g' ../$1.ewpi

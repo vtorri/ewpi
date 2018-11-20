@@ -5,6 +5,7 @@
 # $3 : prefix
 # $4 : host
 # $5 : taropt
+# $6 : jobopt
 
 cd packages/$1 > /dev/null
 dir_name=`tar t$5 $2 | head -1 | cut -f1 -d"/"`
@@ -14,8 +15,16 @@ else
     sed 's/@host@/x86_64-w64-mingw32/g;s/@cpu_family@/x86_64/g;s/@cpu@/x86_64/g' cross_toolchain.txt > $dir_name/cross_toolchain.txt
 fi
 cd $dir_name
-upath=`cygpath -u $3`
-export PATH=$upath/bin:$PATH
+EWPI_OS=`uname`
+case ${EWPI_OS} in
+    MSYS*|MINGW*)
+	prefix_unix=`cygpath -u $3`
+    ;;
+    *)
+	prefix_unix=$3
+    ;;
+esac
+export PATH=$prefix_unix/bin:$PATH
 export PKG_CONFIG_DIR=
 export PKG_CONFIG_LIBDIR=$3/lib/pkgconfig
 export PKG_CONFIG_SYSROOOT_DIR=$3

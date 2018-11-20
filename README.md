@@ -2,7 +2,7 @@
 EFL Windows package installer
 
 # Requirements:
- * mingw-w64 toolchain (rename ar, ranlib, strip and windres with the host prefix when compiling on Windows)
+ * mingw-w64 toolchain (rename ar, dlltool, ranlib, strip and windres with the host prefix when compiling on Windows)
  * autotools
  * cmake
  * nasm
@@ -18,12 +18,12 @@ EFL Windows package installer
 
 ## Fedora 32 bits
 
-1. dnf install autoconf automake libtool cmake nasm gperf python ninja mingw32-gcc mingw32-gcc-c++
+1. dnf install autoconf automake libtool cmake nasm gperf python ninja-build mingw32-gcc mingw32-gcc-c++ python3-pip
 2. run "pip3 install meson"
 
 ## Fedora 64 bits
 
-1. dnf install autoconf automake libtool cmake nasm gperf python ninja mingw64-gcc mingw64-gcc-c++
+1. dnf install autoconf automake libtool cmake nasm gperf python ninja-build mingw64-gcc mingw64-gcc-c++ python3-pip
 2. run "pip3 install meson"
 
 # Compilation
@@ -32,9 +32,9 @@ gcc -std=c99 -o ewpi ewpi.c ewpi_map.c
 
 # Usage
 
-./ewpi /path/to/prefix toolchain
+./ewpi /path/to/prefix toolchain [number of make jobs]
 
 Examples :
 
  * ./ewpi $HOME/ewpi_32 i686-w64-mingw32
- * ./ewpi $HOME/ewpi_64 x86_64-w64-mingw32
+ * ./ewpi $HOME/ewpi_64 x86_64-w64-mingw32 4
