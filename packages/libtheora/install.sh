@@ -15,6 +15,16 @@ export PKG_CONFIG_LIBDIR=$3/lib/pkgconfig
 export PKG_CONFIG_SYSROOOT_DIR=$3
 export CPPFLAGS=-I$3/include
 export LDFLAGS=-L$3/lib
+EWPI_OS=`uname`
+case ${EWPI_OS} in
+    MSYS*|MINGW*)
+    ;;
+    *)
+	sed -i -e 's/$//' win32/xmingw32/libtheoraenc-all.def
+	sed -i -e 's/$//' win32/xmingw32/libtheoradec-all.def
+	prefix_unix=$3
+    ;;
+esac
 ./configure --prefix=$3 --host=$4 --disable-static --disable-spec --disable-examples > ../config.log 2>&1
 make -j $jobopt install > ../make.log 2>&1
 sed -i -e 's/installed: no/installed: yes/g' ../$1.ewpi
