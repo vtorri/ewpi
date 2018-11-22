@@ -22,7 +22,6 @@ case ${EWPI_OS} in
     *)
 	sed -i -e 's/$//' win32/xmingw32/libtheoraenc-all.def
 	sed -i -e 's/$//' win32/xmingw32/libtheoradec-all.def
-	prefix_unix=$3
     ;;
 esac
 ./configure --prefix=$3 --host=$4 --disable-static --disable-spec --disable-examples > ../config.log 2>&1
