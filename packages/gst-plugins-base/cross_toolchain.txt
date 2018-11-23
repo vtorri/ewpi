@@ -5,7 +5,7 @@ ar = '@host@-ar'
 ranlib = '@host@-ranlib'
 strip = '@host@-strip'
 windres = '@host@-windres'
-pkgconfig = '@host@-pkg-config'
+pkgconfig = 'pkg-config'
 
 [host_machine]
 system = 'windows'
