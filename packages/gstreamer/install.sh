@@ -35,6 +35,6 @@ meson .. \
       --prefix=$3 \
       --strip \
       --cross-file ../cross_toolchain.txt \
-      --default-library shared > ../config.log 2>&1
-ninja install > ../make.log 2>&1
+      --default-library shared > ../../config.log 2>&1
+ninja install > ../../make.log 2>&1
 sed -i -e 's/installed: no/installed: yes/g' ../../$1.ewpi
