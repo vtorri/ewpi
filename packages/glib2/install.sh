@@ -26,6 +26,6 @@ meson .. \
       --strip \
       --cross-file ../cross_toolchain.txt \
       --default-library shared \
-      -Dinternal_pcre=true > ../config.log 2>&1
-ninja install > ../make.log 2>&1
+      -Dinternal_pcre=true > ../../config.log 2>&1
+ninja install > ../../make.log 2>&1
 sed -i -e 's/installed: no/installed: yes/g' ../../$1.ewpi

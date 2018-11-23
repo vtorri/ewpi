@@ -1,5 +1,5 @@
 name: glib2
 version: 2.58.1
 url: http://ftp.gnome.org/pub/gnome/sources/glib/2.58/glib-2.58.1.tar.xz
-deps: pkg-config libffi zlib iconv
+deps: pkg-config zlib iconv
 installed: no
