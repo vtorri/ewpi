@@ -23,6 +23,7 @@ export LDFLAGS=-L$3/lib
 rm -rf builddir && mkdir builddir && cd builddir
 meson .. \
       --prefix=$3 \
+      --libdir=lib \
       --strip \
       --cross-file ../cross_toolchain.txt \
       --default-library shared \
