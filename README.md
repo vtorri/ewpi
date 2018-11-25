@@ -9,6 +9,8 @@ EFL Windows package installer
  * wget
  * gperf
  * python
+ * flex
+ * bison
 
 ## Windows with MSYS2
 
