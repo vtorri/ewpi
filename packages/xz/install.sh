@@ -12,6 +12,6 @@ set -e
 cd packages/$1 > /dev/null
 dir_name=`tar t$5 $2 | head -1 | cut -f1 -d"/"`
 cd $dir_name
-./configure --prefix=$3 --host=$4 --disable-static --enable-threads=vista --disable-lzmainfo --disable-lzma-links --disable-scripts --disable-doc --disable-cxx > ../config.log 2>&1
+./configure --prefix=$3 --host=$4 --disable-static --enable-threads=vista --disable-lzmainfo --disable-lzma-links --disable-scripts --disable-doc > ../config.log 2>&1
 make V=0 -j $jobopt install > ../make.log 2>&1
 sed -i -e 's/installed: no/installed: yes/g' ../$1.ewpi
