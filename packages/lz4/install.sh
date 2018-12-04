@@ -19,15 +19,17 @@ export CPPFLAGS=-I$3/include
 export LDFLAGS=-L$3/lib
 sed -i \
     -e 's/MidnightBSD/MidnightBSD MINGW32_NT-6.1 MINGW64_NT-6.1/g' \
-    -e 's/dlltool/$(DLLTOOL)/g' \
     -e 's|dll\\|dll/|g' \
     lib/Makefile
-make -j $jobopt PREFIX=$3 BUILD_STATIC=no CC=$4-gcc DLLTOOL=$4-dlltool SHARED_EXT_VER=1 V=1 OS=Windows_NT > ../make.log 2>&1
+sed -i \
+    -e 's|$@.dll|$@.dll -Wl,--out-implib,liblz4.dll.a|g' \
+    lib/Makefile
+make -j $jobopt PREFIX=$3 BUILD_STATIC=no CC=$4-gcc SHARED_EXT_VER=1 V=1 OS=Windows_NT > ../make.log 2>&1
 mkdir -p $3/{bin,include,lib/pkgconfig}
 cp lz4.exe $3/bin
 cd lib
 cp dll/liblz4.1.dll $3/bin/liblz4-1.dll
-$4-dlltool -D $3/bin/liblz4-1.dll -d dll/liblz4.def -l $3/lib/liblz4.dll.a >> ../make.log 2>&1
+cp liblz4.dll.a $3/lib
 cp lz4.h lz4hc.h lz4frame.h $3/include
 make liblz4.pc PREFIX=$3 BUILD_STATIC=no CC=$4-gcc SHARED_EXT_VER=1 V=1 OS=Windows_NT >> ../make.log 2>&1
 cp liblz4.pc $3/lib/pkgconfig
