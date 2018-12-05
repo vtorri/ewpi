@@ -6,6 +6,7 @@
 *~
 ewpi.exe
 packages/bullet/bullet3-2.87/
+packages/bzip2-1.0.6/
 packages/cairo/cairo-1.15.12/
 packages/cairo/cairo-1.16.0/
 packages/cares/c-ares-1.14.0/
