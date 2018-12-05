@@ -1,5 +1,5 @@
 name: harfbuzz
 version: 2.1.3
 url: https://www.freedesktop.org/software/harfbuzz/release/harfbuzz-2.1.3.tar.bz2
-deps: pkg-config zlib libpng freetype_bootstrap
+deps: pkg-config zlib libpng freetype_bootstrap graphite2
 installed: no
