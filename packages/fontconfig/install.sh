@@ -12,6 +12,17 @@ set -e
 cd packages/$1 > /dev/null
 dir_name=`tar t$5 $2 | head -1 | cut -f1 -d"/"`
 cd $dir_name
+EWPI_PWD=`pwd`
+EWPI_OS=`uname`
+case ${EWPI_OS} in
+    MSYS*|MINGW*)
+        # for dependency DLL
+	prefix_unix=`cygpath -u $3`
+	export PATH=$prefix_unix/bin:$PATH
+        # for fontconfig DLL
+	export PATH=${EWPI_PWD}/src/.libs:$PATH
+    ;;
+esac
 export PKG_CONFIG_DIR=
 export PKG_CONFIG_LIBDIR=$3/lib/pkgconfig
 export PKG_CONFIG_SYSROOOT_DIR=$3
