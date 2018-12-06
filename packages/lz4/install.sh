@@ -23,6 +23,7 @@ sed -i \
     lib/Makefile
 sed -i \
     -e 's|$@.dll|$@.dll -Wl,--out-implib,liblz4.dll.a|g' \
+    -e 's|dlltool|#dlltool|g' \
     lib/Makefile
 make -j $jobopt PREFIX=$3 BUILD_STATIC=no CC=$4-gcc SHARED_EXT_VER=1 V=1 OS=Windows_NT > ../make.log 2>&1
 mkdir -p $3/{bin,include,lib/pkgconfig}
