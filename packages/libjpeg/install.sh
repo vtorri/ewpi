@@ -12,6 +12,34 @@ set -e
 cd packages/$1 > /dev/null
 dir_name=`tar t$5 $2 | head -1 | cut -f1 -d"/"`
 cd $dir_name
-./configure --prefix=$3 --host=$4 --disable-static --enable-shared  > ../config.log 2>&1
+EWPI_OS=`uname`
+case ${EWPI_OS} in
+    MSYS*|MINGW*)
+	prefix_unix=`cygpath -u $3`
+    ;;
+    *)
+	prefix_unix=$3
+    ;;
+esac
+if test "x$4" = "xx86_64-w64-mingw32" ; then
+    proc="AMD64"
+else
+    proc="X86"
+fi
+cmake \
+    -DCMAKE_INSTALL_PREFIX=$prefix_unix \
+    -DCMAKE_VERBOSE_MAKEFILE=TRUE \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DENABLE_STATIC=FALSE \
+    -DCMAKE_C_COMPILER=$4-gcc \
+    -DCMAKE_C_FLAGS="-I.." \
+    -DCMAKE_SYSTEM_NAME=Windows \
+    -DCMAKE_SYSTEM_PROCESSOR=$proc \
+    -DREQUIRE_SIMD=TRUE \
+    -DWITH_JAVA=FALSE \
+    -DWITH_JPEG8=TRUE \
+    -DWITH_TURBOJPEG=FALSE \
+    -G "Unix Makefiles" \
+    . > ../config.log 2>&1
 make -j $jobopt install > ../make.log 2>&1
 sed -i -e 's/installed: no/installed: yes/g' ../$1.ewpi
