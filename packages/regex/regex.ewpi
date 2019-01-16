@@ -2,4 +2,3 @@ name: regex
 version: 1.1.20
 url: https://www.musl-libc.org/releases/musl-1.1.20.tar.gz
 deps:
-installed: no

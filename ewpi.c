@@ -2,56 +2,27 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <sys/types.h>
 #include <sys/stat.h>
+# include <dirent.h>
+#include <unistd.h>
 
 #ifdef _WIN32
 # include <windows.h>
-#else
-# include <linux/limits.h>
-# include <sys/mman.h>
-# include <unistd.h>
-# include <dirent.h>
-# include <fcntl.h>
-#endif
-
-#include "ewpi_map.h"
-
-#define EWPI_DEBUG 0
-#define EWPI_DELETE 0
-
-#ifdef _WIN32
 # ifdef PATH_MAX
 #  undef  PATH_MAX
 # endif
 # define PATH_MAX 32767
-# define SEP_STR L"\\"
-# define PACKAGES_STR L"\\packages"
-# define CD L"cd packages/"
-typedef wchar_t Ewpi_Path;
 #else
-# define SEP_STR "/"
-# define PACKAGES_STR "/packages"
-# define CD "cd packages/"
-typedef char Ewpi_Path;
+# include <linux/limits.h>
+# include <sys/mman.h>
+# include <unistd.h>
+# include <fcntl.h>
 #endif
 
-typedef struct
-{
-    char *name;
-    char *url;
-    int deps_count;
-    char **deps;
-    unsigned int installed : 1;
-    unsigned int selected : 1;
-} Package;
+#include "ewpi_map2.h"
 
-static Ewpi_Path *_ewpi_pkg_dir = NULL;
-static int _ewpi_pkgs_count = 0;
-static int _ewpi_pkgs_list_count = 0;
-static Package *_ewpi_pkgs = NULL;
-static size_t _ewpi_max_name_length = 0;
-static int _ewpi_deps_count = 0;
-static int *_ewpi_deps_index = NULL;
+#define EWPI_DEBUG 0
 
 #define EWPI_NAME(it) \
     (it[0] == 'n') && \
@@ -60,6 +31,17 @@ static int *_ewpi_deps_index = NULL;
     (it[3] == 'e') && \
     (it[4] == ':') && \
     (it[5] == ' ')
+
+#define EWPI_VERSION(it) \
+    (it[0] == 'v') && \
+    (it[1] == 'e') && \
+    (it[2] == 'r') && \
+    (it[3] == 's') && \
+    (it[4] == 'i') && \
+    (it[5] == 'o') && \
+    (it[6] == 'n') && \
+    (it[7] == ':') && \
+    (it[8] == ' ')
 
 #define EWPI_URL(it) \
     (it[0] == 'u') && \
@@ -75,21 +57,38 @@ static int *_ewpi_deps_index = NULL;
     (it[3] == 's') && \
     (it[4] == ':')
 
-#define EWPI_INSTALLED(it) \
-    (iter[0] == 'i') && \
-    (iter[1] == 'n') && \
-    (iter[2] == 's') && \
-    (iter[3] == 't') && \
-    (iter[4] == 'a') && \
-    (iter[5] == 'l') && \
-    (iter[6] == 'l') && \
-    (iter[7] == 'e') && \
-    (iter[8] == 'd') && \
-    (iter[9] == ':') && \
-    (iter[10] == ' ')
+typedef struct
+{
+    char *name;
+    char *version;
+    int vmaj;
+    int vmin;
+    int vmic;
+    char *url;
+    char *tarname;
+    const char *taropt;
+    int deps_count;
+    char **deps;
+    unsigned int downloaded : 1;
+    unsigned int extracted : 1;
+    unsigned int installed : 1;
+    unsigned int is_git : 1;
+} Package;
+
+static char *_ew_package_dir_git = NULL;
+static char *_ew_package_dir_dst = NULL;
+static int _ew_package_count_total = 0;
+static int _ew_package_deps_dst_count = 0;
+static int *_ew_package_index = NULL;
+static int _ew_package_count_not_downloaded = 0;
+static int _ew_package_count_not_extracted = 0;
+static int _ew_package_count_not_installed = 0;
+static int _ew_package_name_size_max = 0;
+
+static Package *_ewpi_pkgs = NULL;
 
 static void *
-_ewmp_str_get(const unsigned char *start, const unsigned char *end)
+_ew_str_get(const unsigned char *start, const unsigned char *end)
 {
     char *str;
 
@@ -100,99 +99,175 @@ _ewmp_str_get(const unsigned char *start, const unsigned char *end)
     return str;
 }
 
-static Ewpi_Path *
-_ewpi_strdup(const Ewpi_Path *str)
+static void
+_ew_usage(const char *argv0)
 {
-#ifdef _WIN32
-    return _wcsdup(str);
-#else
-    return strdup(str);
-#endif
+    printf("Usage: %s prefix host [number of make jobs]\n", argv0);
+    printf("Example: %s $HOME/ewpi i686-w64-mingw32 4\n", argv0);
+    printf("The prefix must be an absolute directory\n");
+    printf("Possible values for host: i686-w64-mingw32 and x86_64-w64-mingw32\n");
+    fflush(stdout);
 }
 
-static size_t
-_ewpi_strlen(const Ewpi_Path *str)
+static int
+_ew_path_is_absolute(const char *path)
 {
 #ifdef _WIN32
-    return (size_t)lstrlenW(str);
+        if (!((strlen(path) >= 2) &&
+              (((path[0] >= 'a') && (path[0] <= 'z')) ||
+               ((path[0] >= 'A') && (path[0] <= 'Z'))) &&
+              (path[1] == ':')))
+        {
+            printf("The path must be an absolute directory\n");
+            fflush(stdout);
+            return 0;
+        }
 #else
-    return strlen(str);
+        if (*path != '/')
+        {
+            printf("The path must be an absolute directory\n");
+            fflush(stdout);
+            return 0;
+        }
 #endif
+        return 1;
 }
 
-static Ewpi_Path *
-_ewpi_strcat(Ewpi_Path *dst, const Ewpi_Path *src)
+static int
+_ew_path_exists(const char *path)
 {
-#ifdef _WIN32
-    return lstrcatW(dst, src);
+    struct stat buf;
+
+    if (stat(path, &buf) != 0)
+        return 0;
+
+    return S_ISDIR(buf.st_mode);
+}
+
+static int
+_ew_file_exists(const char *file)
+{
+    struct stat buf;
+
+    if ((stat(file, &buf) == 0) && S_ISREG(buf.st_mode))
+        return buf.st_size;
+
+    return 0;
+}
+
+static int
+_ew_mkdir(const char *pathname, int mode)
+{
+#if _WIN32
+    return mkdir(pathname);
+    (void)mode;
 #else
-    return strcat(dst, src);
+    return mkdir(pathname, mode);
 #endif
 }
 
 static int
-ewpi_pkg_dir_set()
+_ew_mkdir_p(const char *path)
 {
-    Ewpi_Path buf[PATH_MAX];
+    char *p;
+    char *iter;
+
+    p = strdup(path);
+    if (!p)
+        return 0;
+
+    iter = strchr(p, '/');
+    if (!iter)
+        goto free_p;
+    /* Windows : "*:/" and Unix : "/" so we skip first "/" */
+    iter++;
+
+    while (1)
+    {
+        iter = strchr(iter, '/');
+        if (!iter)
+        {
+            _ew_mkdir(p, S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP | S_IXGRP | S_IROTH | S_IXOTH);
+            break;
+        }
+
+        *iter = '\0';
+        if (!_ew_path_exists(p))
+        {
+            if (_ew_mkdir(p, S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP | S_IXGRP | S_IROTH | S_IXOTH))
+                goto free_p;
+        }
+        *iter = '/';
+        iter++;
+    }
+
+    free(p);
+
+    return 1;
+
+  free_p:
+    free(p);
+
+    return 0;
+}
+
+static int
+_ew_packages_dir_set(const char *prefix)
+{
+    char buf[PATH_MAX];
+    char *iter;
     size_t l1;
     size_t l2;
 
-#ifdef _WIN32
-    if (!GetCurrentDirectoryW(PATH_MAX - 1, buf))
-        return 0;
-#else
+    /* first, package in the git repo */
     if (!getcwd(buf, PATH_MAX))
         return 0;
-#endif
 
-    l1 = _ewpi_strlen(buf);
-    l2 = _ewpi_strlen(PACKAGES_STR);
+    iter = buf;
+    while (*iter)
+    {
+        if (*iter == '\\') *iter = '/';
+        iter++;
+    }
+
+    l1 = strlen(buf);
+    l2 = sizeof("/packages") - 1;
 
     if ((l1 + l2) > (PATH_MAX))
         return 0;
 
-    if (!_ewpi_strcat(buf, PACKAGES_STR))
+    if (!strcat(buf, "/packages"))
         return 0;
 
-    _ewpi_pkg_dir = _ewpi_strdup(buf);
+    _ew_package_dir_git = strdup(buf);
 
-    return (_ewpi_pkg_dir != NULL);
+    /* then, package in the destination */
+    *buf = 0;
+    l1 = strlen(prefix);
+    l2 = sizeof("/share/ewpi/packages") - 1;
+
+    if ((l1 + l2) > (PATH_MAX))
+        return 0;
+
+    strcpy(buf, prefix);
+
+    if (!strcat(buf, "/share/ewpi/packages"))
+        return 0;
+
+    _ew_package_dir_dst = strdup(buf);
+
+    _ew_mkdir_p(_ew_package_dir_dst);
+
+    return 1;
 }
 
 static void
-ewpi_packages_count()
+_ew_packages_count_total()
 {
-#ifdef _WIN32
-    Ewpi_Path buf[PATH_MAX];
-    WIN32_FIND_DATAW data;
-    HANDLE h;
-
-    if ((4 + lstrlenW(_ewpi_pkg_dir) + 2) > (PATH_MAX - 1))
-        return;
-
-    if ((!lstrcpyW(buf, L"\\\\?\\")) ||
-        (!lstrcatW(buf, _ewpi_pkg_dir)) ||
-        (!lstrcatW(buf, L"\\*")))
-        return;
-
-    if ((h = FindFirstFileW(buf, &data)) == INVALID_HANDLE_VALUE)
-        return;
-
-    do
-    {
-        if ((lstrcmpW(data.cFileName, L".") == 0) ||
-            (lstrcmpW(data.cFileName, L"..") == 0))
-            continue;
-
-        _ewpi_pkgs_count++;
-    } while (FindNextFileW(h, &data));
-
-    FindClose(h);
-#else
     DIR *dir;
     struct dirent *f;
 
-    dir = opendir(_ewpi_pkg_dir);
+    dir = opendir(_ew_package_dir_git);
     if (!dir)
         return;
 
@@ -202,15 +277,52 @@ ewpi_packages_count()
             (strcmp(f->d_name, "..") == 0))
             continue;
 
-        _ewpi_pkgs_count++;
+        _ew_package_count_total++;
     }
 
     closedir(dir);
-#endif
 }
 
 static void
-ewpi_packages_fill(Map *map, int i)
+_ew_version_get(char *ver, int *maj, int *min, int *mic)
+{
+  char buf[128];
+  char *start;
+  char *iter;
+
+  *maj = 0;
+  *min = 0;
+  *mic = 0;
+  strcpy(buf, ver);
+  start = buf;
+  iter = strchr(start, '.');
+  if (iter)
+    {
+      *iter = '\0';
+      *maj = atoi(start);
+      start = iter + 1;
+      iter = strchr(start, '.');
+      if (iter)
+      {
+        *iter = '\0';
+        *min = atoi(start);
+        start = iter + 1;
+        iter = strchr(start, '.');
+        if (iter)
+          {
+            *iter = '\0';
+            *mic = atoi(start);
+          }
+      }
+      else
+        *min = atoi(start);
+    }
+  else
+      *maj = atoi(start);
+}
+
+static void
+_ew_packages_fill(Map *map, Package *pkg)
 {
     const unsigned char *iter;
 
@@ -225,24 +337,48 @@ ewpi_packages_fill(Map *map, int i)
             iter += 6;
             iter2 = iter;
             while (*iter != '\n') iter++;
-            _ewpi_pkgs[i].name = _ewmp_str_get(iter2, iter);
+            pkg->name = _ew_str_get(iter2, iter);
+        }
+        else if (EWPI_VERSION(iter))
+        {
+            const unsigned char *iter2;
+
+            iter += 9;
+            iter2 = iter;
+            while (*iter != '\n') iter++;
+            pkg->version = _ew_str_get(iter2, iter);
+            _ew_version_get(pkg->version, &pkg->vmaj, &pkg->vmin, &pkg->vmic);
         }
         else if (EWPI_URL(iter))
         {
             const unsigned char *iter2;
+            char *tarname;
 
             iter += 5;
             iter2 = iter;
             while (*iter != '\n') iter++;
-            _ewpi_pkgs[i].url = _ewmp_str_get(iter2, iter);
+            pkg->url = _ew_str_get(iter2, iter);
+            tarname = strrchr(pkg->url, '/');
+            tarname++;
+            pkg->tarname = strdup(tarname);
+            tarname = strrchr(tarname, '.');
+            tarname++;
+            if (strcmp(tarname, "git") == 0)
+                pkg->is_git = 1;
+            else if ((strcmp(tarname, "gz") == 0) || (strcmp(tarname, "tgz") == 0))
+                pkg->taropt = "zf";
+            else if (strcmp(tarname, "bz2") == 0)
+                pkg->taropt = "jf";
+            else
+                pkg->taropt = "Jf";
         }
         else if (EWPI_DEPS(iter))
         {
             iter += 5;
             if (*iter == '\n')
             {
-                _ewpi_pkgs[i].deps_count = 0;
-                _ewpi_pkgs[i].deps = NULL;
+                pkg->deps_count = 0;
+                pkg->deps = NULL;
             }
             else
             {
@@ -250,14 +386,14 @@ ewpi_packages_fill(Map *map, int i)
                 int j;
 
                 iter2 = iter;
-                _ewpi_pkgs[i].deps_count = 0;
+                pkg->deps_count = 0;
                 while (*iter != '\n')
                 {
                     if (*iter == ' ')
-                        _ewpi_pkgs[i].deps_count++;
+                        pkg->deps_count++;
                     iter++;
                 }
-                _ewpi_pkgs[i].deps = (char **)malloc(_ewpi_pkgs[i].deps_count * sizeof(char *));
+                pkg->deps = (char **)malloc(pkg->deps_count * sizeof(char *));
                 j = 0;
                 iter2++;
                 iter = iter2;
@@ -265,27 +401,18 @@ ewpi_packages_fill(Map *map, int i)
                 {
                     if (*iter == ' ')
                     {
-                        _ewpi_pkgs[i].deps[j] = (char *)malloc(iter - iter2 + 1);
-                        memcpy(_ewpi_pkgs[i].deps[j], iter2, iter - iter2);
-                        _ewpi_pkgs[i].deps[j][iter - iter2] = '\0';
+                        pkg->deps[j] = (char *)malloc(iter - iter2 + 1);
+                        memcpy(pkg->deps[j], iter2, iter - iter2);
+                        pkg->deps[j][iter - iter2] = '\0';
                         j++;
                         iter2 = iter + 1;
                     }
                     iter++;
                 }
-                _ewpi_pkgs[i].deps[j] = (char *)malloc(iter - iter2 + 1);
-                memcpy(_ewpi_pkgs[i].deps[j], iter2, iter - iter2);
-                _ewpi_pkgs[i].deps[j][iter - iter2] = '\0';
+                pkg->deps[j] = (char *)malloc(iter - iter2 + 1);
+                memcpy(pkg->deps[j], iter2, iter - iter2);
+                pkg->deps[j][iter - iter2] = '\0';
             }
-        }
-        else if (EWPI_INSTALLED(iter))
-        {
-            const unsigned char *iter2;
-
-            iter += 11;
-            iter2 = iter;
-            while (*iter != '\n') iter++;
-            _ewpi_pkgs[i].installed = ((iter - iter2) == 2) ? 0 : 1;
         }
 
         iter++;
@@ -293,93 +420,22 @@ ewpi_packages_fill(Map *map, int i)
 }
 
 static int
-ewpi_packages_list()
+_ew_packages_get_git(void)
 {
-    Ewpi_Path buf[PATH_MAX];
-#ifdef _WIN32
-    wchar_t buf2[PATH_MAX];
-    WIN32_FIND_DATAW data;
-    HANDLE h;
-    size_t l1;
-    int i;
-
-    _ewpi_pkgs = (Package *)calloc(_ewpi_pkgs_count, sizeof(Package));
-    if (!_ewpi_pkgs)
-        return 0;
-
-    if ((!lstrcpyW(buf, L"\\\\?\\")) ||
-        (!lstrcatW(buf, _ewpi_pkg_dir)) ||
-        (!lstrcatW(buf, L"\\*")))
-        goto free_pkgs;
-
-    if ((!lstrcpyW(buf2, _ewpi_pkg_dir)) ||
-        (!lstrcatW(buf2, L"\\")))
-        goto free_pkgs;
-
-    l1 = lstrlenW(buf2);
-
-    if ((h = FindFirstFileW(buf, &data)) == INVALID_HANDLE_VALUE)
-        goto free_pkgs;
-
-    i = 0;
-    do
-    {
-        Map map;
-
-        if ((lstrcmpW(data.cFileName, L".") == 0) ||
-            (lstrcmpW(data.cFileName, L"..") == 0) ||
-            ((l1 + lstrlenW(data.cFileName)) > PATH_MAX))
-            continue;
-
-        lstrcpyW(buf2, _ewpi_pkg_dir);
-        lstrcatW(buf2, L"\\");
-        lstrcatW(buf2, data.cFileName);
-        lstrcatW(buf2, L"\\");
-        lstrcatW(buf2, data.cFileName);
-        lstrcatW(buf2, L".ewpi");
-
-        if (!ewpi_map_new(&map, buf2))
-            continue;
-
-        ewpi_packages_fill(&map, i);
-
-        ewpi_map_del(&map);
-
-#if EWPI_DEBUG
-        fprintf(stderr, " name: %s\n", _ewpi_pkgs[i].name);
-        fprintf(stderr, " url: %s\n", _ewpi_pkgs[i].url);
-        fprintf(stderr, " deps:");
-        int j;
-        for (j = 0; j < _ewpi_pkgs[i].deps_count; j++)
-            fprintf(stderr, " %s", _ewpi_pkgs[i].deps[j]);
-        fprintf(stderr, "\n");
-        fprintf(stderr, " inst: %d\n", _ewpi_pkgs[i].installed);
-#endif
-        i++;
-    } while (FindNextFileW(h, &data));
-
-    FindClose(h);
-
-    return 1;
-
-  free_pkgs:
-    free(_ewpi_pkgs);
-
-    return 0;
-#else
+    char buf[PATH_MAX];
     DIR *dir;
     struct dirent *f;
-    int i;
+    Package *iter;
 
-    _ewpi_pkgs = (Package *)calloc(_ewpi_pkgs_count, sizeof(Package));
+    _ewpi_pkgs = (Package *)calloc(_ew_package_count_total, sizeof(Package));
     if (!_ewpi_pkgs)
         return 0;
 
-    dir = opendir(_ewpi_pkg_dir);
+    dir = opendir(_ew_package_dir_git);
     if (!dir)
         goto free_pkgs;
 
-    i = 0;
+    iter = _ewpi_pkgs;
     while ((f = readdir(dir)))
     {
         Map map;
@@ -387,7 +443,7 @@ ewpi_packages_list()
         if ((strcmp(f->d_name, ".") == 0) ||
             (strcmp(f->d_name, "..") == 0))
             continue;
-        strcpy(buf, _ewpi_pkg_dir);
+        strcpy(buf, _ew_package_dir_git);
         strcat(buf, "/");
         strcat(buf, f->d_name);
         strcat(buf, "/");
@@ -397,21 +453,22 @@ ewpi_packages_list()
         if (!ewpi_map_new(&map, buf))
             continue;
 
-        ewpi_packages_fill(&map, i);
+        _ew_packages_fill(&map, iter);
 
         ewpi_map_del(&map);
 
 #if EWPI_DEBUG
-        fprintf(stderr, " name: %s\n", _ewpi_pkgs[i].name);
-        fprintf(stderr, " url: %s\n", _ewpi_pkgs[i].url);
-        fprintf(stderr, " deps:");
+        printf(" name: %s\n", iter->name);
+        printf(" version: %s\n", iter->version);
+        printf(" url: %s\n", iter->url);
+        printf(" deps:");
         int j;
-        for (j = 0; j < _ewpi_pkgs[i].deps_count; j++)
-            fprintf(stderr, " %s", _ewpi_pkgs[i].deps[j]);
-        fprintf(stderr, "\n");
-        fprintf(stderr, " inst: %d\n", _ewpi_pkgs[i].installed);
+        for (j = 0; j < iter->deps_count; j++)
+            printf(" %s", iter->deps[j]);
+        printf("\n");
+        printf(" inst: %d\n", iter->installed);
 #endif
-        i++;
+        iter++;
     }
 
     closedir(dir);
@@ -422,188 +479,603 @@ ewpi_packages_list()
     free(_ewpi_pkgs);
 
     return 0;
-#endif
 }
 
 static int
-_ewpi_pkg_index_get(const char *name)
+_ew_copy(const char *path_git, const char *path_dst, const char *filename)
 {
-    for (int i = 0; i < _ewpi_pkgs_count; i++)
+  char f_git[4096];
+  char f_dst[4096];
+  char *buf_git = NULL;
+  FILE *file;
+  size_t size;
+  size_t sz;
+
+  strcpy(f_git, path_git);
+  strcat(f_git, "/");
+  strcat(f_git, filename);
+
+  /* get f_git size */
+  size = _ew_file_exists(f_git);
+  if (!size)
+    return 0;
+
+  buf_git = (char *)malloc(size);
+  if (!buf_git)
+    return 0;
+
+  file = fopen(f_git, "rb");
+  if (!file)
+    goto free_buf_git;
+
+  sz = fread(buf_git, 1, size, file);
+  if (sz != size)
+    goto close_file;
+
+  fclose(file);
+
+  strcpy(f_dst, path_dst);
+  strcat(f_dst, "/");
+  strcat(f_dst, filename);
+
+  file = fopen(f_dst, "wb");
+  if (!file)
+    goto free_buf_git;
+
+  sz = fwrite(buf_git, 1, size, file);
+
+  fclose(file);
+  free(buf_git);
+
+  if (sz != size)
     {
-        if (strcmp(name, _ewpi_pkgs[i].name) == 0)
-            return i;
+      printf(" size mismatch %d %d\n", (int)size, (int)sz);
+      fflush(stdout);
+      unlink(f_dst);
+      return 0;
     }
 
-    return -1;
+  return 1;
+
+ close_file:
+  fclose(file);
+ free_buf_git:
+  free(buf_git);
+
+  return 0;
 }
 
 static void
-_ewpi_list_fill(const char *name)
+_ew_packages_dst_set(void)
+{
+    int i;
+    char buf_git[PATH_MAX];
+    char buf_dst[PATH_MAX];
+
+    for (i = 0; i < _ew_package_count_total; i++)
+    {
+        char buf_ewpi[PATH_MAX];
+
+        strcpy(buf_git, _ew_package_dir_git);
+        strcat(buf_git, "/");
+        strcat(buf_git, _ewpi_pkgs[i].name);
+
+        strcpy(buf_dst, _ew_package_dir_dst);
+        strcat(buf_dst, "/");
+        strcat(buf_dst, _ewpi_pkgs[i].name);
+
+        strcpy(buf_ewpi, _ewpi_pkgs[i].name);
+        strcat(buf_ewpi, ".ewpi");
+
+        if (_ew_path_exists(buf_dst))
+        {
+            /*
+             * if directory exists, we compare versions from git and dst
+             * and if git is newer, we suppress the 'installed' file
+             */
+            char buf_ewpi_dst[PATH_MAX];
+            Package pkg;
+            Map map;
+
+            strcpy(buf_ewpi_dst, buf_dst);
+            strcat(buf_ewpi_dst, "/");
+            strcat(buf_ewpi_dst, buf_ewpi);
+            if (ewpi_map_new(&map, buf_ewpi_dst))
+            {
+                _ew_packages_fill(&map, &pkg);
+                /* if version in git is greater, we remove "installed" file */
+                if ((_ewpi_pkgs[i].vmaj > pkg.vmaj) ||
+                    ((_ewpi_pkgs[i].vmaj == pkg.vmaj) &&
+                     (_ewpi_pkgs[i].vmin > pkg.vmin)) ||
+                    ((_ewpi_pkgs[i].vmaj == pkg.vmaj) &&
+                     (_ewpi_pkgs[i].vmin == pkg.vmin) &&
+                     (_ewpi_pkgs[i].vmic > pkg.vmic)))
+                {
+                    char buf[PATH_MAX];
+
+                    strcpy(buf, buf_dst);
+                    strcat(buf, "/");
+                    strcat(buf, "downloaded");
+                    unlink(buf);
+                    strcpy(buf, buf_dst);
+                    strcat(buf, "/");
+                    strcat(buf, "extracted");
+                    unlink(buf);
+                    strcpy(buf, buf_dst);
+                    strcat(buf, "/");
+                    strcat(buf, "installed");
+                    unlink(buf);
+                }
+                ewpi_map_del(&map);
+            }
+        }
+        else
+        {
+            /* Otherwise, the dst directory does not exist, so we create it. */
+            _ew_mkdir(buf_dst, S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP | S_IXGRP | S_IROTH | S_IXOTH);
+        }
+
+        /*
+         * we always copy all the files, in case:
+         * a new package is installed
+         * or a build system has changed
+         * or something else :-)
+         */
+        _ew_copy(buf_git, buf_dst, buf_ewpi);
+        _ew_copy(buf_git, buf_dst, "install.sh");
+        _ew_copy(buf_git, buf_dst, "post.sh");
+        _ew_copy(buf_git, buf_dst, "cross_toolchain.txt");
+    }
+}
+
+static void
+_ew_packages_status_set()
+{
+    DIR *dir;
+    struct dirent *f;
+
+    dir = opendir(_ew_package_dir_dst);
+    if (!dir)
+        return;
+
+    while ((f = readdir(dir)))
+    {
+        char buf[PATH_MAX];
+        char buf_pkg[PATH_MAX];
+        Package *iter;
+
+        if ((strcmp(f->d_name, ".") == 0) ||
+            (strcmp(f->d_name, "..") == 0))
+            continue;
+
+        iter = NULL;
+        for (int i = 0; i < _ew_package_count_total; i++)
+        {
+            if (strcmp(_ewpi_pkgs[i].name, f->d_name) == 0)
+            {
+                iter = _ewpi_pkgs + i;
+                break;
+            }
+        }
+        if (!iter)
+        {
+            printf("Can not find the package %s, exiting...\n", f->d_name);
+            fflush(stdout);
+            exit(1);
+        }
+
+        strcpy(buf_pkg, _ew_package_dir_dst);
+        strcat(buf_pkg, "/");
+        strcat(buf_pkg, f->d_name);
+        strcat(buf_pkg, "/");
+
+        strcpy(buf, buf_pkg);
+        strcat(buf, "downloaded");
+
+        if (_ew_file_exists(buf))
+            iter->downloaded = 1;
+        else
+            _ew_package_count_not_downloaded++;
+
+        strcpy(buf, buf_pkg);
+        strcat(buf, "extracted");
+
+        if (_ew_file_exists(buf))
+            iter->extracted = 1;
+        else
+            _ew_package_count_not_extracted++;
+
+        strcpy(buf, buf_pkg);
+        strcat(buf, "installed");
+
+        if (_ew_file_exists(buf))
+            iter->installed = 1;
+        else
+            _ew_package_count_not_installed++;
+
+        iter++;
+    }
+
+    closedir(dir);
+}
+
+static void
+_ew_packages_tree(const char *pkg_name)
 {
     Package pkg;
     int idx;
     int already_in = 0;
 
-    idx = _ewpi_pkg_index_get(name);
+    /* get the index of the package */
+    for (idx = 0; idx < _ew_package_count_total; idx++)
+    {
+        if (strcmp(pkg_name, _ewpi_pkgs[idx].name) == 0)
+            break;
+    }
     pkg = _ewpi_pkgs[idx];
 
     for (int i = 0; i < pkg.deps_count; i++)
-        _ewpi_list_fill(pkg.deps[i]);
+        _ew_packages_tree(pkg.deps[i]);
 
-    for (int i = 0; i < _ewpi_deps_count; i++)
+    for (int i = 0; i < _ew_package_deps_dst_count; i++)
     {
-        if (_ewpi_deps_index[i] == idx)
+        if (_ew_package_index[i] == idx)
             already_in = 1;
     }
 
-    /* FIXME: check if selected also */
-
     if (!already_in)
     {
-        size_t len;
-
-        _ewpi_deps_index[_ewpi_deps_count] = idx;
-        _ewpi_deps_count++;
-        len = strlen(pkg.name);
-        if (len > _ewpi_max_name_length)
-            _ewpi_max_name_length = len;
+        _ew_package_index[_ew_package_deps_dst_count] = idx;
+        _ew_package_deps_dst_count++;
 
     }
 }
 
 static void
-_ewpi_pkgs_extract(const char *name, const char *url)
+_ew_packages_not_installed_disp(void)
 {
-    char buf[PATH_MAX];
-    const char *tarname;
-    const char *taropt;
-    char *filename;
-    int ret = 0;
 
-    tarname = strrchr(url, '/');
-    tarname++;
-
-    filename = strrchr(url, '.');
-    filename++;
-    if ((*filename == 'g') || (*filename =='t'))
+    printf("\nPackages (%d)\n", _ew_package_count_not_installed);
+    for (int i = 0; i < _ew_package_count_total; i++)
     {
-        taropt = "zf";
+        int idx = _ew_package_index[i];
+        if (!_ewpi_pkgs[idx].installed)
+            printf("  %s-%s\n", _ewpi_pkgs[idx].name, _ewpi_pkgs[idx].version);
     }
-    else if (*filename == 'b')
+    printf("\n");
+    fflush(stdout);
+}
+
+static void
+_ew_packages_download(void)
+{
+    char buf[4096];
+    Package *iter;
+    int count;
+
+    iter = _ewpi_pkgs;
+    count = 0;
+    for (int i = 0; i < _ew_package_count_total; i++, iter++)
     {
-        taropt = "jf";
+        strcpy(buf, _ew_package_dir_dst);
+        strcat(buf, "/");
+        strcat(buf, iter->name);
+        strcat(buf, "/downloaded");
+        if (!_ew_file_exists(buf))
+            count++;
+        else
+            iter->downloaded = 1;
+    }
+
+    if (count == 0)
+        return;
+
+    printf(":: Download sources...\n");
+    fflush(stdout);
+    for (int i = 0; i < _ew_package_count_total; i++)
+    {
+        int ret;
+
+        iter = _ewpi_pkgs + _ew_package_index[i];
+        if (iter->downloaded)
+            continue;
+
+        strcpy(buf, "cd ");
+        strcat(buf, _ew_package_dir_dst);
+        strcat(buf, "/");
+        strcat(buf, iter->name);
+        strcat(buf, " && ");
+
+        if (iter->is_git)
+        {
+            if (iter->downloaded)
+            {
+                strcat(buf, "git pull");
+            }
+            else
+            {
+                strcat(buf, "git clone ");
+                strcat(buf, iter->url);
+            }
+        }
+        else
+        {
+            strcat(buf, "wget -q --show-progress --no-check-certificate ");
+            strcat(buf, iter->url);
+        }
+        fflush(stdout);
+        ret = system(buf);
+        if (ret != 0)
+        {
+            printf("error while downloading package %s (ret = %d)\n", iter->name, ret);
+            exit(1);
+        }
+        else
+        {
+            strcpy(buf, "echo 1 > ");
+            strcat(buf, _ew_package_dir_dst);
+            strcat(buf, "/");
+            strcat(buf, iter->name);
+            strcat(buf, "/downloaded");
+            system(buf);
+            if (iter->is_git)
+            {
+                strcpy(buf, "echo 1 > ");
+                strcat(buf, _ew_package_dir_dst);
+                strcat(buf, "/");
+                strcat(buf, iter->name);
+                strcat(buf, "/extracted");
+                system(buf);
+            }
+        }
+    }
+}
+
+static void
+_ew_packages_longest_name()
+{
+    /* compute the largest name (including version) of the packages */
+    for (int i = 0; i < _ew_package_count_total; i++)
+    {
+        if ((int)(strlen(_ewpi_pkgs[i].name) + 1 + strlen(_ewpi_pkgs[i].version)) > _ew_package_name_size_max)
+            _ew_package_name_size_max = strlen(_ewpi_pkgs[i].name) + 1 + strlen(_ewpi_pkgs[i].version);
+    }
+}
+
+static void
+_ew_packages_status_disp(int i, int count, const char *name, const char* version)
+{
+    char buf[4096];
+    char *iter;
+    size_t len;
+    size_t len2;
+    int nbr_sharp = 40;
+    int sharp;
+    int percent;
+    size_t j;
+
+    snprintf(buf, 4095, "(%2d/%d) ", i + 1, count);
+    len = strlen(buf);
+    iter = buf + len;
+    if (name)
+    {
+        len = strlen(name);
+        for (j = 0; j < len; j++)
+            *iter++ = name[j];
+        *iter++ = '-';
+        len2 = strlen(version);
+        for (j = 0; j < len2; j++)
+            *iter++ = version[j];
+        for (j = 0; j < (_ew_package_name_size_max  - (len + 1 + len2)); j++)
+            *iter++ = ' ';
     }
     else
     {
-        taropt = "Jf";
+        for (j = 0; j < (size_t)_ew_package_name_size_max; j++)
+            *iter++ = ' ';
     }
-
-    snprintf(buf, sizeof(buf),
-             "sh ./packages/%s/pre.sh %s %s %s",
-             name, name, taropt, tarname);
-    /* fprintf(stderr, "%s\n", buf); */
-    ret = system(buf);
-    if (ret != 0)
+    *iter++ = ' ';
+    *iter++ = '[';
+    sharp = (nbr_sharp * (i + 1)) / count;
+    percent = (100 * (i + 1)) / count;
+    for (j = 0; j < (size_t)sharp; j++, iter++)
+        *iter = '#';
+    for (; j < (size_t)nbr_sharp; j++, iter++)
+        *iter = ' ';
+    *iter++ = ']';
+    *iter++ = ' ';
+    if (percent < 10)
     {
-        fprintf(stderr, "error while extracting %s archive (%s)\n", name, tarname);
-        exit(1);
+        *iter++ = ' ';
+        *iter++ = ' ';
+        *iter++ = (char)(percent + '0');
     }
-}
-
-static void
-_ewpi_pkgs_clean(const char *name, const char *url)
-{
-    char buf[PATH_MAX];
-    const char *tarname;
-    const char *taropt;
-    char *filename;
-    int ret;
-
-    tarname = strrchr(url, '/');
-    tarname++;
-
-    filename = strrchr(url, '.');
-    filename++;
-    if ((*filename == 'g') || (*filename =='t'))
+    else if (percent < 100)
     {
-        taropt = "zf";
-    }
-    else if (*filename == 'b')
-    {
-        taropt = "jf";
+        *iter++ = ' ';
+        *iter++ = (char)((percent / 10) + '0');
+        *iter++ = (char)((percent % 10) + '0');
     }
     else
     {
-        taropt = "Jf";
+        *iter++ = '1';
+        *iter++ = '0';
+        *iter++ = '0';
     }
-
-    snprintf(buf, sizeof(buf),
-             "sh ./packages/%s/post.sh %s %s %s",
-             name, name, tarname, taropt);
-    ret = system(buf);
-    if (ret != 0)
-    {
-        fprintf(stderr, "error while cleaning %s. see post.log\n", name);
-        exit(1);
-    }
-    //fprintf(stderr, "%s\n", buf);
+    *iter++ = '\%';
+    *iter++ = '\0';
+    printf("\r%s", buf);
+    fflush(stdout);
 }
 
 static void
-_ewpi_pkgs_install(int i, const char *prefix, const char *host, const char *jobopt)
+_ew_packages_extract(void)
 {
-    char buf[PATH_MAX];
-    const char *name;
-    const char *url;
-    const char *tarname;
-    const char *taropt;
-    char *filename;
-    int ret;
+    char buf[4096];
+    Package *iter;
+    int count;
+    int c;
 
-    name = _ewpi_pkgs[_ewpi_deps_index[i]].name;
-    url = _ewpi_pkgs[_ewpi_deps_index[i]].url;
-
-    tarname = strrchr(url, '/');
-    tarname++;
-
-    filename = strrchr(url, '.');
-    filename++;
-    if ((*filename == 'g') || (*filename =='t'))
+    iter = _ewpi_pkgs;
+    count = 0;
+    for (int i = 0; i < _ew_package_count_total; i++, iter++)
     {
-        taropt = "zf";
-    }
-    else if (*filename == 'b')
-    {
-        taropt = "jf";
-    }
-    else
-    {
-        taropt = "Jf";
+        strcpy(buf, _ew_package_dir_dst);
+        strcat(buf, "/");
+        strcat(buf, iter->name);
+        strcat(buf, "/extracted");
+        if (!_ew_file_exists(buf))
+            count++;
+        else
+            iter->extracted = 1;
     }
 
-    snprintf(buf, sizeof(buf),
-             "sh ./packages/%s/install.sh %s %s %s %s %s %s",
-             name, name, tarname, prefix, host, taropt, jobopt);
-    /* fprintf(stderr, "%s\n", buf); */
-    fprintf(stderr, "%s: compiling", name);
-    fflush(stderr);
-    ret = system(buf);
-    fprintf(stderr, "\r%s: installed (ret=%d) \n", name, ret);
-    fflush(stderr);
-    if (ret != 0)
+    if (count == 0)
+        return;
+
+    printf(":: Extraction of sources...\n");
+    fflush(stdout);
+
+    c = 0;
+    for (int i = 0; i < _ew_package_count_total; i++)
     {
-        fprintf(stderr, "error while installing %s. see config.log or make.log\n", name);
-        exit(1);
+        const char *name;
+        const char *tarname;
+        const char *taropt;
+        int ret;
+
+        iter = _ewpi_pkgs + _ew_package_index[i];
+        if (iter->extracted)
+            continue;
+
+        name = iter->name;
+        tarname = iter->tarname;
+        taropt = iter->taropt;
+
+        _ew_packages_status_disp(c, count, name, iter->version);
+
+        snprintf(buf, 4095,
+                 "cd %s/%s && tar x%s %s",
+                 _ew_package_dir_dst, name,
+                 taropt, tarname);
+        fflush(stdout);
+        ret = system(buf);
+        if (ret != 0)
+        {
+            printf(" Can not extract %s\n", tarname);
+            exit(1);
+        }
+        else
+        {
+            strcpy(buf, "echo 1 > ");
+            strcat(buf, _ew_package_dir_dst);
+            strcat(buf, "/");
+            strcat(buf, name);
+            strcat(buf, "/extracted");
+            system(buf);
+        }
+
+        c++;
     }
+
+    _ew_packages_status_disp(count - 1, count, NULL, NULL);
+    printf("\n");
 }
 
 static void
-usage(const char *argv0)
+_ew_packages_install(const char *prefix, const char *host, const char *jobopt)
 {
-    fprintf(stderr, "Usage: %s prefix host [number of make jobs]\n", argv0);
-    fprintf(stderr, "Example: %s $HOME/ewpi i686-w64-mingw32 4\n", argv0);
-    fprintf(stderr, "The prefix must be an absolute directory\n");
-    fprintf(stderr, "Possible values for host: i686-w64-mingw32 and x86_64-w64-mingw32\n");
+    char buf[4096];
+    Package *iter;
+    int c;
+
+    if (_ew_package_count_not_installed == 0)
+        return;
+
+    printf("\n:: Installation of packages...\n");
+    fflush(stdout);
+
+    c = 0;
+    for (int i = 0; i < _ew_package_count_total; i++)
+    {
+        const char *name;
+        const char *tarname;
+        const char *taropt;
+        int ret;
+
+        iter = _ewpi_pkgs + _ew_package_index[i];
+        if (iter->installed)
+            continue;
+
+        name = iter->name;
+        tarname = iter->tarname;
+        taropt = iter->taropt;
+
+        _ew_packages_status_disp(c, _ew_package_count_not_installed, name, iter->version);
+
+        snprintf(buf, 4095,
+                 "cd %s/%s && sh ./install.sh %s %s %s %s %s %s",
+                 _ew_package_dir_dst, name,
+                 name, tarname, prefix, host, taropt, jobopt);
+        ret = system(buf);
+        if (ret != 0)
+        {
+            printf(" Can not install %s\n", name);
+            exit(1);
+        }
+        else
+        {
+            strcpy(buf, "echo 1 > ");
+            strcat(buf, _ew_package_dir_dst);
+            strcat(buf, "/");
+            strcat(buf, name);
+            strcat(buf, "/installed");
+            system(buf);
+        }
+
+        c++;
+    }
+
+    _ew_packages_status_disp(_ew_package_count_not_installed - 1, _ew_package_count_not_installed, NULL, NULL);
+    printf("\n");
+}
+
+static void
+_ew_packages_clean(void)
+{
+    char buf[4096];
+
+    printf("\n:: Cleaning...\n");
+    fflush(stdout);
+
+    for (int i = 0; i < _ew_package_count_total; i++)
+    {
+        const char *name;
+        const char *version;
+        const char *tarname;
+        const char *taropt;
+        int ret;
+
+        name = _ewpi_pkgs[i].name;
+        version = _ewpi_pkgs[i].version;
+        tarname = _ewpi_pkgs[i].tarname;
+        taropt = _ewpi_pkgs[i].taropt;
+
+        _ew_packages_status_disp(i, _ew_package_count_total, name, version);
+
+        snprintf(buf, 4095,
+                 "cd %s/%s && sh ./post.sh %s %s %s",
+                 _ew_package_dir_dst, name,
+                 name, tarname, taropt);
+        ret = system(buf);
+        if (ret != 0)
+        {
+            printf(" Can not clean %s\n", name);
+        }
+    }
+
+    _ew_packages_status_disp(_ew_package_count_total - 1, _ew_package_count_total, NULL, NULL);
+    printf("\n");
 }
 
 int main(int argc, char *argv[])
@@ -614,222 +1086,66 @@ int main(int argc, char *argv[])
 
     if (argc < 3)
     {
-        usage(argv[0]);
+        _ew_usage(argv[0]);
         return 1;
     }
 
+    /* prefix must be absolute */
     prefix = argv[1];
-    {
-        /* check if directory is absolute */
-#ifdef _WIN32
-        if (!((strlen(prefix) >= 2) &&
-              (((prefix[0] >= 'a') && (prefix[0] <= 'z')) ||
-               ((prefix[0] >= 'A') && (prefix[0] <= 'Z'))) &&
-              (prefix[1] == ':')))
-        {
-            fprintf(stderr, "Usage: %s prefix host\n", argv[0]);
-            fprintf(stderr, "The prefix must be an absolute directory\n");
-            return 1;
-        }
-#else
-        if (*prefix != '/')
-        {
-            fprintf(stderr, "Usage: %s prefix host\n", argv[0]);
-            fprintf(stderr, "The prefix must be an absolute directory\n");
-            return 1;
-        }
-#endif
-    }
+    if (!_ew_path_is_absolute(prefix))
+        return 1;
 
+    /* host value */
     host = argv[2];
-    if ((strcmp(host, "i686-w64-mingw32") != 0) && (strcmp(host, "x86_64-w64-mingw32") != 0))
+    if ((strcmp(host, "i686-w64-mingw32") != 0) &&
+        (strcmp(host, "x86_64-w64-mingw32") != 0))
     {
-        fprintf(stderr, "Usage: %s prefix host\n", argv[0]);
-        fprintf(stderr, "Possible values for host: i686-w64-mingw32 and x86_64-w64-mingw32\n");
+        printf("Possible values for host: i686-w64-mingw32 or x86_64-w64-mingw32\n");
+        fflush(stdout);
         return 1;
     }
 
+    /* number of jobs */
     if (argv[3])
         jobopt = argv[3];
 
-    if (!ewpi_pkg_dir_set())
-    {
-        fprintf(stderr, "can not set package dir\n");
+    printf(":: Prepare directories in %s...\n", prefix);
+    _ew_packages_dir_set(prefix);
+
+    _ew_packages_count_total();
+    _ew_packages_get_git();
+    _ew_packages_dst_set();
+
+    printf(":: Check which package is not installed...\n");
+    fflush(stdout);
+    _ew_packages_status_set();
+
+    printf(":: Build the dependency tree...\n");
+    fflush(stdout);
+    _ew_package_index = (int *)malloc(_ew_package_count_total * sizeof(int));
+    if(!_ew_package_index)
         return 1;
-    }
 
-    ewpi_packages_count();
-    fprintf(stderr, "count : %d\n", _ewpi_pkgs_count);
-    ewpi_packages_list();
+    _ew_packages_tree("efl");
+    _ew_packages_not_installed_disp();
+    _ew_packages_download();
+    _ew_packages_longest_name();
+    _ew_packages_extract();
+    _ew_packages_install(prefix, host, jobopt);
+    _ew_packages_clean();
 
-    _ewpi_deps_index = (int *)malloc(_ewpi_pkgs_count * sizeof(int));
-    _ewpi_list_fill("efl");
-
-    for (int i = 0; i < _ewpi_pkgs_count; i++)
+    free(_ew_package_index);
+    for (int i = 0; i < _ew_package_count_total; i++)
     {
-        fprintf(stderr, " ***** %s\n", _ewpi_pkgs[_ewpi_deps_index[i]].name);
+        free(_ewpi_pkgs[i].name);
+        free(_ewpi_pkgs[i].version);
+        free(_ewpi_pkgs[i].url);
+        free(_ewpi_pkgs[i].tarname);
+        for (int j = 0; j < _ewpi_pkgs[i].deps_count; j++)
+            free(_ewpi_pkgs[i].deps[j]);
+        free(_ewpi_pkgs[i].deps);
     }
-
-    /* remove te last one (as it is EFL itself) */
-    _ewpi_pkgs_list_count = _ewpi_pkgs_count - 1;
-
-#if ! EWPI_DELETE
-    fprintf(stderr, "Download packages :\n");
-    {
-        for (int i = 0; i < _ewpi_pkgs_list_count; i++)
-        {
-            char buf1[1024];
-            char *name;
-            char *url;
-            size_t l1;
-            int ret;
-
-            if (_ewpi_pkgs[_ewpi_deps_index[i]].installed)
-              continue;
-
-            name = _ewpi_pkgs[_ewpi_deps_index[i]].name;
-            url = _ewpi_pkgs[_ewpi_deps_index[i]].url;
-
-            l1 = strlen("wget -q --show-progress --no-check-certificate ");
-            memcpy(buf1, "wget -q --show-progress --no-check-certificate ", l1);
-            memcpy(buf1 + l1, url, strlen(url));
-            l1 += strlen(url);
-            memcpy(buf1 + l1, " -O packages/", strlen(" -O packages/"));
-            l1 += strlen(" -O packages/");
-            memcpy(buf1 + l1, name, strlen(name));
-            l1 += strlen(name);
-            memcpy(buf1 + l1, "/", 1);
-            l1 += 1;
-            url = strrchr(url, '/');
-            url++;
-            memcpy(buf1 + l1, url, strlen(url) + 1);
-            ret = system(buf1);
-            if (ret != 0)
-            {
-                fprintf(stderr, "error while downloading package %s (ret = %d)\n", name, ret);
-                exit(1);
-            }
-        }
-    }
-
-    /* Extracting */
-    {
-        char info[80];
-
-        for (int i = 0; i < _ewpi_pkgs_list_count; i++)
-        {
-            const char *ext = "Extracting: ";
-            const char *name;
-            const char *url;
-            size_t k;
-            size_t j;
-
-            if (_ewpi_pkgs[_ewpi_deps_index[i]].installed)
-              continue;
-
-            name = _ewpi_pkgs[_ewpi_deps_index[i]].name;
-            url = _ewpi_pkgs[_ewpi_deps_index[i]].url;
-            _ewpi_pkgs_extract(name, url);
-
-            for (k = 0; k < strlen(ext); k++)
-                info[k] = ext[k];
-            info[k++] = ' ';
-            info[k++] = '[';
-            for (j = 1; j <= (size_t)(i+1); j++, k++)
-                info[k] = '*';
-            for (; j <= (size_t)_ewpi_pkgs_list_count; j++, k++)
-                info[k] = ' ';
-            info[k++] = ']';
-            info[k++] = ' ';
-            if ((i+1) < 10)
-            {
-                info[k++] = ' ';
-                info[k++] = '0' + (i + 1);
-            }
-            else
-            {
-                info[k++] = '0' + ((i + 1) / 10);
-                info[k++] = '0' + ((i + 1) % 10);
-            }
-            info[k++] = '/';
-            info[k++] = '0' + _ewpi_pkgs_list_count / 10;
-            info[k++] = '0' + _ewpi_pkgs_list_count % 10;
-            info[k++] = '\0';
-            fprintf(stderr, "%s\r", info);
-            fflush(stderr);
-        }
-        fprintf(stderr, "\n");
-        fflush(stderr);
-    }
-
-    fprintf(stderr, "Installing :\n");
-    {
-        for (int i = 0; i < _ewpi_pkgs_list_count; i++)
-        {
-            if (_ewpi_pkgs[_ewpi_deps_index[i]].installed)
-              continue;
-
-            _ewpi_pkgs_install(i, prefix, host, jobopt);
-        }
-    }
-#endif /* EWPI_DELETE */
-
-    /* Cleaning */
-#if 0
-    {
-        char info[80];
-
-        for (int i = 0; i < _ewpi_pkgs_list_count; i++)
-        {
-            const char *ext = "Cleaning:  ";
-            const char *name;
-            const char *url;
-            size_t k;
-            size_t j;
-
-            if (_ewpi_pkgs[_ewpi_deps_index[i]].installed)
-              continue;
-
-            name = _ewpi_pkgs[_ewpi_deps_index[i]].name;
-            url = _ewpi_pkgs[_ewpi_deps_index[i]].url;
-            _ewpi_pkgs_clean(name, url);
-
-            for (k = 0; k < strlen(ext); k++)
-                info[k] = ext[k];
-            info[k++] = ' ';
-            info[k++] = '[';
-            for (j = 1; j <= (size_t)(i + 1); j++, k++)
-                info[k] = '*';
-            for (; j <= (size_t)_ewpi_pkgs_list_count; j++, k++)
-                info[k] = ' ';
-            info[k++] = ']';
-            info[k++] = ' ';
-            if ((i + 1) < 10)
-            {
-                info[k++] = ' ';
-                info[k++] = '0' + (i + 1);
-            }
-            else
-            {
-                info[k++] = '0' + ((i + 1) / 10);
-                info[k++] = '0' + ((i + 1) % 10);
-            }
-            info[k++] = '/';
-            info[k++] = '0' + _ewpi_pkgs_list_count / 10;
-            info[k++] = '0' + _ewpi_pkgs_list_count % 10;
-            info[k++] = '\0';
-            fprintf(stderr, "%s\r", info);
-            fflush(stderr);
-        }
-        fprintf(stderr, "\n");
-        fflush(stderr);
-    }
-#endif
+    free(_ewpi_pkgs);
 
     return 0;
-
-  free_pkg_dir:
-    free(_ewpi_pkg_dir);
-
-    return 1;
 }

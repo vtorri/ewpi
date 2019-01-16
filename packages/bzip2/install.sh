@@ -9,9 +9,9 @@ set -e
 # $5 : taropt
 # $6 : jobopt
 
-cd packages/$1
 dir_name=`tar t$5 $2 | head -1 | cut -f1 -d"/"`
 cd $dir_name
+
 $4-gcc \
     -shared \
     -Wl,--out-implib,libbz2.dll.a \
@@ -27,9 +27,25 @@ $4-gcc \
     bzlib.c \
     > ../make.log 2>&1
 
-mkdir -p $3/{bin,include,lib}
+cat > bzip2.pc.in <<EOF
+prefix=@prefixe@
+exec_prefix=\${prefix}
+bindir=\${exec_prefix}/bin
+libdir=\${exec_prefix}/lib
+includedir=\${prefix}/include
+
+Name: bzip2
+Description: Lossless, block-sorting data compression
+Version: 1.0.6
+Libs: -L\${libdir} -lbz2
+Cflags: -I\${includedir}
+EOF
+
+pref=$3
+sed  "s|@prefixe@|$3|g" bzip2.pc.in > bzip2.pc
+
+mkdir -p $3/{bin,include,lib/pkgconfig}
 cp libbz2-1.dll $3/bin
 cp libbz2.dll.a $3/lib
+cp bzip2.pc $3/lib/pkgconfig
 cp bzlib.h $3/include
-
-sed -i -e 's/installed: no/installed: yes/g' ../$1.ewpi

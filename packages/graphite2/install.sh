@@ -9,7 +9,6 @@ set -e
 # $5 : taropt
 # $6 : jobopt
 
-cd packages/$1 > /dev/null
 dir_name=`tar t$5 $2 | head -1 | cut -f1 -d"/"`
 cd $dir_name
 sed -i -e 's/add_subdirectory(tests)//g' CMakeLists.txt
@@ -22,6 +21,7 @@ case ${EWPI_OS} in
 	prefix_unix=$3
     ;;
 esac
+
 cmake \
     -DCMAKE_INSTALL_PREFIX=$prefix_unix \
     -DCMAKE_VERBOSE_MAKEFILE=TRUE \
@@ -33,5 +33,3 @@ cmake \
     . > ../config.log 2>&1
 
 make -j $jobopt install > ../make.log 2>&1
-
-sed -i -e 's/installed: no/installed: yes/g' ../$1.ewpi

@@ -2,4 +2,3 @@ name: cairo
 version: 1.16.0
 url: https://www.cairographics.org/releases/cairo-1.16.0.tar.xz
 deps: pkg-config pixman freetype fontconfig
-installed: no

@@ -12,25 +12,25 @@
 # include <fcntl.h>
 #endif
 
-#include "ewpi_map.h"
+#include "ewpi_map2.h"
 
 #ifdef _WIN32
 
 int
-ewpi_map_new(Map *map, const wchar_t *filename)
+ewpi_map_new(Map *map, const char *filename)
 {
     BY_HANDLE_FILE_INFORMATION info;
 
     if (!filename)
         return 0;
 
-    map->file = CreateFileW(filename,
-                            GENERIC_READ,
-                            FILE_SHARE_READ,
-                            NULL,
-                            OPEN_EXISTING,
-                            FILE_ATTRIBUTE_NORMAL,
-                            NULL);
+    map->file = CreateFile(filename,
+                           GENERIC_READ,
+                           FILE_SHARE_READ,
+                           NULL,
+                           OPEN_EXISTING,
+                           FILE_ATTRIBUTE_NORMAL,
+                           NULL);
     if (map->file == INVALID_HANDLE_VALUE)
         return 0;
 

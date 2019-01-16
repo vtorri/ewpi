@@ -2,4 +2,3 @@ name: nghttp2
 version: 1.35.0
 url: https://github.com/nghttp2/nghttp2/releases/download/v1.35.0/nghttp2-1.35.0.tar.xz
 deps: pkg-config zlib libressl cares libxml2
-installed: no

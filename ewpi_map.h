@@ -12,14 +12,6 @@ typedef struct
 #endif
 } Map;
 
-#ifdef _WIN32
-
-int ewpi_map_new(Map *map, const wchar_t *filename);
-
-#else
-
 int ewpi_map_new(Map *map, const char *filename);
-
-#endif
 
 void ewpi_map_del(Map *map);

@@ -9,7 +9,6 @@ set -e
 # $5 : taropt
 # $6 : jobopt
 
-cd packages/$1
 dir_name=`tar t$5 $2 | head -1 | cut -f1 -d"/"`
 cd $dir_name
 arch="-m64"
@@ -43,4 +42,3 @@ make \
 mv $3/bin/luajit.tmp $3/bin/luajit.exe
 cp src/lua51.dll $3/bin
 cp src/libluajit.dll.a $3/lib
-sed -i -e 's/installed: no/installed: yes/g' ../$1.ewpi

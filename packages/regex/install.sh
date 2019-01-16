@@ -9,7 +9,6 @@ set -e
 # $5 : taropt
 # $6 : jobopt
 
-cd packages/$1 > /dev/null
 dir_name=`tar t$5 $2 | head -1 | cut -f1 -d"/"`
 cd $dir_name
 
@@ -51,5 +50,3 @@ cd ../..
 sed '/#include <bits.alltypes.h>/ s/.*/typedef intptr_t regoff_t;/' \
   < include/regex.h \
   > $3/include/regex.h
-
-sed -i -e 's/installed: no/installed: yes/g' ../$1.ewpi

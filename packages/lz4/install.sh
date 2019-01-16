@@ -9,7 +9,6 @@ set -e
 # $5 : taropt
 # $6 : jobopt
 
-cd packages/$1 > /dev/null
 dir_name=`tar t$5 $2 | head -1 | cut -f1 -d"/"`
 cd $dir_name
 export PKG_CONFIG_DIR=
@@ -25,6 +24,7 @@ sed -i \
     -e 's|$@.dll|$@.dll -Wl,--out-implib,liblz4.dll.a|g' \
     -e 's|dlltool|#dlltool|g' \
     lib/Makefile
+
 make -j $jobopt PREFIX=$3 BUILD_STATIC=no CC=$4-gcc SHARED_EXT_VER=1 V=1 OS=Windows_NT > ../make.log 2>&1
 mkdir -p $3/{bin,include,lib/pkgconfig}
 cp lz4.exe $3/bin
@@ -35,5 +35,3 @@ cp lz4.h lz4hc.h lz4frame.h $3/include
 make liblz4.pc PREFIX=$3 BUILD_STATIC=no CC=$4-gcc SHARED_EXT_VER=1 V=1 OS=Windows_NT >> ../make.log 2>&1
 cp liblz4.pc $3/lib/pkgconfig
 cd ..
-
-sed -i -e 's/installed: no/installed: yes/g' ../$1.ewpi

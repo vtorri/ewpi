@@ -2,4 +2,3 @@ name: libxml2
 version: 2.9.8
 url: http://xmlsoft.org/download/libxml2-2.9.8.tar.gz
 deps: zlib xz iconv
-installed: no

@@ -9,7 +9,6 @@ set -e
 # $5 : taropt
 # $6 : jobopt
 
-cd packages/$1 > /dev/null
 dir_name=`tar t$5 $2 | head -1 | cut -f1 -d"/"`
 cd $dir_name
 export PKG_CONFIG_DIR=
@@ -26,6 +25,7 @@ case ${EWPI_OS} in
 	sed -i -e 's/$//' win32/xmingw32/libtheoradec-all.def
     ;;
 esac
+
 ./configure --prefix=$3 --host=$4 --disable-static --disable-spec --disable-examples > ../config.log 2>&1
+
 make -j $jobopt install > ../make.log 2>&1
-sed -i -e 's/installed: no/installed: yes/g' ../$1.ewpi
