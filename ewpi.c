@@ -20,7 +20,7 @@
 # include <fcntl.h>
 #endif
 
-#include "ewpi_map2.h"
+#include "ewpi_map.h"
 
 #define EWPI_DEBUG 0
 

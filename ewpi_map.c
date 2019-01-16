@@ -12,7 +12,7 @@
 # include <fcntl.h>
 #endif
 
-#include "ewpi_map2.h"
+#include "ewpi_map.h"
 
 #ifdef _WIN32
 
