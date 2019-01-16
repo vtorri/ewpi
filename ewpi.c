@@ -902,7 +902,7 @@ _ew_packages_status_disp(int i, int count, const char *name, const char* version
         *iter++ = '0';
         *iter++ = '0';
     }
-    *iter++ = '\%';
+    *iter++ = '%';
     *iter++ = '\0';
     printf("\r%s", buf);
     fflush(stdout);
