@@ -1,4 +1,4 @@
 name: gstreamer
 version: 1.14.4
 url: https://gstreamer.freedesktop.org/src/gstreamer/gstreamer-1.14.4.tar.xz
-deps: pkg-config glib2
+deps: pkg-config glib2 gettext

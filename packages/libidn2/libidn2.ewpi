@@ -1,4 +1,4 @@
 name: libidn2
 version: 2.0.5
 url: https://ftp.gnu.org/gnu/libidn/libidn2-2.0.5.tar.gz
-deps: pkg-config libunistring
+deps: pkg-config libunistring gettext

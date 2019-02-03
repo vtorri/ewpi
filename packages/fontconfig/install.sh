@@ -11,6 +11,7 @@ set -e
 
 dir_name=`tar t$5 $2 | head -1 | cut -f1 -d"/"`
 cd $dir_name
+sed -i -e 's/@INTLLIBS@/@LTLIBINTL@/g' src/Makefile.in
 EWPI_PWD=`pwd`
 EWPI_OS=`uname`
 case ${EWPI_OS} in
