@@ -64,6 +64,7 @@ typedef struct
     int vmaj;
     int vmin;
     int vmic;
+    int vrev;
     char *url;
     char *tarname;
     const char *taropt;
@@ -284,41 +285,50 @@ _ew_packages_count_total()
 }
 
 static void
-_ew_version_get(char *ver, int *maj, int *min, int *mic)
+_ew_version_get(char *ver, int *maj, int *min, int *mic, int *rev)
 {
-  char buf[128];
-  char *start;
-  char *iter;
+    char buf[128];
+    char *start;
+    char *iter;
 
-  *maj = 0;
-  *min = 0;
-  *mic = 0;
-  strcpy(buf, ver);
-  start = buf;
-  iter = strchr(start, '.');
-  if (iter)
+    *maj = 0;
+    *min = 0;
+    *mic = 0;
+    *rev = 0;
+
+    strcpy(buf, ver);
+    start = buf;
+
+    iter = strchr(start, '-');
+    if (iter)
     {
-      *iter = '\0';
-      *maj = atoi(start);
-      start = iter + 1;
-      iter = strchr(start, '.');
-      if (iter)
-      {
         *iter = '\0';
-        *min = atoi(start);
+        iter++;
+        *rev = atoi(iter);
+    }
+
+    iter = strchr(start, '.');
+    if (iter)
+    {
+        *iter = '\0';
+        *maj = atoi(start);
         start = iter + 1;
         iter = strchr(start, '.');
         if (iter)
-          {
+        {
             *iter = '\0';
-            *mic = atoi(start);
-          }
-      }
-      else
-        *min = atoi(start);
+            *min = atoi(start);
+            start = iter + 1;
+            if (*start != '\0')
+            {
+                *mic = atoi(start);
+            }
+        }
+        else
+            *min = atoi(start);
     }
-  else
-      *maj = atoi(start);
+    else
+        *maj = atoi(start);
 }
 
 static void
@@ -347,7 +357,7 @@ _ew_packages_fill(Map *map, Package *pkg)
             iter2 = iter;
             while (*iter != '\n') iter++;
             pkg->version = _ew_str_get(iter2, iter);
-            _ew_version_get(pkg->version, &pkg->vmaj, &pkg->vmin, &pkg->vmic);
+            _ew_version_get(pkg->version, &pkg->vmaj, &pkg->vmin, &pkg->vmic, &pkg->vrev);
         }
         else if (EWPI_URL(iter))
         {
@@ -589,7 +599,11 @@ _ew_packages_dst_set(void)
                      (_ewpi_pkgs[i].vmin > pkg.vmin)) ||
                     ((_ewpi_pkgs[i].vmaj == pkg.vmaj) &&
                      (_ewpi_pkgs[i].vmin == pkg.vmin) &&
-                     (_ewpi_pkgs[i].vmic > pkg.vmic)))
+                     (_ewpi_pkgs[i].vmic > pkg.vmic)) ||
+                    ((_ewpi_pkgs[i].vmaj == pkg.vmaj) &&
+                     (_ewpi_pkgs[i].vmin == pkg.vmin) &&
+                     (_ewpi_pkgs[i].vmic == pkg.vmic) &&
+                     (_ewpi_pkgs[i].vrev > pkg.vrev)))
                 {
                     char buf[PATH_MAX];
 
