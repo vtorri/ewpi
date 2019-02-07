@@ -29,14 +29,13 @@ export PATH=$prefix_unix/bin:$PATH
 export PKG_CONFIG_DIR=
 export PKG_CONFIG_LIBDIR=$3/lib/pkgconfig
 export PKG_CONFIG_SYSROOOT_DIR=$3
-export CPPFLAGS=-I$3/include
+export CFLAGS=-I$3/include
 export LDFLAGS=-L$3/lib
 
 rm -rf builddir && mkdir builddir && cd builddir
 
 meson .. \
       --prefix=$3 \
-      --libdir=lib \
       --strip \
       --cross-file ../cross_toolchain.txt \
       --default-library shared > ../../config.log 2>&1
