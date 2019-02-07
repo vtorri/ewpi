@@ -104,9 +104,19 @@ static void
 _ew_usage(const char *argv0)
 {
     printf("Usage: %s prefix host [number of make jobs]\n", argv0);
-    printf("Example: %s $HOME/ewpi i686-w64-mingw32 4\n", argv0);
-    printf("The prefix must be an absolute directory\n");
-    printf("Possible values for host: i686-w64-mingw32 and x86_64-w64-mingw32\n");
+    printf("Compile and install the EFL dependencies.\n");
+    printf("\n");
+    printf("The mandatory arguments are:\n");
+    printf("  the prefix: must be an absolute directory\n");
+    printf("  the host triplet: i686-w64-mingw32 and x86_64-w64-mingw32\n");
+    printf("\n");
+    printf("The optional arguments are:\n");
+    printf("  the number of jobs: an integer. By default, the maximum number of jobs is used\n");
+    printf("\n");
+    printf("Examples:\n");
+    printf("  ./ewpi $HOME/ewpi_32 i686-w64-mingw32\n");
+    printf("  ./ewpi $HOME/ewpi_64 x86_64-w64-mingw32 4\n");
+    printf("\n");
     fflush(stdout);
 }
 
