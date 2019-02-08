@@ -1,4 +1,4 @@
 name: libunistring
 version: 0.9.10
 url: http://ftp.gnu.org/gnu/libunistring/libunistring-0.9.10.tar.xz
-deps:
+deps: iconv
