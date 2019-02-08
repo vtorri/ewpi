@@ -103,19 +103,23 @@ _ew_str_get(const unsigned char *start, const unsigned char *end)
 static void
 _ew_usage(const char *argv0)
 {
-    printf("Usage: %s prefix host [number of make jobs]\n", argv0);
+    printf("Usage: %s [OPTION]\n", argv0);
+    printf("\n");
     printf("Compile and install the EFL dependencies.\n");
     printf("\n");
-    printf("The mandatory arguments are:\n");
-    printf("  the prefix: must be an absolute directory\n");
-    printf("  the host triplet: i686-w64-mingw32 and x86_64-w64-mingw32\n");
-    printf("\n");
-    printf("The optional arguments are:\n");
-    printf("  the number of jobs: an integer. By default, the maximum number of jobs is used\n");
+    printf("Optional arguments:\n");
+    printf("  --help        show this help message and exit\n");
+    printf("  --prefix=DIR  install in  DIR (must be an absolute path)");
+    printf("                  [default=$HOME/ewpi_$arch] $arch=32|64 base on");
+    printf("                  host value\n");
+    printf("  --host=i686-w64-mingw32|x86_64-w64-mingw32\n");
+    printf("                  [default=x86_64-w64-mingw32]\n");
+    printf("  --efl=yes|no  whether installing the EFL [default=no]\n");
+    printf("  --jobs=VAL    maximum number of used jobs [default=maximum]");
     printf("\n");
     printf("Examples:\n");
-    printf("  ./ewpi $HOME/ewpi_32 i686-w64-mingw32\n");
-    printf("  ./ewpi $HOME/ewpi_64 x86_64-w64-mingw32 4\n");
+    printf("  ./ewpi --prefix=/opt/ewpi_32 --host=i686-w64-mingw32\n");
+    printf("  ./ewpi --host=x86_64-w64-mingw32 --efl=yes --jobs=4\n");
     printf("\n");
     fflush(stdout);
 }
@@ -777,10 +781,10 @@ _ew_packages_download(void)
     Package *iter;
     int count;
 
-    iter = _ewpi_pkgs;
     count = 0;
-    for (int i = 0; i < _ew_package_count_total; i++, iter++)
+    for (int i = 0; i < _ew_package_count_total; i++)
     {
+        iter = _ewpi_pkgs + _ew_package_index[i];
         strcpy(buf, _ew_package_dir_dst);
         strcat(buf, "/");
         strcat(buf, iter->name);
@@ -858,11 +862,14 @@ _ew_packages_download(void)
 static void
 _ew_packages_longest_name()
 {
+    Package *iter;
+
     /* compute the largest name (including version) of the packages */
     for (int i = 0; i < _ew_package_count_total; i++)
     {
-        if ((int)(strlen(_ewpi_pkgs[i].name) + 1 + strlen(_ewpi_pkgs[i].version)) > _ew_package_name_size_max)
-            _ew_package_name_size_max = strlen(_ewpi_pkgs[i].name) + 1 + strlen(_ewpi_pkgs[i].version);
+        iter = _ewpi_pkgs + _ew_package_index[i];
+        if ((int)(strlen(iter->name) + 1 + strlen(iter->version)) > _ew_package_name_size_max)
+            _ew_package_name_size_max = strlen(iter->name) + 1 + strlen(iter->version);
     }
 }
 
@@ -940,10 +947,10 @@ _ew_packages_extract(void)
     int count;
     int c;
 
-    iter = _ewpi_pkgs;
     count = 0;
-    for (int i = 0; i < _ew_package_count_total; i++, iter++)
+    for (int i = 0; i < _ew_package_count_total; i++)
     {
+        iter = _ewpi_pkgs + _ew_package_index[i];
         strcpy(buf, _ew_package_dir_dst);
         strcat(buf, "/");
         strcat(buf, iter->name);
@@ -1068,6 +1075,7 @@ static void
 _ew_packages_clean(void)
 {
     char buf[4096];
+    Package *iter;
 
     printf("\n:: Cleaning...\n");
     fflush(stdout);
@@ -1080,10 +1088,11 @@ _ew_packages_clean(void)
         const char *taropt;
         int ret;
 
-        name = _ewpi_pkgs[i].name;
-        version = _ewpi_pkgs[i].version;
-        tarname = _ewpi_pkgs[i].tarname;
-        taropt = _ewpi_pkgs[i].taropt;
+        iter = _ewpi_pkgs + _ew_package_index[i];
+        name = iter->name;
+        version = iter->version;
+        tarname = iter->tarname;
+        taropt = iter->taropt;
 
         _ew_packages_status_disp(i, _ew_package_count_total, name, version);
 
@@ -1105,33 +1114,98 @@ _ew_packages_clean(void)
 int main(int argc, char *argv[])
 {
     char *prefix = NULL;
-    char *host = NULL;
+    char *host = "x86_64-w64-mingw32";
     char *jobopt = "";
+    int efl = 0;
 
-    if (argc < 3)
+    for (int i = 1; i < argc; i++)
     {
-        _ew_usage(argv[0]);
-        return 1;
+        if (strcmp(argv[i], "--help") == 0)
+        {
+            _ew_usage(argv[0]);
+            exit(0);
+        }
+        else if (strncmp(argv[i], "--prefix=", strlen("--prefix=")) == 0)
+        {
+            prefix = argv[i] + strlen("--prefix=");
+        }
+        else if (strncmp(argv[i], "--host=", strlen("--host=")) == 0)
+        {
+            char *opt;
+
+            opt = argv[i] + strlen("--host=");
+            if (strcmp(opt, "i686-w64-mingw32") == 0)
+                host = "i686-w64-mingw32";
+            else if (strcmp(opt, "x86_64-w64-mingw32") == 0)
+                host = "x86_64-w64-mingw32";
+            else
+            {
+                _ew_usage(argv[0]);
+                exit(1);
+            }
+        }
+        else if (strncmp(argv[i], "--efl=", strlen("--efl=")) == 0)
+        {
+            char *opt;
+
+            opt = argv[i] + strlen("--efl=");
+            if (strcmp(opt, "yes") == 0)
+                efl = 1;
+            else if (strcmp(opt, "no") == 0)
+                efl = 0;
+            else
+            {
+                _ew_usage(argv[0]);
+                exit(1);
+            }
+        }
+        else if (strncmp(argv[i], "--jobs=", strlen("--jobs=")) == 0)
+        {
+            jobopt = argv[i] + strlen("--jobs=");
+        }
+        else
+        {
+            _ew_usage(argv[0]);
+            exit(1);
+        }
+    }
+
+    if (!prefix)
+    {
+        char buf[PATH_MAX];
+
+        strcpy(buf, getenv("HOME"));
+        if (strcmp(host, "i686-w64-mingw32") == 0)
+            strcat(buf, "/ewpi_32");
+        else
+            strcat(buf, "/ewpi_64");
+        prefix = strdup(buf);
+    }
+
+    /* use slash in prefix, not backslash */
+    {
+        char *iter = prefix;
+        while (*iter)
+        {
+            if (*iter == '\\') *iter = '/';
+            iter++;
+        }
     }
 
     /* prefix must be absolute */
-    prefix = argv[1];
     if (!_ew_path_is_absolute(prefix))
-        return 1;
-
-    /* host value */
-    host = argv[2];
-    if ((strcmp(host, "i686-w64-mingw32") != 0) &&
-        (strcmp(host, "x86_64-w64-mingw32") != 0))
     {
-        printf("Possible values for host: i686-w64-mingw32 or x86_64-w64-mingw32\n");
-        fflush(stdout);
+        printf("prefix must be an absolute path, exiting...\n");
         return 1;
     }
 
-    /* number of jobs */
-    if (argv[3])
-        jobopt = argv[3];
+    printf(":: Configuration...\n");
+    printf("  prefix: %s\n", prefix);
+    printf("  host:   %s\n", host);
+    printf("  efl:    %s\n", efl ? "yes" : "no");
+    printf("  jobs:   %s\n", jobopt);
+    printf("\n");
+    fflush(stdout);
 
     printf(":: Prepare directories in %s...\n", prefix);
     _ew_packages_dir_set(prefix);
@@ -1151,6 +1225,8 @@ int main(int argc, char *argv[])
         return 1;
 
     _ew_packages_tree("efl");
+    if (!efl)
+        _ew_package_count_total--;
     _ew_packages_not_installed_disp();
     _ew_packages_download();
     _ew_packages_longest_name();
