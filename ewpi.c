@@ -226,6 +226,49 @@ _ew_mkdir_p(const char *path)
     return 0;
 }
 
+typedef struct
+{
+    const char *cmd;
+    const char *name;
+} Req;
+
+static Req _ew_req[] =
+{
+    { "sh autoreconf", "autoreconf" },
+    { "sh autoconf", "autoconf" },
+    { "sh automake", "automake" },
+    { "sh libtoolize", "libtoolize" },
+    { "make", "make" },
+    { "cmake", "cmake" },
+    { "python", "python" },
+    { "meson", "meson" },
+    { "ninja", "ninja" },
+    { "nasm", "nasm" },
+    { "gperf", "gperf" },
+    { "wget", "wget" },
+    { "bison", "bison" },
+    { "flex", "flex" },
+    { NULL, NULL }
+};
+
+static int
+_ew_requirements(void)
+{
+    char buf[4096];
+    int ret;
+
+    for (int i = 0; _ew_req[i].cmd; i++)
+    {
+        snprintf(buf, 4095, "%s --version > NUL 2>&1", _ew_req[i].cmd);
+        ret = system(buf);
+        printf("  %s : %s\n", _ew_req[i].name, (ret == 0) ? "yes" : "no");
+        fflush(stdout);
+        if (ret != 0) return 0;
+    }
+
+    return 1;
+}
+
 static int
 _ew_packages_dir_set(const char *prefix)
 {
@@ -1117,6 +1160,7 @@ int main(int argc, char *argv[])
     char *host = "x86_64-w64-mingw32";
     char *jobopt = "";
     int efl = 0;
+    int ret;
 
     for (int i = 1; i < argc; i++)
     {
@@ -1206,6 +1250,14 @@ int main(int argc, char *argv[])
     printf("  jobs:   %s\n", jobopt);
     printf("\n");
     fflush(stdout);
+
+    printf(":: Checking requirements...\n");
+    ret = _ew_requirements();
+    if (!ret)
+    {
+        printf("one of the requirement is not found, exiting...\n");
+        return 1;
+    }
 
     printf(":: Prepare directories in %s...\n", prefix);
     _ew_packages_dir_set(prefix);
