@@ -109,13 +109,15 @@ _ew_usage(const char *argv0)
     printf("\n");
     printf("Optional arguments:\n");
     printf("  --help        show this help message and exit\n");
-    printf("  --prefix=DIR  install in  DIR (must be an absolute path)");
-    printf("                  [default=$HOME/ewpi_$arch] $arch=32|64 base on");
+    printf("  --prefix=DIR  install in  DIR (must be an absolute path)\n");
+    printf("                  [default=$HOME/ewpi_$arch] $arch=32|64 base on\n");
     printf("                  host value\n");
-    printf("  --host=i686-w64-mingw32|x86_64-w64-mingw32\n");
+    printf("  --host=VAL    host triplet, either i686-w64-mingw32 or x86_64-w64-mingw32\n");
     printf("                  [default=x86_64-w64-mingw32]\n");
     printf("  --efl=yes|no  whether installing the EFL [default=no]\n");
-    printf("  --jobs=VAL    maximum number of used jobs [default=maximum]");
+    printf("  --jobs=VAL    maximum number of used jobs [default=maximum]\n");
+    printf("  --clean       remove the archives and the created directories\n");
+    printf("                  (not removed by default)\n");
     printf("\n");
     printf("Examples:\n");
     printf("  ./ewpi --prefix=/opt/ewpi_32 --host=i686-w64-mingw32\n");
@@ -694,7 +696,6 @@ _ew_packages_dst_set(void)
          */
         _ew_copy(buf_git, buf_dst, buf_ewpi);
         _ew_copy(buf_git, buf_dst, "install.sh");
-        _ew_copy(buf_git, buf_dst, "post.sh");
         _ew_copy(buf_git, buf_dst, "cross_toolchain.txt");
     }
 }
@@ -1115,6 +1116,68 @@ _ew_packages_install(const char *prefix, const char *host, const char *jobopt)
 }
 
 static void
+_ew_recursive_rm(const char *path)
+{
+    if (_ew_path_exists(path))
+    {
+        DIR *dir;
+        struct dirent *f;
+
+        dir = opendir(path);
+        if (dir)
+        {
+            while ((f = readdir(dir)))
+            {
+                char buf[4096];
+
+                if ((strcmp(f->d_name, ".") == 0) ||
+                    (strcmp(f->d_name, "..") == 0))
+                    continue;
+
+                snprintf(buf, 4095, "%s/%s", path, f->d_name);
+                _ew_recursive_rm(buf);
+            }
+
+            closedir(dir);
+        }
+        //printf("path: %s\n", path);
+        rmdir(path);
+    }
+    else
+    {
+        //printf("file : %s\n", path);
+        unlink(path);
+    }
+}
+
+static void
+_ew_packages_clean_directories(char *pkg_dir)
+{
+    DIR *dir;
+    struct dirent *f;
+
+    dir = opendir(pkg_dir);
+    if (dir)
+    {
+        char buf2[4096];
+
+        while ((f = readdir(dir)))
+        {
+            if ((strcmp(f->d_name, ".") == 0) ||
+                (strcmp(f->d_name, "..") == 0))
+                continue;
+
+            strcpy(buf2, pkg_dir);
+            strcat(buf2, "/");
+            strcat(buf2, f->d_name);
+            if (_ew_path_exists(buf2))
+                _ew_recursive_rm(buf2);
+        }
+        closedir(dir);
+    }
+}
+
+static void
 _ew_packages_clean(void)
 {
     char buf[4096];
@@ -1128,26 +1191,21 @@ _ew_packages_clean(void)
         const char *name;
         const char *version;
         const char *tarname;
-        const char *taropt;
-        int ret;
 
         iter = _ewpi_pkgs + _ew_package_index[i];
         name = iter->name;
         version = iter->version;
         tarname = iter->tarname;
-        taropt = iter->taropt;
 
         _ew_packages_status_disp(i, _ew_package_count_total, name, version);
 
-        snprintf(buf, 4095,
-                 "cd %s/%s && sh ./post.sh %s %s %s",
-                 _ew_package_dir_dst, name,
-                 name, tarname, taropt);
-        ret = system(buf);
-        if (ret != 0)
-        {
-            printf(" Can not clean %s\n", name);
-        }
+        strcpy(buf, _ew_package_dir_dst);
+        strcat(buf, "/");
+        strcat(buf, name);
+        _ew_packages_clean_directories(buf);
+        strcat(buf, "/");
+        strcat(buf, tarname);
+        unlink(buf);
     }
 
     _ew_packages_status_disp(_ew_package_count_total - 1, _ew_package_count_total, NULL, NULL);
@@ -1160,6 +1218,7 @@ int main(int argc, char *argv[])
     char *host = "x86_64-w64-mingw32";
     char *jobopt = "";
     int efl = 0;
+    int cleaning = 0;
     int ret;
 
     for (int i = 1; i < argc; i++)
@@ -1206,6 +1265,10 @@ int main(int argc, char *argv[])
         else if (strncmp(argv[i], "--jobs=", strlen("--jobs=")) == 0)
         {
             jobopt = argv[i] + strlen("--jobs=");
+        }
+        else if (strcmp(argv[i], "--clean") == 0)
+        {
+            cleaning = 1;
         }
         else
         {
@@ -1284,7 +1347,8 @@ int main(int argc, char *argv[])
     _ew_packages_longest_name();
     _ew_packages_extract();
     _ew_packages_install(prefix, host, jobopt);
-    _ew_packages_clean();
+    if (cleaning)
+        _ew_packages_clean();
 
     free(_ew_package_index);
     for (int i = 0; i < _ew_package_count_total; i++)

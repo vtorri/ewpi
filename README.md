@@ -4,11 +4,14 @@ EFL Windows package installer
 # Requirements:
  * mingw-w64 toolchain (rename ar, dlltool, ranlib, strip and windres with the host prefix when compiling on Windows)
  * autotools
+ * make
  * cmake
  * nasm
  * wget
  * gperf
  * python
+ * meson
+ * ninja
  * flex
  * bison
 
@@ -34,9 +37,58 @@ gcc -std=c99 -o ewpi ewpi.c ewpi_map.c
 
 # Usage
 
-./ewpi /path/to/prefix toolchain [number of make jobs]
+To see the usage, run "./ewpi --help"
 
 Examples :
 
- * ./ewpi $HOME/ewpi_32 i686-w64-mingw32
- * ./ewpi $HOME/ewpi_64 x86_64-w64-mingw32 4
+ * ./ewpi --prefix=/opt/ewpi_32 --host=i686-w64-mingw32
+ * ./ewpi --host=x86_64-w64-mingw32 --efl=yes --jobs=4 --clean
+
+## Packages installed
+
+ * bullet
+ * bzip2
+ * cairo
+ * cares
+ * check
+ * curl
+ * dbus
+ * expat
+ * flac
+ * fontconfig
+ * freetype
+ * freetype_bootstrap
+ * fribidi
+ * gettext
+ * giflib
+ * glib2
+ * graphite2
+ * gst-plugins-base
+ * gstreamer
+ * harfbuzz
+ * iconv
+ * libidn2
+ * libjpeg
+ * libogg
+ * libpng
+ * libpsl
+ * libressl
+ * libsndfile
+ * libssh2
+ * libtheora
+ * libtiff
+ * libunistring
+ * libvorbis
+ * libwebp
+ * libxml2
+ * luajit
+ * lz4
+ * nghttp2
+ * openjpeg
+ * opus
+ * orc
+ * pixman
+ * pkg-config
+ * regex
+ * xz
+ * zlib
