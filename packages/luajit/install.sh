@@ -2,7 +2,7 @@
 
 set -e
 
-# $1 : name
+# $1 : arch
 # $2 : tarname
 # $3 : prefix
 # $4 : host
@@ -11,6 +11,10 @@ set -e
 
 dir_name=`tar t$5 $2 | head -1 | cut -f1 -d"/"`
 cd $dir_name
+
+export CFLAGS="-O2 -pipe -march=$1 -mtune=$1"
+export LDFLAGS="-s"
+
 arch="-m64"
 if test "x$4" = "xi686-w64-mingw32"; then
     arch="-m32"
@@ -21,6 +25,7 @@ sed -i -e 's%$(SYMLINK) $(INSTALL_SONAME) $(INSTALL_SHORT1) &&%$(INSTALL_F) $(IN
 sed -i -e 's%$(SYMLINK) $(INSTALL_SONAME) $(INSTALL_SHORT2) || :% :%g' Makefile
 sed -i -e 's%$(SYMLINK) $(INSTALL_TNAME) $(INSTALL_TSYM)%%g' Makefile
 sed -i -e 's%luajit-${abiver}%luajit%g' etc/luajit.pc
+
 make \
     install \
     PREFIX=$3 \

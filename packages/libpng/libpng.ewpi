@@ -1,4 +1,4 @@
 name: libpng
 version: 1.6.34
 url: https://download.sourceforge.net/libpng/libpng-1.6.34.tar.xz
-deps: pkg-config zlib
+deps: zlib

@@ -114,6 +114,8 @@ _ew_usage(const char *argv0)
     printf("                  host value\n");
     printf("  --host=VAL    host triplet, either i686-w64-mingw32 or x86_64-w64-mingw32\n");
     printf("                  [default=x86_64-w64-mingw32]\n");
+    printf("  --arch=VAL    value passed to -march and -mtune gcc options\n");
+    printf("                  [default=i686|x86-64], depending on host value\n");
     printf("  --efl=yes|no  whether installing the EFL [default=no]\n");
     printf("  --jobs=VAL    maximum number of used jobs [default=maximum]\n");
     printf("  --clean       remove the archives and the created directories\n");
@@ -1058,7 +1060,7 @@ _ew_packages_extract(void)
 }
 
 static void
-_ew_packages_install(const char *prefix, const char *host, const char *jobopt)
+_ew_packages_install(const char *prefix, const char *host, const char *arch, const char *jobopt)
 {
     char buf[4096];
     Package *iter;
@@ -1091,7 +1093,7 @@ _ew_packages_install(const char *prefix, const char *host, const char *jobopt)
         snprintf(buf, 4095,
                  "cd %s/%s && sh ./install.sh %s %s %s %s %s %s",
                  _ew_package_dir_dst, name,
-                 name, tarname, prefix, host, taropt, jobopt);
+                 arch, tarname, prefix, host, taropt, jobopt);
         ret = system(buf);
         if (ret != 0)
         {
@@ -1216,6 +1218,7 @@ int main(int argc, char *argv[])
 {
     char *prefix = NULL;
     char *host = "x86_64-w64-mingw32";
+    char *arch =  NULL;;
     char *jobopt = "";
     int efl = 0;
     int cleaning = 0;
@@ -1246,6 +1249,10 @@ int main(int argc, char *argv[])
                 _ew_usage(argv[0]);
                 exit(1);
             }
+        }
+        else if (strncmp(argv[i], "--arch=", strlen("--arch=")) == 0)
+        {
+            arch = argv[i] + strlen("--arch=");
         }
         else if (strncmp(argv[i], "--efl=", strlen("--efl=")) == 0)
         {
@@ -1289,6 +1296,14 @@ int main(int argc, char *argv[])
         prefix = strdup(buf);
     }
 
+    if (!arch)
+    {
+        if (strcmp(host, "i686-w64-mingw32") == 0)
+            arch = "i686";
+        else
+            arch = "x86-64";
+    }
+
     /* use slash in prefix, not backslash */
     {
         char *iter = prefix;
@@ -1309,6 +1324,7 @@ int main(int argc, char *argv[])
     printf(":: Configuration...\n");
     printf("  prefix: %s\n", prefix);
     printf("  host:   %s\n", host);
+    printf("  arch:   %s\n", arch);
     printf("  efl:    %s\n", efl ? "yes" : "no");
     printf("  jobs:   %s\n", jobopt);
     printf("\n");
@@ -1346,7 +1362,7 @@ int main(int argc, char *argv[])
     _ew_packages_download();
     _ew_packages_longest_name();
     _ew_packages_extract();
-    _ew_packages_install(prefix, host, jobopt);
+    _ew_packages_install(prefix, host, arch, jobopt);
     if (cleaning)
         _ew_packages_clean();
 

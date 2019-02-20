@@ -2,7 +2,7 @@
 
 set -e
 
-# $1 : name
+# $1 : arch
 # $2 : tarname
 # $3 : prefix
 # $4 : host
@@ -16,6 +16,7 @@ else
     sed 's/@host@/x86_64-w64-mingw32/g;s/@cpu_family@/x86_64/g;s/@cpu@/x86_64/g' cross_toolchain.txt > $dir_name/cross_toolchain.txt
 fi
 cd $dir_name
+
 EWPI_OS=`uname`
 case ${EWPI_OS} in
     MSYS*|MINGW*)
@@ -29,8 +30,9 @@ export PATH=$prefix_unix/bin:$PATH
 export PKG_CONFIG_DIR=
 export PKG_CONFIG_LIBDIR=$3/lib/pkgconfig
 export PKG_CONFIG_SYSROOOT_DIR=$3
-export CFLAGS=-I$3/include
-export LDFLAGS=-L$3/lib
+export CFLAGS="-I$3/include -O2 -pipe -march=$1 -mtune=$1"
+export CXXFLAGS="-I$3/include -O2 -pipe -march=$1 -mtune=$1"
+export LDFLAGS="-L$3/lib -s"
 
 rm -rf builddir && mkdir builddir && cd builddir
 meson .. \

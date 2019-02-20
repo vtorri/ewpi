@@ -2,7 +2,7 @@
 
 set -e
 
-# $1 : name
+# $1 : arch
 # $2 : tarname
 # $3 : prefix
 # $4 : host
@@ -13,6 +13,7 @@ dir_name=`tar t$5 $2 | head -1 | cut -f1 -d"/"`
 cd $dir_name
 
 $4-gcc \
+    -s -O2 -pipe -march=$1 -mtune=$1 \
     -shared \
     -Wl,--out-implib,libbz2.dll.a \
     -o libbz2-1.dll \

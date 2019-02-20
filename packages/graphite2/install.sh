@@ -2,7 +2,7 @@
 
 set -e
 
-# $1 : name
+# $1 : arch
 # $2 : tarname
 # $3 : prefix
 # $4 : host
@@ -12,6 +12,7 @@ set -e
 dir_name=`tar t$5 $2 | head -1 | cut -f1 -d"/"`
 cd $dir_name
 sed -i -e 's/add_subdirectory(tests)//g' CMakeLists.txt
+
 EWPI_OS=`uname`
 case ${EWPI_OS} in
     MSYS*|MINGW*)
@@ -27,7 +28,10 @@ cmake \
     -DCMAKE_VERBOSE_MAKEFILE=TRUE \
     -DCMAKE_C_COMPILER=$4-gcc \
     -DCMAKE_CXX_COMPILER=$4-g++ \
-    -DCMAKE_CXX_FLAGS="-I../src -I../include" \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_C_FLAGS="-I../src -I../include -O2 -pipe -march=$1 -mtune=$1" \
+    -DCMAKE_CXX_FLAGS="-I../src -I../include -O2 -pipe -march=$1 -mtune=$1" \
+    -DCMAKE_EXE_LINKER_FLAGS="-s" \
     -DCMAKE_SYSTEM_NAME=Windows \
     -G "Unix Makefiles" \
     . > ../config.log 2>&1
