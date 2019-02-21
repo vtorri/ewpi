@@ -37,7 +37,25 @@ gcc -std=c99 -o ewpi ewpi.c ewpi_map.c
 
 # Usage
 
-To see the usage, run "./ewpi --help"
+To see the usage, run "./ewpi --help", which returns:
+
+Usage: D:\Documents\msys2\home\vtorri\gitroot\ewpi\ewpi.exe [OPTION]
+
+Compile and install the EFL dependencies.
+
+Optional arguments:
+  --help        show this help message and exit
+  --prefix=DIR  install in  DIR (must be an absolute path)
+                  [default=$HOME/ewpi_$arch] $arch=32|64 base on
+                  host value
+  --host=VAL    host triplet, either i686-w64-mingw32 or x86_64-w64-mingw32
+                  [default=x86_64-w64-mingw32]
+  --arch=VAL    value passed to -march and -mtune gcc options
+                  [default=i686|x86-64], depending on host value
+  --efl=yes|no  whether installing the EFL [default=no]
+  --jobs=VAL    maximum number of used jobs [default=maximum]
+  --clean       remove the archives and the created directories
+                  (not removed by default)
 
 Examples :
 
