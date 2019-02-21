@@ -38,11 +38,11 @@ gcc -std=c99 -o ewpi ewpi.c ewpi_map.c
 # Usage
 
 To see the usage, run "./ewpi --help", which returns:
-
+```
 Usage: D:\Documents\msys2\home\vtorri\gitroot\ewpi\ewpi.exe [OPTION]
 
 Compile and install the EFL dependencies.
-```
+
 Optional arguments:
   --help        show this help message and exit
   --prefix=DIR  install in  DIR (must be an absolute path)
