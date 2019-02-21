@@ -42,7 +42,7 @@ To see the usage, run "./ewpi --help", which returns:
 Usage: D:\Documents\msys2\home\vtorri\gitroot\ewpi\ewpi.exe [OPTION]
 
 Compile and install the EFL dependencies.
-
+```
 Optional arguments:
   --help        show this help message and exit
   --prefix=DIR  install in  DIR (must be an absolute path)
@@ -56,7 +56,7 @@ Optional arguments:
   --jobs=VAL    maximum number of used jobs [default=maximum]
   --clean       remove the archives and the created directories
                   (not removed by default)
-
+```
 Examples :
 
  * ./ewpi --prefix=/opt/ewpi_32 --host=i686-w64-mingw32
