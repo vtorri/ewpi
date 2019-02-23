@@ -1,4 +1,4 @@
 name: libsndfile
 version: 1.0.28
 url: http://www.mega-nerd.com/libsndfile/files/libsndfile-1.0.28.tar.gz
-deps: pkg-config flac libogg libvorbis
+deps: pkg-config flac libogg libvorbis libspeex

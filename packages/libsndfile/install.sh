@@ -30,6 +30,6 @@ export CPPFLAGS=-I$3/include
 export CFLAGS="-O2 -pipe -march=$1 -mtune=$1"
 export LDFLAGS="-L$3/lib -s"
 
-./configure --prefix=$3 --host=$4 --disable-static > ../config.log 2>&1
+./configure --prefix=$3 --host=$4 --disable-static --enable-experimental > ../config.log 2>&1
 
 make -j $jobopt install > ../make.log 2>&1
