@@ -94,6 +94,7 @@ Examples :
  * libpsl
  * libressl
  * libsndfile
+ * libspeex
  * libssh2
  * libtheora
  * libtiff
