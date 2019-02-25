@@ -247,6 +247,9 @@ static Req _ew_req[] =
     { "python", "python" },
     { "meson", "meson" },
     { "ninja", "ninja" },
+#ifndef _WIN32
+    { "yasm", "yasm" },
+#endif
     { "gperf", "gperf" },
     { "wget", "wget" },
     { "bison", "bison" },
