@@ -247,7 +247,6 @@ static Req _ew_req[] =
     { "python", "python" },
     { "meson", "meson" },
     { "ninja", "ninja" },
-    { "nasm", "nasm" },
     { "gperf", "gperf" },
     { "wget", "wget" },
     { "bison", "bison" },
