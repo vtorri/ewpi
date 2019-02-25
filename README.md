@@ -84,6 +84,7 @@ Examples :
  * graphene
  * graphite2
  * gst-plugins-base
+ * gst-plugins-good
  * gstreamer
  * harfbuzz
  * iconv
@@ -105,6 +106,7 @@ Examples :
  * libxml2
  * luajit
  * lz4
+ * mpg123
  * nghttp2
  * openjpeg
  * opus
@@ -113,4 +115,5 @@ Examples :
  * pkg-config
  * regex
  * xz
+ * yasm
  * zlib

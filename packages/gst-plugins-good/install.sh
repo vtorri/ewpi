@@ -37,13 +37,11 @@ export PKG_CONFIG_LIBDIR=$3/lib/pkgconfig
 export PKG_CONFIG_SYSROOOT_DIR=$3
 
 rm -rf builddir && mkdir builddir && cd builddir
-
 meson .. \
       --prefix=$3 \
       --libdir=lib \
       --strip \
       --cross-file ../cross_toolchain.txt \
-      --default-library shared \
-      -Ddisable_gst_debug=true > ../../config.log 2>&1
+      --default-library shared > ../../config.log 2>&1
 
 ninja install > ../../make.log 2>&1

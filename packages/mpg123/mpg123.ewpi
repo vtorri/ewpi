@@ -1,0 +1,4 @@
+name: mpg123
+version: 1.25.10
+url: https://freefr.dl.sourceforge.net/project/mpg123/mpg123/1.25.10/mpg123-1.25.10.tar.bz2
+deps: pkg-config yasm
