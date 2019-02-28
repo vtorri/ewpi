@@ -40,6 +40,7 @@ rm -rf builddir && mkdir builddir && cd builddir
 meson .. \
       --prefix=$3 \
       --libdir=lib \
+      --buildtype=release \
       --strip \
       --cross-file ../cross_toolchain.txt \
       --default-library shared \
