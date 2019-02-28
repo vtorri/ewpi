@@ -20,6 +20,8 @@ case ${EWPI_OS} in
     ;;
     *)
 	prefix_unix=$3
+        disableogg=--disable-oggtest
+        disablevorbis=--disable-vorbistest
 	sed -i -e 's/$//' win32/xmingw32/libtheoraenc-all.def
 	sed -i -e 's/$//' win32/xmingw32/libtheoradec-all.def
     ;;
@@ -32,6 +34,6 @@ export CPPFLAGS=-I$3/include
 export CFLAGS="-O2 -pipe -march=$1 -mtune=$1"
 export LDFLAGS="-L$3/lib -s"
 
-./configure --prefix=$3 --host=$4 --disable-static --disable-spec --disable-examples > ../config.log 2>&1
+./configure --prefix=$3 --host=$4 --disable-static --disable-spec --enable-examples $disableogg $disablevorbis > ../config.log 2>&1
 
 make -j $jobopt install > ../make.log 2>&1
