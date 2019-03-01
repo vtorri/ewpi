@@ -33,8 +33,9 @@ cmake \
     -DTARGET_SUPPORTS_SHARED_LIBS=TRUE \
     -DBUILD_SHARED_LIBS:BOOL=ON \
     -DCMAKE_C_FLAGS="-O2 -pipe -march=$1 -mtune=$1" \
-    -DCMAKE_CXX_FLAGS=-isystem\ $EWPI_PWD/src -O2 -pipe -march=$1 -mtune=$1 \
+    -DCMAKE_CXX_FLAGS="-I$EWPI_PWD/src -O2 -pipe -march=$1 -mtune=$1" \
     -DCMAKE_EXE_LINKER_FLAGS="-s" \
+    -DCMAKE_SHARED_LINKER_FLAGS="-s" \
     -DINSTALL_LIBS:BOOL=ON \
     -DINSTALL_EXTRA_LIBS:BOOL=ON \
     -DBUILD_UNIT_TESTS:BOOL=OFF \

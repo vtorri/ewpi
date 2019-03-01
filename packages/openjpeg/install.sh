@@ -35,6 +35,7 @@ cmake \
     -DCMAKE_C_FLAGS="-O2 -pipe -march=$1 -mtune=$1" \
     -DCMAKE_CXX_FLAGS="-O2 -pipe -march=$1 -mtune=$1" \
     -DCMAKE_EXE_LINKER_FLAGS="-s" \
+    -DCMAKE_SHARED_LINKER_FLAGS="-s" \
     -DBUILD_CODEC:BOOL=OFF \
     -DBUILD_JPWL:BOOL=OFF \
     -DBUILD_MJ2:BOOL=OFF \
