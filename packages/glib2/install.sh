@@ -26,7 +26,7 @@ esac
 if test "x$4" = "xi686-w64-mingw32" ; then
     sed -i -e 's/@cpu_family@/x86/g;s/@cpu@/i686/g' cross_toolchain.txt
 else
-    sed 's/@cpu_family@/x86_64/g;s/@cpu@/x86_64/g' cross_toolchain.txt
+    sed -i -e 's/@cpu_family@/x86_64/g;s/@cpu@/x86_64/g' cross_toolchain.txt
 fi
 
 sed -i -e "s/@host@/$4/g;s/@arch@/$1/g;s|@prefix@|$3|g" cross_toolchain.txt
