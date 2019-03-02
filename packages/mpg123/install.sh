@@ -15,7 +15,7 @@ cd $dir_name
 if test "x$4" = "xi686-w64-mingw32" ; then
     cpu=x86
 else
-    cpu=x68-64
+    cpu=x86-64
 fi
 
 EWPI_OS=`uname`
