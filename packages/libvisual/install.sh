@@ -12,6 +12,12 @@ set -e
 dir_name=`tar t$5 $2 | head -1 | cut -f1 -d"/"`
 cd $dir_name
 
+if test "x$4" = "xx86_64-w64-mingw32" ; then
+sed -i -e 's/$ac_cv_sizeof_long)/8)/g' configure
+sed -i -e 's/visual_size_type=long/visual_size_type=__int64/g' configure
+sed -i -e 's/\"lu\"/\"I64u\"/g' configure
+fi
+
 EWPI_OS=`uname`
 case ${EWPI_OS} in
     MSYS*|MINGW*)
@@ -31,5 +37,11 @@ export CFLAGS="-O2 -pipe -march=$1 -mtune=$1"
 export LDFLAGS="-L$3/lib -s"
 
 ./configure --prefix=$3 --host=$4 --disable-static  > ../config.log 2>&1
+
+if test "x$4" = "xx86_64-w64-mingw32" ; then
+sed -i -e 's/__int64/long long/g' libvisual/lvconfig.h
+sed -i -e 's/VISUAL_SIZE_T_FORMAT/VISUAL_SIZE_T_FORMAT "I64u"/g' libvisual/lvconfig.h
+sed -i -e 's/Eip/Rip/g' libvisual/lv_cpu.c
+fi
 
 make -j $jobopt install > ../make.log 2>&1
