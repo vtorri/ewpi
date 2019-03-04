@@ -15,6 +15,16 @@ cd $dir_name
 sed -i -e 's/gettext-runtime gettext-tools/gettext-runtime/g' configure
 sed -i -e 's/SUBDIRS = gnulib-local gettext-runtime gettext-tools/SUBDIRS = gnulib-local gettext-runtime/g' Makefile.in
 
+EWPI_OS=`uname`
+case ${EWPI_OS} in
+    MSYS*|MINGW*)
+	prefix_unix=`cygpath -u $3`
+    ;;
+    *)
+	prefix_unix=$3
+    ;;
+esac
+export PATH=$prefix_unix/bin:$PATH
 export CFLAGS="-O2 -pipe -march=$1 -mtune=$1"
 export CXXFLAGS="-O2 -pipe -march=$1 -mtune=$1"
 export LDFLAGS="-s"
