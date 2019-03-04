@@ -238,10 +238,6 @@ typedef struct
 
 static Req _ew_req[] =
 {
-    { "sh autoreconf", "autoreconf" },
-    { "sh autoconf", "autoconf" },
-    { "sh automake", "automake" },
-    { "sh libtoolize", "libtoolize" },
     { "make", "make" },
     { "cmake", "cmake" },
     { "python", "python" },
@@ -249,6 +245,7 @@ static Req _ew_req[] =
     { "ninja", "ninja" },
 #ifndef _WIN32
     { "yasm", "yasm" },
+    { "nasm", "nasm" },
 #endif
     { "gperf", "gperf" },
     { "wget", "wget" },

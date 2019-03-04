@@ -6,6 +6,7 @@ EFL Windows package installer
  * make
  * cmake
  * yasm (on UNIX)
+ * nasm (on UNIX)
  * wget
  * gperf
  * python
@@ -23,12 +24,12 @@ EFL Windows package installer
 
 ## Fedora 32 bits
 
-1. dnf install cmake yasm gperf python ninja-build mingw32-gcc mingw32-gcc-c++ python3-pip
+1. dnf install cmake yasm nasm gperf python ninja-build mingw32-gcc mingw32-gcc-c++ python3-pip
 2. run "pip3 install meson"
 
 ## Fedora 64 bits
 
-1. dnf install cmake yasm gperf python ninja-build mingw64-gcc mingw64-gcc-c++ python3-pip
+1. dnf install cmake yasm nasm gperf python ninja-build mingw64-gcc mingw64-gcc-c++ python3-pip
 2. run "pip3 install meson"
 
 # Compilation
@@ -106,6 +107,7 @@ Examples :
  * luajit
  * lz4
  * mpg123
+ * nasm
  * nghttp2
  * openjpeg
  * opus
