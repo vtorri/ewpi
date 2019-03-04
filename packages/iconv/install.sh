@@ -12,6 +12,17 @@ set -e
 dir_name=`tar t$5 $2 | head -1 | cut -f1 -d"/"`
 cd $dir_name
 
+sed -i '/^#/ ! s/\<iconv\.dll\>/libiconv.dll/g' Makefile
+
+sed -i -- \
+  "s,\(-DDEFAULT_LIBICONV_DLL\)=\(\\\$(DEFAULT_LIBICONV_DLL)\),\1=\'\"\2\"\'," \
+  Makefile
+
+sed -i \
+  -e '/\$(CC) -shared/ s,$(CC),& $(LDFLAGS) ,' \
+  -e '/ -o win_iconv.exe\>/ s,\$(CC),& $(LDFLAGS),' \
+  Makefile
+
 export CFLAGS="-O2 -pipe -march=$1 -mtune=$1"
 export LDFLAGS="-s"
 
