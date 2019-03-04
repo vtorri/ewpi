@@ -36,6 +36,6 @@ cd lib
 cp dll/liblz4.1.dll $3/bin/liblz4-1.dll
 cp liblz4.dll.a $3/lib
 cp lz4.h lz4hc.h lz4frame.h $3/include
-make liblz4.pc PREFIX=$3 BUILD_STATIC=no CC=$4-gcc SHARED_EXT_VER=1 V=1 OS=Windows_NT >> ../make.log 2>&1
+make liblz4.pc PREFIX=$3 BUILD_STATIC=no CC=$4-gcc SHARED_EXT_VER=1 V=1 OS=Windows_NT >> ../../make.log 2>&1
 cp liblz4.pc $3/lib/pkgconfig
 cd ..
