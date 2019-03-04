@@ -20,7 +20,7 @@ export CFLAGS="-O2 -pipe -march=$1 -mtune=$1"
 export LDFLAGS="-L$3/lib -s"
 
 sed -i \
-    -e 's/MidnightBSD/MidnightBSD MINGW32_NT-6.1 MINGW64_NT-6.1/g' \
+    -e 's/MidnightBSD/MidnightBSD MINGW32_NT-6.1 MINGW64_NT-6.1 MINGW32_NT-10.0.1 MINGW64_NT-10.0/g' \
     -e 's|dll\\|dll/|g' \
     lib/Makefile
 sed -i \
