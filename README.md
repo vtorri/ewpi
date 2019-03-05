@@ -100,7 +100,6 @@ Examples :
  * libtheora
  * libtiff
  * libunistring
- * libvisual
  * libvorbis
  * libwebp
  * libxml2
