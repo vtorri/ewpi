@@ -809,6 +809,7 @@ _ew_packages_not_installed_disp(void)
 {
 
     printf("\nPackages (%d)\n", _ew_package_count_not_installed);
+    fflush(stdout);
     for (int i = 0; i < _ew_package_count_total; i++)
     {
         int idx = _ew_package_index[i];
