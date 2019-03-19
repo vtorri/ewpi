@@ -1,4 +1,4 @@
 name: libressl
-version: 2.8.2
-url: https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.8.2.tar.gz
+version: 2.8.3
+url: https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.8.3.tar.gz
 deps:
