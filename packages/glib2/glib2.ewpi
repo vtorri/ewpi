@@ -1,4 +1,4 @@
 name: glib2
-version: 2.58.1
-url: http://ftp.gnome.org/pub/gnome/sources/glib/2.58/glib-2.58.1.tar.xz
+version: 2.60.0
+url: https://download.gnome.org/sources/glib/2.60/glib-2.60.0.tar.xz
 deps: pkg-config zlib iconv gettext
