@@ -1,4 +1,4 @@
 name: libtiff
-version: 4.0.9
-url: http://download.osgeo.org/libtiff/tiff-4.0.9.tar.gz
+version: 4.0.10
+url: https://download.osgeo.org/libtiff/tiff-4.0.10.tar.gz
 deps: zlib libjpeg xz
