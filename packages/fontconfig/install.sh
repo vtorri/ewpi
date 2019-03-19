@@ -2,6 +2,8 @@
 
 set -e
 
+unset PKG_CONFIG_PATH
+
 # $1 : arch
 # $2 : tarname
 # $3 : prefix
@@ -11,7 +13,9 @@ set -e
 
 dir_name=`tar t$5 $2 | head -1 | cut -f1 -d"/"`
 cd $dir_name
+
 sed -i -e 's/@INTLLIBS@/@LTLIBINTL@/g' src/Makefile.in
+sed -i -e 's/po-conf test/po-conf/g' Makefile.in
 
 EWPI_PWD=`pwd`
 EWPI_OS=`uname`

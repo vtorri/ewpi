@@ -2,6 +2,8 @@
 
 set -e
 
+unset PKG_CONFIG_PATH
+
 # $1 : arch
 # $2 : tarname
 # $3 : prefix
