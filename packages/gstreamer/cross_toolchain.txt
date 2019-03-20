@@ -14,5 +14,5 @@ cpu = '@cpu@'
 endian = 'little'
 
 [properties]
-c_args = ['-D_WIN32_WINNT=0x0601', '-I@prefix@/include', '-O2', '-pipe', '-march=@arch@', '-mtune=@arch@']
+c_args = ['-D_WIN32_WINNT=0x0601', '-I@prefix@/include', '-O2', '-pipe', '-march=@arch@']
 c_link_args = ['-L@prefix@/lib', '-s']
