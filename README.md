@@ -20,7 +20,6 @@ EFL Windows package installer
 1. Install MSYS2 : https://www.msys2.org/ (steps 1 to 6)
 2. run "pacman -S git gettext-devel make cmake wget gperf python bison mingw-w64-x86_64-toolchain mingw-w64-i686-toolchain mingw-w64-x86_64-ninja mingw-w64-x86_64-python3-pip"
 3. run "pip3 install meson"
-4. unset PKG_CONFIG_PATH
 
 ## Fedora 32 bits
 
@@ -105,6 +104,7 @@ Examples :
  * libxml2
  * luajit
  * lz4
+ * mp3lame
  * mpg123
  * nasm
  * nghttp2
@@ -114,6 +114,7 @@ Examples :
  * pixman
  * pkg-config
  * regex
+ * taglib
  * xz
  * yasm
  * zlib
