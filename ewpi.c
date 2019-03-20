@@ -230,41 +230,59 @@ _ew_mkdir_p(const char *path)
     return 0;
 }
 
-typedef struct
+static const char *_ew_req_host[] =
 {
-    const char *cmd;
-    const char *name;
-} Req;
+    "gcc",
+    "g++",
+    "ar",
+    "dlltool",
+    "ranlib",
+    "strip",
+    "windres",
+    NULL
+};
 
-static Req _ew_req[] =
+static const char *_ew_req[] =
 {
-    { "make", "make" },
-    { "cmake", "cmake" },
-    { "python", "python" },
-    { "meson", "meson" },
-    { "ninja", "ninja" },
+    "make",
+    "cmake",
+    "python",
+    "meson",
+    "ninja",
 #ifndef _WIN32
-    { "yasm", "yasm" },
-    { "nasm", "nasm" },
+    "yasm",
+    "nasm",
 #endif
-    { "gperf", "gperf" },
-    { "wget", "wget" },
-    { "bison", "bison" },
-    { "flex", "flex" },
-    { NULL, NULL }
+    "gperf",
+    "wget",
+    "bison",
+    "flex",
+    NULL
 };
 
 static int
-_ew_requirements(void)
+_ew_requirements(const char *host)
 {
     char buf[4096];
     int ret;
 
-    for (int i = 0; _ew_req[i].cmd; i++)
+    for (int i = 0; _ew_req_host[i]; i++)
     {
-        snprintf(buf, 4095, "%s --version > NUL 2>&1", _ew_req[i].cmd);
+        strcpy(buf, host);
+        strcat(buf, "-");
+        strcat(buf, _ew_req_host[i]);
+        strcat(buf, " --version > NUL 2>&1");
         ret = system(buf);
-        printf("  %s : %s\n", _ew_req[i].name, (ret == 0) ? "yes" : "no");
+        printf("  %s : %s\n", _ew_req_host[i], (ret == 0) ? "yes" : "no");
+        fflush(stdout);
+        if (ret != 0) return 0;
+    }
+
+    for (int i = 0; _ew_req[i]; i++)
+    {
+        snprintf(buf, 4095, "%s --version > NUL 2>&1", _ew_req[i]);
+        ret = system(buf);
+        printf("  %s : %s\n", _ew_req[i], (ret == 0) ? "yes" : "no");
         fflush(stdout);
         if (ret != 0) return 0;
     }
@@ -1331,7 +1349,7 @@ int main(int argc, char *argv[])
     fflush(stdout);
 
     printf(":: Checking requirements...\n");
-    ret = _ew_requirements();
+    ret = _ew_requirements(host);
     if (!ret)
     {
         printf("one of the requirement is not found, exiting...\n");
