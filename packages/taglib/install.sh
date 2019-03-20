@@ -60,10 +60,10 @@ cmake \
     -DCMAKE_RC_COMPILER=$4-windres \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_SHARED_LIBS:BOOL=ON \
-    -DCMAKE_C_FLAGS="-O2 -pipe -march=$1" \
-    -DCMAKE_CXX_FLAGS="$TAG_CPP_FLAGS -O2 -pipe -march=$1" \
-    -DCMAKE_EXE_LINKER_FLAGS="-s" \
-    -DCMAKE_SHARED_LINKER_FLAGS="-s" \
+    -DCMAKE_C_FLAGS="-O2 -pipe -march=$1 -I$3/include" \
+    -DCMAKE_CXX_FLAGS="$TAG_CPP_FLAGS -O2 -pipe -march=$1 -I$3/include" \
+    -DCMAKE_EXE_LINKER_FLAGS="-s -L$3/lib" \
+    -DCMAKE_SHARED_LINKER_FLAGS="-s -L$3/lib" \
     -DBUILD_SHARED_LIBS:BOOL=ON \
     -DBUILD_BINDINGS:BOOL=OFF \
     -DZLIB_INCLUDE_DIR=$prefix_unix/include \
