@@ -31,8 +31,8 @@ cmake \
     -DCMAKE_C_COMPILER=$4-gcc \
     -DCMAKE_CXX_COMPILER=$4-g++ \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_C_FLAGS="-I../src -I../include -O2 -pipe -march=$1 -mtune=$1" \
-    -DCMAKE_CXX_FLAGS="-I../src -I../include -O2 -pipe -march=$1 -mtune=$1" \
+    -DCMAKE_C_FLAGS="-I../src -I../include -O2 -pipe -march=$1" \
+    -DCMAKE_CXX_FLAGS="-I../src -I../include -O2 -pipe -march=$1" \
     -DCMAKE_EXE_LINKER_FLAGS="-s" \
     -DCMAKE_SHARED_LINKER_FLAGS="-s" \
     -DCMAKE_SYSTEM_NAME=Windows \

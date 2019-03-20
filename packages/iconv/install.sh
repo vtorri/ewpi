@@ -25,7 +25,7 @@ sed -i \
   -e '/ -o win_iconv.exe\>/ s,\$(CC),& $(LDFLAGS),' \
   Makefile
 
-export CFLAGS="-O2 -pipe -march=$1 -mtune=$1"
+export CFLAGS="-O2 -pipe -march=$1"
 export LDFLAGS="-s"
 
 make clean > ../make.log 2>&1

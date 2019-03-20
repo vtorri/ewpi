@@ -14,7 +14,7 @@ unset PKG_CONFIG_PATH
 dir_name=`tar t$5 $2 | head -1 | cut -f1 -d"/"`
 cd $dir_name
 
-export CFLAGS="-O2 -pipe -march=$1 -mtune=$1"
+export CFLAGS="-O2 -pipe -march=$1"
 export LDFLAGS="-s"
 
 arch="-m64"

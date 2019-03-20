@@ -37,7 +37,7 @@ sed -i \
     -e 's/(long)/(intptr_t)/g' \
     tre.h
 
-$4-gcc -std=c99 -Wall -Wextra -O2 -pipe -march=$1 -mtune=$1 -s -shared \
+$4-gcc -std=c99 -Wall -Wextra -O2 -pipe -march=$1 -s -shared \
        -o libregex-1.dll -Wl,--out-implib,libregex.dll.a \
        fnmatch.c regcomp.c regerror.c regexec.c tre-mem.c \
        -I. \

@@ -35,7 +35,7 @@ cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DENABLE_STATIC=FALSE \
     -DCMAKE_C_COMPILER=$4-gcc \
-    -DCMAKE_C_FLAGS="-I.. -O2 -pipe -march=$1 -mtune=$1" \
+    -DCMAKE_C_FLAGS="-I.. -O2 -pipe -march=$1" \
     -DCMAKE_EXE_LINKER_FLAGS="-s" \
     -DCMAKE_SHARED_LINKER_FLAGS="-s" \
     -DCMAKE_SYSTEM_NAME=Windows \

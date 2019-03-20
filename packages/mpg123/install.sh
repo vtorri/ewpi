@@ -35,7 +35,7 @@ export PKG_CONFIG_DIR=
 export PKG_CONFIG_LIBDIR=$3/lib/pkgconfig
 export PKG_CONFIG_SYSROOOT_DIR=$3
 export CPPFLAGS=-I$3/include
-export CFLAGS="-O2 -pipe -march=$1 -mtune=$1"
+export CFLAGS="-O2 -pipe -march=$1"
 export LDFLAGS="-s"
 
 ./configure --prefix=$3 --host=$4 --disable-static --with-cpu=$cpu --enable-yasm --enable-int-quality --with-default-audio=win32_wasapi > ../config.log 2>&1

@@ -29,8 +29,8 @@ export PKG_CONFIG_DIR=
 export PKG_CONFIG_LIBDIR=$3/lib/pkgconfig
 export PKG_CONFIG_SYSROOOT_DIR=$3
 export CPPFLAGS=-I$3/include
-export CFLAGS="-O2 -pipe -march=$1 -mtune=$1"
-export CXXFLAGS="-O2 -pipe -march=$1 -mtune=$1"
+export CFLAGS="-O2 -pipe -march=$1"
+export CXXFLAGS="-O2 -pipe -march=$1"
 export LDFLAGS="-s -L$3/lib"
 
 ./configure --prefix=$3 --host=$4 --disable-static --with-glib=no --disable-gtk-doc-html --disable-gtk-doc-pdf --with-cairo=no --with-fontconfig=no --with-freetype=yes --with-graphite2=yes --with-icu=no > ../config.log 2>&1

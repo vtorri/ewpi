@@ -15,7 +15,7 @@ dir_name=`tar t$5 $2 | head -1 | cut -f1 -d"/"`
 cd $dir_name
 
 export CPPFLAGS="-DFRIBIDI_ENTRY='__declspec(dllexport)'"
-export CFLAGS="-O2 -pipe -march=$1 -mtune=$1"
+export CFLAGS="-O2 -pipe -march=$1"
 export LDFLAGS="-s"
 
 ./configure --prefix=$3 --host=$4 --disable-static --disable-debug --disable-deprecated > ../config.log 2>&1

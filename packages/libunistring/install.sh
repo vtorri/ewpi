@@ -24,7 +24,7 @@ case ${EWPI_OS} in
     ;;
 esac
 export PATH=$prefix_unix/bin:$PATH
-export CFLAGS="-O2 -pipe -march=$1 -mtune=$1"
+export CFLAGS="-O2 -pipe -march=$1"
 export LDFLAGS="-s"
 
 ./configure --prefix=$3 --host=$4 --disable-static --with-libiconv-prefix=$3 > ../config.log 2>&1

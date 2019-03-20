@@ -28,7 +28,7 @@ export PKG_CONFIG_DIR=
 export PKG_CONFIG_LIBDIR=$3/lib/pkgconfig
 export PKG_CONFIG_SYSROOOT_DIR=$3
 export CPPFLAGS=-I$3/include
-export CFLAGS="-O2 -pipe -march=$1 -mtune=$1"
+export CFLAGS="-O2 -pipe -march=$1"
 export LDFLAGS="-L$3/lib -s"
 export LIBS="-L$3/lib -liconv"
 
