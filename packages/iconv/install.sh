@@ -42,7 +42,7 @@ Name: iconv
 Description: iconv implementation using Win32 API to convert
 Version: 0.0.8
 Libs: -L\${libdir} -liconv
-Cflags: -DWINICONV_CONST -I\${includedir}
+Cflags: -DWINICONV_CONST= -I\${includedir}
 EOF
 
 mkdir -p $3/lib/pkgconfig
