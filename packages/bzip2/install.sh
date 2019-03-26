@@ -31,7 +31,7 @@ $4-gcc \
     > ../make.log 2>&1
 
 cat > bzip2.pc.in <<EOF
-prefix=@prefixe@
+prefix=$3
 exec_prefix=\${prefix}
 bindir=\${exec_prefix}/bin
 libdir=\${exec_prefix}/lib
@@ -43,9 +43,6 @@ Version: 1.0.6
 Libs: -L\${libdir} -lbz2
 Cflags: -I\${includedir}
 EOF
-
-pref=$3
-sed  "s|@prefixe@|$3|g" bzip2.pc.in > bzip2.pc
 
 mkdir -p $3/{bin,include,lib/pkgconfig}
 cp libbz2-1.dll $3/bin
