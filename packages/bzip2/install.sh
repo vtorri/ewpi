@@ -30,7 +30,7 @@ $4-gcc \
     bzlib.c \
     > ../make.log 2>&1
 
-cat > bzip2.pc.in <<EOF
+cat > bzip2.pc <<EOF
 prefix=$3
 exec_prefix=\${prefix}
 bindir=\${exec_prefix}/bin
