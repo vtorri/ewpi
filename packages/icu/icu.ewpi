@@ -1,0 +1,5 @@
+name: icu
+version: 64.1
+url: https://github.com/unicode-org/icu/releases/download/release-64-1/icu4c-64_1-src.tgz
+deps: pkg-config
+installed: no

@@ -87,6 +87,7 @@ Examples :
  * gstreamer
  * harfbuzz
  * iconv
+ * icu
  * libidn2
  * libjpeg
  * libogg
