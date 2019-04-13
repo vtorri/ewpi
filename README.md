@@ -94,6 +94,7 @@ Examples :
  * libpng
  * libpsl
  * libressl
+ * libsamplerate
  * libsndfile
  * libspeex
  * libssh2
@@ -115,6 +116,7 @@ Examples :
  * pixman
  * pkg-config
  * regex
+ * sdl2
  * taglib
  * xz
  * yasm
