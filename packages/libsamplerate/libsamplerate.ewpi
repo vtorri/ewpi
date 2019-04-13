@@ -1,0 +1,4 @@
+name: libsamplerate
+version: 0.1.9
+url: http://www.mega-nerd.com/libsamplerate/libsamplerate-0.1.9.tar.gz
+deps:
