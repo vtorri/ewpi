@@ -34,6 +34,10 @@ sed -i \
     *.h *.c ../../include/regex.h
 
 sed -i \
+    -e 's/define _REGEX_H/define _REGEX_H\n\n#include <stdlib.h>/g' \
+    ../../include/regex.h
+
+sed -i \
     -e 's/(long)/(intptr_t)/g' \
     tre.h
 
