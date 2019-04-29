@@ -13,6 +13,8 @@ unset PKG_CONFIG_PATH
 
 dir_name=`tar t$5 $2 | head -1 | cut -f1 -d"/"`
 cd $dir_name
+cp ../cross_toolchain.txt .
+
 EWPI_PWD=`pwd`
 EWPI_OS=`uname`
 case ${EWPI_OS} in
@@ -23,6 +25,21 @@ case ${EWPI_OS} in
 	prefix_unix=$3
     ;;
 esac
+
+if test "x$4" = "xx86_64-w64-mingw32" ; then
+    proc="AMD64"
+    machine=-m64
+else
+    proc="X86"
+    machine=-m32
+fi
+
+sed -i -e "s|@host@|$4|g;s|@proc@|$proc|g" cross_toolchain.txt
+
+export PATH=$prefix_unix/bin:$PATH
+export CFLAGS="$machine -I$EWPI_PWD -O2 -pipe -march=$1"
+export CXXFLAGS="$machine -I$EWPI_PWD -O2 -pipe -march=$1"
+export LDFLAGS="$machine -s"
 
 TAG_CPP_FLAGS="-I$EWPI_PWD \
              -I$EWPI_PWD/taglib \
@@ -52,12 +69,9 @@ TAG_CPP_FLAGS="-I$EWPI_PWD \
              -I$EWPI_PWD/taglib/xm"
 
 cmake \
-    -DCMAKE_SYSTEM_NAME=Windows \
+    -DCMAKE_TOOLCHAIN_FILE=cross_toolchain.txt \
     -DCMAKE_INSTALL_PREFIX=$prefix_unix \
     -DCMAKE_VERBOSE_MAKEFILE=TRUE \
-    -DCMAKE_C_COMPILER=$4-gcc \
-    -DCMAKE_CXX_COMPILER=$4-g++ \
-    -DCMAKE_RC_COMPILER=$4-windres \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_SHARED_LIBS:BOOL=ON \
     -DCMAKE_C_FLAGS="-O2 -pipe -march=$1 -I$3/include" \
@@ -72,3 +86,5 @@ cmake \
     . > ../config.log 2>&1
 
 make -j $jobopt install > ../make.log 2>&1
+
+sed -i -e "s|$prefix_unix|$3|g" $3/lib/pkgconfig/taglib.pc
