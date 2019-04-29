@@ -1,4 +1,4 @@
 name: lz4
-version: 1.8.3
-url: https://github.com/lz4/lz4/archive/v1.8.3.tar.gz
+version: 1.9.1
+url: https://github.com/lz4/lz4/archive/v1.9.1.tar.gz
 deps:
