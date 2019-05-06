@@ -50,11 +50,11 @@ cmake \
     -DCMAKE_VERBOSE_MAKEFILE=TRUE \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_STATIC_LIBS:BOOL=OFF \
-    -DCMAKE_C_FLAGS="-O2 -pipe -march=$1" \
+    -DCMAKE_C_FLAGS="-O2 -pipe -march=$1 -I../common -I../../../src/lib/openjp2 -I$3/include" \
     -DCMAKE_CXX_FLAGS="-O2 -pipe -march=$1" \
-    -DCMAKE_EXE_LINKER_FLAGS="-s" \
+    -DCMAKE_EXE_LINKER_FLAGS="-s -L$prefix_unix/lib" \
     -DCMAKE_SHARED_LINKER_FLAGS="-s" \
-    -DBUILD_CODEC:BOOL=OFF \
+    -DBUILD_CODEC:BOOL=ON \
     -DBUILD_JPWL:BOOL=OFF \
     -DBUILD_MJ2:BOOL=OFF \
     -DBUILD_JPIP:BOOL=OFF \
@@ -62,6 +62,10 @@ cmake \
     -DBUILD_PKGCONFIG_FILES:BOOL=ON \
     -G "Unix Makefiles" \
     . > ../config.log 2>&1
+
+sed -i -e "s|$prefix_unix|$3|g" src/bin/jp2/CMakeFiles/opj_compress.dir/linklibs.rsp
+sed -i -e "s|$prefix_unix|$3|g" src/bin/jp2/CMakeFiles/opj_decompress.dir/linklibs.rsp
+sed -i -e "s|$prefix_unix|$3|g" src/bin/jp2/CMakeFiles/opj_dump.dir/linklibs.rsp
 
 make -j $jobopt install > ../make.log 2>&1
 

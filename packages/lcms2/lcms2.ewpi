@@ -1,0 +1,4 @@
+name: lcms2
+version: 2.9
+url: https://github.com/mm2/Little-CMS/archive/lcms2.9.tar.gz
+deps: zlib libjpeg libtiff
