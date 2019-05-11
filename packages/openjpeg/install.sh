@@ -1,31 +1,10 @@
 #! /bin/sh
 
-set -e
+source ../../common.sh
 
-unset PKG_CONFIG_PATH
-
-# $1 : arch
-# $2 : tarname
-# $3 : prefix
-# $4 : host
-# $5 : taropt
-# $6 : jobopt
-
-dir_name=`tar t$5 $2 | head -1 | cut -f1 -d"/"`
-cd $dir_name
 cp ../cross_toolchain.txt .
 
 sed -i '/typedef SSIZE_T ssize_t;/ d' src/lib/openjpip/sock_manager.c
-
-EWPI_OS=`uname`
-case ${EWPI_OS} in
-    MSYS*|MINGW*)
-	prefix_unix=`cygpath -u $3`
-    ;;
-    *)
-	prefix_unix=$3
-    ;;
-esac
 
 if test "x$4" = "xx86_64-w64-mingw32" ; then
     proc="AMD64"
@@ -37,12 +16,9 @@ fi
 
 sed -i -e "s|@host@|$4|g;s|@proc@|$proc|g" cross_toolchain.txt
 
-export PATH=$prefix_unix/bin:$PATH
-export CFLAGS="$machine -O2 -pipe -march=$1"
-export CXXFLAGS="$machine -O2 -pipe -march=$1"
-export LDFLAGS="$machine -s"
-export PKG_CONFIG_LIBDIR=$3/lib/pkgconfig
-export PKG_CONFIG_PATH=$3/lib/pkgconfig
+export CFLAGS="$machine $CFLAGS"
+export CXXFLAGS="$machine $CXXFLAGS"
+export LDFLAGS="$machine $LDFLAGS"
 
 cmake \
     -DCMAKE_TOOLCHAIN_FILE=cross_toolchain.txt \
@@ -67,6 +43,6 @@ sed -i -e "s|$prefix_unix|$3|g" src/bin/jp2/CMakeFiles/opj_compress.dir/linklibs
 sed -i -e "s|$prefix_unix|$3|g" src/bin/jp2/CMakeFiles/opj_decompress.dir/linklibs.rsp
 sed -i -e "s|$prefix_unix|$3|g" src/bin/jp2/CMakeFiles/opj_dump.dir/linklibs.rsp
 
-make -j $jobopt install > ../make.log 2>&1
+make -j $5 install > ../make.log 2>&1
 
 sed -i -e "s|$prefix_unix|$3|g" $3/lib/pkgconfig/libopenjp2.pc

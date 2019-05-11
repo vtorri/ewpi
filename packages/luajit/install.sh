@@ -1,21 +1,6 @@
 #! /bin/sh
 
-set -e
-
-unset PKG_CONFIG_PATH
-
-# $1 : arch
-# $2 : tarname
-# $3 : prefix
-# $4 : host
-# $5 : taropt
-# $6 : jobopt
-
-dir_name=`tar t$5 $2 | head -1 | cut -f1 -d"/"`
-cd $dir_name
-
-export CFLAGS="-O2 -pipe -march=$1"
-export LDFLAGS="-s"
+source ../../common.sh
 
 arch="-m64"
 if test "x$4" = "xi686-w64-mingw32"; then
@@ -45,7 +30,8 @@ make \
     INSTALL_SONAME=lua51.dll \
     TARGET_XSHLDFLAGS="-shared -Wl,--out-implib,libluajit.dll.a" \
     INSTALL_SOSHORT1=libluajit.dll.a \
-    -j $jobopt > ../make.log 2>&1
+    -j $5 > ../make.log 2>&1
+
 mv $3/bin/luajit.tmp $3/bin/luajit.exe
 cp src/lua51.dll $3/bin
 cp src/libluajit.dll.a $3/lib

@@ -634,13 +634,12 @@ _ew_copy(const char *path_git, const char *path_dst, const char *filename)
 }
 
 static void
-_ew_packages_dst_set(void)
+_ew_packages_dst_set(const char *prefix)
 {
-    int i;
     char buf_git[PATH_MAX];
     char buf_dst[PATH_MAX];
 
-    for (i = 0; i < _ew_package_count_total; i++)
+    for (int i = 0; i < _ew_package_count_total; i++)
     {
         char buf_ewpi[PATH_MAX];
 
@@ -717,6 +716,16 @@ _ew_packages_dst_set(void)
         _ew_copy(buf_git, buf_dst, "install.sh");
         _ew_copy(buf_git, buf_dst, "cross_toolchain.txt");
     }
+
+    if (!getcwd(buf_git, PATH_MAX))
+        return;
+
+    if ((strlen(prefix) + sizeof("/share/ewpi") - 1) > (PATH_MAX))
+        return;
+
+    strcpy(buf_dst, prefix);
+    strcat(buf_dst, "/share/ewpi");
+    _ew_copy(buf_git, buf_dst, "common.sh");
 }
 
 static void
@@ -1111,7 +1120,7 @@ _ew_packages_install(const char *prefix, const char *host, const char *arch, con
         snprintf(buf, 4095,
                  "cd %s/%s && sh ./install.sh %s %s %s %s %s %s",
                  _ew_package_dir_dst, name,
-                 arch, tarname, prefix, host, taropt, jobopt);
+                 arch, tarname, prefix, host, jobopt, "1");
         ret = system(buf);
         if (ret != 0)
         {
@@ -1361,7 +1370,7 @@ int main(int argc, char *argv[])
 
     _ew_packages_count_total();
     _ew_packages_get_git();
-    _ew_packages_dst_set();
+    _ew_packages_dst_set(prefix);
 
     printf(":: Check which package is not installed...\n");
     fflush(stdout);

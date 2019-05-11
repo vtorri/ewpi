@@ -1,29 +1,8 @@
 #! /bin/sh
 
-set -e
+source ../../common.sh
 
-unset PKG_CONFIG_PATH
-
-# $1 : arch
-# $2 : tarname
-# $3 : prefix
-# $4 : host
-# $5 : taropt
-# $6 : jobopt
-
-dir_name=`tar t$5 $2 | head -1 | cut -f1 -d"/"`
-cd $dir_name
 cp ../cross_toolchain.txt .
-
-EWPI_OS=`uname`
-case ${EWPI_OS} in
-    MSYS*|MINGW*)
-	prefix_unix=`cygpath -u $3`
-    ;;
-    *)
-	prefix_unix=$3
-    ;;
-esac
 
 if test "x$4" = "xx86_64-w64-mingw32" ; then
     proc="AMD64"
@@ -35,10 +14,10 @@ fi
 
 sed -i -e "s|@host@|$4|g;s|@proc@|$proc|g" cross_toolchain.txt
 
-export PATH=$prefix_unix/bin:$PATH
-export CFLAGS="$machine -I.. -O2 -pipe -march=$1"
-export LDFLAGS="$machine -s"
+export CFLAGS="$machine -I.. $CFLAGS"
+export LDFLAGS="$machine $LDFLAGS"
 
+echo $prefix_unix>../config.log 2>&1
 cmake \
     -DCMAKE_TOOLCHAIN_FILE=cross_toolchain.txt \
     -DCMAKE_INSTALL_PREFIX=$prefix_unix \
@@ -53,9 +32,9 @@ cmake \
     -DWITH_JPEG8=TRUE \
     -DWITH_TURBOJPEG=FALSE \
     -G "Unix Makefiles" \
-    . > ../config.log 2>&1
+    . >> ../config.log 2>&1
 
-make -j $jobopt install > ../make.log 2>&1
+make -j $5 install > ../make.log 2>&1
 
 sed -i -e "s|$prefix_unix|$3|g" $3/lib/pkgconfig/libjpeg.pc
 sed -i -e "s|$prefix_unix|$3|g" $3/lib/pkgconfig/libturbojpeg.pc
