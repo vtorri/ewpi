@@ -1384,7 +1384,10 @@ int main(int argc, char *argv[])
 
     _ew_packages_tree("efl");
     if (!efl)
+    {
         _ew_package_count_total--;
+        _ew_package_count_not_installed--;
+    }
     _ew_packages_not_installed_disp();
     _ew_packages_download();
     _ew_packages_longest_name();
