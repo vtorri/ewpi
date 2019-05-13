@@ -1,0 +1,4 @@
+name: libopenh264
+version: 1.8.0
+url: https://github.com/cisco/openh264/archive/v1.8.0.tar.gz
+deps: nasm

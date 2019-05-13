@@ -22,14 +22,11 @@ cmake \
     -DCMAKE_INSTALL_PREFIX=$prefix_unix \
     -DCMAKE_VERBOSE_MAKEFILE=TRUE \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_C_FLAGS="-I.. -O2 -pipe -march=$1" \
+    -DCMAKE_C_FLAGS="-Isrc -I. -I.. -I../src -pipe -march=$1" \
     -DCMAKE_EXE_LINKER_FLAGS="-s" \
     -DCMAKE_SHARED_LINKER_FLAGS="-s" \
-    -DENABLE_STATIC=FALSE \
-    -DREQUIRE_SIMD=TRUE \
-    -DWITH_JAVA=FALSE \
-    -DWITH_JPEG8=TRUE \
-    -DWITH_TURBOJPEG=FALSE \
+    -DBUILD_EXAMPLES=TRUE \
+    -DWITH_DEV_TRACE=FALSE \
     -G "Unix Makefiles" \
     . >> ../config.log 2>&1
 
