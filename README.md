@@ -99,6 +99,7 @@ Examples :
  * libpng
  * libpsl
  * libressl
+ * librtmp
  * libsndfile
  * libspeex
  * libssh2

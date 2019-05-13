@@ -1,0 +1,4 @@
+name: librtmp
+version: 2.4
+url: https://git.ffmpeg.org/rtmpdump.git
+deps: zlib libressl
