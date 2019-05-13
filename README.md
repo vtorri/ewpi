@@ -88,6 +88,8 @@ Examples :
  * harfbuzz
  * iconv
  * icu
+ * libaacs
+ * libbdplus
  * libgcrypt
  * libgme
  * libgpg-error
