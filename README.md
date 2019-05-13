@@ -90,17 +90,20 @@ Examples :
  * icu
  * libaacs
  * libbdplus
+ * libbluray
  * libgcrypt
  * libgme
  * libgpg-error
  * libidn2
  * libjpeg
  * libogg
+ * libopenh264
  * libpng
  * libpsl
  * libressl
  * librtmp
  * libsndfile
+ * libsoxr
  * libspeex
  * libssh2
  * libtheora
