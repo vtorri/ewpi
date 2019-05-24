@@ -16,6 +16,15 @@ fi
 
 sed -i -e "s|@host@|$4|g;s|@proc@|$proc|g" cross_toolchain.txt
 
+case ${EWPI_OS} in
+    MSYS*|MINGW*)
+	codec="ON"
+    ;;
+    *)
+	codec="OFF"
+    ;;
+esac
+
 export CFLAGS="$machine $CFLAGS"
 export CXXFLAGS="$machine $CXXFLAGS"
 export LDFLAGS="$machine $LDFLAGS"
@@ -30,7 +39,7 @@ cmake \
     -DCMAKE_CXX_FLAGS="-O2 -pipe -march=$1" \
     -DCMAKE_EXE_LINKER_FLAGS="-s -L$prefix_unix/lib" \
     -DCMAKE_SHARED_LINKER_FLAGS="-s" \
-    -DBUILD_CODEC:BOOL=ON \
+    -DBUILD_CODEC:BOOL=$codec \
     -DBUILD_JPWL:BOOL=OFF \
     -DBUILD_MJ2:BOOL=OFF \
     -DBUILD_JPIP:BOOL=OFF \
