@@ -48,9 +48,15 @@ cmake \
     -G "Unix Makefiles" \
     . > ../config.log 2>&1
 
-sed -i -e "s|$prefix_unix|$3|g" src/bin/jp2/CMakeFiles/opj_compress.dir/linklibs.rsp
-sed -i -e "s|$prefix_unix|$3|g" src/bin/jp2/CMakeFiles/opj_decompress.dir/linklibs.rsp
-sed -i -e "s|$prefix_unix|$3|g" src/bin/jp2/CMakeFiles/opj_dump.dir/linklibs.rsp
+case ${EWPI_OS} in
+    MSYS*|MINGW*)
+        sed -i -e "s|$prefix_unix|$3|g" src/bin/jp2/CMakeFiles/opj_compress.dir/linklibs.rsp
+        sed -i -e "s|$prefix_unix|$3|g" src/bin/jp2/CMakeFiles/opj_decompress.dir/linklibs.rsp
+        sed -i -e "s|$prefix_unix|$3|g" src/bin/jp2/CMakeFiles/opj_dump.dir/linklibs.rsp
+    ;;
+    *)
+    ;;
+esac
 
 make -j $5 install > ../make.log 2>&1
 
