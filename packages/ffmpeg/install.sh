@@ -2,8 +2,17 @@
 
 source ../../common.sh
 
+if test "x$4" = "xx86_64-w64-mingw32" ; then
+    targetOS="mingw64"
+    arch="x86_64"
+else
+    targetOS="mingw32"
+    arch="i686"
+fi
+
 ./configure --prefix=$3 --disable-static --enable-shared \
             --enable-cross-compile --cross-prefix=$4- \
+            --target-os=$targetOS --arch=$arch \
             --enable-gcrypt \
             --enable-libbluray \
             --enable-libfontconfig \
