@@ -12,6 +12,14 @@ fi
 
 sed -i -e "s/@host@/$4/g;s/@arch@/$1/g;s|@prefix@|$3|g" cross_toolchain.txt
 
+case ${EWPI_OS} in
+    MSYS*|MINGW*)
+    ;;
+    *)
+	sed -i -e "s/INFINITY;/__builtin_inff();/g" src/graphene-ray.c
+    ;;
+esac
+
 rm -rf builddir && mkdir builddir && cd builddir
 meson .. \
       --prefix=$3 \
