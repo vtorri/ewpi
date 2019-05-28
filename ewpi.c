@@ -236,6 +236,7 @@ static const char *_ew_req_host[] =
     "g++",
     "ar",
     "dlltool",
+    "nm",
     "ranlib",
     "strip",
     "windres",
