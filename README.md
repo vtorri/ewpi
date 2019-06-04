@@ -23,12 +23,12 @@ EFL Windows package installer
 
 ## Fedora 32 bits
 
-1. dnf install cmake yasm nasm gperf python ninja-build mingw32-gcc mingw32-gcc-c++ python3-pip bison flex
+1. dnf install cmake yasm nasm gperf python ninja-build mingw32-gcc mingw32-gcc-c++ mingw32-pkg-config python3-pip bison flex
 2. run "pip3 install meson"
 
 ## Fedora 64 bits
 
-1. dnf install cmake yasm nasm gperf python ninja-build mingw64-gcc mingw64-gcc-c++ python3-pip bison flex
+1. dnf install cmake yasm nasm gperf python ninja-build mingw64-gcc mingw64-gcc-c++ mingw64-pkg-config python3-pip bison flex
 2. run "pip3 install meson"
 
 # Compilation
@@ -52,7 +52,7 @@ Optional arguments:
                   [default=x86_64-w64-mingw32]
   --arch=VAL    value passed to -march and -mtune gcc options
                   [default=i686|x86-64], depending on host value
-  --efl=yes|no  whether installing the EFL [default=no]
+  --efl         install the EFL
   --jobs=VAL    maximum number of used jobs [default=maximum]
   --clean       remove the archives and the created directories
                   (not removed by default)
@@ -60,7 +60,7 @@ Optional arguments:
 Examples :
 
  * ./ewpi --prefix=/opt/ewpi_32 --host=i686-w64-mingw32
- * ./ewpi --host=x86_64-w64-mingw32 --efl=yes --jobs=4 --clean
+ * ./ewpi --host=x86_64-w64-mingw32 --efl --jobs=4 --clean
 
 ## Packages installed
 

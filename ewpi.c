@@ -116,14 +116,14 @@ _ew_usage(const char *argv0)
     printf("                  [default=x86_64-w64-mingw32]\n");
     printf("  --arch=VAL    value passed to -march and -mtune gcc options\n");
     printf("                  [default=i686|x86-64], depending on host value\n");
-    printf("  --efl=yes|no  whether installing the EFL [default=no]\n");
+    printf("  --efl         install the EFL\n");
     printf("  --jobs=VAL    maximum number of used jobs [default=maximum]\n");
     printf("  --clean       remove the archives and the created directories\n");
     printf("                  (not removed by default)\n");
     printf("\n");
     printf("Examples:\n");
     printf("  ./ewpi --prefix=/opt/ewpi_32 --host=i686-w64-mingw32\n");
-    printf("  ./ewpi --host=x86_64-w64-mingw32 --efl=yes --jobs=4\n");
+    printf("  ./ewpi --host=x86_64-w64-mingw32 --efl --jobs=4\n");
     printf("\n");
     fflush(stdout);
 }
@@ -1281,20 +1281,9 @@ int main(int argc, char *argv[])
         {
             arch = argv[i] + strlen("--arch=");
         }
-        else if (strncmp(argv[i], "--efl=", strlen("--efl=")) == 0)
+        else if (strcmp(argv[i], "--efl") == 0)
         {
-            char *opt;
-
-            opt = argv[i] + strlen("--efl=");
-            if (strcmp(opt, "yes") == 0)
-                efl = 1;
-            else if (strcmp(opt, "no") == 0)
-                efl = 0;
-            else
-            {
-                _ew_usage(argv[0]);
-                exit(1);
-            }
+            efl = 1;
         }
         else if (strncmp(argv[i], "--jobs=", strlen("--jobs=")) == 0)
         {
