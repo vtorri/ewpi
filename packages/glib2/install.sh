@@ -22,4 +22,4 @@ meson .. \
       --default-library shared \
       -Dinternal_pcre=true > ../../config.log 2>&1
 
-ninja install > ../../make.log 2>&1
+ninja $verbninja install > ../../make.log 2>&1

@@ -33,4 +33,4 @@ fi
             --enable-libxml2 \
             > ../config.log 2>&1
 
-make -j $5 install > ../make.log 2>&1
+make -j $5 $verbff install > ../make.log 2>&1

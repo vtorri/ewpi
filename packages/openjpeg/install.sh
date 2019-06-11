@@ -32,7 +32,7 @@ export LDFLAGS="$machine $LDFLAGS"
 cmake \
     -DCMAKE_TOOLCHAIN_FILE=cross_toolchain.txt \
     -DCMAKE_INSTALL_PREFIX=$prefix_unix \
-    -DCMAKE_VERBOSE_MAKEFILE=TRUE \
+    -DCMAKE_VERBOSE_MAKEFILE:BOOL=$verbcmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_STATIC_LIBS:BOOL=OFF \
     -DCMAKE_C_FLAGS="-O2 -pipe -march=$1 -I../common -I../../../src/lib/openjp2 -I$3/include" \

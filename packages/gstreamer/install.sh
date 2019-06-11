@@ -23,4 +23,4 @@ meson .. \
       --default-library shared \
       -Ddisable_gst_debug=true > ../../config.log 2>&1
 
-ninja install > ../../make.log 2>&1
+ninja $verbninja install > ../../make.log 2>&1

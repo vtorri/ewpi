@@ -6,6 +6,8 @@
 # $5 : jobopt
 # $6 : verbose
 
+verbose=$6
+
 set -e
 
 unset PKG_CONFIG_PATH
@@ -28,6 +30,16 @@ export CPPFLAGS=-I$3/include
 export CFLAGS="-O2 -pipe -march=$1"
 export CXXFLAGS="-O2 -pipe -march=$1"
 export LDFLAGS="-L$3/lib -s"
+
+if test "x${verbose}" = "xyes" ; then
+    verbmake="V=1"
+    verbcmake="ON"
+    verbninja="-v"
+    verbff="V=1"
+else
+    verbmake="V=0"
+    verbcmake="OFF"
+fi
 
 case $2 in
     *.git)

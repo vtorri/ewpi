@@ -21,6 +21,7 @@ echo $prefix_unix>../config.log 2>&1
 cmake \
     -DCMAKE_TOOLCHAIN_FILE=cross_toolchain.txt \
     -DCMAKE_INSTALL_PREFIX=$prefix_unix \
+    -DCMAKE_VERBOSE_MAKEFILE:BOOL=$verbcmake \
     -DCMAKE_VERBOSE_MAKEFILE=TRUE \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_C_FLAGS="-I.. -O2 -pipe -march=$1" \

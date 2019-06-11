@@ -30,4 +30,4 @@ meson .. \
       --default-library shared \
       -Dintrospection=false > ../../config.log 2>&1
 
-ninja -v install > ../../make.log 2>&1
+ninja $verbninja install > ../../make.log 2>&1

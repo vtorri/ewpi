@@ -67,7 +67,6 @@ typedef struct
     int vrev;
     char *url;
     char *tarname;
-    const char *taropt;
     int deps_count;
     char **deps;
     unsigned int downloaded : 1;
@@ -116,6 +115,7 @@ _ew_usage(const char *argv0)
     printf("                  [default=x86_64-w64-mingw32]\n");
     printf("  --arch=VAL    value passed to -march and -mtune gcc options\n");
     printf("                  [default=i686|x86-64], depending on host value\n");
+    printf("  --verbose     verbose mode\n");
     printf("  --efl         install the EFL\n");
     printf("  --jobs=VAL    maximum number of used jobs [default=maximum]\n");
     printf("  --clean       remove the archives and the created directories\n");
@@ -454,12 +454,6 @@ _ew_packages_fill(Map *map, Package *pkg)
             tarname++;
             if (strcmp(tarname, "git") == 0)
                 pkg->is_git = 1;
-            else if ((strcmp(tarname, "gz") == 0) || (strcmp(tarname, "tgz") == 0))
-                pkg->taropt = "zf";
-            else if (strcmp(tarname, "bz2") == 0)
-                pkg->taropt = "jf";
-            else
-                pkg->taropt = "Jf";
         }
         else if (EWPI_DEPS(iter))
         {
@@ -1014,7 +1008,7 @@ _ew_packages_status_disp(int i, int count, const char *name, const char* version
 }
 
 static void
-_ew_packages_extract(void)
+_ew_packages_extract(int verbose)
 {
     char buf[4096];
     Package *iter;
@@ -1046,7 +1040,9 @@ _ew_packages_extract(void)
     {
         const char *name;
         const char *tarname;
-        const char *taropt;
+        const char *ext;
+        char taropt[5];
+        int idx;
         int ret;
 
         iter = _ewpi_pkgs + _ew_package_index[i];
@@ -1055,7 +1051,23 @@ _ew_packages_extract(void)
 
         name = iter->name;
         tarname = iter->tarname;
-        taropt = iter->taropt;
+        ext = strrchr(tarname, '.');
+        ext++;
+
+        idx = 0;
+        if (verbose)
+            taropt[idx++] = 'v';
+        if ((strcmp(ext, "gz") == 0) || (strcmp(ext, "tgz") == 0))
+            taropt[idx++] = 'z';
+        else if (strcmp(ext, "bz2") == 0)
+            taropt[idx++] = 'j';
+        else
+        {
+            taropt[idx++] = 'J';
+            taropt[idx++] = 'h';
+        }
+        taropt[idx++] = 'f';
+        taropt[idx++] = '\0';
 
         _ew_packages_status_disp(c, count, name, iter->version);
 
@@ -1088,7 +1100,7 @@ _ew_packages_extract(void)
 }
 
 static void
-_ew_packages_install(const char *prefix, const char *host, const char *arch, const char *jobopt)
+_ew_packages_install(const char *prefix, const char *host, const char *arch, const char *jobopt, int verbose)
 {
     char buf[4096];
     Package *iter;
@@ -1105,7 +1117,6 @@ _ew_packages_install(const char *prefix, const char *host, const char *arch, con
     {
         const char *name;
         const char *tarname;
-        const char *taropt;
         int ret;
 
         iter = _ewpi_pkgs + _ew_package_index[i];
@@ -1114,14 +1125,13 @@ _ew_packages_install(const char *prefix, const char *host, const char *arch, con
 
         name = iter->name;
         tarname = iter->tarname;
-        taropt = iter->taropt;
 
         _ew_packages_status_disp(c, _ew_package_count_not_installed, name, iter->version);
 
         snprintf(buf, 4095,
                  "cd %s/%s && sh ./install.sh %s %s %s %s %s %s",
                  _ew_package_dir_dst, name,
-                 arch, tarname, prefix, host, jobopt, "1");
+                 arch, tarname, prefix, host, jobopt, verbose ? "yes" : "no");
         ret = system(buf);
         if (ret != 0)
         {
@@ -1248,6 +1258,7 @@ int main(int argc, char *argv[])
     char *host = "x86_64-w64-mingw32";
     char *arch =  NULL;;
     char *jobopt = "";
+    int verbose = 0;
     int efl = 0;
     int cleaning = 0;
     int ret;
@@ -1281,6 +1292,10 @@ int main(int argc, char *argv[])
         else if (strncmp(argv[i], "--arch=", strlen("--arch=")) == 0)
         {
             arch = argv[i] + strlen("--arch=");
+        }
+        else if (strcmp(argv[i], "--verbose") == 0)
+        {
+            verbose = 1;
         }
         else if (strcmp(argv[i], "--efl") == 0)
         {
@@ -1339,11 +1354,12 @@ int main(int argc, char *argv[])
     }
 
     printf(":: Configuration...\n");
-    printf("  prefix: %s\n", prefix);
-    printf("  host:   %s\n", host);
-    printf("  arch:   %s\n", arch);
-    printf("  efl:    %s\n", efl ? "yes" : "no");
-    printf("  jobs:   %s\n", jobopt);
+    printf("  prefix:  %s\n", prefix);
+    printf("  host:    %s\n", host);
+    printf("  arch:    %s\n", arch);
+    printf("  verbose: %s\n", verbose ? "yes" : "no");
+    printf("  efl:     %s\n", efl ? "yes" : "no");
+    printf("  jobs:    %s\n", jobopt);
     printf("\n");
     fflush(stdout);
 
@@ -1381,8 +1397,8 @@ int main(int argc, char *argv[])
     _ew_packages_not_installed_disp();
     _ew_packages_download();
     _ew_packages_longest_name();
-    _ew_packages_extract();
-    _ew_packages_install(prefix, host, arch, jobopt);
+    _ew_packages_extract(verbose);
+    _ew_packages_install(prefix, host, arch, jobopt, verbose);
     if (cleaning)
         _ew_packages_clean();
 

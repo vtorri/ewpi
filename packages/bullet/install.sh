@@ -21,7 +21,7 @@ export LDFLAGS="$machine $LDFLAGS"
 cmake \
     -DCMAKE_TOOLCHAIN_FILE=cross_toolchain.txt \
     -DCMAKE_INSTALL_PREFIX=$prefix_unix \
-    -DCMAKE_VERBOSE_MAKEFILE=TRUE \
+    -DCMAKE_VERBOSE_MAKEFILE:BOOL=$verbcmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_C_FLAGS="-I$EWPI_PWD/src -I.. -O2 -pipe -march=$1" \
     -DCMAKE_CXX_FLAGS="-I$EWPI_PWD/src -I.. -O2 -pipe -march=$1" \

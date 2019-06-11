@@ -48,7 +48,7 @@ TAG_CPP_FLAGS="-I$EWPI_PWD \
 cmake \
     -DCMAKE_TOOLCHAIN_FILE=cross_toolchain.txt \
     -DCMAKE_INSTALL_PREFIX=$prefix_unix \
-    -DCMAKE_VERBOSE_MAKEFILE=TRUE \
+    -DCMAKE_VERBOSE_MAKEFILE:BOOL=$verbcmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_SHARED_LIBS:BOOL=ON \
     -DCMAKE_C_FLAGS="-O2 -pipe -march=$1 -I$3/include" \

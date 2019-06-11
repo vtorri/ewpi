@@ -20,7 +20,7 @@ export LDFLAGS="$machine $LDFLAGS"
 cmake \
     -DCMAKE_TOOLCHAIN_FILE=cross_toolchain.txt \
     -DCMAKE_INSTALL_PREFIX=$prefix_unix \
-    -DCMAKE_VERBOSE_MAKEFILE=TRUE \
+    -DCMAKE_VERBOSE_MAKEFILE:BOOL=$verbcmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_C_FLAGS="-Isrc -I. -I.. -I../src -pipe -march=$1" \
     -DCMAKE_EXE_LINKER_FLAGS="-s" \
