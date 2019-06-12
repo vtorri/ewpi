@@ -20,6 +20,7 @@ fi
             --enable-libfreetype \
             --enable-libfribidi \
             --enable-libgme \
+            --enable-libgsm \
             --enable-libilbc \
             --enable-libmp3lame \
             --enable-libopenh264 \

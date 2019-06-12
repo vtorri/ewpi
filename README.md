@@ -94,6 +94,7 @@ Examples :
  * libbluray
  * libgcrypt
  * libgme
+ * libgsm
  * libgpg-error
  * libidn2
  * libilbc
