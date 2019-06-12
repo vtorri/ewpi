@@ -89,12 +89,14 @@ Examples :
  * iconv
  * icu
  * libaacs
+ * libass
  * libbdplus
  * libbluray
  * libgcrypt
  * libgme
  * libgpg-error
  * libidn2
+ * libilbc
  * libjpeg
  * libogg
  * libopenh264
@@ -110,6 +112,7 @@ Examples :
  * libtiff
  * libunistring
  * libvorbis
+ * libwavpack
  * libwebp
  * libxml2
  * luajit

@@ -1,0 +1,4 @@
+name: libilbc
+version: 1.16.0
+url: https://github.com/TimothyGu/libilbc/releases/download/v2.0.2/libilbc-2.0.2.tar.bz2
+deps:

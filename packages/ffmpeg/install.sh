@@ -14,11 +14,13 @@ fi
             --enable-cross-compile --cross-prefix=$4- \
             --target-os=$targetOS --arch=$arch \
             --enable-gcrypt \
+            --enable-libass \
             --enable-libbluray \
             --enable-libfontconfig \
             --enable-libfreetype \
             --enable-libfribidi \
             --enable-libgme \
+            --enable-libilbc \
             --enable-libmp3lame \
             --enable-libopenh264 \
             --enable-libopenjpeg \
