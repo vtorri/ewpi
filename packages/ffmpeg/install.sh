@@ -26,6 +26,7 @@ fi
             --enable-libmysofa \
             --enable-libopenh264 \
             --enable-libopenjpeg \
+            --enable-libopenmpt \
             --enable-libopus \
             --enable-librtmp \
             --enable-libsoxr \

@@ -102,6 +102,7 @@ Examples :
  * libmysofa
  * libogg
  * libopenh264
+ * libopenmpt
  * libpng
  * libpsl
  * libressl
