@@ -23,6 +23,7 @@ fi
             --enable-libgsm \
             --enable-libilbc \
             --enable-libmp3lame \
+            --enable-libmysofa \
             --enable-libopenh264 \
             --enable-libopenjpeg \
             --enable-libopus \

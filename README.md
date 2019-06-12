@@ -99,6 +99,7 @@ Examples :
  * libidn2
  * libilbc
  * libjpeg
+ * libmysofa
  * libogg
  * libopenh264
  * libpng
