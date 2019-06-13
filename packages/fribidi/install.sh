@@ -1,6 +1,6 @@
 #! /bin/sh
 
-source ../../common.sh
+. ../../common.sh
 
 export CPPFLAGS="-DFRIBIDI_ENTRY='__declspec(dllexport)'"
 

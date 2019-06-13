@@ -1,6 +1,6 @@
 #! /bin/sh
 
-source ../../common.sh
+. ../../common.sh
 
 sed -i '/^#/ ! s/\<iconv\.dll\>/libiconv.dll/g' Makefile
 

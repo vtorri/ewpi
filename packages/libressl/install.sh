@@ -1,6 +1,6 @@
 #! /bin/sh
 
-source ../../common.sh
+. ../../common.sh
 
 sed -i -e 's/SUBDIRS = crypto ssl tls include apps tests man/SUBDIRS = crypto ssl tls include apps tests/g' Makefile.in
 

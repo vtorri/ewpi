@@ -1,6 +1,6 @@
 #! /bin/sh
 
-source ../../common.sh
+. ../../common.sh
 
 sed -i -e 's/-m 700//g' test/Makefile.in
 

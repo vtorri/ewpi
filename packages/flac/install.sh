@@ -1,6 +1,6 @@
 #! /bin/sh
 
-source ../../common.sh
+. ../../common.sh
 
 export LIBS="-L$3/lib -liconv"
 

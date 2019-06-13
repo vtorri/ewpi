@@ -1,6 +1,6 @@
 #! /bin/sh
 
-source ../../common.sh
+. ../../common.sh
 
 ./configure --prefix=$3 --host=$4 --disable-static --disable-xlib --disable-quartz --disable-png --enable-ft --disable-gtk-doc-html --disable-ps --disable-pdf --disable-svg > ../config.log 2>&1
 

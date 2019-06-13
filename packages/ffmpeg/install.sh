@@ -1,6 +1,6 @@
 #! /bin/sh
 
-source ../../common.sh
+. ../../common.sh
 
 if test "x$4" = "xx86_64-w64-mingw32" ; then
     targetOS="mingw64"

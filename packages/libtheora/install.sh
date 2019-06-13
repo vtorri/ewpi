@@ -1,6 +1,6 @@
 #! /bin/sh
 
-source ../../common.sh
+. ../../common.sh
 
 case ${EWPI_OS} in
     MSYS*|MINGW*)

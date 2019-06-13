@@ -1,6 +1,6 @@
 #! /bin/sh
 
-source ../../common.sh
+. ../../common.sh
 
 if test "x$4" = "xi686-w64-mingw32" ; then
     cpu=x86

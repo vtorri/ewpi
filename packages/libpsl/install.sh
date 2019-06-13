@@ -1,6 +1,6 @@
 #! /bin/sh
 
-source ../../common.sh
+. ../../common.sh
 
 export LDFLAGS="$LDFLAGS -liconv -lws2_32"
 

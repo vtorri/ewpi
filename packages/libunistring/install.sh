@@ -1,6 +1,6 @@
 #! /bin/sh
 
-source ../../common.sh
+. ../../common.sh
 
 ./configure --prefix=$3 --host=$4 --disable-static --with-libiconv-prefix=$3 > ../config.log 2>&1
 

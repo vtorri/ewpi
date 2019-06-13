@@ -1,6 +1,6 @@
 #! /bin/sh
 
-source ../../common.sh
+. ../../common.sh
 
 sed -i -e 's/po-conf test/po-conf/g' Makefile.in
 

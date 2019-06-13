@@ -1,6 +1,6 @@
 #! /bin/sh
 
-source ../../common.sh
+. ../../common.sh
 
 arch="-m64"
 if test "x$4" = "xi686-w64-mingw32"; then

@@ -1,6 +1,6 @@
 #! /bin/sh
 
-source ../../common.sh
+. ../../common.sh
 
 $4-gcc \
     -s -O2 -pipe -march=$1 \

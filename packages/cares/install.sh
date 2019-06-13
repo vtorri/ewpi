@@ -1,6 +1,6 @@
 #! /bin/sh
 
-source ../../common.sh
+. ../../common.sh
 
 export CPPFLAGS="-D_WIN32_WINNT=0x0600 $CPPFLAGS"
 

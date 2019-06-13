@@ -1,6 +1,6 @@
 #! /bin/sh
 
-source ../../common.sh
+. ../../common.sh
 
 echo "libgsmdll: \$(GSM_OBJECTS)
 	\$(CC) -s \$(LFLAGS) -shared -Wl,--out-implib,libgsm.dll.a -o libgsm-1.dll \$(GSM_OBJECTS)" >> Makefile
