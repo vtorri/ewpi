@@ -10,7 +10,7 @@ case ${EWPI_OS} in
 	cd source_native
 	CWD=$(pwd)
 	./runConfigureICU Linux --prefix=$CWD/build --enable-tools --disable-tests --disable-samples > ../../config_unix.log 2>&1
-	make -j $5 > ../../make_unix.log 2>&1
+	make -j $jobopt > ../../make_unix.log 2>&1
 	cd ..
 	cross="--with-cross-build=$CWD"
     ;;
@@ -20,7 +20,7 @@ cd source
 
 ./runConfigureICU MinGW --prefix=$3 --host=$4 $cross --enable-tools --disable-tests --disable-samples > ../../config.log 2>&1
 
-make -j $5 install > ../../make.log 2>&1
+make -j $jobopt install > ../../make.log 2>&1
 
 mv $3/lib/*.dll $3/bin
 sed -i -e \

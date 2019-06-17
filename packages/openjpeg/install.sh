@@ -58,6 +58,6 @@ case ${EWPI_OS} in
     ;;
 esac
 
-make -j $5 install > ../make.log 2>&1
+make -j $jobopt install > ../make.log 2>&1
 
 sed -i -e "s|$prefix_unix|$3|g" $3/lib/pkgconfig/libopenjp2.pc

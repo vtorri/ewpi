@@ -6,6 +6,7 @@
 # $5 : jobopt
 # $6 : verbose
 
+jobopt=$5
 verbose=$6
 
 set -e
@@ -30,6 +31,10 @@ export CPPFLAGS=-I$3/include
 export CFLAGS="-O2 -pipe -march=$1"
 export CXXFLAGS="-O2 -pipe -march=$1"
 export LDFLAGS="-L$3/lib -s"
+
+if test "x${jobopt}" = "xno" ; then
+    jobopt=""
+fi
 
 if test "x${verbose}" = "xyes" ; then
     verbmake="V=1"

@@ -10,4 +10,4 @@ fi
 
 ./configure --prefix=$3 --host=$4 --disable-static --with-cpu=$cpu --enable-yasm --enable-int-quality --with-default-audio=win32_wasapi > ../config.log 2>&1
 
-make -j $5 $verbmake install > ../make.log 2>&1
+make -j $jobopt $verbmake install > ../make.log 2>&1

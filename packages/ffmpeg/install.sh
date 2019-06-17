@@ -34,8 +34,9 @@ fi
             --enable-libtheora \
             --enable-libtls \
             --enable-libvorbis \
+            --enable-libwavpack \
             --enable-libwebp \
             --enable-libxml2 \
             > ../config.log 2>&1
 
-make -j $5 $verbff install > ../make.log 2>&1
+make -j $jobopt $verbff install > ../make.log 2>&1

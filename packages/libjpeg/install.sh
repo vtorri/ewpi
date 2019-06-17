@@ -33,7 +33,7 @@ cmake \
     -G "Unix Makefiles" \
     . >> ../config.log 2>&1
 
-make -j $5 install > ../make.log 2>&1
+make -j $jobopt install > ../make.log 2>&1
 
 sed -i -e "s|$prefix_unix|$3|g" $3/lib/pkgconfig/libjpeg.pc
 sed -i -e "s|$prefix_unix|$3|g" $3/lib/pkgconfig/libturbojpeg.pc

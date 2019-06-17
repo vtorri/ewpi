@@ -37,9 +37,10 @@ cmake \
     -G "Unix Makefiles" \
     . > ../config.log 2>&1
 
-#sed -i -e "s|/opt/ewpi_32/lib/libz.dll.a|/opt/ewpi_32/lib/libz.dll.a|g" src/CMakeFiles/mysofa-shared.dir/build.make
-sed -i -e "s|/opt/ewpi_32/lib/libz.dll.a|-lz|g" src/CMakeFiles/mysofa-shared.dir/linklibs.rsp
+sed -i -e "s|$prefix_unix/lib/libz.dll.a|-lz|g" src/CMakeFiles/mysofa-shared.dir/linklibs.rsp
 
-make -j $5 install > ../make.log 2>&1
+make -j $jobopt install > ../make.log 2>&1
 
 sed -i -e "s|$prefix_unix|$3|g" $3/lib/pkgconfig/libmysofa.pc
+
+cp src/libmysofa.dll.a $3/lib

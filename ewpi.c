@@ -1131,7 +1131,7 @@ _ew_packages_install(const char *prefix, const char *host, const char *arch, con
         snprintf(buf, 4095,
                  "cd %s/%s && sh ./install.sh %s %s %s %s %s %s",
                  _ew_package_dir_dst, name,
-                 arch, tarname, prefix, host, jobopt, verbose ? "yes" : "no");
+                 arch, tarname, prefix, host, (*jobopt == 0) ? "no" : jobopt, verbose ? "yes" : "no");
         ret = system(buf);
         if (ret != 0)
         {

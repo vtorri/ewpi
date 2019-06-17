@@ -13,8 +13,8 @@ sed -i \
   -e '/ -o win_iconv.exe\>/ s,\$(CC),& $(LDFLAGS),' \
   Makefile
 
-make -j $5 clean > ../make.log 2>&1
-make -j $5 install prefix=$3 CC=$4-gcc AR=$4-ar RANLIB=$4-ranlib DLLTOOL=$4-dlltool >> ../make.log 2>&1
+make -j $jobopt clean > ../make.log 2>&1
+make -j $jobopt install prefix=$3 CC=$4-gcc AR=$4-ar RANLIB=$4-ranlib DLLTOOL=$4-dlltool >> ../make.log 2>&1
 
 cat > iconv.pc <<EOF
 prefix=$3
