@@ -22,6 +22,7 @@ fi
             --enable-libgme \
             --enable-libgsm \
             --enable-libilbc \
+            --enable-libmodplug \
             --enable-libmp3lame \
             --enable-libmysofa \
             --enable-libopenh264 \

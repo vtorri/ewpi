@@ -1,0 +1,4 @@
+name: libmodplug
+version: 0.8.9
+url: https://freefr.dl.sourceforge.net/project/modplug-xmms/libmodplug/0.8.9.0/libmodplug-0.8.9.0.tar.gz
+deps:

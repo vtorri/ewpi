@@ -100,6 +100,7 @@ Examples :
  * libilbc
  * libjpeg
  * libmysofa
+ * libmodplug
  * libogg
  * libopenh264
  * libopenmpt

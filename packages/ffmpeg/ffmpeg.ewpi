@@ -1,4 +1,4 @@
 name: ffmpeg
 version: 4.1.3
 url: http://ffmpeg.org/releases/ffmpeg-4.1.3.tar.xz
-deps: pkg-config libass libressl libgcrypt libbluray fontconfig freetype fribidi libgme libgsm libilbc libmysofa libopenh264 libopenmpt openjpeg opus librtmp libsnappy libsoxr libspeex libtheora libvorbis libwavpack libwebp libxml2 mp3lame bzip2 iconv xz sdl2
+deps: pkg-config libass libressl libgcrypt libbluray fontconfig freetype fribidi libgme libgsm libilbc libmodplug libmysofa libopenh264 libopenmpt openjpeg opus librtmp libsnappy libsoxr libspeex libtheora libvorbis libwavpack libwebp libxml2 mp3lame bzip2 iconv xz sdl2
