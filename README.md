@@ -107,6 +107,7 @@ Examples :
  * libpsl
  * libressl
  * librtmp
+ * libsnappy
  * libsndfile
  * libsoxr
  * libspeex

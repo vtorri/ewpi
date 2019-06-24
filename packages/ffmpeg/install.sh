@@ -29,6 +29,7 @@ fi
             --enable-libopenmpt \
             --enable-libopus \
             --enable-librtmp \
+            --enable-libsnappy \
             --enable-libsoxr \
             --enable-libspeex \
             --enable-libtheora \
