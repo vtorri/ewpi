@@ -64,76 +64,76 @@ Examples :
 
 ## Packages installed
 
- * bullet
- * bzip2
- * cairo
- * cares
- * check
- * curl
- * dbus
- * expat
- * flac
- * fontconfig
- * freetype
- * freetype_bootstrap
- * fribidi
- * gettext
- * giflib
- * glib2
- * graphene
- * graphite2
- * gst-plugins-base
- * gst-plugins-good
- * gstreamer
- * harfbuzz
- * iconv
- * icu
- * libaacs
+ * bullet (zlib license)
+ * bzip2 (BSD)
+ * cairo (LGPL 2.1)
+ * cares (MIT)
+ * check (LGPL 2.1)
+ * curl (BSD)
+ * dbus (Academic Free License version 2.1)
+ * expat (BSD)
+ * flac (LGPL 2.1)
+ * fontconfig (BSD)
+ * freetype (FreeType license)
+ * freetype_bootstrap (FreeType license)
+ * fribidi (LGPL 2.1)
+ * gettext (only libintl : LGPL 2.1)
+ * giflib (BSD)
+ * glib2 (LGPL 2.1)
+ * graphene (BSD)
+ * graphite2 (LGPL 2.1)
+ * gst-plugins-base (LGPL 2.1)
+ * gst-plugins-good (LGPL 2.1)
+ * gstreamer (LGPL 2.1)
+ * harfbuzz (MIT)
+ * iconv (public domain)
+ * icu (BSD)
+ * libaacs (LGPL 2.1)
  * libass
- * libbdplus
- * libbluray
- * libgcrypt
- * libgme
+ * libbdplus (LGPL 2.1)
+ * libbluray (LGPL 2.1)
+ * libgcrypt (LGPL 2.1)
+ * libgme (LGPL 2.1)
  * libgsm
- * libgpg-error
- * libidn2
+ * libgpg-error (LGPL 2.1)
+ * libidn2 (LGPL 3.0)
  * libilbc
- * libjpeg
+ * libjpeg (BSD)
  * libmysofa
  * libmodplug
- * libogg
- * libopenh264
+ * libogg (BSD)
+ * libopenh264 (BSD)
  * libopenmpt
- * libpng
- * libpsl
- * libressl
- * librtmp
+ * libpng (BSD)
+ * libpsl (BSD)
+ * libressl (Openssl and ISC licenses)
+ * librtmp (LGPL 2.1)
  * libsnappy
- * libsndfile
- * libsoxr
- * libspeex
- * libssh2
- * libtheora
- * libtiff
- * libunistring
- * libvorbis
+ * libsndfile (LGPL 2.1)
+ * libsoxr (LGPL 2.1)
+ * libspeex (BSD)
+ * libssh2 (BSD)
+ * libtheora (BSD)
+ * libtiff (BSD)
+ * libunistring (LGPL 3.0)
+ * libvorbis (BSD)
  * libwavpack
- * libwebp
- * libxml2
- * luajit
- * lz4
- * mp3lame
- * mpg123
- * nasm
- * nghttp2
- * openjpeg
- * opus
- * orc
- * pixman
+ * libwebp (BSD)
+ * libxml2 (MIT)
+ * luajit (MIT + public domain for some parts)
+ * lz4 (BSD for the library)
+ * mp3lame (LGPL 2.1)
+ * mpg123 (LGPL 2.1)
+ * nasm (BSD)
+ * nghttp2 (MIT)
+ * openjpeg (BSD)
+ * opus (BSD)
+ * orc (BSD)
+ * pixman (MIT)
  * pkg-config
- * regex
- * sdl2
- * taglib
- * xz
- * yasm
- * zlib
+ * regex (MIT)
+ * sdl2 (BSD)
+ * taglib (LGPL 2.1)
+ * xz (lzma : public domain)
+ * yasm (BSD)
+ * zlib (zlib license)
