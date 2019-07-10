@@ -96,7 +96,6 @@ Examples :
  * libgme (LGPL 2.1)
  * libgsm
  * libgpg-error (LGPL 2.1)
- * libidn2 (LGPL 3.0)
  * libilbc
  * libjpeg (BSD)
  * libmysofa
@@ -115,7 +114,6 @@ Examples :
  * libssh2 (BSD)
  * libtheora (BSD)
  * libtiff (BSD)
- * libunistring (LGPL 3.0)
  * libvorbis (BSD)
  * libwavpack
  * libwebp (BSD)
