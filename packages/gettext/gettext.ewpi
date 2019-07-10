@@ -1,5 +1,5 @@
 name: gettext
 version: 0.19.8
 url: https://ftp.gnu.org/pub/gnu/gettext/gettext-0.19.8.tar.xz
-deps: libunistring iconv
+deps: iconv
 installed: yes
