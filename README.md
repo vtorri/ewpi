@@ -72,6 +72,7 @@ Examples :
  * curl (MIT)
  * dbus (Academic Free License version 2.1)
  * expat (MIT)
+ * ffmpeg (LGPL 2.1)
  * flac (LGPL 2.1)
  * fontconfig (MIT)
  * freetype (FreeType license)
@@ -88,18 +89,19 @@ Examples :
  * harfbuzz (MIT)
  * iconv (public domain)
  * icu (MIT)
+ * lcms2 (MIT)
  * libaacs (LGPL 2.1)
  * libass
  * libbdplus (LGPL 2.1)
  * libbluray (LGPL 2.1)
  * libgcrypt (LGPL 2.1)
  * libgme (LGPL 2.1)
- * libgsm
  * libgpg-error (LGPL 2.1)
+ * libgsm
  * libilbc
  * libjpeg (BSD 3-clause)
- * libmysofa
  * libmodplug
+ * libmysofa
  * libogg (BSD 3-clause)
  * libopenh264 (BSD 2-clause)
  * libopenmpt

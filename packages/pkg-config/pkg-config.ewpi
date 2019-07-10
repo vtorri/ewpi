@@ -1,4 +1,4 @@
 name: pkg-config
-version: 0.29.2
-url: https://pkg-config.freedesktop.org/releases/pkg-config-0.29.2.tar.gz
+version: 1.6.1
+url: https://git.dereferenced.org/pkgconf/pkgconf/archive/pkgconf-1.6.1.tar.gz
 deps:

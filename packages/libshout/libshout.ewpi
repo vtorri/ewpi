@@ -1,4 +1,0 @@
-name: libshout
-version: 2.4.3
-url: https://ftp.osuosl.org/pub/xiph/releases/libshout/libshout-2.4.3.tar.gz
-deps: pkg-config libogg libvorbis libtheora libspeex libressl
