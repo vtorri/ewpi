@@ -91,25 +91,25 @@ Examples :
  * icu (MIT)
  * lcms2 (MIT)
  * libaacs (LGPL 2.1)
- * libass
+ * libass (ISC)
  * libbdplus (LGPL 2.1)
  * libbluray (LGPL 2.1)
  * libgcrypt (LGPL 2.1)
  * libgme (LGPL 2.1)
  * libgpg-error (LGPL 2.1)
- * libgsm
- * libilbc
+ * libgsm (MIT)
+ * libilbc (BSD 3-clause)
  * libjpeg (BSD 3-clause)
- * libmodplug
- * libmysofa
+ * libmodplug (public domain)
+ * libmysofa (BSD 3-clause)
  * libogg (BSD 3-clause)
  * libopenh264 (BSD 2-clause)
- * libopenmpt
+ * libopenmpt (BSD 3-clause)
  * libpng (BSD 3-clause)
  * libpsl (MIT)
  * libressl (Openssl and ISC licenses)
  * librtmp (LGPL 2.1)
- * libsnappy
+ * libsnappy (BSD 3-clause)
  * libsndfile (LGPL 2.1)
  * libsoxr (LGPL 2.1)
  * libspeex (BSD 3-clause)
@@ -117,7 +117,7 @@ Examples :
  * libtheora (BSD 3-clause)
  * libtiff (BSD 2-clause)
  * libvorbis (BSD 3-clause)
- * libwavpack
+ * libwavpack (BSD 3-clause)
  * libwebp (BSD 3-clause)
  * libxml2 (MIT)
  * luajit (MIT + public domain for some parts)
