@@ -11,7 +11,6 @@ else
 fi
 
 sed -i -e "s/@host@/$4/g;s/@arch@/$1/g;s|@prefix@|$3|g" cross_toolchain.txt
-sed -i -e "s/strndup/pkgconf_strndup/g" cli/main.c
 
 rm -rf builddir && mkdir builddir && cd builddir
 meson .. \
