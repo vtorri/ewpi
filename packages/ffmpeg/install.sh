@@ -16,6 +16,7 @@ fi
             --enable-gcrypt \
             --enable-libass \
             --enable-libbluray \
+            --enable-libbs2b \
             --enable-libfontconfig \
             --enable-libfreetype \
             --enable-libfribidi \
