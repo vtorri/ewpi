@@ -51,7 +51,7 @@ case $2 in
         bn=`basename $2`
         dir_name=${bn%.*}
         ;;
-    *.xz)
+    *.xz|*.lzma)
         dir_name=`tar tJfh $2 | head -1 | cut -f1 -d"/"`
         ;;
     *.bz2)
