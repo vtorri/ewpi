@@ -1,4 +1,4 @@
 name: libjpeg
 version: 2.0.2
-url: https://freefr.dl.sourceforge.net/project/libjpeg-turbo/2.0.2/libjpeg-turbo-2.0.2.tar.gz
+url: https://github.com/libjpeg-turbo/libjpeg-turbo/archive/2.0.2.tar.gz
 deps: yasm
