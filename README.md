@@ -100,6 +100,7 @@ Examples :
  * libgsm (MIT)
  * libilbc (BSD 3-clause)
  * libjpeg (BSD 3-clause)
+ * libkvazaar (LGPL 2.1)
  * libmodplug (public domain)
  * libmysofa (BSD 3-clause)
  * libogg (BSD 3-clause)
