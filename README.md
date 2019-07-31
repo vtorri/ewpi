@@ -95,6 +95,7 @@ Examples :
  * libbdplus (LGPL 2.1)
  * libbluray (LGPL 2.1)
  * libbs2b (MIT)
+ * libdav1d (BSD 2-clause)
  * libgcrypt (LGPL 2.1)
  * libgme (LGPL 2.1)
  * libgpg-error (LGPL 2.1)

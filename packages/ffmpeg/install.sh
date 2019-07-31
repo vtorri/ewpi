@@ -17,6 +17,7 @@ fi
             --enable-libass \
             --enable-libbluray \
             --enable-libbs2b \
+            --enable-libdav1d \
             --enable-libfontconfig \
             --enable-libfreetype \
             --enable-libfribidi \
