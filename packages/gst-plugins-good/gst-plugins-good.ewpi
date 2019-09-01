@@ -1,4 +1,4 @@
 name: gst-plugins-good
-version: 1.14.4
-url: https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.14.4.tar.xz
+version: 1.16.0
+url: https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.16.0.tar.xz
 deps: pkg-config gstreamer gst-plugins-base orc flac libjpeg mpg123 libpng libspeex libwavpack taglib mp3lame zlib gettext
