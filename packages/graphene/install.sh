@@ -28,6 +28,11 @@ meson .. \
       --strip \
       --cross-file ../cross_toolchain.txt \
       --default-library shared \
-      -Dintrospection=false > ../../config.log 2>&1
+      -Dgtk_doc=false \
+      -Dgobject_types=false \
+      -Dintrospection=false \
+      -Darm_neon=false \
+      -Dtests=false \
+      -Dinstalled_tests=false > ../../config.log 2>&1
 
 ninja $verbninja install > ../../make.log 2>&1
