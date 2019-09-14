@@ -1,4 +1,4 @@
 name: expat
-version: 2.2.6
-url: https://github.com/libexpat/libexpat/releases/download/R_2_2_6/expat-2.2.6.tar.bz2
+version: 2.2.8
+url: https://github.com/libexpat/libexpat/releases/download/R_2_2_8/expat-2.2.8.tar.xz
 deps:
