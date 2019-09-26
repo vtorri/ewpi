@@ -83,6 +83,7 @@ Examples :
  * glib2 (LGPL 2.1)
  * graphene (MIT)
  * graphite2 (LGPL 2.1)
+ * gst-libav (LGPL 2.1)
  * gst-plugins-base (LGPL 2.1)
  * gst-plugins-good (LGPL 2.1)
  * gstreamer (LGPL 2.1)
