@@ -1,4 +1,4 @@
 name: libpng
 version: 1.6.37
-url: https://datapacket.dl.sourceforge.net/project/libpng/libpng16/1.6.37/libpng-1.6.37.tar.xz
+url: https://freefr.dl.sourceforge.net/project/libpng/libpng16/1.6.37/libpng-1.6.37.tar.xz
 deps: zlib
