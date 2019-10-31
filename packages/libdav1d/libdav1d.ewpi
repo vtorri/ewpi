@@ -1,4 +1,4 @@
 name: libdav1d
-version: 0.3.1
-url: https://code.videolan.org/videolan/dav1d/-/archive/0.3.1/dav1d-0.3.1.tar.bz2
+version: 0.5.1
+url: https://code.videolan.org/videolan/dav1d/-/archive/0.5.1/dav1d-0.5.1.tar.bz2
 deps: nasm
