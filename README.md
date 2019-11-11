@@ -92,6 +92,7 @@ Examples :
  * icu (MIT)
  * lcms2 (MIT)
  * libaacs (LGPL 2.1)
+ * libarchive (BSD 2-clause)
  * libass (ISC)
  * libbdplus (LGPL 2.1)
  * libbluray (LGPL 2.1)
@@ -141,3 +142,4 @@ Examples :
  * xz (lzma : public domain)
  * yasm
  * zlib (zlib license)
+ * zstd (BSD 3-clause)
