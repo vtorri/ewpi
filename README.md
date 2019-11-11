@@ -3,7 +3,7 @@ EFL Windows package installer
 
 This project install a set of libraries, most of them being compatible
 with LGPL v2.1. The others are compatible with GPL v2 or AGPL v3, for use
-with Etui.
+with Etui. See below the list of installed libraries.
 
 # Requirements:
  * mingw-w64 toolchain (rename ar, dlltool, nm, ranlib, strip and windres with the host prefix when compiling on Windows)
@@ -153,3 +153,8 @@ Examples :
 ### Libraries compatible with GPL v2
 
  * djvulibre
+
+### Libraries compatible with AGPL v3
+
+ * jbig2dec
+ * mupdf
