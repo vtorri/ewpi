@@ -1,6 +1,10 @@
 # ewpi
 EFL Windows package installer
 
+This project install a set of libraries, most of them being compatible
+with LGPL v2.1. The others are compatible with GPL v2 or AGPL v3, for use
+with Etui.
+
 # Requirements:
  * mingw-w64 toolchain (rename ar, dlltool, nm, ranlib, strip and windres with the host prefix when compiling on Windows)
  * make
@@ -63,6 +67,8 @@ Examples :
  * ./ewpi --host=x86_64-w64-mingw32 --efl --jobs=4 --clean
 
 ## Packages installed
+
+### Libraries compatible with LGPL v2.1
 
  * bullet (zlib license)
  * bzip2 (BSD 4-clause, LGPL 2.1 compatible)
@@ -143,3 +149,7 @@ Examples :
  * yasm
  * zlib (zlib license)
  * zstd (BSD 3-clause)
+
+### Libraries compatible with GPL v2
+
+ * djvulibre

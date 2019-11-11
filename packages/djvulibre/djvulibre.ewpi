@@ -1,0 +1,4 @@
+name: djvulibre
+version: 3.5.27
+url: https://freefr.dl.sourceforge.net/project/djvu/DjVuLibre/3.5.27/djvulibre-3.5.27.tar.gz
+deps: libjpeg libtiff iconv
