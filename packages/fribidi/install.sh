@@ -2,7 +2,7 @@
 
 . ../../common.sh
 
-export CPPFLAGS="-DFRIBIDI_ENTRY='__declspec(dllexport)'"
+export CPPFLAGS="-DFRIBIDI_ENTRY=__declspec(dllexport)"
 
 cp ../cross_toolchain.txt .
 
