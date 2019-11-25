@@ -28,12 +28,12 @@ with Etui. See below the list of installed libraries.
 
 ## Fedora 32 bits
 
-1. dnf install cmake yasm nasm gperf python ninja-build mingw32-gcc mingw32-gcc-c++ mingw32-pkg-config python3-pip bison flex
+1. dnf install cmake yasm nasm gperf python ninja-build mingw32-gcc mingw32-gcc-c++ mingw32-pkg-config python3-pip bison flex make gcc-c++
 2. run "pip3 install meson"
 
 ## Fedora 64 bits
 
-1. dnf install cmake yasm nasm gperf python ninja-build mingw64-gcc mingw64-gcc-c++ mingw64-pkg-config python3-pip bison flex
+1. dnf install cmake yasm nasm gperf python ninja-build mingw64-gcc mingw64-gcc-c++ mingw64-pkg-config python3-pip bison flex makegcc-c++
 2. run "pip3 install meson"
 
 # Compilation
