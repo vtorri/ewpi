@@ -2,7 +2,7 @@
 
 . ../../common.sh
 
-export CPPFLAGS="-DFRIBIDI_ENTRY=__declspec(dllexport)"
+sed -i -e 's/defined(_MSC_VER)/defined(_WIN32)/g;s/dllimport) extern/dllexport)/g;s/FRIBIDI_ENTRY extern/FRIBIDI_ENTRY/g' lib/fribidi-common.h
 
 cp ../cross_toolchain.txt .
 
@@ -22,7 +22,6 @@ meson .. \
       --strip \
       --cross-file ../cross_toolchain.txt \
       --default-library shared \
-      -Ddeprecated=false \
-      -Dlibpng=disabled > ../../config.log 2>&1
+      -Ddeprecated=false > ../../config.log 2>&1
 
 ninja $verbninja install > ../../make.log 2>&1
