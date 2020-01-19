@@ -30,4 +30,4 @@ cmake \
     -G "Unix Makefiles" \
     . >> ../config.log 2>&1
 
-make -j $5 install > ../make.log 2>&1
+make -j $jobopt install > ../make.log 2>&1
