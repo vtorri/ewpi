@@ -34,10 +34,10 @@ cmake \
     -DCMAKE_EXE_LINKER_FLAGS="-s" \
     -DCMAKE_SHARED_LINKER_FLAGS="-L$3/lib -s" \
     -DBUILD_TESTS:BOOL=OFF \
+    -DZLIB_INCLUDE_DIR:PATH=$prefix_unix/include \
+    -DZLIB_LIBRARY_RELEASE:FILEPATH=-lz \
     -G "Unix Makefiles" \
     . > ../config.log 2>&1
-
-sed -i -e "s|$prefix_unix/lib/libz.dll.a|-lz|g" src/CMakeFiles/mysofa-shared.dir/linklibs.rsp
 
 make -j $jobopt install > ../make.log 2>&1
 
