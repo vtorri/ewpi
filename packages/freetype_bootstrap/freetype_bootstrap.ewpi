@@ -1,4 +1,4 @@
 name: freetype_bootstrap
 version: 2.10.1
-url: https://netix.dl.sourceforge.net/project/freetype/freetype2/2.10.1/freetype-2.10.1.tar.xz
+url: https://download.savannah.gnu.org/releases/freetype/freetype-2.10.1.tar.xz
 deps: pkg-config zlib libpng bzip2
