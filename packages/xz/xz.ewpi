@@ -1,4 +1,4 @@
 name: xz
-version: 5.2.4
-url: https://tukaani.org/xz/xz-5.2.4.tar.xz
+version: 5.2.5
+url: https://tukaani.org/xz/xz-5.2.5.tar.xz
 deps: gettext
