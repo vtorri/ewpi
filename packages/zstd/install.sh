@@ -2,6 +2,8 @@
 
 . ../../common.sh
 
+sed -i -e 's/<Windows.h>/<windows.h>/g' programs/timefn.h
+
 make -j $jobopt CC=$4-gcc WINDRES=$4-windres AR=$4-ar > ../make.log 2>&1
 cp lib/dll/libzstd.dll $3/bin
 cp lib/dll/libzstd.lib $3/lib/libzstd.dll.a
