@@ -22,14 +22,3 @@ cd source
 
 make -j $jobopt > ../../make.log 2>&1
 make install >> ../../make.log 2>&1
-
-mv $3/lib/*.dll $3/bin
-sed -i -e \
-    's/Libs: -licuin65/Libs: -L${libdir} -licuin/g' \
-    $3/lib/pkgconfig/icu-i18n.pc
-sed -i -e \
-    's/Libs: -licuio65/Libs: -L${libdir} -licuio/g' \
-    $3/lib/pkgconfig/icu-io.pc
-sed -i -e \
-    's/-licuuc65 -licudt65/-licuuc -licudt/g' \
-    $3/lib/pkgconfig/icu-uc.pc
