@@ -1,4 +1,4 @@
 name: gettext
-version: 0.19.8
-url: https://ftp.gnu.org/pub/gnu/gettext/gettext-0.19.8.tar.xz
+version: 0.20.2
+url: https://ftp.gnu.org/pub/gnu/gettext/gettext-0.20.2.tar.xz
 deps: iconv
