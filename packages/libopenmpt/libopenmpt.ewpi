@@ -1,4 +1,4 @@
 name: libopenmpt
-version: 0.4.5
-url: https://lib.openmpt.org/files/libopenmpt/src/libopenmpt-0.4.5+release.autotools.tar.gz
+version: 0.4.12
+url: https://lib.openmpt.org/files/libopenmpt/src/libopenmpt-0.4.12+release.autotools.tar.gz
 deps: pkg-config zlib mpg123 libogg libvorbis
