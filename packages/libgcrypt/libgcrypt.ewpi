@@ -1,4 +1,4 @@
 name: libgcrypt
-version: 1.8.4
-url: https://www.gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.8.4.tar.bz2
+version: 1.8.5
+url: https://www.gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.8.5.tar.bz2
 deps: libgpg-error
