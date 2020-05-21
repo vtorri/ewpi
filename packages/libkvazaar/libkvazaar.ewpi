@@ -1,4 +1,4 @@
 name: libkvazaar
-version: 1.3.0
-url: https://github.com/ultravideo/kvazaar/releases/download/v1.3.0/kvazaar-1.3.0.tar.xz
+version: 2.0.0
+url: https://github.com/ultravideo/kvazaar/releases/download/v2.0.0/kvazaar-2.0.0.tar.xz
 deps: yasm

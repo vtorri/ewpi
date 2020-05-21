@@ -1,4 +1,4 @@
 name: mpg123
-version: 1.25.11
-url: https://www.mpg123.de/download/mpg123-1.25.11.tar.bz2
+version: 1.25.13
+url: http://mpg123.de/download/mpg123-1.25.13.tar.bz2
 deps: pkg-config yasm

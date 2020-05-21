@@ -1,4 +1,4 @@
 name: sdl2
-version: 2.0.9
-url: https://www.libsdl.org/release/SDL2-2.0.9.tar.gz
+version: 2.0.12
+url: https://www.libsdl.org/release/SDL2-2.0.12.tar.gz
 deps:
