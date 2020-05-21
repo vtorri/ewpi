@@ -1,4 +1,4 @@
 name: libgme
-version: 0.6.2
-url: https://bitbucket.org/mpyne/game-music-emu/downloads/game-music-emu-0.6.2.tar.xz
+version: 0.6.3
+url: https://bitbucket.org/mpyne/game-music-emu/downloads/game-music-emu-0.6.3.tar.xz
 deps:

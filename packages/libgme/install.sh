@@ -27,6 +27,7 @@ cmake \
     -DCMAKE_C_FLAGS="-I.. -O2 -pipe -march=$1" \
     -DCMAKE_EXE_LINKER_FLAGS="-s" \
     -DCMAKE_SHARED_LINKER_FLAGS="-s" \
+    -DENABLE_UBSAN:BOOL=OFF \
     -G "Unix Makefiles" \
     . >> ../config.log 2>&1
 
