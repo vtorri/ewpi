@@ -25,20 +25,18 @@ case ${EWPI_OS} in
     ;;
 esac
 
-export CFLAGS="$machine $CFLAGS"
-export CXXFLAGS="$machine $CXXFLAGS"
-export LDFLAGS="$machine $LDFLAGS"
+rm -rf builddir && mkdir builddir && cd builddir
 
 cmake \
-    -DCMAKE_TOOLCHAIN_FILE=cross_toolchain.txt \
+    -DCMAKE_TOOLCHAIN_FILE=../cross_toolchain.txt \
     -DCMAKE_INSTALL_PREFIX=$prefix_unix \
     -DCMAKE_VERBOSE_MAKEFILE:BOOL=$verbcmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_STATIC_LIBS:BOOL=OFF \
-    -DCMAKE_C_FLAGS="-O2 -pipe -march=$1 -I../common -I../../../src/lib/openjp2 -I$3/include" \
-    -DCMAKE_CXX_FLAGS="-O2 -pipe -march=$1" \
+    -DCMAKE_C_FLAGS="-O2 -pipe $machine -march=$1" \
+    -DCMAKE_CXX_FLAGS="-O2 -pipe $machine -march=$1" \
     -DCMAKE_EXE_LINKER_FLAGS="-s -L$prefix_unix/lib" \
-    -DCMAKE_SHARED_LINKER_FLAGS="-s" \
+    -DCMAKE_SHARED_LINKER_FLAGS="-s $machine" \
     -DBUILD_CODEC:BOOL=$codec \
     -DBUILD_JPWL:BOOL=OFF \
     -DBUILD_MJ2:BOOL=OFF \
@@ -46,18 +44,6 @@ cmake \
     -DBUILD_JP3D:BOOL=OFF \
     -DBUILD_PKGCONFIG_FILES:BOOL=ON \
     -G "Unix Makefiles" \
-    . > ../config.log 2>&1
+    .. > ../../config.log 2>&1
 
-case ${EWPI_OS} in
-    MSYS*|MINGW*)
-        sed -i -e "s|$prefix_unix|$3|g" src/bin/jp2/CMakeFiles/opj_compress.dir/linklibs.rsp
-        sed -i -e "s|$prefix_unix|$3|g" src/bin/jp2/CMakeFiles/opj_decompress.dir/linklibs.rsp
-        sed -i -e "s|$prefix_unix|$3|g" src/bin/jp2/CMakeFiles/opj_dump.dir/linklibs.rsp
-    ;;
-    *)
-    ;;
-esac
-
-make -j $jobopt install > ../make.log 2>&1
-
-sed -i -e "s|$prefix_unix|$3|g" $3/lib/pkgconfig/libopenjp2.pc
+make -j $jobopt install > ../../make.log 2>&1
