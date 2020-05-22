@@ -11,7 +11,6 @@ else
 fi
 
 sed -i -e "s/@host@/$4/g;s/@arch@/$1/g;s|@prefix@|$3|g" cross_toolchain.txt
-sed -i -e "s/'-Werror=missing-include-dirs/#'-Werror=missing-include-dirs/g" meson.build
 
 rm -rf builddir && mkdir builddir && cd builddir
 meson .. \
