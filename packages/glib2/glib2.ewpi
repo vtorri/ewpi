@@ -1,4 +1,4 @@
 name: glib2
 version: 2.64.3
 url: https://download.gnome.org/sources/glib/2.64/glib-2.64.3.tar.xz
-deps: pkg-config zlib iconv gettext
+deps: pkg-config libffi zlib iconv gettext
