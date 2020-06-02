@@ -1,4 +1,4 @@
 name: pkg-config
-version: 1.6.3
-url: https://git.sr.ht/~kaniini/pkgconf/archive/pkgconf-1.6.3.tar.gz
+version: 1.7.3
+url: https://distfiles.dereferenced.org/pkgconf/pkgconf-1.7.3.tar.xz
 deps:
