@@ -269,6 +269,29 @@ _ew_requirements(const char *host)
 
     for (int i = 0; _ew_req_host[i]; i++)
     {
+#ifdef _WIN32
+        const char *path;
+        char cmd[4096];
+
+        if (i >= 2)
+        {
+            if (strcmp(host, "x86_64-w64-mingw32") == 0)
+                path = "/mingw64/bin/";
+            else
+                path = "/mingw32/bin/";
+            strcpy(cmd, "cp ");
+            strcat(cmd, path);
+            strcat(cmd, _ew_req_host[i]);
+            strcat(cmd, ".exe");
+            strcat(cmd, " ");
+            strcat(cmd, path);
+            strcat(cmd, host);
+            strcat(cmd, "-");
+            strcat(cmd, _ew_req_host[i]);
+            strcat(cmd, ".exe");
+            system(cmd);
+        }
+#endif
         strcpy(buf, host);
         strcat(buf, "-");
         strcat(buf, _ew_req_host[i]);
