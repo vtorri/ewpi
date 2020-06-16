@@ -6,7 +6,7 @@ with LGPL v2.1. The others are compatible with GPL v2 or AGPL v3, for use
 with Etui. See below the list of installed libraries.
 
 # Requirements:
- * mingw-w64 toolchain (rename ar, dlltool, nm, ranlib, strip and windres with the host prefix when compiling on Windows)
+ * mingw-w64 toolchain
  * tar
  * make
  * cmake
