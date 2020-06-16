@@ -41,6 +41,8 @@ with Etui. See below the list of installed libraries.
 
 # Compilation
 
+after cloning ewpi and changing to thewpi directory:
+
 gcc -std=c99 -o ewpi ewpi.c ewpi_map.c
 
 # Usage
