@@ -6,7 +6,7 @@ with LGPL v2.1. The others are compatible with GPL v2 or AGPL v3, for use
 with Etui. See below the list of installed libraries.
 
 # Requirements:
- * mingw-w64 toolchain (rename ar, dlltool, nm, ranlib, strip and windres with the host prefix when compiling on Windows)
+ * mingw-w64 toolchain
  * tar
  * make
  * cmake
@@ -23,7 +23,7 @@ with Etui. See below the list of installed libraries.
 ## Windows with MSYS2
 
 1. Install MSYS2 : https://www.msys2.org/ (steps 1 to 6)
-2. run "pacman -S autoconf automake libtool tar git gettext-devel make cmake wget gperf python bison mingw-w64-x86_64-toolchain mingw-w64-i686-toolchain mingw-w64-x86_64-ninja mingw-w64-x86_64-python3-pip"
+2. run "pacman -S autoconf automake libtool tar git gettext-devel make mingw-w64-x86_64-cmake mingw-w64-i686-cmake wget gperf python bison mingw-w64-x86_64-toolchain mingw-w64-i686-toolchain mingw-w64-x86_64-ninja mingw-w64-x86_64-python3-pip"
 3. run "pip3 install meson"
 4. Verify that meson >= 0.50.1 is installed
 
@@ -40,6 +40,8 @@ with Etui. See below the list of installed libraries.
 3. Verify that meson >= 0.50.1 is installed
 
 # Compilation
+
+after cloning ewpi and changing to thewpi directory:
 
 gcc -std=c99 -o ewpi ewpi.c ewpi_map.c
 
