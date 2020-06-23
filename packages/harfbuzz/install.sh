@@ -29,7 +29,8 @@ meson .. \
       -Dcairo=disabled \
       -Dfontconfig=disabled \
       -Dtests=disabled \
-      -Dglib=disabled > ../../config.log 2>&1
+      -Dglib=disabled  \
+      -Dgobject=disabled > ../../config.log 2>&1
 
 ninja $verbninja install > ../../make.log 2>&1
 
