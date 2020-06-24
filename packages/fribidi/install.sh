@@ -22,6 +22,7 @@ meson .. \
       --strip \
       --cross-file ../cross_toolchain.txt \
       --default-library shared \
-      -Ddeprecated=false > ../../config.log 2>&1
+      -Ddeprecated=false \
+      -Ddocs=false > ../../config.log 2>&1
 
 ninja $verbninja install > ../../make.log 2>&1
