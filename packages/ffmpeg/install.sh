@@ -14,6 +14,7 @@ fi
             --enable-cross-compile --cross-prefix=$4- \
             --target-os=$targetOS --arch=$arch \
             --enable-gcrypt \
+            --enable-libaom \
             --enable-libass \
             --enable-libbluray \
             --enable-libbs2b \
