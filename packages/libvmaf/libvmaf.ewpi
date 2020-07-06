@@ -1,0 +1,4 @@
+name: libvmaf
+version: 1.5.2
+url: https://github.com/Netflix/vmaf/archive/v1.5.2.tar.gz
+deps:
