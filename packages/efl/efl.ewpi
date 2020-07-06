@@ -1,4 +1,4 @@
 name: efl
 version: 1.21.99
 url: https://git.enlightenment.org/core/efl.git
-deps: pkg-config zlib lz4 libjpeg libpng libtiff giflib openjpeg libwebp freetype fontconfig fribidi harfbuzz pixman sdl2 libsndfile libressl curl luajit bullet dbus gst-plugins-good gst-libav regex check gettext libarchive djvulibre mupdf
+deps: pkg-config zlib lz4 libjpeg libpng libtiff giflib openjpeg libwebp libavif freetype fontconfig fribidi harfbuzz pixman sdl2 libsndfile libressl curl luajit bullet dbus gst-plugins-good gst-libav regex check gettext libarchive djvulibre mupdf
