@@ -14,6 +14,10 @@ fi
 
 sed -i -e "s|@host@|$4|g;s|@proc@|$proc|g" cross_toolchain.txt
 
+sed -i -e "s|%zu|%Iu|g" apps/avifenc.c
+sed -i -e "s|%zu|%Iu|g" apps/avifdec.c
+sed -i -e "s|%zu|%Iu|g" apps/shared/avifutil.c
+
 rm -rf builddir && mkdir builddir && cd builddir
 
 cmake \
@@ -27,6 +31,7 @@ cmake \
     -DBUILD_SHARED_LIBS=TRUE \
     -DAVIF_CODEC_AOM:BOOL=ON \
     -DAVIF_CODEC_DAV1D:BOOL=ON \
+    -DAVIF_BUILD_APPS:BOOL=ON \
     -G "Unix Makefiles" \
     .. >> ../../config.log 2>&1
 
