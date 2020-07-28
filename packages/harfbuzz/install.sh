@@ -12,8 +12,6 @@ fi
 
 sed -i -e "s/@host@/$4/g;s/@arch@/$1/g;s|@prefix@|$3|g" cross_toolchain.txt
 
-sed -i -e 's/SUBDIRS = src util test docs/SUBDIRS = src util docs/g' Makefile.in
-
 rm -rf builddir && mkdir builddir && cd builddir
 meson .. \
       --prefix=$3 \
@@ -22,8 +20,12 @@ meson .. \
       --strip \
       --cross-file ../cross_toolchain.txt \
       --default-library shared \
+      -Dintrospection=disabled \
+      -Dtests=disabled \
+      -Ddocs=disabled \
       -Dfreetype=enabled \
       -Dgdi=enabled \
+      -Ddirectwrite=enabled \
       -Dgraphite=enabled \
       -Dicu=enabled \
       -Dcairo=disabled \
