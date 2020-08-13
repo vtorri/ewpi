@@ -27,7 +27,7 @@ includedir=\${prefix}/include
 
 Name: bzip2
 Description: Lossless, block-sorting data compression
-Version: 1.0.6
+Version: 1.0.8
 Libs: -L\${libdir} -lbz2
 Cflags: -I\${includedir}
 EOF
