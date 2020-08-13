@@ -24,7 +24,7 @@ cmake \
     -DCMAKE_INSTALL_PREFIX=$prefix_unix \
     -DCMAKE_VERBOSE_MAKEFILE:BOOL=$verbcmake \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_C_FLAGS="-O2 -pipe $machine -march=$1 -I$3/include" \
+    -DCMAKE_C_FLAGS="-O2 -pipe $machine -march=$1 -I$3/include -D__USE_MINGW_ANSI_STDIO=0" \
     -DCMAKE_EXE_LINKER_FLAGS="-s" \
     -DCMAKE_SHARED_LINKER_FLAGS="-s $machine" \
     -DBUILD_SHARED_LIBS=TRUE \
