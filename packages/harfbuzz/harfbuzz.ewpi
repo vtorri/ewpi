@@ -1,4 +1,4 @@
 name: harfbuzz
-version: 2.7.0
-url: https://github.com/harfbuzz/harfbuzz/archive/2.7.0.tar.gz
+version: 2.7.1
+url: https://github.com/harfbuzz/harfbuzz/releases/download/2.7.1/harfbuzz-2.7.1.tar.xz
 deps: pkg-config zlib libpng freetype_bootstrap graphite2 icu
