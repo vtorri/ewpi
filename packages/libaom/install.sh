@@ -3,7 +3,7 @@
 . ../../common.sh
 
 git fetch && git fetch --tags
-git checkout 05dad9298d2017e8a90cbbdf05b1ce88b2ef2c74
+git checkout b7897b4dc48cf24adbfde131c31dbc87367c63b8
 
 cp ../cross_toolchain.txt .
 
@@ -42,10 +42,14 @@ sed -i -e "s|target_sources(aom_static PRIVATE \$<TARGET_OBJECTS:aom_av1_common>
 sed -i -e "s|target_sources(aom_static PRIVATE \$<TARGET_OBJECTS:aom_av1_decoder>)||g" av1/av1.cmake
 sed -i -e "s|target_sources(aom_static PRIVATE \$<TARGET_OBJECTS:aom_av1_encoder>)||g" av1/av1.cmake
 
+sed -i -e "s|aom_ports/aom_ports.cmake||g" aom_ports/aom_ports.cmake
+sed -i -e "s|aom_ports/aom_ports.cmake||g" aom_ports/aom_ports.cmake
+sed -i -e "s|aom_ports/aom_ports.cmake||g" aom_ports/aom_ports.cmake
+
 sed -i -e "s|set(AOM_INSTALL_LIBS aom aom_static)||g" build/cmake/aom_install.cmake
 
-#sed -i -e "s|@host@|$4|g;s|@proc@|$proc|g;s|@prefix@|$prefix_unix|g" cross_toolchain.txt
-sed -i -e "s|@host@|$4|g;s|@proc@|$proc|g" cross_toolchain.txt
+sed -i -e "s|@host@|$4|g;s|@proc@|$proc|g;s|@prefix@|$prefix_unix|g" cross_toolchain.txt
+#sed -i -e "s|@host@|$4|g;s|@proc@|$proc|g" cross_toolchain.txt
 
 rm -rf builddir && mkdir builddir && cd builddir
 
@@ -56,7 +60,7 @@ cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_C_FLAGS="-O2 -pipe $machine -march=$1 -I$3/include/libvmaf -D__USE_MINGW_ANSI_STDIO=0" \
     -DCMAKE_EXE_LINKER_FLAGS="-s" \
-    -DCMAKE_SHARED_LINKER_FLAGS="-s $machine" \
+    -DCMAKE_SHARED_LINKER_FLAGS="-s $machine -L$3/lib" \
     -DBUILD_SHARED_LIBS=TRUE \
     -DCONFIG_AV1_DECODER=1 \
     -DCONFIG_AV1_ENCODER=1 \
@@ -75,3 +79,6 @@ sed -i -e "s|-lm|-L$3/lib -lvmaf -lm|g" CMakeFiles/aom.dir/linklibs.rsp
 #sed -i -e "s|I$prefix_unix|I|g" CMakeFiles/aom_dsp.dir/includes_C.rsp
 
 make -j $jobopt install > ../../make.log 2>&1
+
+cp libaom.dll $3/bin
+cp libaom.dll.a $3/lib
