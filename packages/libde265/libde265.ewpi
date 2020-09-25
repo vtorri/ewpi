@@ -1,4 +1,4 @@
 name: libde265
-version: 1.0.6
-url: https://github.com/strukturag/libde265/releases/download/v1.0.6/libde265-1.0.6.tar.gz
+version: 1.0.7
+url: https://github.com/strukturag/libde265/releases/download/v1.0.7/libde265-1.0.7.tar.gz
 deps:
