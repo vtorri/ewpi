@@ -1,4 +1,4 @@
 name: bullet
-version: 2.89
-url: https://github.com/bulletphysics/bullet3/archive/2.89.tar.gz
+version: 3.5
+url: https://github.com/bulletphysics/bullet3/archive/3.05.tar.gz
 deps:
