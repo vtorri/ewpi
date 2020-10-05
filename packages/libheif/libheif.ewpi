@@ -1,0 +1,4 @@
+name: libheif
+version: 1.9.1
+url: https://github.com/strukturag/libheif/releases/download/v1.9.1/libheif-1.9.1.tar.gz
+deps: libde265 libaom
