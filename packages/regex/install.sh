@@ -29,13 +29,19 @@ sed -i \
     -e 's/(long)/(intptr_t)/g' \
     tre.h
 
+sed -i \
+    -e 's/hidden //g' \
+    tre.h
+
 $4-gcc -std=c99 -Wall -Wextra -O2 -pipe -march=$1 -s -shared \
        -o libregex-1.dll -Wl,--out-implib,libregex.dll.a \
        fnmatch.c regcomp.c regerror.c regexec.c tre-mem.c \
        -I. \
-       > ../make.log 2>&1
+       > ../../../make.log 2>&1
 
 mkdir -p $3/{bin,include,lib}
+$4-strip libregex-1.dll
+$4-strip libregex.dll.a
 cp libregex-1.dll $3/bin
 cp libregex.dll.a $3/lib
 cp fnmatch.h $3/include
