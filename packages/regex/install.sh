@@ -41,7 +41,6 @@ $4-gcc -std=c99 -Wall -Wextra -O2 -pipe -march=$1 -s -shared \
 
 mkdir -p $3/{bin,include,lib}
 $4-strip libregex-1.dll
-$4-strip libregex.dll.a
 cp libregex-1.dll $3/bin
 cp libregex.dll.a $3/lib
 cp fnmatch.h $3/include
