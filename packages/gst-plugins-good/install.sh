@@ -19,6 +19,10 @@ meson .. \
       --buildtype=release \
       --strip \
       --cross-file ../cross_toolchain.txt \
-      --default-library shared > ../../config.log 2>&1
+      --default-library shared \
+      -Dsoup=disabled \
+      -Dexamples=disabled \
+      -Dtests=disabled \
+      > ../../config.log 2>&1
 
 ninja $verbninja install > ../../make.log 2>&1
