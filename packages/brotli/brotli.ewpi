@@ -1,0 +1,4 @@
+name: brotli
+version: 1.0.9
+url: https://github.com/google/brotli/archive/v1.0.9.tar.gz
+deps:
