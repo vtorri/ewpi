@@ -29,6 +29,7 @@ cmake \
     -DCURL_TARGET_WINDOWS_VERSION=0x0601 \
     -DUSE_NGHTTP2=ON \
     -DCURL_ZSTD=ON \
+    -DCURL_BROTLI=ON \
     -DCMAKE_USE_SCHANNEL=ON \
     -G "Unix Makefiles" \
     .. > ../../config.log 2>&1
