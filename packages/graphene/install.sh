@@ -30,7 +30,7 @@ meson .. \
       --default-library shared \
       -Dgtk_doc=false \
       -Dgobject_types=true \
-      -Dintrospection=false \
+      -Dintrospection=disabled \
       -Darm_neon=false \
       -Dtests=false \
       -Dinstalled_tests=false > ../../config.log 2>&1
