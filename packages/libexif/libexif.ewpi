@@ -1,0 +1,4 @@
+name: libexif
+version: 0.6.22
+url: https://github.com/libexif/libexif/releases/download/libexif-0_6_22-release/libexif-0.6.22.tar.xz
+deps: iconv gettext
