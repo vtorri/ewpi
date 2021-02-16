@@ -76,6 +76,7 @@ Examples :
 
 ### Libraries compatible with LGPL v2.1
 
+ * brotli (MIT)
  * bullet (zlib license)
  * bzip2 (BSD 4-clause, LGPL 2.1 compatible)
  * check (LGPL 2.1)
