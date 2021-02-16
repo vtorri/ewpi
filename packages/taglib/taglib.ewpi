@@ -1,4 +1,4 @@
 name: taglib
-version: 1.11.1
-url: https://taglib.org/releases/taglib-1.11.1.tar.gz
+version: 1.12.1
+url: https://taglib.org/releases/taglib-1.12.tar.gz
 deps: zlib
