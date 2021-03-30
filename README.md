@@ -128,6 +128,7 @@ Examples :
  * libopenmpt (BSD 3-clause)
  * libpng (BSD 3-clause)
  * libpsl (MIT)
+ * libraw (LGPL v2.1)
  * libressl (Openssl and ISC licenses)
  * librtmp (LGPL 2.1)
  * libsnappy (BSD 3-clause)
