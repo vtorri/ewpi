@@ -25,6 +25,7 @@ cmake \
     -DCMAKE_CXX_FLAGS="-O2 -pipe $machine  -march=$1 -D__USE_MINGW_ANSI_STDIO=0" \
     -DCMAKE_EXE_LINKER_FLAGS="-s" \
     -DCMAKE_SHARED_LINKER_FLAGS="-s $machine" \
+    -DBUILD_STATIC_LIBS:BOOL=OFF \
     -DBUILD_TESTS:BOOL=OFF \
     -DZLIB_INCLUDE_DIR:PATH=$prefix_unix/include \
     -DZLIB_LIBRARY_RELEASE:FILEPATH=-lz \
