@@ -162,10 +162,9 @@ Examples :
  * zstd (BSD 3-clause)
 
 ### Libraries compatible with LGPL v3
+
  * libde265 (LGPL v3)
  * libheif (LGPL v3)
-
- * djvulibre
 
 ### Libraries compatible with GPL v2
 
