@@ -111,13 +111,12 @@ Examples :
  * libbluray (LGPL 2.1)
  * libbs2b (MIT)
  * libdav1d (BSD 2-clause)
- * libde265 (LGPL 3, no problem as not linked)
+ * libexif (LGPL v2.1)
  * libffi (MIT)
  * libgcrypt (LGPL 2.1)
  * libgme (LGPL 2.1)
  * libgpg-error (LGPL 2.1)
  * libgsm (MIT)
- * libheif (LGPL 3, no problem as not linked)
  * libilbc (BSD 3-clause)
  * libjpeg (BSD 3-clause)
  * libkvazaar (LGPL 2.1)
@@ -161,6 +160,12 @@ Examples :
  * yasm
  * zlib (zlib license)
  * zstd (BSD 3-clause)
+
+### Libraries compatible with LGPL v3
+ * libde265 (LGPL v3)
+ * libheif (LGPL v3)
+
+ * djvulibre
 
 ### Libraries compatible with GPL v2
 
