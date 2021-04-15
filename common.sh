@@ -27,7 +27,7 @@ export PATH=$prefix_unix/bin:$PATH
 export PKG_CONFIG_DIR=
 export PKG_CONFIG_LIBDIR=$3/lib/pkgconfig
 export PKG_CONFIG_SYSROOOT_DIR=$3
-export CPPFLAGS="-I$3/include -D__USE_MINGW_ANSI_STDIO=0"
+export CPPFLAGS="-I$3/include"
 export CFLAGS="-O2 -pipe -march=$1"
 export CXXFLAGS="-O2 -pipe -march=$1"
 export LDFLAGS="-L$3/lib -s"
