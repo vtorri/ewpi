@@ -1,4 +1,4 @@
 name: mpg123
-version: 1.26.3
-url: http://mpg123.de/download/mpg123-1.26.3.tar.bz2
+version: 1.26.5
+url: http://mpg123.de/download/mpg123-1.26.5.tar.bz2
 deps: pkg-config yasm
