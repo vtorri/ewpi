@@ -1,4 +1,4 @@
 name: libjpeg
-version: 2.0.6
-url: https://github.com/libjpeg-turbo/libjpeg-turbo/archive/2.0.6.tar.gz
+version: 2.1.0
+url: https://github.com/libjpeg-turbo/libjpeg-turbo/archive/refs/tags/2.1.0.tar.gz
 deps: yasm
