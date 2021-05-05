@@ -26,6 +26,7 @@ cmake \
     -DCMAKE_SHARED_LINKER_FLAGS="-s $machine" \
     -DBUILD_SHARED_LIBS:BOOL=ON \
     -DSNAPPY_BUILD_TESTS:BOOL=OFF \
+    -DSNAPPY_BUILD_BENCHMARKS:BOOL=OFF \
     -G "Unix Makefiles" \
     .. > ../../config.log 2>&1
 
