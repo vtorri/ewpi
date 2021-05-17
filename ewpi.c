@@ -1275,6 +1275,28 @@ _ew_packages_clean(void)
     printf("\n");
 }
 
+static void
+_ew_packages_strip(const char *prefix, const char *host)
+{
+    char buf[4096];
+    int ret;
+
+    printf("\n:: Stripping DLL...\n");
+    fflush(stdout);
+
+    snprintf(buf, 4095,
+             "sh ./ewpi_strip.sh %s %s",
+                 prefix, host);
+    ret = system(buf);
+    if (ret != 0)
+    {
+        printf(" Can not strip DLL\n");
+        fflush(stdout);
+    }
+
+    printf("\n");
+}
+
 int main(int argc, char *argv[])
 {
     char *prefix = NULL;
@@ -1422,6 +1444,7 @@ int main(int argc, char *argv[])
     _ew_packages_longest_name();
     _ew_packages_extract(verbose);
     _ew_packages_install(prefix, host, arch, jobopt, verbose);
+    _ew_packages_strip(prefix, host);
     if (cleaning)
         _ew_packages_clean();
 
