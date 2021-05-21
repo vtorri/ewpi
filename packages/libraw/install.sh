@@ -6,9 +6,9 @@ LR_CPPFLAGS="-DUSE_JPEG -DUSE_JPEG8 -DUSE_LCMS2 -I. -I$3/include"
 LR_CFLAGS="-O3 -w -fopenmp -ljpeg -llcms2"
 LR_LDFLAGS="-L$3/lib -s"
 
-make -f Makefile.mingw lib/libraw.a -j $jobopt $verbmake CFLAGS="$LR_CPPFLAGS $LR_CFLAGS" LDADD=$LR_LDFLAGS  > ../make.log 2>&1
+make -f Makefile.mingw lib/libraw.a -j $jobopt $verbmake CFLAGS="$LR_CPPFLAGS $LR_CFLAGS" LDADD=$LR_LDFLAGS CC=$4-gcc CXX=$4-g++ > ../make.log 2>&1
 
-g++ -s -shared -Wl,--out-implib,libraw.dll.a \
+$4-g++ -s -shared -Wl,--out-implib,libraw.dll.a \
 	-o libraw-0.dll object/*.o -L$3/lib -ljpeg -llcms2 -lws2_32 >> ../make.log 2>&1
 
 cp libraw-0.dll $3/bin
