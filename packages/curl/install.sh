@@ -31,7 +31,18 @@ cmake \
     -DCURL_ZSTD=ON \
     -DCURL_BROTLI=ON \
     -DCMAKE_USE_SCHANNEL=ON \
-    -G "Unix Makefiles" \
+    -G Ninja \
     .. > ../../config.log 2>&1
 
-make -j $jobopt install > ../../make.log 2>&1
+
+case ${EWPI_OS} in
+    MSYS*|MINGW*)
+    ;;
+    *)
+	sed -i -e "s|-I /usr/include||g" build.ninja
+	sed -i -e "s|-I/usr/include||g" build.ninja
+	sed -i -e "s|-isystem /usr/include||g" build.ninja
+    ;;
+esac
+
+ninja -j $jobopt install > ../../make.log 2>&1
