@@ -28,9 +28,16 @@ cmake \
     -DCMAKE_SHARED_LINKER_FLAGS="-s $machine" \
     -DBUILD_SHARED_LIBS:BOOL=ON \
     -DBUILD_BINDINGS:BOOL=OFF \
-    -DZLIB_INCLUDE_DIR=$prefix_unix/include \
-    -DZLIB_LIBRARY=z \
+    -DZLIB_ROOT=$prefix_unix \
     -G "Unix Makefiles" \
     .. > ../../config.log 2>&1
+
+case ${EWPI_OS} in
+    MSYS*|MINGW*)
+    ;;
+    *)
+        sed -i -e "s|-lz|-L$prefix_unix/lib -lz|g" taglib/CMakeFiles/tag.dir/linklibs.rsp
+    ;;
+esac
 
 make -j $jobopt install > ../../make.log 2>&1
