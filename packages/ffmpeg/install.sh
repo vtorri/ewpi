@@ -7,11 +7,15 @@ if test "x$4" = "xx86_64-w64-mingw32" ; then
     arch="x86_64"
 else
     targetOS="mingw32"
-    arch="i686"
+    arch="x86"
 fi
 
-./configure --prefix=$3 --disable-static --enable-shared \
+rm -rf builddir && mkdir builddir && cd builddir
+
+../configure --prefix=$3 --disable-static --enable-shared \
             --enable-cross-compile --cross-prefix=$4- \
+	    --sysroot=$3 --sysinclude=$3/include \
+            --host-os=$targetOS \
             --target-os=$targetOS --arch=$arch \
             --enable-gcrypt \
             --enable-libaom \
@@ -43,6 +47,6 @@ fi
             --enable-libwavpack \
             --enable-libwebp \
             --enable-libxml2 \
-            > ../config.log 2>&1
+            > ../../config.log 2>&1
 
-make -j $jobopt $verbff install > ../make.log 2>&1
+make -j $jobopt $verbff install > ../../make.log 2>&1
