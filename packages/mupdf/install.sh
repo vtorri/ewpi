@@ -2,6 +2,14 @@
 
 . ../../common.sh
 
+if test "x$4" = "xi686-w64-mingw32" ; then
+    OS=mingw32-cross
+else
+    OS=mingw64-cross
+fi
+
+#make nuke
+make verbose=$verbose generate
 make prefix=$3 \
      verbose=$verbose \
      -j $jobopt \
@@ -26,4 +34,5 @@ make prefix=$3 \
      USE_SYSTEM_JBIG2DEC=yes \
      SYS_JBIG2DEC_CFLAGS="-I/opt/ewpi_64/include" \
      SYS_JBIG2DEC_LIBS="-L/opt/ewpi_64/lib -ljbig2dec" \
+     OS=$OS \
      install > ../make.log 2>&1

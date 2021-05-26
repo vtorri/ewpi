@@ -1,4 +1,4 @@
 name: mupdf
-version: 1.17.0
-url: https://mupdf.com/downloads/archive/mupdf-1.17.0-source.tar.xz
+version: 1.18.0
+url: https://mupdf.com/downloads/archive/mupdf-1.18.0-source.tar.xz
 deps: pkg-config libressl freetype harfbuzz libjpeg openjpeg zlib curl jbig2dec
