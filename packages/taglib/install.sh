@@ -12,7 +12,7 @@ else
     machine=-m32
 fi
 
-sed -i -e "s|@host@|$4|g;s|@proc@|$proc|g" cross_toolchain.txt
+sed -i -e "s|@prefix@|$3|g;s|@host@|$4|g;s|@proc@|$proc|g" cross_toolchain.txt
 
 rm -rf builddir && mkdir builddir && cd builddir
 
@@ -22,15 +22,10 @@ cmake \
     -DCMAKE_VERBOSE_MAKEFILE:BOOL=$verbcmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_SHARED_LIBS:BOOL=ON \
-    -DCMAKE_C_FLAGS="-O2 -pipe $machine -march=$1 -D__USE_MINGW_ANSI_STDIO=0" \
-    -DCMAKE_CXX_FLAGS="-O2 -pipe $machine -march=$1 -D__USE_MINGW_ANSI_STDIO=0" \
-    -DCMAKE_EXE_LINKER_FLAGS="-s" \
-    -DCMAKE_SHARED_LINKER_FLAGS="-s $machine" \
-    -DBUILD_SHARED_LIBS:BOOL=ON \
     -DBUILD_BINDINGS:BOOL=OFF \
-    -DZLIB_INCLUDE_DIR=$prefix_unix/include \
-    -DZLIB_LIBRARY=z \
+    -DZLIB_ROOT=$prefix_unix \
     -G "Unix Makefiles" \
     .. > ../../config.log 2>&1
+
 
 make -j $jobopt install > ../../make.log 2>&1
