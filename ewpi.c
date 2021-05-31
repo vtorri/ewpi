@@ -116,6 +116,7 @@ _ew_usage(const char *argv0)
     printf("  --arch=VAL    value passed to -march and -mtune gcc options\n");
     printf("                  [default=i686|x86-64], depending on host value\n");
     printf("  --verbose     verbose mode\n");
+    printf("  --strip       strip DLL\n");
     printf("  --efl         install the EFL\n");
     printf("  --jobs=VAL    maximum number of used jobs [default=maximum]\n");
     printf("  --clean       remove the archives and the created directories\n");
@@ -1303,6 +1304,7 @@ int main(int argc, char *argv[])
     char *host = "x86_64-w64-mingw32";
     char *arch =  NULL;;
     char *jobopt = "";
+    int strip = 0;
     int verbose = 0;
     int efl = 0;
     int cleaning = 0;
@@ -1337,6 +1339,10 @@ int main(int argc, char *argv[])
         else if (strncmp(argv[i], "--arch=", strlen("--arch=")) == 0)
         {
             arch = argv[i] + strlen("--arch=");
+        }
+        else if (strcmp(argv[i], "--strip") == 0)
+        {
+            strip = 1;
         }
         else if (strcmp(argv[i], "--verbose") == 0)
         {
@@ -1402,6 +1408,7 @@ int main(int argc, char *argv[])
     printf("  prefix:  %s\n", prefix);
     printf("  host:    %s\n", host);
     printf("  arch:    %s\n", arch);
+    printf("  strip:   %s\n", strip ? "yes" : "no");
     printf("  verbose: %s\n", verbose ? "yes" : "no");
     printf("  efl:     %s\n", efl ? "yes" : "no");
     printf("  jobs:    %s\n", jobopt);
@@ -1444,7 +1451,8 @@ int main(int argc, char *argv[])
     _ew_packages_longest_name();
     _ew_packages_extract(verbose);
     _ew_packages_install(prefix, host, arch, jobopt, verbose);
-    _ew_packages_strip(prefix, host);
+    if (strip)
+        _ew_packages_strip(prefix, host);
     if (cleaning)
         _ew_packages_clean();
 
