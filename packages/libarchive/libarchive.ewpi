@@ -1,4 +1,4 @@
 name: libarchive
 version: 3.5.1
 url: https://github.com/libarchive/libarchive/releases/download/3.5.1/libarchive-3.5.1.tar.xz
-deps: pkg-config zlib xz libressl lz4 bzip2 zstd expat
+deps: pkg-config zlib xz libressl lz4 bzip2 zstd expat iconv regex
