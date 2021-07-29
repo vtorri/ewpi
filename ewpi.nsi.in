@@ -1,0 +1,207 @@
+; EWPI installer
+; Written by Vincent Torri
+
+!include MUI2.nsh
+
+Name "EFL dependencies installer"
+BrandingText "EFL dependencies installer v1.0.0"
+OutFile "ewpi_x64.exe"
+Unicode True
+SetCompressor /SOLID lzma
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+Function ReplaceLineStr
+ Exch $R0 ; string to replace that whole line with
+ Exch
+ Exch $R1 ; string that line should start with
+ Exch
+ Exch 2
+ Exch $R2 ; file
+ Push $R3 ; file handle
+ Push $R4 ; temp file
+ Push $R5 ; temp file handle
+ Push $R6 ; global
+ Push $R7 ; input string length
+ Push $R8 ; line string length
+ Push $R9 ; global
+
+  StrLen $R7 $R1
+
+  GetTempFileName $R4
+
+  FileOpen $R5 $R4 w
+  FileOpen $R3 $R2 r
+
+  ReadLoop:
+  ClearErrors
+   FileRead $R3 $R6
+    IfErrors Done
+
+   StrLen $R8 $R6
+   StrCpy $R9 $R6 $R7 -$R8
+   StrCmp $R9 $R1 0 +3
+
+    FileWrite $R5 "$R0$\r$\n"
+    Goto ReadLoop
+
+    FileWrite $R5 $R6
+    Goto ReadLoop
+
+  Done:
+
+  FileClose $R3
+  FileClose $R5
+
+  SetDetailsPrint none
+   Delete $R2
+   Rename $R4 $R2
+  SetDetailsPrint both
+
+ Pop $R9
+ Pop $R8
+ Pop $R7
+ Pop $R6
+ Pop $R5
+ Pop $R4
+ Pop $R3
+ Pop $R2
+ Pop $R1
+ Pop $R0
+FunctionEnd
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Default installation folder
+InstallDir "$LOCALAPPDATA\ewpi-@version@"
+
+;Request application privileges for Windows >= Vista
+RequestExecutionLevel user
+
+; Show a message box with a warning when the user wants to close the installer.
+!define MUI_ABORTWARNING
+
+; Display E logo
+!define MUI_ICON "e.ico"
+!define MUI_HEADERIMAGE
+!define MUI_HEADERIMAGE_BITMAP "e.bmp"
+
+; Pages
+
+!insertmacro MUI_PAGE_WELCOME
+!insertmacro MUI_PAGE_LICENSE "License.txt"
+!insertmacro MUI_PAGE_COMPONENTS
+!insertmacro MUI_PAGE_DIRECTORY
+!insertmacro MUI_PAGE_INSTFILES
+!insertmacro MUI_PAGE_FINISH
+
+!insertmacro MUI_UNPAGE_WELCOME
+!insertmacro MUI_UNPAGE_CONFIRM
+!insertmacro MUI_UNPAGE_INSTFILES
+!insertmacro MUI_UNPAGE_FINISH
+
+!insertmacro MUI_LANGUAGE "English"
+
+; Installer sections
+
+!define EwpiDir  "@prefix@"
+
+Section "!DLL (required)" SecEwpiInstDLL
+
+  SectionIn RO
+
+  SetOutPath "$INSTDIR\bin"
+
+  File "${EwpiDir}\bin\*.dll"
+
+  SetOutPath "$INSTDIR\lib\gstreamer-1.0"
+
+  File "${EwpiDir}\lib\gstreamer-1.0\*.dll"
+
+  SetOutPath "$INSTDIR\lib\mpg123"
+
+  File "${EwpiDir}\lib\mpg123\*.dll"
+
+  WriteRegStr HKCU "Software\ewpi_64" "" $INSTDIR
+
+  ;Create uninstaller
+  WriteUninstaller "$INSTDIR\Uninstall.exe"
+
+SectionEnd
+
+Section /o "Development files" SecEwpiInstDev
+
+  SetOutPath "$INSTDIR\lib"
+
+  File "${EwpiDir}\lib\*.dll.a"
+
+  SetOutPath "$INSTDIR\lib\pkgconfig"
+
+  File "${EwpiDir}\lib\pkgconfig\*.pc"
+
+  SetOutPath "$INSTDIR\include"
+
+  File /r "${EwpiDir}\include\*.h"
+  File /r "${EwpiDir}\include\*.hh"
+  File /r "${EwpiDir}\include\*.hpp"
+
+  SetOutPath "$INSTDIR\lib\glib-2.0\include"
+
+  File "${EwpiDir}\lib\glib-2.0\include\glibconfig.h"
+
+  SetOutPath "$INSTDIR\lib\dbus-1.0\include\dbus"
+
+  File "${EwpiDir}\lib\dbus-1.0\include\dbus\dbus-arch-deps.h"
+
+  WriteRegStr HKCU "Software\ewpi_64" "" $INSTDIR
+
+  ;Create uninstaller
+  WriteUninstaller "$INSTDIR\Uninstall.exe"
+
+SectionEnd
+
+; Description
+
+  LangString DESC_SecEwpiInstDLL ${LANG_ENGLISH} "DLL required by the EFL at runtime"
+  LangString DESC_SecEwpiInstDev ${LANG_ENGLISH} "Development files for EFL development"
+
+  ;Assign language strings to sections
+  !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
+    !insertmacro MUI_DESCRIPTION_TEXT ${SecEwpiInstDLL} $(DESC_SecEwpiInstDLL)
+    !insertmacro MUI_DESCRIPTION_TEXT ${SecEwpiInstDev} $(DESC_SecEwpiInstDev)
+  !insertmacro MUI_FUNCTION_DESCRIPTION_END
+
+; Uninstaller Section
+
+Section "Uninstall"
+
+  Delete "$INSTDIR\Uninstall.exe"
+
+  RMDIR /r "$INSTDIR\bin"
+  RMDIR /r "$INSTDIR\lib"
+  RMDIR /r "$INSTDIR\include"
+
+  RMDir "$INSTDIR"
+
+  DeleteRegKey /ifempty HKCU "Software\ewpi_64"
+
+SectionEnd
+
+Function .onInstSuccess
+
+  Var /GLOBAL my_handle
+  Var /GLOBAL my_file
+
+  FindFirst $my_handle $my_file $INSTDIR\lib\pkgconfig\*.pc
+  loop:
+    Strcmp $my_file "" done
+    Push "$INSTDIR\lib\pkgconfig\$my_file"
+    Push "prefix"
+    Push "prefix=$INSTDIR\lib\pkgconfig"
+    Call ReplaceLineStr
+    FindNext $my_handle $my_file
+    Goto loop
+  done:
+  FindClose $my_handle
+
+FunctionEnd
