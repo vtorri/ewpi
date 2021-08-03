@@ -75,6 +75,9 @@ typedef struct
     unsigned int is_git : 1;
 } Package;
 
+static const int _ew_vmaj = 1;
+static const int _ew_vmin = 0;
+
 static char *_ew_package_dir_git = NULL;
 static char *_ew_package_dir_dst = NULL;
 static int _ew_package_count_total = 0;
@@ -108,6 +111,7 @@ _ew_usage(const char *argv0)
     printf("\n");
     printf("Optional arguments:\n");
     printf("  --help        show this help message and exit\n");
+    printf("  --version     show the Ewpi version and exit\n");
     printf("  --prefix=DIR  install in  DIR (must be an absolute path)\n");
     printf("                  [default=$HOME/ewpi_$arch] $arch=32|64 base on\n");
     printf("                  host value\n");
@@ -1315,6 +1319,11 @@ int main(int argc, char *argv[])
         if (strcmp(argv[i], "--help") == 0)
         {
             _ew_usage(argv[0]);
+            exit(0);
+        }
+        if (strcmp(argv[i], "--version") == 0)
+        {
+            printf("Ewpi version %d.%d\n", _ew_vmaj, _ew_vmin);
             exit(0);
         }
         else if (strncmp(argv[i], "--prefix=", strlen("--prefix=")) == 0)
