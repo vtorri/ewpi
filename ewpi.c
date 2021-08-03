@@ -121,6 +121,7 @@ _ew_usage(const char *argv0)
     printf("                  [default=i686|x86-64], depending on host value\n");
     printf("  --verbose     verbose mode\n");
     printf("  --strip       strip DLL\n");
+    printf("  --nsis        strip DLL and create the NSIS installer\n");
     printf("  --efl         install the EFL\n");
     printf("  --jobs=VAL    maximum number of used jobs [default=maximum]\n");
     printf("  --clean       remove the archives and the created directories\n");
@@ -263,6 +264,7 @@ static const char *_ew_req[] =
     "wget",
     "bison",
     "flex",
+    "makensis",
     NULL
 };
 
@@ -309,7 +311,13 @@ _ew_requirements(const char *host)
 
     for (int i = 0; _ew_req[i]; i++)
     {
-        snprintf(buf, 4095, "%s --version > NUL 2>&1", _ew_req[i]);
+        const char *ver;
+        if (strcmp(_ew_req[i], "makensis") == 0)
+            ver = "-VERSION";
+        else
+            ver = "--version";
+
+        snprintf(buf, 4095, "%s %s > NUL 2>&1", _ew_req[i], ver);
         ret = system(buf);
         printf("  %s : %s\n", _ew_req[i], (ret == 0) ? "yes" : "no");
         fflush(stdout);
@@ -1302,6 +1310,33 @@ _ew_packages_strip(const char *prefix, const char *host)
     printf("\n");
 }
 
+static void
+_ew_packages_nsis(const char *prefix, const char *host)
+{
+    char buf[4096];
+    char vbuf[16];
+    int ret;
+
+    _ew_packages_strip(prefix, host);
+
+    printf("\n:: Create NSIS installer...\n");
+    fflush(stdout);
+
+    snprintf(vbuf, 15, "%d.%d", _ew_vmaj, _ew_vmin);
+
+    snprintf(buf, 4095,
+             "sh ./ewpi_nsis.sh %s %s",
+                 prefix, vbuf);
+    ret = system(buf);
+    if (ret != 0)
+    {
+        printf(" Can not create NSIS installer\n");
+        fflush(stdout);
+    }
+
+    printf("\n");
+}
+
 int main(int argc, char *argv[])
 {
     char *prefix = NULL;
@@ -1309,6 +1344,7 @@ int main(int argc, char *argv[])
     char *arch =  NULL;;
     char *jobopt = "";
     int strip = 0;
+    int nsis = 0;
     int verbose = 0;
     int efl = 0;
     int cleaning = 0;
@@ -1352,6 +1388,10 @@ int main(int argc, char *argv[])
         else if (strcmp(argv[i], "--strip") == 0)
         {
             strip = 1;
+        }
+        else if (strcmp(argv[i], "--nsis") == 0)
+        {
+            nsis = 1;
         }
         else if (strcmp(argv[i], "--verbose") == 0)
         {
@@ -1414,13 +1454,14 @@ int main(int argc, char *argv[])
     }
 
     printf(":: Configuration...\n");
-    printf("  prefix:  %s\n", prefix);
-    printf("  host:    %s\n", host);
-    printf("  arch:    %s\n", arch);
-    printf("  strip:   %s\n", strip ? "yes" : "no");
-    printf("  verbose: %s\n", verbose ? "yes" : "no");
-    printf("  efl:     %s\n", efl ? "yes" : "no");
-    printf("  jobs:    %s\n", jobopt);
+    printf("  prefix:    %s\n", prefix);
+    printf("  host:      %s\n", host);
+    printf("  arch:      %s\n", arch);
+    printf("  strip:     %s\n", strip ? "yes" : "no");
+    printf("  installer: %s\n", nsis ? "yes" : "no");
+    printf("  verbose:   %s\n", verbose ? "yes" : "no");
+    printf("  efl:       %s\n", efl ? "yes" : "no");
+    printf("  jobs:      %s\n", jobopt);
     printf("\n");
     fflush(stdout);
 
@@ -1460,8 +1501,12 @@ int main(int argc, char *argv[])
     _ew_packages_longest_name();
     _ew_packages_extract(verbose);
     _ew_packages_install(prefix, host, arch, jobopt, verbose);
-    if (strip)
+    if (strip && !nsis)
         _ew_packages_strip(prefix, host);
+    if (nsis)
+    {
+        _ew_packages_nsis(prefix, host);
+    }
     if (cleaning)
         _ew_packages_clean();
 
