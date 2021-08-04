@@ -1,4 +1,4 @@
 name: gst-plugins-base
-version: 1.18.4
-url: https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-1.18.4.tar.xz
+version: 1.19.1
+url: https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-1.19.1.tar.xz
 deps: pkg-config glib2 gstreamer graphene orc libtheora libvorbis opus zlib gettext
