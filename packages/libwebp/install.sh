@@ -2,8 +2,27 @@
 
 . ../../common.sh
 
-sed -i -e "s/lt_cv_deplibs_check_method='file_magic ^x86 archive import|^x86 DLL'/lt_cv_deplibs_check_method=pass_all/g" configure
+cp ../cross_toolchain.txt .
 
-./configure --prefix=$3 --host=$4 --disable-static --enable-everything --enable-libwebpmux --enable-libwebpdemux --enable-libwebpdecoder --enable-libwebpextras > ../config.log 2>&1
+if test "x$4" = "xx86_64-w64-mingw32" ; then
+    proc="AMD64"
+    machine=-m64
+else
+    proc="X86"
+    machine=-m32
+fi
 
-make -j $jobopt $verbmake install > ../make.log 2>&1
+sed -i -e "s|@prefix@|$3|g;s|@host@|$4|g;s|@proc@|$proc|g" cross_toolchain.txt
+
+rm -rf builddir && mkdir builddir && cd builddir
+
+cmake \
+    -DCMAKE_TOOLCHAIN_FILE=../cross_toolchain.txt \
+    -DCMAKE_INSTALL_PREFIX=$prefix_unix \
+    -DCMAKE_VERBOSE_MAKEFILE:BOOL=$verbcmake \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DENABLE_STATIC=FALSE \
+    -G "Unix Makefiles" \
+    .. > ../../config.log 2>&1
+
+make -j $jobopt install > ../make.log 2>&1
