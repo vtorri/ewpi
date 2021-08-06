@@ -122,6 +122,10 @@ Section "!DLL (required)" SecEwpiInstDLL
 
   File "${EwpiDir}\lib\mpg123\*.dll"
 
+  SetOutPath "$INSTDIR"
+
+  File "README.md"
+
   WriteRegStr HKCU "Software\ewpi_64" "" $INSTDIR
 
   ;Create uninstaller
@@ -176,6 +180,7 @@ SectionEnd
 Section "Uninstall"
 
   Delete "$INSTDIR\Uninstall.exe"
+  Delete "$INSTDIR\README.md"
 
   RMDIR /r "$INSTDIR\bin"
   RMDIR /r "$INSTDIR\lib"
