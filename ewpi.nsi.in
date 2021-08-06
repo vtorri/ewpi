@@ -5,7 +5,7 @@
 
 Name "EFL dependencies installer"
 BrandingText "EFL dependencies installer v1.0.0"
-OutFile "ewpi_x64.exe"
+OutFile "ewpi_x64-@version@.exe"
 Unicode True
 SetCompressor /SOLID lzma
 
@@ -73,7 +73,7 @@ FunctionEnd
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Default installation folder
-InstallDir "$LOCALAPPDATA\ewpi-@version@"
+InstallDir "$LOCALAPPDATA\efl"
 
 ;Request application privileges for Windows >= Vista
 RequestExecutionLevel user
