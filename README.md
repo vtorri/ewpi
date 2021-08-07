@@ -90,7 +90,7 @@ Examples :
  * freetype_bootstrap 2.11.0 (FreeType license)
  * fribidi 1.0.10 (LGPL 2.1)
  * gettext 0.21.0 (only libintl : LGPL 2.1)
- * giflib 5.0.5 (MIT)
+ * giflib 5.2.1 (MIT)
  * glib2 2.69.1 (LGPL 2.1)
  * graphene 1.10.6 (MIT)
  * graphite2 1.3.14 (LGPL 2.1)

@@ -1,4 +1,4 @@
 name: giflib
-version: 5.0.5
-url: https://netcologne.dl.sourceforge.net/project/giflib/giflib-5.x/giflib-5.0.5.tar.bz2
+version: 5.2.1
+url: https://freefr.dl.sourceforge.net/project/giflib/giflib-5.2.1.tar.gz
 deps:
