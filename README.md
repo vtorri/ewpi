@@ -134,7 +134,7 @@ Examples :
  * libsndfile 1.0.31 (LGPL 2.1)
  * libsoxr 0.1.3 (LGPL 2.1)
  * libspeex 1.2.0 (BSD 3-clause)
- * libssh2 1.9.0 (BSD 3-clause)
+ * libssh2 1.10.0 (BSD 3-clause)
  * libtheora 1.1.1 (BSD 3-clause)
  * libtiff 4.3.0 (BSD 2-clause)
  * libvmaf 2.2.0 (BSD -2-clause + patent)
