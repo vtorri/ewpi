@@ -4,7 +4,7 @@
 !include MUI2.nsh
 
 Name "EFL dependencies installer"
-BrandingText "EFL dependencies installer v1.0.0"
+BrandingText "EFL dependencies installer v@version@"
 OutFile "ewpi-@arch@-@winver@-@version@.exe"
 Unicode True
 SetCompressor /SOLID lzma
