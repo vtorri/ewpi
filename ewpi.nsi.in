@@ -5,7 +5,7 @@
 
 Name "EFL dependencies installer"
 BrandingText "EFL dependencies installer v1.0.0"
-OutFile "ewpi_x64-@version@.exe"
+OutFile "ewpi-@arch@-@winver@-@version@.exe"
 Unicode True
 SetCompressor /SOLID lzma
 

@@ -119,6 +119,7 @@ _ew_usage(const char *argv0)
     printf("                  [default=x86_64-w64-mingw32]\n");
     printf("  --arch=VAL    value passed to -march and -mtune gcc options\n");
     printf("                  [default=i686|x86-64], depending on host value\n");
+    printf("  --winver=VAL  requested Windows version, win7 or win10 [default=win10]\n");
     printf("  --verbose     verbose mode\n");
     printf("  --strip       strip DLL\n");
     printf("  --nsis        strip DLL and create the NSIS installer\n");
@@ -1136,7 +1137,7 @@ _ew_packages_extract(int verbose)
 }
 
 static void
-_ew_packages_install(const char *prefix, const char *host, const char *arch, const char *jobopt, int verbose)
+_ew_packages_install(const char *prefix, const char *host, const char *arch, const char *jobopt, int verbose, const char *winver)
 {
     char buf[4096];
     Package *iter;
@@ -1165,9 +1166,9 @@ _ew_packages_install(const char *prefix, const char *host, const char *arch, con
         _ew_packages_status_disp(c, _ew_package_count_not_installed, name, iter->version);
 
         snprintf(buf, 4095,
-                 "cd %s/%s && sh ./install.sh %s %s %s %s %s %s",
+                 "cd %s/%s && sh ./install.sh %s %s %s %s %s %s %s",
                  _ew_package_dir_dst, name,
-                 arch, tarname, prefix, host, (*jobopt == 0) ? "no" : jobopt, verbose ? "yes" : "no");
+                 arch, tarname, prefix, host, (*jobopt == 0) ? "no" : jobopt, verbose ? "yes" : "no", winver);
         ret = system(buf);
         if (ret != 0)
         {
@@ -1311,10 +1312,9 @@ _ew_packages_strip(const char *prefix, const char *host)
 }
 
 static void
-_ew_packages_nsis(const char *prefix, const char *host)
+_ew_packages_nsis(const char *prefix, const char *host, const char *arch, const char *winver)
 {
     char buf[4096];
-    char vbuf[16];
     int ret;
 
     _ew_packages_strip(prefix, host);
@@ -1322,11 +1322,9 @@ _ew_packages_nsis(const char *prefix, const char *host)
     printf("\n:: Create NSIS installer...\n");
     fflush(stdout);
 
-    snprintf(vbuf, 15, "%d.%d", _ew_vmaj, _ew_vmin);
-
     snprintf(buf, 4095,
-             "sh ./ewpi_nsis.sh %s %s",
-                 prefix, vbuf);
+             "sh ./ewpi_nsis.sh %s %d.%d %s %s",
+             prefix, _ew_vmaj, _ew_vmin, arch, winver);
     ret = system(buf);
     if (ret != 0)
     {
@@ -1343,6 +1341,7 @@ int main(int argc, char *argv[])
     char *host = "x86_64-w64-mingw32";
     char *arch =  NULL;;
     char *jobopt = "";
+    char *winver = "win10";
     int strip = 0;
     int nsis = 0;
     int verbose = 0;
@@ -1384,6 +1383,21 @@ int main(int argc, char *argv[])
         else if (strncmp(argv[i], "--arch=", strlen("--arch=")) == 0)
         {
             arch = argv[i] + strlen("--arch=");
+        }
+        else if (strncmp(argv[i], "--winver=", strlen("--winver=")) == 0)
+        {
+            char *opt;
+
+            opt = argv[i] + strlen("--winver=");
+            if (strcmp(opt, "win7") == 0)
+                winver = "win7";
+            else if (strcmp(opt, "win10") == 0)
+                winver = "win10";
+            else
+            {
+                _ew_usage(argv[0]);
+                exit(1);
+            }
         }
         else if (strcmp(argv[i], "--strip") == 0)
         {
@@ -1500,12 +1514,12 @@ int main(int argc, char *argv[])
     _ew_packages_download();
     _ew_packages_longest_name();
     _ew_packages_extract(verbose);
-    _ew_packages_install(prefix, host, arch, jobopt, verbose);
+    _ew_packages_install(prefix, host, arch, jobopt, verbose, winver);
     if (strip && !nsis)
         _ew_packages_strip(prefix, host);
     if (nsis)
     {
-        _ew_packages_nsis(prefix, host);
+      _ew_packages_nsis(prefix, host, arch, winver);
     }
     if (cleaning)
         _ew_packages_clean();

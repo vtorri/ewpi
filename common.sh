@@ -5,6 +5,7 @@
 # $4 : host
 # $5 : jobopt
 # $6 : verbose
+# $7 : winver
 
 jobopt=$5
 verbose=$6
@@ -23,11 +24,17 @@ case ${EWPI_OS} in
     ;;
 esac
 
+if test "x$7" = "xwin7" ; then
+    winver="0x0601"
+else
+    winver="0x0A00"
+fi
+
 export PATH=$prefix_unix/bin:$PATH
 export PKG_CONFIG_DIR=
 export PKG_CONFIG_LIBDIR=$3/lib/pkgconfig
 export PKG_CONFIG_SYSROOOT_DIR=$3
-export CPPFLAGS="-I$3/include"
+export CPPFLAGS="-D__USE_MINGW_ANSI_STDIO=0 -D_WIN32_WINNT=$winver -I$3/include"
 export CFLAGS="-O2 -pipe -march=$1"
 export CXXFLAGS="-O2 -pipe -march=$1"
 export LDFLAGS="-L$3/lib -s"
