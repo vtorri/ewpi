@@ -604,65 +604,65 @@ _ew_packages_get_git(void)
 static int
 _ew_copy(const char *path_git, const char *path_dst, const char *filename)
 {
-  char f_git[4096];
-  char f_dst[4096];
-  char *buf_git = NULL;
-  FILE *file;
-  size_t size;
-  size_t sz;
+    char f_git[4096];
+    char f_dst[4096];
+    char *buf_git = NULL;
+    FILE *file;
+    size_t size;
+    size_t sz;
 
-  strcpy(f_git, path_git);
-  strcat(f_git, "/");
-  strcat(f_git, filename);
+    strcpy(f_git, path_git);
+    strcat(f_git, "/");
+    strcat(f_git, filename);
 
-  /* get f_git size */
-  size = _ew_file_exists(f_git);
-  if (!size)
-    return 0;
+    /* get f_git size */
+    size = _ew_file_exists(f_git);
+    if (!size)
+        return 0;
 
-  buf_git = (char *)malloc(size);
-  if (!buf_git)
-    return 0;
+    buf_git = (char *)malloc(size);
+    if (!buf_git)
+        return 0;
 
-  file = fopen(f_git, "rb");
-  if (!file)
-    goto free_buf_git;
+    file = fopen(f_git, "rb");
+    if (!file)
+        goto free_buf_git;
 
-  sz = fread(buf_git, 1, size, file);
-  if (sz != size)
-    goto close_file;
+    sz = fread(buf_git, 1, size, file);
+    if (sz != size)
+        goto close_file;
 
-  fclose(file);
+    fclose(file);
 
-  strcpy(f_dst, path_dst);
-  strcat(f_dst, "/");
-  strcat(f_dst, filename);
+    strcpy(f_dst, path_dst);
+    strcat(f_dst, "/");
+    strcat(f_dst, filename);
 
-  file = fopen(f_dst, "wb");
-  if (!file)
-    goto free_buf_git;
+    file = fopen(f_dst, "wb");
+    if (!file)
+        goto free_buf_git;
 
-  sz = fwrite(buf_git, 1, size, file);
+    sz = fwrite(buf_git, 1, size, file);
 
-  fclose(file);
-  free(buf_git);
+    fclose(file);
+    free(buf_git);
 
-  if (sz != size)
+    if (sz != size)
     {
-      printf(" size mismatch %d %d\n", (int)size, (int)sz);
-      fflush(stdout);
-      unlink(f_dst);
-      return 0;
+        printf(" size mismatch %d %d\n", (int)size, (int)sz);
+        fflush(stdout);
+        unlink(f_dst);
+        return 0;
     }
 
-  return 1;
+    return 1;
 
- close_file:
-  fclose(file);
- free_buf_git:
-  free(buf_git);
+  close_file:
+    fclose(file);
+  free_buf_git:
+    free(buf_git);
 
-  return 0;
+    return 0;
 }
 
 static void
@@ -1300,7 +1300,7 @@ _ew_packages_strip(const char *prefix, const char *host)
 
     snprintf(buf, 4095,
              "sh ./ewpi_strip.sh %s %s",
-                 prefix, host);
+             prefix, host);
     ret = system(buf);
     if (ret != 0)
     {
@@ -1312,15 +1312,21 @@ _ew_packages_strip(const char *prefix, const char *host)
 }
 
 static void
-_ew_packages_nsis(const char *prefix, const char *host, const char *arch, const char *winver)
+_ew_packages_nsis(const char *prefix, const char *host, const char *winver)
 {
     char buf[4096];
+    const char *arch;
     int ret;
 
     _ew_packages_strip(prefix, host);
 
     printf("\n:: Create NSIS installer...\n");
     fflush(stdout);
+
+    if (strcmp(host, "i686-w64-mingw32") == 0)
+        arch = "i686";
+    else
+        arch = "x86_64";
 
     snprintf(buf, 4095,
              "sh ./ewpi_nsis.sh %s %d.%d %s %s",
@@ -1519,7 +1525,7 @@ int main(int argc, char *argv[])
         _ew_packages_strip(prefix, host);
     if (nsis)
     {
-      _ew_packages_nsis(prefix, host, arch, winver);
+        _ew_packages_nsis(prefix, host, winver);
     }
     if (cleaning)
         _ew_packages_clean();

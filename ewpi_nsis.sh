@@ -2,7 +2,7 @@
 
 # $1 : prefix
 # $2 : version
-# $3 : arch
+# $3 : host
 # $4 : winver
 
 cp -f ewpi.nsi.in ewpi.nsi
