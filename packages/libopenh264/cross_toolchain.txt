@@ -14,7 +14,7 @@ cpu = '@cpu@'
 endian = 'little'
 
 [properties]
-c_args = ['-D_WIN32_WINNT=0x0601', '-D__USE_MINGW_ANSI_STDIO', '-I@prefix@/include', '-O2', '-pipe', '-march=@arch@']
+c_args = ['-I@prefix@/include', '-O2', '-pipe', '-march=@arch@']
 c_link_args = ['-L@prefix@/lib', '-s']
-cpp_args = ['-D_WIN32_WINNT=0x0601', '-D__USE_MINGW_ANSI_STDIO', '-I@prefix@/include', '-O2', '-pipe', '-march=@arch@']
+cpp_args = ['-I@prefix@/include', '-O2', '-pipe', '-march=@arch@']
 cpp_link_args = ['-L@prefix@/lib', '-s']

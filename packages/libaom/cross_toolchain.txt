@@ -9,7 +9,7 @@ set(CMAKE_STRIP @host@-strip)
 set(CMAKE_RC_COMPILER @host@-windres)
 
 # flags
-set(CMAKE_C_FLAGS "-I@prefix@/include -I@prefix@/include/libvmaf -D__USE_MINGW_ANSI_STDIO=0")
+set(CMAKE_C_FLAGS "-I@prefix@/include -I@prefix@/include/libvmaf -D__USE_MINGW_ANSI_STDIO=0 -D_WIN32_WINNT=@winver@")
 set(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS}")
 
 set(CMAKE_C_FLAGS_DEBUG "-Og -g3 -ggdb3")

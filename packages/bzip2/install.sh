@@ -4,10 +4,11 @@
 
 $4-gcc \
     -s -O2 -pipe -march=$1 \
+    -D_WIN32_WINNT=$winver \
     -shared \
     -Wl,--out-implib,libbz2.dll.a \
     -o libbz2-1.dll \
-    -Wall -Winline -O2 \
+    -Wall -Winline \
     -D_FILE_OFFSET_BITS=64 \
     blocksort.c  \
     huffman.c    \

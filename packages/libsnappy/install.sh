@@ -1,6 +1,6 @@
 #! /bin/sh
 
-source ../../common.sh
+. ../../common.sh
 
 cp ../cross_toolchain.txt .
 
@@ -12,7 +12,7 @@ else
     machine=-m32
 fi
 
-sed -i -e "s|@prefix@|$3|g;s|@host@|$4|g;s|@proc@|$proc|g" cross_toolchain.txt
+sed -i -e "s|@prefix@|$3|g;s|@host@|$4|g;s|@proc@|$proc|g;s|@winver@|$winver|g" cross_toolchain.txt
 
 rm -rf builddir && mkdir builddir && cd builddir
 
