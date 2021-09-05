@@ -140,7 +140,7 @@ Examples :
  * libvmaf 2.2.0 (BSD -2-clause + patent)
  * libvorbis 1.3.7 (BSD 3-clause)
  * libwavpack 5.4.0 (BSD 3-clause)
- * libwebp 1.2.0 (BSD 3-clause)
+ * libwebp 1.2.1 (BSD 3-clause)
  * libxml2 2.9.12 (MIT)
  * luajit 2.0.5 (MIT + public domain for some parts)
  * lz4 1.9.3 (BSD 2-clause for the library)
