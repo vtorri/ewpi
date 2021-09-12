@@ -10,6 +10,9 @@ else
     arch="x86"
 fi
 
+sed -i -e 's/DEPWINDRES=$dep_cc//g;s/-D__USE_MINGW_ANSI_STDIO=1//g' configure
+sed -i -e 's/--preprocessor "$(DEPWINDRES) -E -xc-header -DRC_INVOKED $(CC_DEPFLAGS)"/$(foreach ARG,$(CC_DEPFLAGS),--preprocessor-arg "$(ARG)")/g' ffbuild/common.mak
+
 rm -rf builddir && mkdir builddir && cd builddir
 
 ../configure --prefix=$3 --disable-static --enable-shared \
