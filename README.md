@@ -137,7 +137,7 @@ Examples :
  * libssh2 1.10.0 (BSD 3-clause)
  * libtheora 1.1.1 (BSD 3-clause)
  * libtiff 4.3.0 (BSD 2-clause)
- * libvmaf 2.2.0 (BSD -2-clause + patent)
+ * libvmaf 2.2.1 (BSD -2-clause + patent)
  * libvorbis 1.3.7 (BSD 3-clause)
  * libwavpack 5.4.0 (BSD 3-clause)
  * libwebp 1.2.1 (BSD 3-clause)
@@ -147,7 +147,7 @@ Examples :
  * mp3lame 3.100 (LGPL 2.1)
  * mpg123 1.28.2 (LGPL 2.1)
  * nasm 2.14.2
- * nghttp2 1.44.0 (MIT)
+ * nghttp2 1.45.1 (MIT)
  * openjpeg 2.4.0 (BSD 2-clause)
  * opus 1.3.1 (BSD 3-clause)
  * orc 0.4.32 (BSD 2-clause)
