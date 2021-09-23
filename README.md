@@ -88,7 +88,7 @@ Examples :
  * fontconfig 2.13.1 (MIT)
  * freetype 2.11.0 (FreeType license)
  * freetype_bootstrap 2.11.0 (FreeType license)
- * fribidi 1.0.10 (LGPL 2.1)
+ * fribidi 1.0.11 (LGPL 2.1)
  * gettext 0.21.0 (only libintl : LGPL 2.1)
  * giflib 5.2.1 (MIT)
  * glib2 2.69.1 (LGPL 2.1)
