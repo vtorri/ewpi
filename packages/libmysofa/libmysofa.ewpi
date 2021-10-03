@@ -1,4 +1,4 @@
 name: libmysofa
-version: 1.2.0
-url: https://github.com/hoene/libmysofa/archive/v1.2.tar.gz
+version: 1.2.1
+url: https://github.com/hoene/libmysofa/archive/refs/tags/v1.2.1.tar.gz
 deps: pkg-config zlib

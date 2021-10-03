@@ -121,7 +121,7 @@ Examples :
  * libjpeg 2.1.1 (IJG and zlib)
  * libkvazaar 2.0.0 (LGPL 2.1)
  * libmodplug 0.8.9 (public domain)
- * libmysofa 1.2.0 (BSD 3-clause)
+ * libmysofa 1.2.1 (BSD 3-clause)
  * libogg 1.3.5 (BSD 3-clause)
  * libopenh264 2.1.1 (BSD 2-clause)
  * libopenmpt 0.5.10 (BSD 3-clause)
