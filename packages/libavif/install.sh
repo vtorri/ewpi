@@ -47,4 +47,4 @@ case ${EWPI_OS} in
     ;;
 esac
 
-ninja -j $jobopt install > ../../make.log 2>&1
+ninja $verbninja install > ../../make.log 2>&1
