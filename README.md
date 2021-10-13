@@ -119,7 +119,7 @@ Examples :
  * libgsm 1.0.19 (MIT)
  * libilbc 3.0.4 (BSD 3-clause)
  * libjpeg 2.1.1 (IJG and zlib)
- * libkvazaar 2.0.0 (LGPL 2.1)
+ * libkvazaar 2.1.0 (BSD 3-clause)
  * libmodplug 0.8.9 (public domain)
  * libmysofa 1.2.1 (BSD 3-clause)
  * libogg 1.3.5 (BSD 3-clause)
