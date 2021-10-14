@@ -8,6 +8,14 @@ else
     OS=mingw64-cross
 fi
 
+sed -i -e "s|(OUT)/mutool|(OUT)/mutool\$(EXE)|g" Makefile
+sed -i -e "s|(OUT)/muraster|(OUT)/muraster\$(EXE)|g" Makefile
+sed -i -e "s|(OUT)/mupdf-gl|(OUT)/mupdf-gl\$(EXE)|g" Makefile
+sed -i -e "s|(OUT)/mupdf-x11|(OUT)/mupdf-x11\$(EXE)|g" Makefile
+sed -i -e "s|(OUT)/mupdf-w32|(OUT)/mupdf-w32\$(EXE)|g" Makefile
+sed -i -e "s|(OUT)/mupdf-x11-curl|(OUT)/mupdf-x111-curl\$(EXE)|g" Makefile
+sed -i -e "s|dll|dll\n    EXE := .exe|g" Makerules
+
 #make nuke
 make verbose=$verbose generate
 make prefix=$3 \
@@ -32,7 +40,7 @@ make prefix=$3 \
      SYS_CURL_CFLAGS="`pkg-config --cflags libcurl`" \
      SYS_CURL_LIBS="`pkg-config --libs libcurl`" \
      USE_SYSTEM_JBIG2DEC=yes \
-     SYS_JBIG2DEC_CFLAGS="-I/opt/ewpi_64/include" \
-     SYS_JBIG2DEC_LIBS="-L/opt/ewpi_64/lib -ljbig2dec" \
+     SYS_JBIG2DEC_CFLAGS="-I$3/include" \
+     SYS_JBIG2DEC_LIBS="-L$3/lib -ljbig2dec" \
      OS=$OS \
      install > ../make.log 2>&1
