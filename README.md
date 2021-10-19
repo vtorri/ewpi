@@ -147,7 +147,7 @@ Examples :
  * mp3lame 3.100 (LGPL 2.1)
  * mpg123 1.28.2 (LGPL 2.1)
  * nasm 2.14.2
- * nghttp2 1.45.1 (MIT)
+ * nghttp2 1.46.0 (MIT)
  * openjpeg 2.4.0 (BSD 2-clause)
  * opus 1.3.1 (BSD 3-clause)
  * orc 0.4.32 (BSD 2-clause)
