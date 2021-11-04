@@ -26,7 +26,7 @@ meson .. \
       -Dfreetype=enabled \
       -Dgdi=enabled \
       -Ddirectwrite=enabled \
-      -Dgraphite=enabled \
+      -Dgraphite2=enabled \
       -Dicu=enabled \
       -Dcairo=disabled \
       -Dfontconfig=disabled \
