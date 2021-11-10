@@ -80,7 +80,7 @@ Examples :
  * bullet 3.9 (zlib license)
  * bzip2 1.0.8 (BSD 4-clause, LGPL 2.1 compatible)
  * check 0.15.2(LGPL 2.1)
- * curl 7.79.1 (MIT)
+ * curl 7.80.0 (MIT)
  * dbus 1.12.20 (Academic Free License version 2.1)
  * expat 2.4.1 (MIT)
  * ffmpeg 4.4.0 (LGPL 2.1)
