@@ -1,4 +1,4 @@
 name: harfbuzz
-version: 3.1.1
-url: https://github.com/harfbuzz/harfbuzz/releases/download/3.1.1/harfbuzz-3.1.1.tar.xz
+version: 3.1.2
+url: https://github.com/harfbuzz/harfbuzz/releases/download/3.1.2/harfbuzz-3.1.2.tar.xz
 deps: pkg-config zlib libpng freetype_bootstrap graphite2 icu
