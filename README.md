@@ -154,7 +154,7 @@ Examples :
  * pixman 0.40.0 (MIT)
  * pkg-config 1.7.3
  * regex 1.2.1 (MIT)
- * sdl2 2.0.16 (BSD 3-clause)
+ * sdl2 2.0.18 (BSD 3-clause)
  * taglib 1.12.1 (LGPL 2.1)
  * xz 5.2.5 (lzma : public domain)
  * yasm 1.3.0
