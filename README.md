@@ -158,7 +158,7 @@ Examples :
  * xz 5.2.5 (lzma : public domain)
  * yasm 1.3.0
  * zlib 1.2.11 (zlib license)
- * zstd 1.5.0 (BSD 3-clause)
+ * zstd 1.5.1 (BSD 3-clause)
 
 ### Libraries compatible with LGPL v3
 
