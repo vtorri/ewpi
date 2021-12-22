@@ -1,4 +1,4 @@
 name: mpg123
 version: 1.28.2
 url: http://mpg123.de/download/mpg123-1.28.2.tar.bz2
-deps: pkg-config yasm
+deps: pkg-config sdl2

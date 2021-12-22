@@ -1,4 +1,4 @@
 name: flac
 version: 1.3.3
 url: https://ftp.osuosl.org/pub/xiph/releases/flac/flac-1.3.3.tar.xz
-deps: nasm iconv libogg
+deps: iconv libogg

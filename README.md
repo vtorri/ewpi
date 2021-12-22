@@ -10,8 +10,8 @@ with Etui. See below the list of installed libraries.
  * tar
  * make
  * cmake
- * yasm (on UNIX)
- * nasm (on UNIX)
+ * yasm
+ * nasm
  * wget
  * gperf
  * python
@@ -152,7 +152,6 @@ Examples :
  * lz4 1.9.3 (BSD 2-clause for the library)
  * mp3lame 3.100 (LGPL 2.1)
  * mpg123 1.28.2 (LGPL 2.1)
- * nasm 2.14.2
  * nghttp2 1.46.0 (MIT)
  * openjpeg 2.4.0 (BSD 2-clause)
  * opus 1.3.1 (BSD 3-clause)
@@ -163,7 +162,6 @@ Examples :
  * sdl2 2.0.18 (BSD 3-clause)
  * taglib 1.12.1 (LGPL 2.1)
  * xz 5.2.5 (lzma : public domain)
- * yasm 1.3.0
  * zlib 1.2.11 (zlib license)
  * zstd 1.5.1 (BSD 3-clause)
 

@@ -257,10 +257,8 @@ static const char *_ew_req[] =
     "python",
     "meson",
     "ninja",
-#ifndef _WIN32
     "yasm",
     "nasm",
-#endif
     "gperf",
     "wget",
     "bison",
