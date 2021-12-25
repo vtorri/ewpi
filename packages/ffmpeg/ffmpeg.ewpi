@@ -1,4 +1,4 @@
 name: ffmpeg
-version: 4.4.0
-url: http://ffmpeg.org/releases/ffmpeg-4.4.tar.xz
+version: 4.4.1
+url: http://ffmpeg.org/releases/ffmpeg-4.4.1.tar.xz
 deps: pkg-config libaom libass libbs2b libressl libgcrypt libbluray fontconfig freetype fribidi libdav1d libgme libgsm libilbc libkvazaar libmodplug libmysofa libopenh264 libopenmpt openjpeg opus librtmp libsnappy libsoxr libspeex libtheora libvorbis libwebp libxml2 mp3lame bzip2 iconv xz sdl2
