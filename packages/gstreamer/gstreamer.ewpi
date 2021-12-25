@@ -1,4 +1,4 @@
 name: gstreamer
-version: 1.19.1
-url: https://gstreamer.freedesktop.org/src/gstreamer/gstreamer-1.19.1.tar.xz
+version: 1.19.3
+url: https://gstreamer.freedesktop.org/src/gstreamer/gstreamer-1.19.3.tar.xz
 deps: pkg-config glib2 gettext
