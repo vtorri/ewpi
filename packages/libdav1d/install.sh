@@ -20,7 +20,7 @@ meson .. \
       --strip \
       --cross-file ../cross_toolchain.txt \
       --default-library shared \
-      -Dbuild_tests=false \
+      -Denable_tests=false \
       -Dlogging=false > ../../config.log 2>&1
 
 ninja $verbninja install > ../../make.log 2>&1
