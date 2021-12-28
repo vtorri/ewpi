@@ -49,6 +49,7 @@ rm -rf builddir && mkdir builddir && cd builddir
              --enable-libvorbis \
              --enable-libwebp \
              --enable-libxml2 \
+             --disable-sdl2 \
              > ../../config.log 2>&1
 
 make -j $jobopt $verbff install > ../../make.log 2>&1
