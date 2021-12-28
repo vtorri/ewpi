@@ -25,6 +25,6 @@ meson .. \
       -Dexamples=disabled \
       -Dtests=disabled \
       -Dbenchmarks=disabled \
-      -Ddisable_gst_debug=true > ../../config.log 2>&1
+      -Dgst_debug=false > ../../config.log 2>&1
 
 ninja $verbninja install > ../../make.log 2>&1
