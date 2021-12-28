@@ -29,7 +29,6 @@ meson .. \
       -Dgraphite2=enabled \
       -Dicu=enabled \
       -Dcairo=disabled \
-      -Dfontconfig=disabled \
       -Dtests=disabled \
       -Dglib=disabled  \
       -Dgobject=disabled > ../../config.log 2>&1
