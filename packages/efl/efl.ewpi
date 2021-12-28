@@ -1,4 +1,4 @@
 name: efl
 version: 1.26.0
 url: https://download.enlightenment.org/rel/libs/efl/efl-1.26.0.tar.xz
-deps: pkg-config zlib lz4 libjpeg libpng libtiff giflib openjpeg libwebp libavif libheif libraw freetype fontconfig fribidi harfbuzz pixman libsndfile libressl curl luajit bullet dbus gst-plugins-good gst-libav regex check gettext libarchive djvulibre mupdf libexif
+deps: pkg-config zlib lz4 libjpeg libpng libtiff giflib openjpeg libwebp libavif libheif libraw freetype fontconfig fribidi harfbuzz pixman libsndfile libressl curl luajit dbus gst-plugins-good gst-libav regex check gettext libarchive djvulibre mupdf libexif
