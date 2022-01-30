@@ -3,7 +3,7 @@ Copyright (C) Vincent Torri
 This program is released under the GPL v2
 
 This program installs a set of libraries which are compatible
-with at most the LGPL v2, except some 5 libraries.
+with at most the LGPL v2, except 5 libraries.
 
 See README.md for a list of the installed libraries with their
 license and version.
