@@ -1,9 +1,10 @@
 # ewpi
 EFL Windows package installer
 
-This project install a set of libraries, most of them being compatible
+This project installs a set of libraries, most of them being compatible
 with LGPL v2.1. The others are compatible with GPL v2 or AGPL v3, for use
-with Etui. See below the list of installed libraries.
+with Etui. See below the list of installed libraries with their version
+and license.
 
 # Requirements:
  * mingw-w64 toolchain
@@ -48,13 +49,14 @@ with Etui. See below the list of installed libraries.
 
 # Compilation
 
-after cloning ewpi and changing to thewpi directory:
+after cloning ewpi and changing to the ewpi directory:
 
-gcc -std=c99 -o ewpi ewpi.c ewpi_map.c
+gcc -02 -std=c99 -o ewpi ewpi.c ewpi_map.c
 
 # Usage
 
 To see the usage, run "./ewpi --help", which returns:
+
 ```
 Usage: D:\Documents\msys2\home\vtorri\gitroot\ewpi\ewpi.exe [OPTION]
 
@@ -62,6 +64,7 @@ Compile and install the EFL dependencies.
 
 Optional arguments:
   --help        show this help message and exit
+  --version     show the Ewpi version and exit
   --prefix=DIR  install in  DIR (must be an absolute path)
                   [default=$HOME/ewpi_$arch] $arch=32|64 base on
                   host value
@@ -69,17 +72,22 @@ Optional arguments:
                   [default=x86_64-w64-mingw32]
   --arch=VAL    value passed to -march and -mtune gcc options
                   [default=i686|x86-64], depending on host value
+  --winver=VAL  requested Windows version, win7 or win10 [default=win10]
+  --verbose     verbose mode
+  --strip       strip DLL
+  --nsis        strip DLL and create the NSIS installer
   --efl         install the EFL
   --jobs=VAL    maximum number of used jobs [default=maximum]
   --clean       remove the archives and the created directories
                   (not removed by default)
 ```
+
 Examples :
 
  * ./ewpi --prefix=/opt/ewpi_32 --host=i686-w64-mingw32
  * ./ewpi --host=x86_64-w64-mingw32 --efl --jobs=4 --clean
 
-## Packages installed (89 packages)
+## Packages installed (84 packages)
 
 ### Libraries compatible with LGPL v2.1
 
