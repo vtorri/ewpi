@@ -111,7 +111,7 @@ Examples :
  * gst-plugins-base 1.19.3 (LGPL 2.1)
  * gst-plugins-good 1.19.3 (LGPL 2.1)
  * gstreamer 1.19.3 (LGPL 2.1)
- * harfbuzz 3.2.0 (MIT)
+ * harfbuzz 3.3.0 (MIT)
  * iconv 0.0.8 (public domain)
  * icu 70.1 (MIT)
  * lcms2 2.13 (MIT)
