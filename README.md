@@ -114,7 +114,7 @@ Examples :
  * harfbuzz 3.3.1 (MIT)
  * iconv 0.0.8 (public domain)
  * icu 70.1 (MIT)
- * lcms2 2.13 (MIT)
+ * lcms2 2.13.1 (MIT)
  * libaacs 0.11.0 (LGPL 2.1)
  * libaom 3.2.0 (BSD 2-clause)
  * libarchive 3.5.2 (BSD 2-clause)
