@@ -16,7 +16,7 @@ and license.
  * wget
  * gperf
  * python
- * meson >= 0.59.0
+ * meson >= 0.60.0
  * ninja
  * flex
  * bison
@@ -26,26 +26,26 @@ and license.
 1. Install MSYS2 : https://www.msys2.org/ (steps 1 to 6)
 2. run "pacman -S autoconf automake libtool tar git wget gperf python bison gettext-devel make mingw-w64-i686-nasm mingw-w64-i686-yasm mingw-w64-i686-cmake mingw-w64-i686-toolchain mingw-w64-x86_64-ninja mingw-w64-i686-python3-pip"
 3. run "pip3 install meson"
-4. Verify that meson >= 0.59.0 is installed
+4. Verify that meson >= 0.60.0 is installed
 
 ## Windows with MSYS2 64 bits
 
 1. Install MSYS2 : https://www.msys2.org/ (steps 1 to 6)
 2. run "pacman -S autoconf automake libtool tar git wget gperf python bison gettext-devel make mingw-w64-x86_64-nasm mingw-w64-x86_64-yasm mingw-w64-x86_64-cmake mingw-w64-x86_64-toolchain mingw-w64-x86_64-ninja mingw-w64-x86_64-python3-pip"
 3. run "pip3 install meson"
-4. Verify that meson >= 0.59.0 is installed
+4. Verify that meson >= 0.60.0 is installed
 
 ## Fedora 32 bits
 
 1. dnf install autoconf automake libtool cmake yasm nasm gperf python ninja-build mingw32-gcc mingw32-gcc-c++ mingw32-pkg-config python3-pip bison flex make gcc-c++
 2. run "pip3 install meson"
-3. Verify that meson >= 0.59.0 is installed
+3. Verify that meson >= 0.60.0 is installed
 
 ## Fedora 64 bits
 
 1. dnf install autoconf automake libtool cmake yasm nasm gperf python ninja-build mingw64-gcc mingw64-gcc-c++ mingw64-pkg-config python3-pip bison flex make gcc-c++
 2. run "pip3 install meson"
-3. Verify that meson >= 0.59.0 is installed
+3. Verify that meson >= 0.60.0 is installed
 
 # Compilation
 
