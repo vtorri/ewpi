@@ -105,7 +105,7 @@ Examples :
  * gettext 0.21.0 (only libintl : LGPL 2.1)
  * giflib 5.2.1 (MIT)
  * glib2 2.71.0 (LGPL 2.1)
- * graphene 1.10.6 (MIT)
+ * graphene 1.10.8 (MIT)
  * graphite2 1.3.14 (LGPL 2.1)
  * gst-libav 1.20.0 (LGPL 2.1)
  * gst-plugins-base 1.20.0 (LGPL 2.1)
