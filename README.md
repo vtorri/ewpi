@@ -123,7 +123,7 @@ Examples :
  * libbdplus 0.1.2 (LGPL 2.1)
  * libbluray 1.3.0 (LGPL 2.1)
  * libbs2b 3.1.0 (MIT)
- * libdav1d 0.9.2 (BSD 2-clause)
+ * libdav1d 1.0.0 (BSD 2-clause)
  * libexif 0.6.24 (LGPL v2.1)
  * libffi 3.4.2 (MIT)
  * libgcrypt 1.9.4 (LGPL 2.1)
