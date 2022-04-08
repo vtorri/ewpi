@@ -113,7 +113,7 @@ Examples :
  * gstreamer 1.20.0 (LGPL 2.1)
  * harfbuzz 4.2.0 (MIT)
  * iconv 0.0.8 (public domain)
- * icu 70.1 (MIT)
+ * icu 71.1 (MIT)
  * lcms2 2.13.1 (MIT)
  * libaacs 0.11.0 (LGPL 2.1)
  * libaom 3.3.0 (BSD 2-clause)
