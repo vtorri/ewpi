@@ -150,7 +150,7 @@ Examples :
  * libssh2 1.10.0 (BSD 3-clause)
  * libtheora 1.1.1 (BSD 3-clause)
  * libtiff 4.3.0 (BSD 2-clause)
- * libvmaf 2.3.0 (BSD -2-clause + patent)
+ * libvmaf 2.3.1 (BSD -2-clause + patent)
  * libvorbis 1.3.7 (BSD 3-clause)
  * libwavpack 5.4.0 (BSD 3-clause)
  * libwebp 1.2.1 (BSD 3-clause)
