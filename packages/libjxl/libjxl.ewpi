@@ -1,0 +1,4 @@
+name: libjxl
+version: 0.6.1
+url: https://github.com/libjxl/libjxl.git
+deps: brotli highway
