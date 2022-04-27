@@ -1,5 +1,4 @@
-
 name: curl
-version: 7.82.0
-url: https://github.com/curl/curl/releases/download/curl-7_82_0/curl-7.82.0.tar.xz
+version: 7.83.0
+url: https://github.com/curl/curl/releases/download/curl-7_83_0/curl-7.83.0.tar.xz
 deps: pkg-config zlib brotli libressl libssh2 libpsl nghttp2
