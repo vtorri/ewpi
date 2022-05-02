@@ -97,7 +97,7 @@ Examples :
  * curl 7.83.0 (MIT)
  * dbus 1.12.20 (Academic Free License version 2.1)
  * expat 2.4.8 (MIT)
- * ffmpeg 5.0.0 (LGPL 2.1)
+ * ffmpeg 5.0.1 (LGPL 2.1)
  * flac 1.3.3 (LGPL 2.1)
  * fontconfig 2.13.1 (MIT)
  * freetype 2.12.1 (FreeType license)

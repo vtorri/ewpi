@@ -18,7 +18,6 @@ rm -rf builddir && mkdir builddir && cd builddir
 ../configure --prefix=$3 --disable-static --enable-shared \
              --pkg-config=pkg-config \
              --enable-cross-compile --cross-prefix=$4- \
-             --sysroot=$3 --sysinclude=$3/include \
              --target-os=$targetOS --arch=$arch \
              --enable-gcrypt \
              --enable-libaom \
