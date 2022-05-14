@@ -162,7 +162,7 @@ Examples :
  * mp3lame 3.100 (LGPL 2.1)
  * mpg123 1.29.3 (LGPL 2.1)
  * nghttp2 1.47.0 (MIT)
- * openjpeg 2.4.0 (BSD 2-clause)
+ * openjpeg 2.5.0 (BSD 2-clause)
  * opus 1.3.1 (BSD 3-clause)
  * orc 0.4.32 (BSD 2-clause)
  * pixman 0.40.0 (MIT)
