@@ -14,7 +14,7 @@ and license.
  * yasm
  * nasm
  * wget
- * gperf
+ * gperf (native on Windows, not MSYS2 one)
  * python
  * meson >= 0.60.0
  * ninja
@@ -24,14 +24,14 @@ and license.
 ## Windows with MSYS2 32 bits
 
 1. Install MSYS2 : https://www.msys2.org/ (steps 1 to 6)
-2. run "pacman -S autoconf automake libtool tar git wget gperf python bison gettext-devel make mingw-w64-i686-nasm mingw-w64-i686-yasm mingw-w64-i686-cmake mingw-w64-i686-toolchain mingw-w64-x86_64-ninja mingw-w64-i686-python3-pip"
+2. run "pacman -S autoconf automake libtool tar git wget python bison gettext-devel make mingw-w64-i686-gperf mingw-w64-i686-nasm mingw-w64-i686-yasm mingw-w64-i686-cmake mingw-w64-i686-toolchain mingw-w64-x86_64-ninja mingw-w64-i686-python3-pip"
 3. run "pip3 install meson"
 4. Verify that meson >= 0.60.0 is installed
 
 ## Windows with MSYS2 64 bits
 
 1. Install MSYS2 : https://www.msys2.org/ (steps 1 to 6)
-2. run "pacman -S autoconf automake libtool tar git wget gperf python bison gettext-devel make mingw-w64-x86_64-nasm mingw-w64-x86_64-yasm mingw-w64-x86_64-cmake mingw-w64-x86_64-toolchain mingw-w64-x86_64-ninja mingw-w64-x86_64-python3-pip"
+2. run "pacman -S autoconf automake libtool tar git wget python bison gettext-devel make mingw-w64-x86_64gperf mingw-w64-x86_64-nasm mingw-w64-x86_64-yasm mingw-w64-x86_64-cmake mingw-w64-x86_64-toolchain mingw-w64-x86_64-ninja mingw-w64-x86_64-python3-pip"
 3. run "pip3 install meson"
 4. Verify that meson >= 0.60.0 is installed
 
