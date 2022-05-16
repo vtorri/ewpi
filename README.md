@@ -170,7 +170,7 @@ Examples :
  * regex 1.2.1 (MIT)
  * taglib 1.12.1 (LGPL 2.1)
  * xz 5.2.5 (lzma : public domain)
- * zlib 1.2.11 (zlib license)
+ * zlib 1.2.12 (zlib license)
  * zstd 1.5.2 (BSD 3-clause)
 
 ### Libraries compatible with LGPL v3
