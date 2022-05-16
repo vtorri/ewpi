@@ -39,7 +39,6 @@ rm -rf builddir && mkdir builddir && cd builddir
              --enable-libopenjpeg \
              --enable-libopenmpt \
              --enable-libopus \
-             --enable-librtmp \
              --enable-libsnappy \
              --enable-libsoxr \
              --enable-libspeex \
