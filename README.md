@@ -143,7 +143,7 @@ Examples :
  * libpng 1.6.37 (BSD 3-clause)
  * libpsl 0.21.1 (MIT)
  * libraw 0.20.2 (LGPL v2.1)
- * libressl 3.4.2 (Openssl and ISC licenses)
+ * libressl 3.5.2 (Openssl and ISC licenses)
  * librtmp 2.4 (LGPL 2.1)
  * libsnappy 1.1.9 (BSD 3-clause)
  * libsndfile 1.1.0 (LGPL 2.1)
