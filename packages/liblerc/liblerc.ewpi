@@ -1,0 +1,4 @@
+name: liblerc
+version: 3.0.0
+url: https://github.com/Esri/lerc/archive/refs/tags/v3.0.tar.gz
+deps:

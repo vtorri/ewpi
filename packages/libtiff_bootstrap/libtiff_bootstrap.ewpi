@@ -1,4 +1,4 @@
 name: libtiff_bootstrap
-version: 4.3.0
-url: http://download.osgeo.org/libtiff/tiff-4.3.0.tar.gz
-deps: zlib libjpeg xz zstd
+version: 4.4.0
+url: https://download.osgeo.org/libtiff/tiff-4.4.0.tar.xz
+deps: zlib libjpeg liblerc libdeflate xz zstd
