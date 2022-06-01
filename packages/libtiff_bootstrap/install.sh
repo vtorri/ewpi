@@ -21,6 +21,11 @@ cmake \
     -DCMAKE_INSTALL_PREFIX=$prefix_unix \
     -DCMAKE_VERBOSE_MAKEFILE:BOOL=$verbcmake \
     -DCMAKE_BUILD_TYPE=Release \
+    -DJPEG_INCLUDE_DIR=$3/include \
+    -DLIBLZMA_INCLUDE_DIR=$3/include \
+    -DWebP_INCLUDE_DIR=$3/include \
+    -DZLIB_INCLUDE_DIR=$3/include \
+    -DZSTD_INCLUDE_DIR=$3/include \
     -Djbig=FALSE \
     -Dlzma=TRUE \
     -Dwebp=FALSE \
@@ -28,5 +33,8 @@ cmake \
     -Dtiff-opengl=OFF \
     -G "Unix Makefiles" \
     .. > ../../config.log 2>&1
+
+sed -i -e "s|-isystem /usr/include||g" libtiff/CMakeFiles/tiff.dir/includes_C.rsp
+sed -i -e "s|/usr/lib/libz.a|$3/lib/libz.dll.a|g" libtiff/CMakeFiles/tiff.dir/linklibs.rsp
 
 make -j $jobopt $verbmake install > ../../make.log 2>&1
