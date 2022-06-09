@@ -51,7 +51,7 @@ and license.
 
 after cloning ewpi and changing to the ewpi directory:
 
-gcc -02 -std=c99 -o ewpi ewpi.c ewpi_map.c
+gcc -O2 -std=c99 -o ewpi ewpi.c ewpi_map.c
 
 # Usage
 
