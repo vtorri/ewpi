@@ -8,14 +8,6 @@ else
     OS=mingw64-cross
 fi
 
-sed -i -e "s|(OUT)/mutool|(OUT)/mutool\$(EXE)|g" Makefile
-sed -i -e "s|(OUT)/muraster|(OUT)/muraster\$(EXE)|g" Makefile
-sed -i -e "s|(OUT)/mupdf-gl|(OUT)/mupdf-gl\$(EXE)|g" Makefile
-sed -i -e "s|(OUT)/mupdf-x11|(OUT)/mupdf-x11\$(EXE)|g" Makefile
-sed -i -e "s|(OUT)/mupdf-w32|(OUT)/mupdf-w32\$(EXE)|g" Makefile
-sed -i -e "s|(OUT)/mupdf-x11-curl|(OUT)/mupdf-x111-curl\$(EXE)|g" Makefile
-sed -i -e "s|dll|dll\n    EXE := .exe|g" Makerules
-
 #make nuke
 make verbose=$verbose generate
 make prefix=$3 \
