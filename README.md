@@ -25,26 +25,26 @@ and license.
 ## Windows with MSYS2 32 bits
 
 1. Install MSYS2 : https://www.msys2.org/ (steps 1 to 6)
-2. run "pacman -S autoconf automake libtool tar git wget python flex bison gettext-devel make mingw-w64-i686-gperf mingw-w64-i686-nasm mingw-w64-i686-yasm mingw-w64-i686-cmake mingw-w64-i686-toolchain mingw-w64-i686-ninja mingw-w64-i686-python3-pip mingw-w64-i686-nsis"
+2. run "pacman -S autoconf automake libtool tar git wget python flex bison gettext-devel pkgconf make mingw-w64-i686-gperf mingw-w64-i686-nasm mingw-w64-i686-yasm mingw-w64-i686-cmake mingw-w64-i686-toolchain mingw-w64-i686-ninja mingw-w64-i686-python3-pip mingw-w64-i686-nsis"
 3. run "pip3 install meson"
 4. Verify that meson >= 0.60.0 is installed
 
 ## Windows with MSYS2 64 bits
 
 1. Install MSYS2 : https://www.msys2.org/ (steps 1 to 6)
-2. run "pacman -S autoconf automake libtool tar git wget python flex bison gettext-devel make mingw-w64-x86_64-gperf mingw-w64-x86_64-nasm mingw-w64-x86_64-yasm mingw-w64-x86_64-cmake mingw-w64-x86_64-toolchain mingw-w64-x86_64-ninja mingw-w64-x86_64-python3-pip mingw-w64-x86_64-nsis"
+2. run "pacman -S autoconf automake libtool tar git wget python flex bison gettext-devel pkgconf make mingw-w64-x86_64-gperf mingw-w64-x86_64-nasm mingw-w64-x86_64-yasm mingw-w64-x86_64-cmake mingw-w64-x86_64-toolchain mingw-w64-x86_64-ninja mingw-w64-x86_64-python3-pip mingw-w64-x86_64-nsis"
 3. run "pip3 install meson"
 4. Verify that meson >= 0.60.0 is installed
 
 ## Fedora 32 bits
 
-1. dnf install autoconf automake libtool cmake yasm nasm gperf python ninja-build mingw32-gcc mingw32-gcc-c++ mingw32-pkg-config python3-pip bison flex make gcc-c++
+1. dnf install autoconf automake libtool cmake yasm nasm gperf python ninja-build pkgconf mingw32-gcc mingw32-gcc-c++ python3-pip bison flex make gcc-c++
 2. run "pip3 install meson"
 3. Verify that meson >= 0.60.0 is installed
 
 ## Fedora 64 bits
 
-1. dnf install autoconf automake libtool cmake yasm nasm gperf python ninja-build mingw64-gcc mingw64-gcc-c++ mingw64-pkg-config python3-pip bison flex make gcc-c++
+1. dnf install autoconf automake libtool cmake yasm nasm gperf python ninja-build pkgconf mingw64-gcc mingw64-gcc-c++ python3-pip bison flex make gcc-c++
 2. run "pip3 install meson"
 3. Verify that meson >= 0.60.0 is installed
 
@@ -88,14 +88,14 @@ Examples :
  * ./ewpi --prefix=/opt/ewpi_32 --host=i686-w64-mingw32
  * ./ewpi --host=x86_64-w64-mingw32 --efl --jobs=4 --clean
 
-## Packages installed (84 packages)
+## Packages installed (82 packages)
 
 ### Libraries compatible with LGPL v2.1
 
  * brotli 1.0.9 (MIT)
  * bzip2 1.0.8 (BSD 4-clause, LGPL 2.1 compatible)
  * check 0.15.2(LGPL 2.1)
- * curl 7.83.1 (MIT)
+ * curl 7.84.0 (MIT)
  * dbus 1.12.20 (Academic Free License version 2.1)
  * expat 2.4.8 (MIT)
  * ffmpeg 5.0.1 (LGPL 2.1)
@@ -169,7 +169,6 @@ Examples :
  * opus 1.3.1 (BSD 3-clause)
  * orc 0.4.32 (BSD 2-clause)
  * pixman 0.40.0 (MIT)
- * pkg-config 1.7.3
  * regex 1.2.1 (MIT)
  * taglib 1.12.1 (LGPL 2.1)
  * xz 5.2.5 (lzma : public domain)

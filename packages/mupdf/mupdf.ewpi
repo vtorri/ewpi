@@ -1,4 +1,4 @@
 name: mupdf
 version: 1.20.0
 url: https://mupdf.com/downloads/archive/mupdf-1.20.0-source.tar.gz
-deps: pkg-config libressl freetype harfbuzz libjpeg openjpeg zlib curl jbig2dec
+deps: libressl freetype harfbuzz libjpeg openjpeg zlib curl jbig2dec

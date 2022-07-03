@@ -1,4 +1,4 @@
 name: libraw
 version: 0.20.2
 url: https://www.libraw.org/data/LibRaw-0.20.2.tar.gz
-deps: pkg-config libjpeg lcms2
+deps: libjpeg lcms2

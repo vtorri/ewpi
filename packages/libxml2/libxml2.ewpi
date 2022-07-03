@@ -1,4 +1,4 @@
 name: libxml2
 version: 2.9.12
 url: http://xmlsoft.org/download/libxml2-2.9.12.tar.gz
-deps: pkg-config zlib xz iconv icu
+deps: zlib xz iconv icu

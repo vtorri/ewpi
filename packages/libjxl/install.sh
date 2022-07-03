@@ -15,6 +15,7 @@ fi
 sed -i -e "s|@prefix@|$3|g;s|@host@|$4|g;s|@proc@|$proc|g;s|@winver@|$winver|g" cross_toolchain.txt
 
 sed -i -e "s|if(BUILD_TESTING)|set(BUILD_TESTING FALSE)\nif(BUILD_TESTING)|g" CMakeLists.txt
+sed -i -e "s|add_subdirectory(tools)||g" CMakeLists.txt
 
 sed -i -e "s|curl|/usr/bin/curl|g" ./deps.sh
 
@@ -27,7 +28,6 @@ cmake \
     -DCMAKE_INSTALL_PREFIX=$prefix_unix \
     -DCMAKE_VERBOSE_MAKEFILE:BOOL=$verbcmake \
     -DCMAKE_BUILD_TYPE=Release \
-    -DENABLE_STATIC=FALSE \
     -DBUILD_TESTING:BOOL=FALSE \
     -DJPEGXL_ENABLE_BENCHMARK:BOOL=FALSE \
     -DJPEGXL_ENABLE_COVERAGE:BOOL=FALSE \

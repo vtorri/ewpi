@@ -1,4 +1,4 @@
 name: mpg123
 version: 1.29.3
 url: https://mpg123.de/download/mpg123-1.29.3.tar.bz2
-deps: pkg-config
+deps:

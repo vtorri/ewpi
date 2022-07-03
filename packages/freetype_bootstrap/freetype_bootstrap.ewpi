@@ -1,4 +1,4 @@
 name: freetype_bootstrap
 version: 2.12.1
 url: http://download.savannah.gnu.org/releases/freetype/freetype-2.12.1.tar.xz
-deps: pkg-config zlib libpng bzip2 brotli
+deps: zlib libpng bzip2 brotli
