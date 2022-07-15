@@ -137,7 +137,7 @@ Examples :
  * libjpeg 2.1.3 (IJG and zlib)
  * libjxl git (BSD 3-clause)
  * libkvazaar 2.1.0 (BSD 3-clause)
- * liblerc 1.11 (Apache 2.0)
+ * liblerc 4.0.0 (Apache 2.0)
  * libmodplug 0.8.9 (public domain)
  * libmysofa 1.2.1 (BSD 3-clause)
  * libogg 1.3.5 (BSD 3-clause)
