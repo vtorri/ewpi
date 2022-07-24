@@ -1,4 +1,4 @@
 name: libressl
-version: 3.5.2
-url: https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.5.2.tar.gz
+version: 3.5.3
+url: https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.5.3.tar.gz
 deps:
