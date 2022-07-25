@@ -1346,6 +1346,7 @@ int main(int argc, char *argv[])
     char *arch =  NULL;;
     char *jobopt = "";
     char *winver = "win10";
+    size_t len;
     int strip = 0;
     int nsis = 0;
     int verbose = 0;
@@ -1463,6 +1464,11 @@ int main(int argc, char *argv[])
             iter++;
         }
     }
+
+    /* remove possible trailing slash */
+    len = strlen(prefix);
+    if (prefix[len - 1] == '/')
+        prefix[len - 1] = '\0';
 
     /* prefix must be absolute */
     if (!_ew_path_is_absolute(prefix))
