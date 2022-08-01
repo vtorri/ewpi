@@ -2,6 +2,36 @@
 
 . ../../common.sh
 
-./configure --prefix=$3 --host=$4 --disable-static --with-docbook=no --without-xmlwf > ../config.log 2>&1
+cp ../cross_toolchain.txt .
 
-make -j $jobopt $verbmake install > ../make.log 2>&1
+if test "x$4" = "xx86_64-w64-mingw32" ; then
+    proc="AMD64"
+    machine=-m64
+else
+    proc="X86"
+    machine=-m32
+fi
+
+sed -i -e "s|@prefix@|$3|g;s|@host@|$4|g;s|@proc@|$proc|g;s|@winver@|$winver|g" cross_toolchain.txt
+
+rm -rf builddir && mkdir builddir && cd builddir
+
+cmake \
+    -DCMAKE_TOOLCHAIN_FILE=../cross_toolchain.txt \
+    -DCMAKE_INSTALL_PREFIX=$prefix_unix \
+    -DCMAKE_VERBOSE_MAKEFILE:BOOL=$verbcmake \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DBUILD_SHARED_LIBS=ON \
+    -DEXPAT_BUILD_TOOLS=OFF \
+    -DEXPAT_BUILD_EXAMPLES=OFF \
+    -DEXPAT_BUILD_TESTS=OFF \
+    -DEXPAT_BUILD_DOCS=OFF \
+    -DEXPAT_BUILD_PKGCONFIG=ON \
+    -DEXPAT_WITH_LIBBSD=OFF \
+    -DEXPAT_LARGE_SIZE=ON \
+    -G "Unix Makefiles" \
+    .. > ../../config.log 2>&1
+
+make -j $jobopt install > ../../make.log 2>&1
+
+mv $3/bin/libexpat.dll $3/bin/libexpat-1.dll
