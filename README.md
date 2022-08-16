@@ -161,7 +161,7 @@ Examples :
  * libwebp 1.2.3 (BSD 3-clause)
  * libxml2 2.9.12 (MIT)
  * luajit 2.0.5 (MIT + public domain for some parts)
- * lz4 1.9.3 (BSD 2-clause for the library)
+ * lz4 1.9.4 (BSD 2-clause for the library)
  * mp3lame 3.100 (LGPL 2.1)
  * mpg123 1.30.1 (LGPL 2.1)
  * nghttp2 1.48.0 (MIT)
