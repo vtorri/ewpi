@@ -21,6 +21,7 @@ cmake \
     -DCMAKE_INSTALL_PREFIX=$prefix_unix \
     -DCMAKE_VERBOSE_MAKEFILE:BOOL=$verbcmake \
     -DCMAKE_BUILD_TYPE=Release \
+    -DBROTLI_DISABLE_TESTS=ON \
     -G "Unix Makefiles" \
     .. > ../../config.log 2>&1
 
