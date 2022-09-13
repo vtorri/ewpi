@@ -1,4 +1,4 @@
 name: openjpeg
 version: 2.5.0
 url: https://github.com/uclouvain/openjpeg/archive/refs/tags/v2.5.0.tar.gz
-deps: lcms2
+deps:
