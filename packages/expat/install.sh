@@ -33,5 +33,3 @@ cmake \
     .. > ../../config.log 2>&1
 
 make -j $jobopt install > ../../make.log 2>&1
-
-mv $3/bin/libexpat.dll $3/bin/libexpat-1.dll
