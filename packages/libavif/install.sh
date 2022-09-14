@@ -14,8 +14,6 @@ fi
 
 sed -i -e "s|@prefix@|$3|g;s|@host@|$4|g;s|@proc@|$proc|g;s|@winver@|$winver|g" cross_toolchain.txt
 
-#sed -i -e "s|aom REQUIRED|aom|g" CMakeLists.txt
-
 case ${EWPI_OS} in
     MSYS*|MINGW*)
         sed -i -e "s|%zu|%Iu|g" apps/avifenc.c
@@ -35,7 +33,7 @@ cmake \
     -DBUILD_SHARED_LIBS=TRUE \
     -DAVIF_CODEC_AOM:BOOL=ON \
     -DAVIF_CODEC_DAV1D:BOOL=ON \
-    -DAVIF_BUILD_APPS:BOOL=ON \
+    -DAVIF_BUILD_APPS:BOOL=OFF \
     -G Ninja \
     .. > ../../config.log 2>&1
 
