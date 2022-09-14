@@ -14,10 +14,10 @@ fi
 
 sed -i -e "s|@prefix@|$3|g;s|@host@|$4|g;s|@proc@|$proc|g;s|@winver@|$winver|g" cross_toolchain.txt
 
-sed -i -e "s|if(BUILD_TESTING)|set(BUILD_TESTING FALSE)\nif(BUILD_TESTING)|g" CMakeLists.txt
-sed -i -e "s|add_subdirectory(tools)||g" CMakeLists.txt
+#sed -i -e "s|if(BUILD_TESTING)|set(BUILD_TESTING FALSE)\nif(BUILD_TESTING)|g" CMakeLists.txt
+#sed -i -e "s|add_subdirectory(tools)||g" CMakeLists.txt
 
-sed -i -e "s|curl|/usr/bin/curl|g" ./deps.sh
+#sed -i -e "s|curl|/usr/bin/curl|g" ./deps.sh
 
 ./deps.sh
 
@@ -28,20 +28,22 @@ cmake \
     -DCMAKE_INSTALL_PREFIX=$prefix_unix \
     -DCMAKE_VERBOSE_MAKEFILE:BOOL=$verbcmake \
     -DCMAKE_BUILD_TYPE=Release \
-    -DBUILD_TESTING:BOOL=FALSE \
-    -DJPEGXL_ENABLE_BENCHMARK:BOOL=FALSE \
-    -DJPEGXL_ENABLE_COVERAGE:BOOL=FALSE \
-    -DJPEGXL_ENABLE_EXAMPLES:BOOL=FALSE \
-    -DJPEGXL_ENABLE_FUZZERS:BOOL=FALSE \
-    -DJPEGXL_ENABLE_JNI:BOOL=FALSE \
-    -DJPEGXL_ENABLE_MANPAGES:BOOL=FALSE \
-    -DJPEGXL_ENABLE_PLUGINS:BOOL=FALSE \
-    -DJPEGXL_ENABLE_PROFILER:BOOL=FALSE \
-    -DJPEGXL_ENABLE_TOOLS:BOOL=FALSE \
-    -DJPEGXL_ENABLE_VIEWERS:BOOL=TRUE \
-    -DJPEGXL_FORCE_SYSTEM_BROTLI:BOOL=TRUE \
-    -DJPEGXL_FORCE_SYSTEM_HWY:BOOL=TRUE \
-    -DJPEGXL_FORCE_SYSTEM_LCMS2:BOOL=TRUE \
+    -DBUILD_TESTING=OFF \
+    -DJPEGXL_ENABLE_BENCHMARK=OFF \
+    -DJPEGXL_ENABLE_COVERAGE=OFF \
+    -DJPEGXL_ENABLE_EXAMPLES=OFF \
+    -DJPEGXL_ENABLE_FUZZERS=OFF \
+    -DJPEGXL_ENABLE_JNI=OFF \
+    -DJPEGXL_ENABLE_MANPAGES=OFF \
+    -DJPEGXL_ENABLE_PLUGINS=OFF \
+    -DJPEGXL_ENABLE_PROFILER=OFF \
+    -DJPEGXL_ENABLE_SJPEG=OFF \
+    -DJPEGXL_ENABLE_TOOLS=OFF \
+    -DJPEGXL_ENABLE_VIEWERS=OFF \
+    -DJPEGXL_FORCE_SYSTEM_BROTLI=ON \
+    -DJPEGXL_FORCE_SYSTEM_HWY=ON \
+    -DJPEGXL_FORCE_SYSTEM_LCMS2=ON \
+    -DBUILD_TESTING=OFF \
     -G "Unix Makefiles" \
     .. >> ../../config.log 2>&1
 
