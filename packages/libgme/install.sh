@@ -25,14 +25,4 @@ cmake \
     -G "Unix Makefiles" \
     .. > ../../config.log 2>&1
 
-case ${EWPI_OS} in
-    MSYS*|MINGW*)
-    ;;
-    *)
-        sed -i -e "s|-I/usr/include|-I$3/include|g" gme/CMakeFiles/gme.dir/includes_CXX.rsp
-        sed -i -e "s|/usr/lib/libz.a|-lz|g" gme/CMakeFiles/gme.dir/linklibs.rsp
-    ;;
-esac
-
-
 make -j $jobopt install > ../../make.log 2>&1
