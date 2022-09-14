@@ -28,3 +28,20 @@ cmake \
     .. > ../../config.log 2>&1
 
 make -j $jobopt install > ../../make.log 2>&1
+
+cat > libyuv.pc <<EOF
+prefix=$3
+exec_prefix=\${prefix}
+bindir=\${exec_prefix}/bin
+libdir=\${exec_prefix}/lib
+includedir=\${prefix}/include
+
+Name: libyuv
+Description: YUV conversion and scaling library
+Version: 1840
+Requires.private: libjpeg
+Libs: -L\${libdir} -lyuv
+Cflags: -I\${includedir}
+EOF
+
+cp libyuv.pc $3/lib/pkgconfig
