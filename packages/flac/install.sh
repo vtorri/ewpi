@@ -2,10 +2,36 @@
 
 . ../../common.sh
 
-export LIBS="-L$3/lib -liconv"
+cp ../cross_toolchain.txt .
 
-sed -i -e 's/-D_FORTIFY_SOURCE=2//g' configure
+if test "x$4" = "xx86_64-w64-mingw32" ; then
+    proc="AMD64"
+    machine=-m64
+else
+    proc="X86"
+    machine=-m32
+fi
 
-./configure --prefix=$3 --host=$4 --disable-static --with-libiconv-prefix=$3 --disable-cpplibs > ../config.log 2>&1
+sed -i -e "s|@prefix@|$3|g;s|@host@|$4|g;s|@proc@|$proc|g;s|@winver@|$winver|g" cross_toolchain.txt
 
-make -j $jobopt $verbmake install > ../make.log 2>&1
+rm -rf builddir && mkdir builddir && cd builddir
+
+cmake \
+    -DCMAKE_TOOLCHAIN_FILE=../cross_toolchain.txt \
+    -DCMAKE_INSTALL_PREFIX=$prefix_unix \
+    -DCMAKE_VERBOSE_MAKEFILE:BOOL=$verbcmake \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DBUILD_SHARED_LIBS=ON \
+    -DBUILD_CXXLIBS=OFF \
+    -DBUILD_PROGRAMS=OFF \
+    -DBUILD_EXAMPLES=OFF \
+    -DBUILD_TESTING=OFF \
+    -DBUILD_DOCS=OFF \
+    -DWITH_FORTIFY_SOURCE=OFF \
+    -DWITH_STACK_PROTECTOR=OFF \
+    -DINSTALL_MANPAGES=OFF \
+    -DINSTALL_CMAKE_CONFIG_MODULE=ON \
+    -G "Unix Makefiles" \
+    .. > ../../config.log 2>&1
+
+make -j $jobopt install > ../../make.log 2>&1
