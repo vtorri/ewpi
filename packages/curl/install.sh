@@ -28,12 +28,11 @@ cmake \
     -DUSE_WIN32_IDN=ON \
     -DCURL_BROTLI=ON \
     -DCURL_ZSTD=ON \
-    -DCURL_USE_OPENSSL=ON \
+    -DCURL_USE_SCHANNEL=ON \
+    -DCURL_USE_LIBSSH2=ON \
+    -DCURL_TARGET_WINDOWS_VERSION=$winver \
     -DBUILD_TESTING=OFF \
     -G "Unix Makefiles" \
     .. > ../../config.log 2>&1
-
-#    -DCURL_USE_SCHANNEL=ON
-#./configure --prefix=$3 --host=$4 --disable-static --with-zlib --with-openssl --with-libssh2 --with-winidn=yes --without-libidn2 > ../config.log 2>&1
 
 make -j $jobopt $verbmake install > ../../make.log 2>&1
