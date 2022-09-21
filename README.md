@@ -141,7 +141,7 @@ Examples :
  * libmodplug 0.8.9 (public domain)
  * libmysofa 1.2.1 (BSD 3-clause)
  * libogg 1.3.5 (BSD 3-clause)
- * libopenh264 2.3.0 (BSD 2-clause)
+ * libopenh264 2.3.1 (BSD 2-clause)
  * libopenmpt 0.6.4 (BSD 3-clause)
  * libpng 1.6.37 (BSD 3-clause)
  * libpsl 0.21.1 (MIT)

@@ -1,4 +1,4 @@
 name: libopenh264
-version: 2.3.0
-url: https://github.com/cisco/openh264/archive/refs/tags/v2.3.0.tar.gz
+version: 2.3.1
+url: https://github.com/cisco/openh264/archive/refs/tags/v2.3.1.tar.gz
 deps:
