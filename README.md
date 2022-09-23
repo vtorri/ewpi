@@ -99,7 +99,7 @@ Examples :
  * dbus 1.12.20 (Academic Free License version 2.1)
  * expat 2.4.9 (MIT)
  * ffmpeg 5.1.1 (LGPL 2.1)
- * flac 1.4.0 (LGPL 2.1)
+ * flac 1.4.1 (LGPL 2.1)
  * fontconfig 2.14.0 (MIT)
  * freetype 2.12.1 (FreeType license)
  * fribidi 1.0.12 (LGPL 2.1)
