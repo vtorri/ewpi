@@ -118,7 +118,7 @@ Examples :
  * icu 71.1 (MIT)
  * lcms2 2.13.1 (MIT)
  * libaacs 0.11.0 (LGPL 2.1)
- * libaom 3.4.0 (BSD 2-clause)
+ * libaom 3.5.0 (BSD 2-clause)
  * libarchive 3.6.1 (BSD 2-clause)
  * libass 0.16.0 (ISC)
  * libavif 0.10.0 (BSD 2-clause)

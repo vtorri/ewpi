@@ -3,7 +3,7 @@
 . ../../common.sh
 
 git fetch && git fetch --tags
-git checkout fd0c9275d36930a6eea6d3c35972e7cf9c512944
+git checkout 9a83c6a5a55c176adbce740e47d3512edfc9ae71
 
 cp ../cross_toolchain.txt .
 
