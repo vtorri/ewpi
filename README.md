@@ -121,7 +121,7 @@ Examples :
  * libaom 3.5.0 (BSD 2-clause)
  * libarchive 3.6.1 (BSD 2-clause)
  * libass 0.16.0 (ISC)
- * libavif 0.10.0 (BSD 2-clause)
+ * libavif 0.11.0 (BSD 2-clause)
  * libbdplus 0.1.2 (LGPL 2.1)
  * libbluray 1.3.1 (LGPL 2.1)
  * libbs2b 3.1.0 (MIT)
@@ -178,7 +178,7 @@ Examples :
 
 ### Libraries compatible with LGPL v3
 
- * libde265 1.0.8 (LGPL v3)
+ * libde265 1.0.9 (LGPL v3)
  * libheif 1.12.0 (LGPL v3)
 
 ### Libraries compatible with GPL v2
