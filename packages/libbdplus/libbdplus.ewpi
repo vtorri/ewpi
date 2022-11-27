@@ -1,4 +1,4 @@
 name: libbdplus
-version: 0.1.2
-url: https://download.videolan.org/pub/videolan/libbdplus/0.1.2/libbdplus-0.1.2.tar.bz2
+version: 0.2.0
+url: https://download.videolan.org/pub/videolan/libbdplus/0.2.0/libbdplus-0.2.0.tar.bz2
 deps: libgpg-error libgcrypt libaacs
