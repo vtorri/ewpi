@@ -38,13 +38,13 @@ and license.
 
 ## Fedora 32 bits
 
-1. dnf install autoconf automake libtool cmake yasm nasm gperf python ninja-build pkgconf mingw32-gcc mingw32-gcc-c++ python3-pip bison flex make gcc-c++
+1. dnf install autoconf automake libtool cmake yasm nasm gperf python ninja-build pkgconf mingw32-gcc mingw32-gcc-c++ python3-pip bison flex make gcc-c++ mingw32-nsis
 2. run "pip3 install meson"
 3. Verify that meson >= 0.60.0 is installed
 
 ## Fedora 64 bits
 
-1. dnf install autoconf automake libtool cmake yasm nasm gperf python ninja-build pkgconf mingw64-gcc mingw64-gcc-c++ python3-pip bison flex make gcc-c++
+1. dnf install autoconf automake libtool cmake yasm nasm gperf python ninja-build pkgconf mingw64-gcc mingw64-gcc-c++ python3-pip bison flex make gcc-c++ mingw32-nsis
 2. run "pip3 install meson"
 3. Verify that meson >= 0.60.0 is installed
 
