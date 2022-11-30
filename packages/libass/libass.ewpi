@@ -1,4 +1,4 @@
 name: libass
-version: 0.16.0
-url: https://github.com/libass/libass/releases/download/0.16.0/libass-0.16.0.tar.xz
+version: 0.17.0
+url: https://github.com/libass/libass/releases/download/0.17.0/libass-0.17.0.tar.xz
 deps: iconv freetype fontconfig fribidi harfbuzz
