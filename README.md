@@ -48,6 +48,12 @@ and license.
 2. run "pip3 install meson"
 3. Verify that meson >= 0.60.0 is installed
 
+## Ubuntu 22.10 64 bits
+
+1. apt install autoconf automake libtool cmake yasm nasm gperf ninja-build pkgconf g++-mingw-w64-x86-64 python3-pip bison flex nsis
+2. run "pip3 install meson"
+3. Verify that meson >= 0.60.0 is installed
+
 # Compilation
 
 after cloning ewpi and changing to the ewpi directory:
@@ -119,7 +125,7 @@ Examples :
  * lcms2 2.14.0 (MIT)
  * libaacs 0.11.1 (LGPL 2.1)
  * libaom 3.5.0 (BSD 2-clause)
- * libarchive 3.6.1 (BSD 2-clause)
+ * libarchive 3.6.2 (BSD 2-clause)
  * libass 0.17.0 (ISC)
  * libavif 0.11.1 (BSD 2-clause)
  * libbdplus 0.2.0 (LGPL 2.1)
