@@ -1,4 +1,4 @@
 name: harfbuzz
-version: 5.3.1
-url: https://github.com/harfbuzz/harfbuzz/releases/download/5.3.1/harfbuzz-5.3.1.tar.xz
+version: 6.0.0
+url: https://github.com/harfbuzz/harfbuzz/releases/download/6.0.0/harfbuzz-6.0.0.tar.xz
 deps: zlib libpng freetype_bootstrap graphite2 icu
