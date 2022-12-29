@@ -150,7 +150,7 @@ Examples :
  * libopenh264 2.3.1 (BSD 2-clause)
  * libopenmpt 0.6.4 (BSD 3-clause)
  * libpng 1.6.37 (BSD 3-clause)
- * libpsl 0.21.1 (MIT)
+ * libpsl 0.21.2 (MIT)
  * libraw 0.21.0 (LGPL v2.1)
  * libressl 3.6.1 (Openssl and ISC licenses)
  * librtmp 2.4 (LGPL 2.1)
