@@ -2,42 +2,28 @@
 
 . ../../common.sh
 
-$4-gcc \
-    -s -O2 -pipe -march=$1 \
-    -fomit-frame-pointer \
-    -std=c99 \
-    -shared \
-    -Wl,--out-implib,libdeflate.dll.a \
-    -Wl,--output-def,libdeflate.def \
-    -o libdeflate-1.dll \
-    -I. \
-    -D_ANSI_SOURCE \
-    -D_WIN32_WINNT=$winver \
-    -Wall \
-    -Wdeclaration-after-statement \
-    -Wimplicit-fallthrough \
-    -Winline \
-    -Wmissing-prototypes \
-    -Wpedantic \
-    -Wstrict-prototypes \
-    -Wundef \
-    -Wvla \
-    lib/adler32.c \
-    lib/zlib_compress.c \
-    lib/zlib_decompress.c \
-    lib/deflate_compress.c \
-    lib/deflate_decompress.c \
-    lib/utils.c \
-    lib/x86/cpu_features.c \
-    > ../make.log 2>&1
+cp ../cross_toolchain.txt .
 
-deflatever=`sed -n 's/\#define LIBDEFLATE_VERSION_STRING.*"\(.*\)"/\1/p' libdeflate.h`
-cp libdeflate.pc.in libdeflate.pc
-sed -i -e "s|@PREFIX@|$3|g;s|@INCDIR@|\${prefix}/include|g;s|@LIBDIR@|\${exec_prefix}/lib|g;s|@VERSION@|$deflatever|g" libdeflate.pc
-cp libdeflate.pc $3/lib/pkgconfig
+if test "x$4" = "xx86_64-w64-mingw32" ; then
+    proc="AMD64"
+    machine=-m64
+else
+    proc="X86"
+    machine=-m32
+fi
 
-mkdir -p $3/{bin,include,lib/pkgconfig}
-cp libdeflate-1.dll $3/bin
-cp libdeflate.dll.a $3/lib
-cp libdeflate.pc $3/lib/pkgconfig
-cp libdeflate.h $3/include
+sed -i -e "s|@prefix@|$3|g;s|@host@|$4|g;s|@proc@|$proc|g;s|@winver@|$winver|g" cross_toolchain.txt
+
+rm -rf builddir && mkdir builddir && cd builddir
+
+cmake \
+    -DCMAKE_TOOLCHAIN_FILE=../cross_toolchain.txt \
+    -DCMAKE_INSTALL_PREFIX=$prefix_unix \
+    -DCMAKE_VERBOSE_MAKEFILE:BOOL=$verbcmake \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DLIBDEFLATE_BUILD_STATIC_LIB=OFF \
+    -DLIBDEFLATE_BUILD_GZIP=OFF \
+    -G "Unix Makefiles" \
+    .. > ../../config.log 2>&1
+
+make -j $jobopt $verbmake install > ../../make.log 2>&1
