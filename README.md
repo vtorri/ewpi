@@ -155,7 +155,7 @@ Examples :
  * libressl 3.6.1 (Openssl and ISC licenses)
  * librtmp 2.4 (LGPL 2.1)
  * libsnappy 1.1.9 (BSD 3-clause)
- * libsndfile 1.1.0 (LGPL 2.1)
+ * libsndfile 1.2.0 (LGPL 2.1)
  * libsoxr 0.1.3 (LGPL 2.1)
  * libspeex 1.2.0 (BSD 3-clause)
  * libssh2 1.10.0 (BSD 3-clause)
