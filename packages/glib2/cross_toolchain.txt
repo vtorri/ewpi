@@ -15,6 +15,6 @@ endian = 'little'
 
 [properties]
 c_args = ['-I@prefix@/include', '-O2', '-pipe', '-march=@arch@']
-c_link_args = ['-L@prefix@/lib', '-s']
+c_link_args = ['-L@prefix@/lib', '-s', '-lssp']
 cpp_args = ['-I@prefix@/include', '-O2', '-pipe', '-march=@arch@']
-cpp_link_args = ['-L@prefix@/lib', '-s']
+cpp_link_args = ['-L@prefix@/lib', '-s', '-lssp']
