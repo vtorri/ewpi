@@ -6,6 +6,8 @@ sed -i -e "s/lt_cv_deplibs_check_method='file_magic ^x86 archive import|^x86 DLL
 
 sed -i -e "s/TRUE/1/g" encoding.c
 
+export LDFLAGS="$LDFLAGS -lssp"
+
 ./configure --prefix=$3 --host=$4 --disable-static --with-python=no --with-icu=yes > ../config.log 2>&1
 
 make -j $jobopt $verbmake install > ../make.log 2>&1
