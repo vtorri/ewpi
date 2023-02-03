@@ -140,7 +140,7 @@ Examples :
  * libgpg-error 1.45 (LGPL 2.1)
  * libgsm 1.0.19 (MIT)
  * libilbc 3.0.4 (BSD 3-clause)
- * libjpeg 2.1.4 (IJG and zlib)
+ * libjpeg 2.1.5 (IJG and zlib)
  * libjxl git (BSD 3-clause)
  * libkvazaar 2.2.0 (BSD 3-clause)
  * liblerc 4.0.0 (Apache 2.0)
@@ -184,8 +184,8 @@ Examples :
 
 ### Libraries compatible with LGPL v3
 
- * libde265 1.0.9 (LGPL v3)
- * libheif 1.12.0 (LGPL v3)
+ * libde265 1.0.11 (LGPL v3)
+ * libheif 1.14.2 (LGPL v3)
 
 ### Libraries compatible with GPL v2
 
