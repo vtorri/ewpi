@@ -157,7 +157,6 @@ Examples :
  * libsnappy 1.1.9 (BSD 3-clause)
  * libsndfile 1.2.0 (LGPL 2.1)
  * libsoxr 0.1.3 (LGPL 2.1)
- * libspeex 1.2.0 (BSD 3-clause)
  * libssh2 1.10.0 (BSD 3-clause)
  * libtheora 1.1.1 (BSD 3-clause)
  * libtiff 4.5.0 (BSD 2-clause)

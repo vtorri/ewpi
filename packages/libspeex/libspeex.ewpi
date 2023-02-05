@@ -1,4 +1,0 @@
-name: libspeex
-version: 1.2.0
-url: http://downloads.us.xiph.org/releases/speex/speex-1.2.0.tar.gz
-deps: libogg

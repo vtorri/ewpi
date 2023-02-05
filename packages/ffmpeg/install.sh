@@ -41,7 +41,6 @@ rm -rf builddir && mkdir builddir && cd builddir
              --enable-libopus \
              --enable-libsnappy \
              --enable-libsoxr \
-             --enable-libspeex \
              --enable-libtheora \
              --enable-libtls \
              --enable-libvorbis \
