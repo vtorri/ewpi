@@ -124,7 +124,7 @@ Examples :
  * icu 72.1 (MIT)
  * lcms2 2.14.0 (MIT)
  * libaacs 0.11.1 (LGPL 2.1)
- * libaom 3.5.0 (BSD 2-clause)
+ * libaom 3.6.0 (BSD 2-clause)
  * libarchive 3.6.2 (BSD 2-clause)
  * libass 0.17.0 (ISC)
  * libavif 0.11.1 (BSD 2-clause)
@@ -192,4 +192,4 @@ Examples :
 ### Libraries compatible with AGPL v3
 
  * jbig2dec 0.17 (AGPL v3)
- * mupdf 1.21.1 (AGPL v3)
+ * mupdf 1.21.10 (AGPL v3)
