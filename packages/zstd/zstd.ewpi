@@ -1,4 +1,4 @@
 name: zstd
-version: 1.5.2
-url: https://github.com/facebook/zstd/releases/download/v1.5.2/zstd-1.5.2.tar.gz
+version: 1.5.4
+url: https://github.com/facebook/zstd/releases/download/v1.5.4/zstd-1.5.4.tar.gz
 deps: lz4 xz zlib

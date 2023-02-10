@@ -94,7 +94,7 @@ Examples :
  * ./ewpi --prefix=/opt/ewpi_32 --host=i686-w64-mingw32
  * ./ewpi --host=x86_64-w64-mingw32 --efl --jobs=4 --clean
 
-## Packages installed (82 packages)
+## Packages installed (86 packages)
 
 ### Libraries compatible with LGPL v2.1
 
@@ -178,7 +178,7 @@ Examples :
  * taglib 1.13 (LGPL 2.1)
  * xz 5.2.5 (lzma : public domain)
  * zlib 1.2.13 (zlib license)
- * zstd 1.5.2 (BSD 3-clause)
+ * zstd 1.5.4 (BSD 3-clause)
 
 ### Libraries compatible with LGPL v3
 
