@@ -104,7 +104,7 @@ Examples :
  * curl 7.88.0 (MIT)
  * dbus 1.12.20 (Academic Free License version 2.1)
  * expat 2.5.0 (MIT)
- * ffmpeg 5.1.1 (LGPL 2.1)
+ * ffmpeg 5.1.2 (LGPL 2.1)
  * flac 1.4.2 (LGPL 2.1)
  * fontconfig 2.14.0 (MIT)
  * freetype 2.13.0 (FreeType license)
