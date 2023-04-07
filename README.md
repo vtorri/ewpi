@@ -178,7 +178,7 @@ Examples :
  * taglib 1.13 (LGPL 2.1)
  * xz 5.2.5 (lzma : public domain)
  * zlib 1.2.13 (zlib license)
- * zstd 1.5.4 (BSD 3-clause)
+ * zstd 1.5.5 (BSD 3-clause)
 
 ### Libraries compatible with LGPL v3
 
