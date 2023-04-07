@@ -122,6 +122,11 @@ Section "!DLL (required)" SecEwpiInstDLL
 
   File "${EwpiDir}\lib\mpg123\*.dll"
 
+  SetOutPath "$INSTDIR\lib"
+
+  File "${EwpiDir}\lib\libmupdf.a"
+  File "${EwpiDir}\lib\libmupdf-third.a"
+
   SetOutPath "$INSTDIR"
 
   File "README.md"
