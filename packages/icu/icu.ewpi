@@ -1,4 +1,4 @@
 name: icu
-version: 72.1
-url: https://github.com/unicode-org/icu/releases/download/release-72-1/icu4c-72_1-src.tgz
+version: 73.1
+url: https://github.com/unicode-org/icu/releases/download/release-73-1/icu4c-73_1-src.tgz
 deps:
