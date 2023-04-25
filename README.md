@@ -24,17 +24,23 @@ and license.
 
 ## Windows with MSYS2 32 bits
 
-1. Install MSYS2 : https://www.msys2.org/ (steps 1 to 6)
-2. run "pacman -S autoconf automake libtool tar git wget python flex bison gettext-devel pkgconf make mingw-w64-i686-gperf mingw-w64-i686-nasm mingw-w64-i686-yasm mingw-w64-i686-cmake mingw-w64-i686-toolchain mingw-w64-i686-ninja mingw-w64-i686-python3-pip mingw-w64-i686-nsis"
-3. run "pip3 install meson"
-4. Verify that meson >= 0.60.0 is installed
+1. Install MSYS2 : https://www.msys2.org/ (steps 1 to 4)
+2. In the start menu,launch `MSYS2 64bit` --> `MSYS2 MINGW32`
+3. In the terminal, launch `pacman -Syu`, press `Y` to proceed the installation. Press `Y` to close the terminal
+4. In the start menu, launch again `MSYS2 64bit` --> `MSYS2 MINGW32`
+5. Run `pacman -Syu base-devel autoconf automake libtool tar git wget python flex bison gettext-devel pkgconf make mingw-w64-i686-gperf mingw-w64-i686-nasm mingw-w64-i686-yasm mingw-w64-i686-cmake mingw-w64-i686-toolchain mingw-w64-i686-ninja mingw-w64-i686-meson mingw-w64-i686-nsis`
+6. When aksed for the selection, just press the Enter key for the default selection
+7. Press `Y` to proceed the installation. This may take several minutes
 
 ## Windows with MSYS2 64 bits
 
-1. Install MSYS2 : https://www.msys2.org/ (steps 1 to 6)
-2. run "pacman -S autoconf automake libtool tar git wget python flex bison gettext-devel pkgconf make mingw-w64-x86_64-gperf mingw-w64-x86_64-nasm mingw-w64-x86_64-yasm mingw-w64-x86_64-cmake mingw-w64-x86_64-toolchain mingw-w64-x86_64-ninja mingw-w64-x86_64-python3-pip mingw-w64-x86_64-nsis"
-3. run "pip3 install meson"
-4. Verify that meson >= 0.60.0 is installed
+1. Install MSYS2 : https://www.msys2.org/ (steps 1 to 4)
+2. In the start menu,launch `MSYS2 64bit` --> `MSYS2 MINGW64`
+3. In the terminal, launch `pacman -Syu`, press `Y` to proceed the installation. Press `Y` to close the terminal
+4. In the start menu,launch again `MSYS2 64bit` --> `MSYS2 MINGW64`
+5. Run `pacman -Syu base-devel autoconf automake libtool tar git wget python flex bison gettext-devel pkgconf make mingw-w64-x86_64-gperf mingw-w64-x86_64-nasm mingw-w64-x86_64-yasm mingw-w64-x86_64-cmake mingw-w64-x86_64-toolchain mingw-w64-x86_64-ninja mingw-w64-x86_64-meson mingw-w64-x86_64-nsis`
+6. When aksed for the selection, just press the Enter key for the default selection
+7. Press `Y` to proceed the installation This may take several minutes
 
 ## Fedora 32 bits
 
