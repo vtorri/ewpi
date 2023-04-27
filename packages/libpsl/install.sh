@@ -14,15 +14,15 @@ sed -i -e "s/@host@/$4/g;s/@arch@/$1/g;s|@prefix@|$3|g" cross_toolchain.txt
 
 sed -i -e "s/subdir('tools')//g;s/subdir('tests')//g;s/subdir('fuzz')//g" meson.build
 
-rm -rf builddir && mkdir builddir && cd builddir
-
-meson .. \
+rm -rf builddir
+meson setup \
       --prefix=$3 \
       --libdir=lib \
       --buildtype=release \
       --strip \
-      --cross-file ../cross_toolchain.txt \
+      --cross-file cross_toolchain.txt \
       --default-library shared \
-      -Druntime=libicu > ../../config.log 2>&1
+      -Druntime=libicu \
+      builddir > ../config.log 2>&1
 
-ninja $verbninja install > ../../make.log 2>&1
+ninja $verbninja -C builddir install > ../make.log 2>&1

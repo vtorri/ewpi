@@ -20,19 +20,20 @@ case ${EWPI_OS} in
     ;;
 esac
 
-rm -rf builddir && mkdir builddir && cd builddir
-meson .. \
+rm -rf builddir
+meson setup \
       --prefix=$3 \
       --libdir=lib \
       --buildtype=release \
       --strip \
-      --cross-file ../cross_toolchain.txt \
+      --cross-file cross_toolchain.txt \
       --default-library shared \
       -Dgtk_doc=false \
       -Dgobject_types=true \
       -Dintrospection=disabled \
       -Darm_neon=false \
       -Dtests=false \
-      -Dinstalled_tests=false > ../../config.log 2>&1
+      -Dinstalled_tests=false \
+      builddir > ../config.log 2>&1
 
-ninja $verbninja install > ../../make.log 2>&1
+ninja $verbninja -C builddir install > ../make.log 2>&1
