@@ -4,6 +4,7 @@
 
 Changes:
 
+  * harfbuzz 7.2.0
   * libressl 3.7.2
   * opus 1.4
   * uci 73.1
