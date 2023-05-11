@@ -73,7 +73,7 @@ FunctionEnd
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Default installation folder
-InstallDir "$LOCALAPPDATA\efl"
+InstallDir "$LOCALAPPDATA\ewpi_@arch_suf@"
 
 ;Request application privileges for Windows >= Vista
 RequestExecutionLevel user
@@ -131,7 +131,7 @@ Section "!DLL (required)" SecEwpiInstDLL
 
   File "README.md"
 
-  WriteRegStr HKCU "Software\ewpi_64" "" $INSTDIR
+  WriteRegStr HKCU "Software\ewpi_@arch_suf@" "" $INSTDIR
 
   ;Create uninstaller
   WriteUninstaller "$INSTDIR\Uninstall.exe"
@@ -162,7 +162,7 @@ Section /o "Development files" SecEwpiInstDev
 
   File "${EwpiDir}\lib\dbus-1.0\include\dbus\dbus-arch-deps.h"
 
-  WriteRegStr HKCU "Software\ewpi_64" "" $INSTDIR
+  WriteRegStr HKCU "Software\ewpi_@arch_suf@" "" $INSTDIR
 
   ;Create uninstaller
   WriteUninstaller "$INSTDIR\Uninstall.exe"
@@ -193,7 +193,7 @@ Section "Uninstall"
 
   RMDir "$INSTDIR"
 
-  DeleteRegKey /ifempty HKCU "Software\ewpi_64"
+  DeleteRegKey /ifempty HKCU "Software\ewpi_@arch_suf@"
 
 SectionEnd
 

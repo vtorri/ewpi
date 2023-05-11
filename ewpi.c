@@ -1322,12 +1322,18 @@ _ew_packages_nsis(const char *prefix, const char *host, const char *winver)
     fflush(stdout);
 
     if (strcmp(host, "i686-w64-mingw32") == 0)
+    {
         arch = "i686";
+        arch_suf = "32";
+    }
     else
+    {
         arch = "x86_64";
+        arch_suf = "64";
+    }
 
     snprintf(buf, 4095,
-             "sh ./ewpi_nsis.sh %s %d.%d %s %s",
+             "sh ./ewpi_nsis.sh %s %d.%d %s %s %s",
              prefix, _ew_vmaj, _ew_vmin, arch, winver);
     ret = system(buf);
     if (ret != 0)
