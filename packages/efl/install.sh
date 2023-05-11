@@ -26,6 +26,7 @@ meson setup \
       --libdir=lib \
       --buildtype=release \
       --strip \
+      --cross-file cross_toolchain.txt \
       --default-library shared \
       -Dsystemd=false \
       -Dpulseaudio=false \
