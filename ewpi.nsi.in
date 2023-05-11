@@ -113,6 +113,11 @@ Section "!DLL (required)" SecEwpiInstDLL
   SetOutPath "$INSTDIR\bin"
 
   File "${EwpiDir}\bin\*.dll"
+  ;; needed DLL, from Fedora mingw toolchain
+  File "/usr/x86_64-w64-mingw32/sys-root/mingw/bin/libgcc_s_seh-1.dll"
+  File "/usr/x86_64-w64-mingw32/sys-root/mingw/bin/libstdc++-6.dll"
+  File "/usr/x86_64-w64-mingw32/sys-root/mingw/bin/libwinpthread-1.dll"
+  File "/usr/x86_64-w64-mingw32/sys-root/mingw/bin/libgomp-1.dll"
 
   SetOutPath "$INSTDIR\lib\gstreamer-1.0"
 
@@ -133,7 +138,11 @@ Section "!DLL (required)" SecEwpiInstDLL
 
   WriteRegStr HKCU "Software\ewpi_@arch_suf@" "" $INSTDIR
 
-  ;Create uninstaller
+  ; PATH
+  EnVar::SetHKCU
+  EnVar::AddValue "PATH" "$INSTDIR\bin"
+
+  ; Create uninstaller
   WriteUninstaller "$INSTDIR\Uninstall.exe"
 
 SectionEnd
@@ -164,7 +173,11 @@ Section /o "Development files" SecEwpiInstDev
 
   WriteRegStr HKCU "Software\ewpi_@arch_suf@" "" $INSTDIR
 
-  ;Create uninstaller
+  ; PKG_CONFIG_PATH
+  EnVar::SetHKCU
+  EnVar::AddValue "PKG_CONFIG_PATH" "$INSTDIR\lib\pkgconfig"
+
+  ; Create uninstaller
   WriteUninstaller "$INSTDIR\Uninstall.exe"
 
 SectionEnd
@@ -192,6 +205,13 @@ Section "Uninstall"
   RMDIR /r "$INSTDIR\include"
 
   RMDir "$INSTDIR"
+
+  ; PKG_CONFIG_PATH
+  EnVar::SetHKCU
+  EnVar::DeleteValue "PKG_CONFIG_PATH" "$INSTDIR\lib\pkgconfig"
+  ; TODO delete PKG_CONFIG_PATH env var if empty
+  ; PATH
+  EnVar::DeleteValue "PATH" "$INSTDIR\bin"
 
   DeleteRegKey /ifempty HKCU "Software\ewpi_@arch_suf@"
 
