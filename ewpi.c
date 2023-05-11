@@ -1314,6 +1314,7 @@ _ew_packages_nsis(const char *prefix, const char *host, const char *winver)
 {
     char buf[4096];
     const char *arch;
+    const char *arch_suf;
     int ret;
 
     _ew_packages_strip(prefix, host);
@@ -1334,7 +1335,7 @@ _ew_packages_nsis(const char *prefix, const char *host, const char *winver)
 
     snprintf(buf, 4095,
              "sh ./ewpi_nsis.sh %s %d.%d %s %s %s",
-             prefix, _ew_vmaj, _ew_vmin, arch, winver);
+             prefix, _ew_vmaj, _ew_vmin, arch, arch_suf, winver);
     ret = system(buf);
     if (ret != 0)
     {
