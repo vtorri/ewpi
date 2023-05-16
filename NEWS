@@ -5,6 +5,7 @@
 Changes:
 
   * dbus 1.14.6
+  * fribidi 1.0.13
   * harfbuzz 7.3.0
   * icu 73.1
   * libdav1d 1.2.0

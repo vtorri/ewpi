@@ -116,7 +116,7 @@ Examples :
  * flac 1.4.2 (LGPL 2.1)
  * fontconfig 2.14.0 (MIT)
  * freetype 2.13.0 (FreeType license)
- * fribidi 1.0.12 (LGPL 2.1)
+ * fribidi 1.0.13 (LGPL 2.1)
  * gettext 0.21.0 (only libintl : LGPL 2.1)
  * giflib 5.2.1 (MIT)
  * glib2 2.72.1 (LGPL 2.1)
