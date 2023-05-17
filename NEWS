@@ -4,6 +4,7 @@
 
 Changes:
 
+  * curl 8.1.0
   * dbus 1.14.6
   * fribidi 1.0.13
   * harfbuzz 7.3.0
