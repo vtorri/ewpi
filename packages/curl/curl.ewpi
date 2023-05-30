@@ -1,4 +1,4 @@
 name: curl
-version: 8.1.1
-url: https://github.com/curl/curl/releases/download/curl-8_1_1/curl-8.1.1.tar.xz
+version: 8.1.2
+url: https://github.com/curl/curl/releases/download/curl-8_1_2/curl-8.1.2.tar.xz
 deps: zlib zstd brotli libssh2 libpsl nghttp2
