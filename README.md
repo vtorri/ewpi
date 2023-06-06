@@ -119,7 +119,7 @@ Examples :
  * fribidi 1.0.13 (LGPL 2.1)
  * gettext 0.21.0 (only libintl : LGPL 2.1)
  * giflib 5.2.1 (MIT)
- * glib2 2.72.1 (LGPL 2.1)
+ * glib2 2.76.3 (LGPL 2.1)
  * graphene 1.10.8 (MIT)
  * graphite2 1.3.14 (LGPL 2.1)
  * gst-libav 1.22.3 (LGPL 2.1)
