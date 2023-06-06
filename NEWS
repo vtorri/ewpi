@@ -15,6 +15,7 @@ Changes:
   * gstreamer 1.22.3
   * harfbuzz 7.3.0
   * icu 73.1
+  * libaom 3.6.1
   * libdav1d 1.2.1
   * libgcrypt 1.10.2
   * libgpg-error 1.47
