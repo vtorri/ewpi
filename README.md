@@ -143,7 +143,7 @@ Examples :
  * libdeflate 1.18 (MIT)
  * libexif 0.6.24 (LGPL v2.1)
  * libffi 3.4.2 (MIT)
- * libgcrypt 1.10.1 (LGPL 2.1)
+ * libgcrypt 1.10.2 (LGPL 2.1)
  * libgme 0.6.3 (LGPL 2.1)
  * libgpg-error 1.47 (LGPL 2.1)
  * libgsm 1.0.19 (MIT)
