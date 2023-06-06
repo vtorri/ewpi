@@ -15,6 +15,7 @@ Changes:
   * harfbuzz 7.3.0
   * icu 73.1
   * libdav1d 1.2.0
+  * libgpg-error 1.47
   * libheif 1.16.2
   * libressl 3.7.2
   * libssh2 1.11.0
