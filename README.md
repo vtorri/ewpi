@@ -200,4 +200,4 @@ Examples :
 ### Libraries compatible with AGPL v3
 
  * jbig2dec 0.17 (AGPL v3)
- * mupdf 1.21.10 (AGPL v3)
+ * mupdf 1.22.1 (AGPL v3)
