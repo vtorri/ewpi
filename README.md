@@ -180,7 +180,7 @@ Examples :
  * nghttp2 1.53.0 (MIT)
  * openjpeg 2.5.0 (BSD 2-clause)
  * opus 1.4.0 (BSD 3-clause)
- * orc 0.4.32 (BSD 2-clause)
+ * orc 0.4.34 (BSD 2-clause)
  * pixman 0.40.0 (MIT)
  * regex 1.2.1 (MIT)
  * taglib 1.13 (LGPL 2.1)
