@@ -137,7 +137,7 @@ Examples :
  * libass 0.17.1 (ISC)
  * libavif 0.11.1 (BSD 2-clause)
  * libbdplus 0.2.0 (LGPL 2.1)
- * libbluray 1.3.3 (LGPL 2.1)
+ * libbluray 1.3.4 (LGPL 2.1)
  * libbs2b 3.1.0 (MIT)
  * libdav1d 1.2.1 (BSD 2-clause)
  * libdeflate 1.18 (MIT)
