@@ -181,7 +181,7 @@ Examples :
  * openjpeg 2.5.0 (BSD 2-clause)
  * opus 1.4.0 (BSD 3-clause)
  * orc 0.4.34 (BSD 2-clause)
- * pixman 0.40.0 (MIT)
+ * pixman 0.42.2 (MIT)
  * regex 1.2.1 (MIT)
  * taglib 1.13 (LGPL 2.1)
  * xz 5.4.2 (lzma : public domain)
