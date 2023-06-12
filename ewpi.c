@@ -1310,7 +1310,7 @@ _ew_packages_strip(const char *prefix, const char *host)
 }
 
 static void
-_ew_packages_nsis(const char *prefix, const char *host, const char *winver)
+_ew_packages_nsis(const char *prefix, const char *host, const char *winver, int efl)
 {
     char buf[4096];
     const char *arch;
@@ -1333,9 +1333,18 @@ _ew_packages_nsis(const char *prefix, const char *host, const char *winver)
         arch_suf = "64";
     }
 
-    snprintf(buf, 4095,
-             "sh ./ewpi_nsis.sh %s %d.%d %s %s %s",
-             prefix, _ew_vmaj, _ew_vmin, arch, arch_suf, winver);
+    if (efl)
+    {
+        snprintf(buf, 4095,
+                 "sh ./efl_nsis.sh %s %d.%d %s %s %s",
+                 prefix, _ew_vmaj, _ew_vmin, arch, arch_suf, winver);
+    }
+    else
+    {
+        snprintf(buf, 4095,
+                 "sh ./ewpi_nsis.sh %s %d.%d %s %s %s",
+                 prefix, _ew_vmaj, _ew_vmin, arch, arch_suf, winver);
+    }
     ret = system(buf);
     if (ret != 0)
     {
@@ -1536,7 +1545,7 @@ int main(int argc, char *argv[])
         _ew_packages_strip(prefix, host);
     if (nsis)
     {
-        _ew_packages_nsis(prefix, host, winver);
+        _ew_packages_nsis(prefix, host, winver, efl);
     }
     if (cleaning)
         _ew_packages_clean();

@@ -1,0 +1,42 @@
+Licensing
+
+EFL comes with several licences. Different shared libraries are
+covered by different licenses, and are distributed here as an
+aggregation with a single build system. Listed below are the library/project
+names and the license file covering it. Note that this license would
+cover all of the source invovled in each project (src/lib/PROJECT,
+src/modules/PROJECT, src/bin/PROJECT data/PROJECT) unless specifically
+noted otherwise (eg epp in edje or lz4, libunibreak etc.), so please
+refer to these imported project sources for details (but be aware that
+the licensing of such libraries is compatible with the libraries that
+use them and is not more restrictive).
+
+evil:            licenses/COPYING.BSD
+eina:            licenses/COPYING.LGPL
+emile:           licenses/COPYING.LGPL
+eet:             licenses/COPYING.BSD
+eo:              licenses/COPYING.BSD
+ector:           licenses/COPYING.FTL, licenses/COPYING.GPL (dual licenses)
+evas:            licenses/COPYING.BSD
+embryo:          licenses/COPYING.SMALL
+ecore:           licenses/COPYING.BSD
+dns:             licenses/COPYING.DNS
+eio:             licenses/COPYING.LGPL
+eldbus:          licenses/COPYING.LGPL
+efreet:          licenses/COPYING.BSD
+eeze:            licenses/COPYING.BSD
+ephysics:        licenses/COPYING.BSD
+edje:            licenses/COPYING.BSD
+edje/epp:        licenses/COPYING.GPL (separate binary/executable)
+emotion:         licenses/COPYING.BSD
+ethumb:          licenses/COPYING.LGPL
+eolian:          licenses/COPYING.BSD
+elua:            licenses/COPYING.BSD
+elementary:      licenses/COPYING.LGPL
+generic/evas:    licenses/COPYING.GPL (separate binary/executable)
+efl:             licenses/COPYING.LGPL
+csharp bindings: licenses/COPYING.ASL
+cxx bindings:    licenses/COPYING.ASL
+
+NOTE: If linked together, the result will be effectively be LGPL (or
+GPL if escape is used) due to license characteristics.

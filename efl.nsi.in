@@ -1,0 +1,422 @@
+; EFL installer
+; Written by Vincent Torri
+
+!include MUI2.nsh
+
+Name "EFL installer"
+BrandingText "EFL installer v@version@"
+OutFile "efl-@arch@-@winver@-@version@.exe"
+Unicode True
+SetCompressor /SOLID lzma
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+Function ReplaceLineStr
+ Exch $R0 ; string to replace that whole line with
+ Exch
+ Exch $R1 ; string that line should start with
+ Exch
+ Exch 2
+ Exch $R2 ; file
+ Push $R3 ; file handle
+ Push $R4 ; temp file
+ Push $R5 ; temp file handle
+ Push $R6 ; global
+ Push $R7 ; input string length
+ Push $R8 ; line string length
+ Push $R9 ; global
+
+  StrLen $R7 $R1
+
+  GetTempFileName $R4
+
+  FileOpen $R5 $R4 w
+  FileOpen $R3 $R2 r
+
+  ReadLoop:
+  ClearErrors
+   FileRead $R3 $R6
+    IfErrors Done
+
+   StrLen $R8 $R6
+   StrCpy $R9 $R6 $R7 -$R8
+   StrCmp $R9 $R1 0 +3
+
+    FileWrite $R5 "$R0$\r$\n"
+    Goto ReadLoop
+
+    FileWrite $R5 $R6
+    Goto ReadLoop
+
+  Done:
+
+  FileClose $R3
+  FileClose $R5
+
+  SetDetailsPrint none
+   Delete $R2
+   Rename $R4 $R2
+  SetDetailsPrint both
+
+ Pop $R9
+ Pop $R8
+ Pop $R7
+ Pop $R6
+ Pop $R5
+ Pop $R4
+ Pop $R3
+ Pop $R2
+ Pop $R1
+ Pop $R0
+FunctionEnd
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Default installation folder
+InstallDir "$LOCALAPPDATA\efl_@arch_suf@"
+
+;Request application privileges for Windows >= Vista
+RequestExecutionLevel user
+
+; Show a message box with a warning when the user wants to close the installer.
+!define MUI_ABORTWARNING
+
+; Display E logo
+!define MUI_ICON "e.ico"
+!define MUI_HEADERIMAGE
+!define MUI_HEADERIMAGE_BITMAP "e.bmp"
+
+; Pages
+
+!insertmacro MUI_PAGE_WELCOME
+!insertmacro MUI_PAGE_LICENSE "License_efl.txt"
+!insertmacro MUI_PAGE_COMPONENTS
+!insertmacro MUI_PAGE_DIRECTORY
+!insertmacro MUI_PAGE_INSTFILES
+!insertmacro MUI_PAGE_FINISH
+
+!insertmacro MUI_UNPAGE_WELCOME
+!insertmacro MUI_UNPAGE_CONFIRM
+!insertmacro MUI_UNPAGE_INSTFILES
+!insertmacro MUI_UNPAGE_FINISH
+
+!insertmacro MUI_LANGUAGE "English"
+
+; Installer sections
+
+!define EflDir  "@prefix@"
+
+Section "!DLL (required)" SecEflDLL
+
+  SectionIn RO
+
+  SetOutPath "$INSTDIR\bin"
+
+  File "${EflDir}\bin\*.dll"
+  File "${EflDir}\bin\efreetd.exe"
+  File "${EflDir}\bin\elementary_config.exe"
+  File "${EflDir}\bin\ethumbd.exe"
+  File "${EflDir}\bin\ethumbd_client.exe"
+  File "${EflDir}\bin\eo_debug"
+  File "${EflDir}\bin\exactness_play"
+  File "${EflDir}\bin\exactness_record"
+  File "${EflDir}\bin\vieet"
+
+  SetOutPath "$INSTDIR\lib\ecore_con\utils\v-@version@\efl_net_proxy_helper.exe"
+  File "${EflDir}\lib\ecore_con\utils\v-@version@\efl_net_proxy_helper.exe"
+
+  SetOutPath "$INSTDIR\lib\ecore_evas\engines\win32\v-@version@"
+  File "${EflDir}\lib\ecore_evas\engines\win32\v-@version@\module.dll"
+
+  SetOutPath "$INSTDIR\lib\edje\modules\elm\v-@version@"
+  File "${EflDir}\lib\edje\modules\elm\v-@version@\module.dll"
+
+  SetOutPath "$INSTDIR\lib\edje\modules\emotion\v-@version@"
+  File "${EflDir}\lib\edje\modules\emotion\v-@version@\module.dll"
+
+  SetOutPath "$INSTDIR\lib\efreet\v-@version@"
+  File "${EflDir}\lib\efreet\v-@version@\efreet_desktop_cache_create.exe"
+  File "${EflDir}\lib\efreet\v-@version@\efreet_icon_cache_create.exe"
+  File "${EflDir}\lib\efreet\v-@version@\efreet_mime_cache_create.exe"
+
+  SetOutPath "$INSTDIR\lib\elementary\modules\access_output\v-@version@"
+  File "${EflDir}\lib\elementary\modules\access_output\v-@version@\module.dll"
+
+  SetOutPath "$INSTDIR\lib\elementary\modules\prefs\v-@version@"
+  File "${EflDir}\lib\elementary\modules\prefs\v-@version@\module.dll"
+
+  SetOutPath "$INSTDIR\lib\elementary\modules\test_entry\v-@version@"
+  File "${EflDir}\lib\elementary\modules\test_entry\v-@version@\module.dll"
+
+  SetOutPath "$INSTDIR\lib\elementary\modules\test_map\v-@version@"
+  File "${EflDir}\lib\elementary\modules\test_map\v-@version@\module.dll"
+
+  SetOutPath "$INSTDIR\lib\emotion\modules\gstreamer1\v-@version@"
+  File "${EflDir}\lib\emotion\modules\gstreamer1\v-@version@\module.dll"
+
+  SetOutPath "$INSTDIR\lib\ethumb\modules\emotion\v-@version@"
+  File "${EflDir}\lib\ethumb\modules\emotion\v-@version@\module.dll"
+
+  SetOutPath "$INSTDIR\lib\ethumb_client\utils\v-@version@"
+  File "${EflDir}\lib\ethumb_client\utils\v-@version@\ethumbd_slave.exe"
+
+  SetOutPath "$INSTDIR\lib\evas\modules\engines\buffer\v-@version@"
+  File "${EflDir}\lib\evas\modules\engines\buffer\v-@version@\module.dll"
+
+  SetOutPath "$INSTDIR\lib\evas\modules\engines\software_ddraw\v-@version@"
+  File "${EflDir}\lib\evas\modules\engines\software_ddraw\v-@version@\module.dll"
+
+  SetOutPath "$INSTDIR\lib\evas\modules\engines\software_gdi\v-@version@"
+  File "${EflDir}\lib\evas\modules\engines\software_gdi\v-@version@\module.dll"
+
+  SetOutPath "$INSTDIR\lib\evas\modules\image_loaders\avif\v-@version@"
+  File "${EflDir}\lib\evas\modules\image_loaders\avif\v-@version@\module.dll"
+
+  SetOutPath "$INSTDIR\lib\evas\modules\image_loaders\bmp\v-@version@"
+  File "${EflDir}\lib\evas\modules\image_loaders\bmp\v-@version@\module.dll"
+
+  SetOutPath "$INSTDIR\lib\evas\modules\image_loaders\generic\v-@version@"
+  File "${EflDir}\lib\evas\modules\image_loaders\generic\v-@version@\module.dll"
+
+  SetOutPath "$INSTDIR\lib\evas\modules\image_loaders\gif\v-@version@"
+  File "${EflDir}\lib\evas\modules\image_loaders\gif\v-@version@\module.dll"
+
+  SetOutPath "$INSTDIR\lib\evas\modules\image_loaders\heif\v-@version@"
+  File "${EflDir}\lib\evas\modules\image_loaders\heif\v-@version@\module.dll"
+
+  SetOutPath "$INSTDIR\lib\evas\modules\image_loaders\ico\v-@version@"
+  File "${EflDir}\lib\evas\modules\image_loaders\ico\v-@version@\module.dll"
+
+  SetOutPath "$INSTDIR\lib\evas\modules\image_loaders\jp2k\v-@version@"
+  File "${EflDir}\lib\evas\modules\image_loaders\jp2k\v-@version@\module.dll"
+
+  SetOutPath "$INSTDIR\lib\evas\modules\image_loaders\pmaps\v-@version@"
+  File "${EflDir}\lib\evas\modules\image_loaders\pmaps\v-@version@\module.dll"
+
+  SetOutPath "$INSTDIR\lib\evas\modules\image_loaders\psd\v-@version@"
+  File "${EflDir}\lib\evas\modules\image_loaders\psd\v-@version@\module.dll"
+
+  SetOutPath "$INSTDIR\lib\evas\modules\image_loaders\tiff\v-@version@"
+  File "${EflDir}\lib\evas\modules\image_loaders\tiff\v-@version@\module.dll"
+
+  SetOutPath "$INSTDIR\lib\evas\modules\image_loaders\wbmp\v-@version@"
+  File "${EflDir}\lib\evas\modules\image_loaders\wbmp\v-@version@\module.dll"
+
+  SetOutPath "$INSTDIR\lib\evas\modules\image_loaders\webp\v-@version@"
+  File "${EflDir}\lib\evas\modules\image_loaders\webp\v-@version@\module.dll"
+
+  SetOutPath "$INSTDIR\lib\evas\modules\image_loaders\xpm\v-@version@"
+  File "${EflDir}\lib\evas\modules\image_loaders\xpm\v-@version@\module.dll"
+
+  SetOutPath "$INSTDIR\lib\evas\modules\image_savers\avif\v-@version@"
+  File "${EflDir}\lib\evas\modules\image_savers\avif\v-@version@\module.dll"
+
+  SetOutPath "$INSTDIR\lib\evas\modules\image_savers\tiff\v-@version@"
+  File "${EflDir}\lib\evas\modules\image_savers\tiff\v-@version@\module.dll"
+
+  SetOutPath "$INSTDIR\lib\evas\modules\image_savers\webp\v-@version@"
+  File "${EflDir}\lib\evas\modules\image_savers\webp\v-@version@\module.dll"
+
+  SetOutPath "$INSTDIR\lib\evas\utils"
+  File "${EflDir}\lib\evas\utils\evas_image_loader.*"
+
+  SetOutPath "$INSTDIR\share\ecore"
+  File "${EflDir}\share\ecore\checkme"
+
+  SetOutPath "$INSTDIR\share\ecore_imf"
+  File "${EflDir}\share\ecore_imf\checkme"
+
+  SetOutPath "$INSTDIR\share\efreet"
+  File "${EflDir}\share\efreet\checkme"
+
+  SetOutPath "$INSTDIR\share\elua"
+  File /r "${EflDir}\share\elua"
+
+  SetOutPath "$INSTDIR\share\emotion"
+  File "${EflDir}\share\emotion\checkme"
+
+  SetOutPath "$INSTDIR\share\ethumb"
+  File "${EflDir}\share\ethumb\checkme"
+
+  SetOutPath "$INSTDIR\share\ethumb\frames"
+  File "${EflDir}\share\ethumb\frames\default.edj"
+
+  SetOutPath "$INSTDIR\share\ethumb_client"
+  File "${EflDir}\share\ethumb_client\checkme"
+
+  SetOutPath "$INSTDIR\share\evas"
+  File "${EflDir}\share\evas\checkme"
+
+  SetOutPath "$INSTDIR\share\evas\filters"
+  File "${EflDir}\share\evas\filters\lua\color.lua"
+
+  SetOutPath "$INSTDIR\share\icons"
+  File /r "${EflDir}\share\icons"
+
+  SetOutPath "$INSTDIR\share\locale"
+  File /r "${EflDir}\share\locale"
+
+  SetOutPath "$INSTDIR"
+
+  File "README.md"
+
+  WriteRegStr HKCU "Software\efl_@arch_suf@" "" $INSTDIR
+
+  ; PATH
+  EnVar::SetHKCU
+  EnVar::AddValue "PATH" "$INSTDIR\bin"
+
+  ;Create uninstaller
+  WriteUninstaller "$INSTDIR\Uninstall.exe"
+
+SectionEnd
+
+Section /o "Utilities and theme files" SecEflTheme
+
+  SetOutPath "$INSTDIR\bin"
+
+  File "${EflDir}\bin\diffeet"
+  File "${EflDir}\bin\ecore_evas_convert.exe"
+  File "${EflDir}\bin\edje_cc.exe"
+  File "${EflDir}\bin\edje_codegen.exe"
+  File "${EflDir}\bin\edje_decc.exe"
+  File "${EflDir}\bin\edje_external_inspector.exe"
+  File "${EflDir}\bin\edje_inspector.exe"
+  File "${EflDir}\bin\edje_pick.exe"
+  File "${EflDir}\bin\edje_player.exe"
+  File "${EflDir}\bin\edje_recc"
+  File "${EflDir}\bin\edje_watch.exe"
+  File "${EflDir}\bin\eet.exe"
+  File "${EflDir}\bin\eetpack.exe"
+  File "${EflDir}\bin\eina_btlog.exe"
+  File "${EflDir}\bin\eina_modinfo.exe"
+  File "${EflDir}\bin\eldbus-codegen.exe"
+  File "${EflDir}\bin\elementary_codegen.exe"
+  File "${EflDir}\bin\elementary_perf.exe"
+  File "${EflDir}\bin\elm_prefs_cc.exe"
+  File "${EflDir}\bin\elua.exe"
+  File "${EflDir}\bin\embryo_cc.exe"
+  File "${EflDir}\bin\emotion_test-eo.exe"
+  File "${EflDir}\bin\emotion_test.exe"
+  File "${EflDir}\bin\eolian_cxx.exe"
+  File "${EflDir}\bin\eolian_gen.exe"
+  File "${EflDir}\bin\eo_debug"
+  File "${EflDir}\bin\ethumb.exe"
+
+  SetOutPath "$INSTDIR\lib\edje\utils\v-@version@"
+  File "${EflDir}\lib\edje\utils\v-@version@\epp.exe"
+
+  SetOutPath "$INSTDIR\share\edje\include"
+  File "${EflDir}\share\edje\include\edje.inc"
+
+  SetOutPath "$INSTDIR\share\embryo\include"
+  File "${EflDir}\share\embryo\include\default.inc"
+
+  SetOutPath "$INSTDIR\share\emotion\data"
+  File "${EflDir}\share\emotion\data\theme.edj"
+
+SectionEnd
+
+Section /o "Extra utilities" SecEflExtra
+
+  SetOutPath "$INSTDIR\bin"
+
+  File "${EflDir}\bin\elementary_test.exe"
+
+  SetOutPath "$INSTDIR\share\elementary"
+
+  File /r "${EflDir}\share\elementary"
+
+SectionEnd
+
+Section /o "Development files" SecEflDev
+
+  SetOutPath "$INSTDIR\include"
+
+  File /r "${EflDir}\include"
+
+  SetOutPath "$INSTDIR\lib\pkgconfig"
+
+  File "${EflDir}\lib\pkgconfig\*"
+
+  SetOutPath "$INSTDIR\lib"
+
+  File "${EflDir}\lib\*.dll.a"
+
+  SetOutPath "$INSTDIR\share\eo"
+  File /r "${EflDir}\share\eo"
+
+  SetOutPath "$INSTDIR\share\eolian"
+  File /r "${EflDir}\share\eolian"
+
+  SetOutPath "$INSTDIR\share\gdb"
+  File /r "${EflDir}\share\gdb"
+
+  WriteRegStr HKCU "Software\efl_@arch_suf@" "" $INSTDIR
+
+  ; PKG_CONFIG_PATH
+  EnVar::SetHKCU
+  EnVar::AddValue "PKG_CONFIG_PATH" "$INSTDIR\lib\pkgconfig"
+
+  ; Create uninstaller
+  WriteUninstaller "$INSTDIR\Uninstall.exe"
+
+SectionEnd
+
+; Description
+
+  LangString DESC_SecEflDLL ${LANG_ENGLISH} "DLL EFL at runtime"
+  LangString DESC_SecEflTheme ${LANG_ENGLISH} "Files for theming (edje_cc etc...)"
+  LangString DESC_SecEflExtra ${LANG_ENGLISH} "Elementary test program"
+  LangString DESC_SecEflDev ${LANG_ENGLISH} "Files for EFL development"
+
+  ;Assign language strings to sections
+  !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
+    !insertmacro MUI_DESCRIPTION_TEXT ${SecEflDLL} $(DESC_SecEflDLL)
+    !insertmacro MUI_DESCRIPTION_TEXT ${SecEflTheme} $(DESC_SecEflTheme)
+    !insertmacro MUI_DESCRIPTION_TEXT ${SecEflExtra} $(DESC_SecEflExtra)
+    !insertmacro MUI_DESCRIPTION_TEXT ${SecEflDev} $(DESC_SecEflDev)
+  !insertmacro MUI_FUNCTION_DESCRIPTION_END
+
+; Uninstaller Section
+
+Section "Uninstall"
+
+  Delete "$INSTDIR\Uninstall.exe"
+  Delete "$INSTDIR\README.md"
+
+  RMDIR /r "$INSTDIR\bin"
+  RMDIR /r "$INSTDIR\lib"
+  RMDIR /r "$INSTDIR\include"
+  RMDIR /r "$INSTDIR\share"
+
+  RMDir "$INSTDIR"
+
+  DeleteRegKey /ifempty HKCU "Software\efl_@arch_suf@"
+
+SectionEnd
+
+Function .onInit
+  ReadRegStr $EwpiPrefix HKCU "Software\ewpi_@arch_suf@" ""
+  MessageBox MB_ICONEXCLAMATION|MB_OK \
+  "EWPI prefix: '$EwpiPrefix'" IDOK end
+FunctionEnd
+
+Function .onInstSuccess
+
+  Var /GLOBAL my_handle
+  Var /GLOBAL my_file
+
+  FindFirst $my_handle $my_file $INSTDIR\lib\pkgconfig\*.pc
+  loop:
+    Strcmp $my_file "" done
+    Push "$INSTDIR\lib\pkgconfig\$my_file"
+    Push "prefix"
+    Push "prefix=$INSTDIR\lib\pkgconfig"
+    Call ReplaceLineStr
+    FindNext $my_handle $my_file
+    Goto loop
+  done:
+  FindClose $my_handle
+
+FunctionEnd
