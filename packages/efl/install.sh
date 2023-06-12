@@ -16,7 +16,7 @@ export EWPI_PREFIX=$HOME/ewpi_64
 export PATH=$EWPI_PREFIX/bin:$PATH
 export PKG_CONFIG_PATH=$EWPI_PREFIX/lib/pkgconfig
 export CPPFLAGS="-I$EWPI_PREFIX/include -DECORE_WIN32_WIP_POZEFLKSD"
-export CFLAGS="-O2 -pipe -pipe"
+export CFLAGS="-O2 -pipe"
 export CXXFLAGS="-O2 -pipe"
 export LDFLAGS=-L$EWPI_PREFIX/lib
 
@@ -35,17 +35,17 @@ meson setup \
       -Deeze=false \
       -Dx11=false \
       -Dxinput2=false \
-      -Devas-loaders-disabler='pdf','ps','rsvg','json' \
+      -Dinput=false \
+      -Decore-imf-loaders-disabler='xim','ibus','scim' \
+      -Devas-loaders-disabler='pdf','ps','rsvg','json','tga','tgv' \
       -Dopengl=none \
       -Dpixman=true \
       -Dembedded-lz4=false \
-      -Dfribidi=true \
-      -Dinput=false \
       -Dbuild-examples=false \
       -Dbuild-tests=false \
-      -Dbindings='lua','cxx' \
-      -Dlua-interpreter=luajit \
+      -Dbindings='lua','cxx', 'mono' \
       -Delua=true \
+      -Dwindows-version=win10 \
       builddir \
       > ../config.log 2>&1
 
