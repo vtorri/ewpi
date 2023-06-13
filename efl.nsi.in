@@ -393,8 +393,7 @@ SectionEnd
 
 Function .onInit
   ReadRegStr $0 HKCU "Software\ewpi_@arch_suf@" ""
-  MessageBox MB_ICONEXCLAMATION|MB_OK \
-  "EWPI prefix: '$0'" IDOK end
+  DetailPrint "EWPI prefix: '$0'"
 FunctionEnd
 
 Function .onInstSuccess
