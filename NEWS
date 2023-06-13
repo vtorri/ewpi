@@ -1,8 +1,12 @@
 === release 1.1 ===
 
-2023-04-08 Vincent Torri <vincent.torri@gmail.com>
+2023-06-13 Vincent Torri <vincent.torri@gmail.com>
 
 Changes:
+
+  * some fixes in the installers scripts
+
+Package updates:
 
   * curl 8.1.2
   * dbus 1.14.8
