@@ -1319,9 +1319,6 @@ _ew_packages_nsis(const char *prefix, const char *host, const char *winver, int 
 
     _ew_packages_strip(prefix, host);
 
-    printf("\n:: Create NSIS installer...\n");
-    fflush(stdout);
-
     if (strcmp(host, "i686-w64-mingw32") == 0)
     {
         arch = "i686";
@@ -1335,12 +1332,16 @@ _ew_packages_nsis(const char *prefix, const char *host, const char *winver, int 
 
     if (efl)
     {
+        printf("\n:: Create EFL NSIS installer...\n");
+        fflush(stdout);
         snprintf(buf, 4095,
                  "sh ./efl_nsis.sh %s %d.%d %s %s %s",
                  prefix, _ew_vmaj, _ew_vmin, arch, arch_suf, winver);
     }
     else
     {
+        printf("\n:: Create EWPI NSIS installer...\n");
+        fflush(stdout);
         snprintf(buf, 4095,
                  "sh ./ewpi_nsis.sh %s %d.%d %s %s %s",
                  prefix, _ew_vmaj, _ew_vmin, arch, arch_suf, winver);
