@@ -43,7 +43,7 @@ meson setup \
       -Dembedded-lz4=false \
       -Dbuild-examples=false \
       -Dbuild-tests=false \
-      -Dbindings='lua','cxx', 'mono' \
+      -Dbindings='lua','cxx','mono' \
       -Delua=true \
       -Dwindows-version=win10 \
       builddir \
