@@ -113,6 +113,16 @@ Section "!DLL (required)" SecEwpiInstDLL
   SetOutPath "$INSTDIR\bin"
 
   File "${EwpiDir}\bin\*.dll"
+  File "${EwpiDir}\bin\fc-cache.exe"
+  File "${EwpiDir}\bin\fc-cat.exe"
+  File "${EwpiDir}\bin\fc-conflist.exe"
+  File "${EwpiDir}\bin\fc-list.exe"
+  File "${EwpiDir}\bin\fc-match.exe"
+  File "${EwpiDir}\bin\fc-pattern.exe"
+  File "${EwpiDir}\bin\fc-query.exe"
+  File "${EwpiDir}\bin\fc-scan.exe"
+  File "${EwpiDir}\bin\fc-validate.exe"
+
   ;; needed DLL, from Fedora mingw toolchain
   File "/usr/x86_64-w64-mingw32/sys-root/mingw/bin/libgcc_s_seh-1.dll"
   File "/usr/x86_64-w64-mingw32/sys-root/mingw/bin/libgomp-1.dll"
@@ -132,6 +142,10 @@ Section "!DLL (required)" SecEwpiInstDLL
 
   File "${EwpiDir}\lib\libmupdf.a"
   File "${EwpiDir}\lib\libmupdf-third.a"
+
+  SetOutPath "$INSTDIR\etc\fonts"
+
+  File "${EwpiDir}\etc\fonts\fonts.conf"
 
   SetOutPath "$INSTDIR"
 
@@ -219,6 +233,8 @@ Section "Uninstall"
 SectionEnd
 
 Function .onInstSuccess
+
+  Exec "$InstDir\bin\fc-cache.exe -s -f -v"
 
   Var /GLOBAL my_handle
   Var /GLOBAL my_file
