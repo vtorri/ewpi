@@ -229,7 +229,7 @@ Section "!DLL (required)" SecEflDLL
   SetOutPath "$INSTDIR\share\efreet"
   File "${EflDir}\share\efreet\checkme"
 
-  SetOutPath "$INSTDIR\share\elua"
+  SetOutPath "$INSTDIR\share"
   File /r "${EflDir}\share\elua"
 
   SetOutPath "$INSTDIR\share\emotion"
@@ -250,10 +250,10 @@ Section "!DLL (required)" SecEflDLL
   SetOutPath "$INSTDIR\share\evas\filters"
   File "${EflDir}\share\evas\filters\lua\color.lua"
 
-  SetOutPath "$INSTDIR\share\icons"
+  SetOutPath "$INSTDIR\share"
   File /r "${EflDir}\share\icons"
 
-  SetOutPath "$INSTDIR\share\locale"
+  SetOutPath "$INSTDIR\share"
   File /r "${EflDir}\share\locale"
 
   SetOutPath "$INSTDIR"
@@ -318,7 +318,7 @@ Section /o "Extra utilities" SecEflExtra
 
   File "${EflDir}\bin\elementary_test.exe"
 
-  SetOutPath "$INSTDIR\share\elementary"
+  SetOutPath "$INSTDIR\share"
 
   File /r "${EflDir}\share\elementary"
 
@@ -326,7 +326,7 @@ SectionEnd
 
 Section /o "Development files" SecEflDev
 
-  SetOutPath "$INSTDIR\include"
+  SetOutPath "$INSTDIR"
 
   File /r "${EflDir}\include"
 
@@ -338,13 +338,13 @@ Section /o "Development files" SecEflDev
 
   File "${EflDir}\lib\*.dll.a"
 
-  SetOutPath "$INSTDIR\share\eo"
+  SetOutPath "$INSTDIR\share"
   File /r "${EflDir}\share\eo"
 
-  SetOutPath "$INSTDIR\share\eolian"
+  SetOutPath "$INSTDIR\share"
   File /r "${EflDir}\share\eolian"
 
-  SetOutPath "$INSTDIR\share\gdb"
+  SetOutPath "$INSTDIR\share"
   File /r "${EflDir}\share\gdb"
 
   WriteRegStr HKCU "Software\efl_@arch_suf@" "" $INSTDIR
