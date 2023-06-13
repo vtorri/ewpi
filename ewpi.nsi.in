@@ -115,9 +115,10 @@ Section "!DLL (required)" SecEwpiInstDLL
   File "${EwpiDir}\bin\*.dll"
   ;; needed DLL, from Fedora mingw toolchain
   File "/usr/x86_64-w64-mingw32/sys-root/mingw/bin/libgcc_s_seh-1.dll"
+  File "/usr/x86_64-w64-mingw32/sys-root/mingw/bin/libgomp-1.dll"
+  File "/usr/x86_64-w64-mingw32/sys-root/mingw/bin/libssp-0.dll"
   File "/usr/x86_64-w64-mingw32/sys-root/mingw/bin/libstdc++-6.dll"
   File "/usr/x86_64-w64-mingw32/sys-root/mingw/bin/libwinpthread-1.dll"
-  File "/usr/x86_64-w64-mingw32/sys-root/mingw/bin/libgomp-1.dll"
 
   SetOutPath "$INSTDIR\lib\gstreamer-1.0"
 
