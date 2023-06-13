@@ -310,9 +310,6 @@ Section /o "Utilities and theme files" SecEflTheme
   SetOutPath "$INSTDIR\share\embryo\include"
   File "${EflDir}\share\embryo\include\default.inc"
 
-  SetOutPath "$INSTDIR\share\emotion\data"
-  File "${EflDir}\share\emotion\data\theme.edj"
-
 SectionEnd
 
 Section /o "Extra utilities" SecEflExtra
