@@ -296,8 +296,6 @@ Section /o "Utilities and theme files" SecEflTheme
   File "${EflDir}\bin\elm_prefs_cc.exe"
   File "${EflDir}\bin\elua.exe"
   File "${EflDir}\bin\embryo_cc.exe"
-  File "${EflDir}\bin\emotion_test-eo.exe"
-  File "${EflDir}\bin\emotion_test.exe"
   File "${EflDir}\bin\eolian_cxx.exe"
   File "${EflDir}\bin\eolian_gen.exe"
   File "${EflDir}\bin\eo_debug"
