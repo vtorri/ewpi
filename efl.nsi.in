@@ -392,9 +392,9 @@ Section "Uninstall"
 SectionEnd
 
 Function .onInit
-  ReadRegStr $EwpiPrefix HKCU "Software\ewpi_@arch_suf@" ""
+  ReadRegStr $0 HKCU "Software\ewpi_@arch_suf@" ""
   MessageBox MB_ICONEXCLAMATION|MB_OK \
-  "EWPI prefix: '$EwpiPrefix'" IDOK end
+  "EWPI prefix: '$0'" IDOK end
 FunctionEnd
 
 Function .onInstSuccess
