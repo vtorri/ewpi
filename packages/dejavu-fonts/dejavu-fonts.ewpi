@@ -1,0 +1,4 @@
+name: dejavu-fonts
+version: 2.37
+url: https://github.com/dejavu-fonts/dejavu-fonts/releases/download/version_2_37/dejavu-fonts-ttf-2.37.tar.bz2
+deps: fontconfig

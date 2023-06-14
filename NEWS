@@ -1,14 +1,18 @@
 === release 1.1 ===
 
-2023-06-13 Vincent Torri <vincent.torri@gmail.com>
+2023-06-14 Vincent Torri <vincent.torri@gmail.com>
 
 Changes:
 
   * EFL NSIS script:
     -fix wrong installation of some files
   * EWPI NSIS script:
-    - add missing gcc related file in EWPI nsis script
+    - add missing gcc related file
     - add fontconfig support
+
+Package additions:
+
+  * dejavu-fonts 2.37
 
 Package updates:
 

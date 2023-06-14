@@ -111,6 +111,7 @@ Examples :
  * check 0.15.2(LGPL 2.1)
  * curl 8.1.2 (MIT)
  * dbus 1.14.8 (Academic Free License version 2.1)
+ * dejavu-fonts 2.37
  * expat 2.5.0 (MIT)
  * ffmpeg 6.0.0 (LGPL 2.1)
  * flac 1.4.2 (LGPL 2.1)

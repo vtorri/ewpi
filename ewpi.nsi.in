@@ -147,6 +147,10 @@ Section "!DLL (required)" SecEwpiInstDLL
 
   File /r "${EwpiDir}\share\fontconfig\conf.avail"
 
+  SetOutPath "$INSTDIR\share"
+
+  File /r "${EwpiDir}\share\fonts
+
   SetOutPath "$INSTDIR\etc\fonts"
 
   File "${EwpiDir}\etc\fonts\fonts.conf"
@@ -192,9 +196,14 @@ Section /o "Development files" SecEwpiInstDev
 
   WriteRegStr HKCU "Software\ewpi_@arch_suf@" "" $INSTDIR
 
-  ; PKG_CONFIG_PATH
   EnVar::SetHKCU
+
+  ; PKG_CONFIG_PATH
   EnVar::AddValue "PKG_CONFIG_PATH" "$INSTDIR\lib\pkgconfig"
+  ; FONTCONFIG_FILE
+  EnVar::AddValue "FONTCONFIG_FILE" "$INSTDIR\etc\fonts\fonts.conf"
+  ; FONTCONFIG_PATH
+  EnVar::AddValue "FONTCONFIG_PATH" "$INSTDIR\etc\fonts"
 
   ; Create uninstaller
   WriteUninstaller "$INSTDIR\Uninstall.exe"
@@ -227,8 +236,13 @@ Section "Uninstall"
 
   RMDir "$INSTDIR"
 
-  ; PKG_CONFIG_PATH
   EnVar::SetHKCU
+
+  ; FONTCONFIG_PATH
+  EnVar::DeleteValue "FONTCONFIG_PATH" "$INSTDIR\etc\fonts"
+  ; FONTCONFIG_FILE
+  EnVar::DeleteValue "FONTCONFIG_FILE" "$INSTDIR\etc\fonts\fonts.conf"
+  ; PKG_CONFIG_PATH
   EnVar::DeleteValue "PKG_CONFIG_PATH" "$INSTDIR\lib\pkgconfig"
   ; TODO delete PKG_CONFIG_PATH env var if empty
   ; PATH
