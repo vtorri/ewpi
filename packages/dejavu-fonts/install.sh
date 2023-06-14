@@ -38,4 +38,4 @@ cp \
     ttf/DejaVuSansMono-Bold.ttf \
     $3/share/fonts
 
-sed -i -e "s|<dir>WINDOWSUSERFONTDIR</dir>|<dir>WINDOWSUSERFONTDIR</dir>\n\n\t<dir>$3/share/fonts</dir>|g" $3/etc/fonts/fonts.conf
+sed -i -e "s|<dir>WINDOWSUSERFONTDIR</dir>|<dir>WINDOWSUSERFONTDIR</dir>\n\n\t<dirp>$3/share/fonts</dir>|g" $3/etc/fonts/fonts.conf
