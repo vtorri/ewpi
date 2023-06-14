@@ -147,9 +147,9 @@ Section "!DLL (required)" SecEwpiInstDLL
 
   File /r "${EwpiDir}\share\fontconfig\conf.avail"
 
-  SetOutPath "$INSTDIR\share"
+  SetOutPath "$INSTDIR\share\fonts"
 
-  File /r "${EwpiDir}\share\fonts
+  File /r "${EwpiDir}\share\fonts\*.ttf"
 
   SetOutPath "$INSTDIR\etc\fonts"
 
