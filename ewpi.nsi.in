@@ -143,6 +143,10 @@ Section "!DLL (required)" SecEwpiInstDLL
   File "${EwpiDir}\lib\libmupdf.a"
   File "${EwpiDir}\lib\libmupdf-third.a"
 
+  SetOutPath "$INSTDIR\share\fontconfig"
+
+  File /r "${EwpiDir}\share\fontconfig\conf.avail"
+
   SetOutPath "$INSTDIR\etc\fonts"
 
   File "${EwpiDir}\etc\fonts\fonts.conf"
@@ -216,8 +220,10 @@ Section "Uninstall"
   Delete "$INSTDIR\README.md"
 
   RMDIR /r "$INSTDIR\bin"
-  RMDIR /r "$INSTDIR\lib"
+  RMDIR /r "$INSTDIR\etc"
   RMDIR /r "$INSTDIR\include"
+  RMDIR /r "$INSTDIR\lib"
+  RMDIR /r "$INSTDIR\share"
 
   RMDir "$INSTDIR"
 

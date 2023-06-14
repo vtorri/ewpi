@@ -4,7 +4,11 @@
 
 Changes:
 
-  * some fixes in the installers scripts
+  * EFL NSIS script:
+    -fix wrong installation of some files
+  * EWPI NSIS script:
+    - add missing gcc related file in EWPI nsis script
+    - add fontconfig support
 
 Package updates:
 
