@@ -20,6 +20,7 @@ Package updates:
   * dbus 1.14.8
   * fontconfig 2.14.2
   * fribidi 1.0.13
+  * gettext 0.22
   * glib2 2.76.3
   * gst-libav 1.22.3
   * gst-plugins-base 1.22.3
