@@ -256,7 +256,7 @@ Function .onInstSuccess
 
   Push "$INSTDIR\etc\fonts\fonts.conf"
   Push "<dirp>"
-  Push "<dir>$INSTDIR\share\fonts</dir>"
+  Push "	<dir>$INSTDIR\share\fonts</dir>"
   Call ReplaceLineStr
 
   Exec "$InstDir\bin\fc-cache.exe -s -f -v"
