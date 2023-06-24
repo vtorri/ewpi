@@ -1,6 +1,6 @@
 === release 1.1 ===
 
-2023-06-14 Vincent Torri <vincent.torri@gmail.com>
+2023-06-24 Vincent Torri <vincent.torri@gmail.com>
 
 Changes:
 
@@ -20,6 +20,7 @@ Package updates:
   * dbus 1.14.8
   * flac 1.4.3
   * fontconfig 2.14.2
+  * freetype 2.13.1
   * fribidi 1.0.13
   * gettext 0.22
   * glib2 2.76.3
