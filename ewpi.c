@@ -76,7 +76,7 @@ typedef struct
 } Package;
 
 static const int _ew_vmaj = 1;
-static const int _ew_vmin = 0;
+static const int _ew_vmin = 1;
 
 static char *_ew_package_dir_git = NULL;
 static char *_ew_package_dir_dst = NULL;
