@@ -1,9 +1,10 @@
 === release 1.2 ===
 
-2023-07-01 Vincent Torri <vincent.torri@gmail.com>
+2023-07-09 Vincent Torri <vincent.torri@gmail.com>
 
 Package updates:
 
+  * harfbuzz 8.0.0
   * libjpeg 3.0.0
   * taglib 1.13.1
 
