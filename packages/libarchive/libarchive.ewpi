@@ -1,4 +1,4 @@
 name: libarchive
-version: 3.6.2
-url: https://github.com/libarchive/libarchive/releases/download/v3.6.2/libarchive-3.6.2.tar.xz
+version: 3.7.0
+url: https://github.com/libarchive/libarchive/releases/download/v3.7.0/libarchive-3.7.0.tar.xz
 deps: zlib xz libressl lz4 bzip2 zstd expat iconv regex
