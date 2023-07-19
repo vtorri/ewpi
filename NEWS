@@ -6,6 +6,7 @@ Package updates:
 
   * harfbuzz 8.0.1
   * libjpeg 3.0.0
+  * nghttp2 1.55.1
   * taglib 1.13.1
 
 === release 1.1 ===

@@ -1,4 +1,4 @@
 name: nghttp2
-version: 1.54.0
-url: https://github.com/nghttp2/nghttp2/releases/download/v1.54.0/nghttp2-1.54.0.tar.xz
+version: 1.55.1
+url: https://github.com/nghttp2/nghttp2/releases/download/v1.55.1/nghttp2-1.55.1.tar.xz
 deps:
