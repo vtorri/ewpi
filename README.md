@@ -109,7 +109,7 @@ Examples :
  * brotli 1.0.9 (MIT)
  * bzip2 1.0.8 (BSD 4-clause, LGPL 2.1 compatible)
  * check 0.15.2(LGPL 2.1)
- * curl 8.1.2 (MIT)
+ * curl 8.2.0 (MIT)
  * dbus 1.14.8 (Academic Free License version 2.1)
  * dejavu-fonts 2.37
  * expat 2.5.0 (MIT)

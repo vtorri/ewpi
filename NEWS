@@ -4,6 +4,7 @@
 
 Package updates:
 
+  * curl 8.2.0
   * harfbuzz 8.0.1
   * libarchive 3.7.0
   * libjpeg 3.0.0
