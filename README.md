@@ -185,7 +185,7 @@ Examples :
  * pixman 0.42.2 (MIT)
  * regex 1.2.1 (MIT)
  * taglib 1.13.1 (LGPL 2.1)
- * xz 5.4.2 (lzma : public domain)
+ * xz 5.4.3 (lzma : public domain)
  * zlib 1.2.13 (zlib license)
  * zstd 1.5.5 (BSD 3-clause)
 
