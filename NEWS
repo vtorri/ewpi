@@ -5,6 +5,10 @@
 Package updates:
 
   * curl 8.2.0
+  * gst-libav 1.22.5
+  * gst-plugins-base 1.22.5
+  * gst-plugins-good 1.22.5
+  * gstreamer 1.22.5
   * harfbuzz 8.0.1
   * highway 1.0.5
   * libarchive 3.7.0
