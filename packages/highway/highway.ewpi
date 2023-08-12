@@ -1,4 +1,4 @@
 name: highway
-version: 1.0.5
-url: https://github.com/google/highway/archive/refs/tags/1.0.5.tar.gz
+version: 1.0.6
+url: https://github.com/google/highway/archive/refs/tags/1.0.6.tar.gz
 deps:
