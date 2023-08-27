@@ -169,6 +169,9 @@ Section "!DLL (required)" SecEwpiInstDLL
   EnVar::SetHKCU
   EnVar::AddValue "PATH" "$INSTDIR\bin"
 
+  ; XDG_DATA_DIRS
+  EnVar::AddValue "XDG_DATA_DIRS" "$INSTDIR\share"
+
   ; Create uninstaller
   WriteUninstaller "$INSTDIR\Uninstall.exe"
 
