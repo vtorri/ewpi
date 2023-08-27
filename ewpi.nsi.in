@@ -252,6 +252,8 @@ Section "Uninstall"
   ; PKG_CONFIG_PATH
   EnVar::DeleteValue "PKG_CONFIG_PATH" "$INSTDIR\lib\pkgconfig"
   ; TODO delete PKG_CONFIG_PATH env var if empty
+  ; XDG_DATA_DIRS
+  EnVar::DeleteValue "XDG_DATA_DIRS" "$INSTDIR\share"
   ; PATH
   EnVar::DeleteValue "PATH" "$INSTDIR\bin"
 
