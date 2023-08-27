@@ -197,6 +197,7 @@ Examples :
 ### Libraries compatible with GPL v2
 
  * djvulibre 3.5.28 (GPL v2)
+ * shared-mime-info 2.2 (GPL v2: tool generating mime types, not distributed)
 
 ### Libraries compatible with AGPL v3
 

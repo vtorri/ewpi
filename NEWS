@@ -2,6 +2,10 @@
 
 2023-07-09 Vincent Torri <vincent.torri@gmail.com>
 
+Package additions:
+
+  * shared-mime-info 2.2
+
 Package updates:
 
   * curl 8.2.1

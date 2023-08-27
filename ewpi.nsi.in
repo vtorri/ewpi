@@ -155,6 +155,10 @@ Section "!DLL (required)" SecEwpiInstDLL
 
   File "${EwpiDir}\etc\fonts\fonts.conf"
 
+  SetOutPath "$INSTDIR\share"
+
+  File /r "${EflDir}\share\mime"
+
   SetOutPath "$INSTDIR"
 
   File "README.md"
