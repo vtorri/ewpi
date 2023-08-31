@@ -869,9 +869,12 @@ _ew_packages_not_installed_disp(void)
     fflush(stdout);
     for (int i = 0; i < _ew_package_count_total; i++)
     {
-        int idx = _ew_package_index[i];
-        if (!_ewpi_pkgs[idx].installed)
-            printf("  %s-%s\n", _ewpi_pkgs[idx].name, _ewpi_pkgs[idx].version);
+        if (i < _ew_package_deps_dst_count)
+        {
+           int idx = _ew_package_index[i];
+           if (!_ewpi_pkgs[idx].installed)
+             printf("  %s-%s\n", _ewpi_pkgs[idx].name, _ewpi_pkgs[idx].version);
+        }
     }
     printf("\n");
     fflush(stdout);
@@ -885,7 +888,7 @@ _ew_packages_download(void)
     int count;
 
     count = 0;
-    for (int i = 0; i < _ew_package_count_total; i++)
+    for (int i = 0; i < _ew_package_deps_dst_count; i++)
     {
         iter = _ewpi_pkgs + _ew_package_index[i];
         strcpy(buf, _ew_package_dir_dst);
@@ -903,7 +906,7 @@ _ew_packages_download(void)
 
     printf(":: Download sources...\n");
     fflush(stdout);
-    for (int i = 0; i < _ew_package_count_total; i++)
+    for (int i = 0; i < _ew_package_deps_dst_count; i++)
     {
         int ret;
 
@@ -968,7 +971,7 @@ _ew_packages_longest_name()
     Package *iter;
 
     /* compute the largest name (including version) of the packages */
-    for (int i = 0; i < _ew_package_count_total; i++)
+    for (int i = 0; i < _ew_package_deps_dst_count; i++)
     {
         iter = _ewpi_pkgs + _ew_package_index[i];
         if ((int)(strlen(iter->name) + 1 + strlen(iter->version)) > _ew_package_name_size_max)
@@ -1051,7 +1054,7 @@ _ew_packages_extract(int verbose)
     int c;
 
     count = 0;
-    for (int i = 0; i < _ew_package_count_total; i++)
+    for (int i = 0; i < _ew_package_deps_dst_count; i++)
     {
         iter = _ewpi_pkgs + _ew_package_index[i];
         strcpy(buf, _ew_package_dir_dst);
@@ -1071,7 +1074,7 @@ _ew_packages_extract(int verbose)
     fflush(stdout);
 
     c = 0;
-    for (int i = 0; i < _ew_package_count_total; i++)
+    for (int i = 0; i < _ew_package_deps_dst_count; i++)
     {
         const char *name;
         const char *tarname;
