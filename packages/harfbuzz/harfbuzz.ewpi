@@ -1,4 +1,4 @@
 name: harfbuzz
-version: 8.1.1
-url: https://github.com/harfbuzz/harfbuzz/releases/download/8.1.1/harfbuzz-8.1.1.tar.xz
+version: 8.2.0
+url: https://github.com/harfbuzz/harfbuzz/releases/download/8.2.0/harfbuzz-8.2.0.tar.xz
 deps: zlib libpng freetype_bootstrap graphite2 icu
