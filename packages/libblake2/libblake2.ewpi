@@ -1,0 +1,4 @@
+name: libblake2
+version: 0.98.1
+url: https://github.com/BLAKE2/libb2.git
+deps:
