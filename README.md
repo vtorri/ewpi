@@ -15,6 +15,7 @@ and license.
  * nasm
  * wget
  * gperf (native on Windows, not MSYS2 one)
+ * autotools
  * python
  * meson >= 0.60.0
  * ninja

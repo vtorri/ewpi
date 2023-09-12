@@ -26,7 +26,3 @@ cmake \
     .. > ../../config.log 2>&1
 
 make -j $jobopt install > ../../make.log 2>&1
-
-sed -i -e "s|-R\${libdir} ||g" $3/lib/pkgconfig/libbrotlicommon.pc
-sed -i -e "s|-R\${libdir} ||g" $3/lib/pkgconfig/libbrotlienc.pc
-sed -i -e "s|-R\${libdir} ||g" $3/lib/pkgconfig/libbrotlidec.pc
