@@ -21,6 +21,7 @@ cmake \
     -DCMAKE_INSTALL_PREFIX=$prefix_unix \
     -DCMAKE_VERBOSE_MAKEFILE:BOOL=$verbcmake \
     -DCMAKE_BUILD_TYPE=Release \
+    -DBUILD_SHARED_LIBS=ON \
     -DJPEG_INCLUDE_DIR=$3/include \
     -DLIBLZMA_INCLUDE_DIR=$3/include \
     -DWebP_INCLUDE_DIR=$3/include \
@@ -30,7 +31,12 @@ cmake \
     -Dlzma=TRUE \
     -Dwebp=TRUE \
     -Dcxx=FALSE \
-    -Dtiff-opengl=OFF \
+    -Dtiff-tools=OFF \
+    -Dtiff-tools-unsupported=OFF \
+    -Dtiff-tests=OFF \
+    -Dtiff-contrib=OFF \
+    -Dtiff-docs=OFF \
+    -Dtiff-deprecated=OFF \
     -G "Unix Makefiles" \
     .. > ../../config.log 2>&1
 
