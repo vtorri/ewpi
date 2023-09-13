@@ -10,7 +10,7 @@ Package additions:
 Package updates:
 
   * brotli 1.1.0
-  * curl 8.2.1
+  * curl 8.3.0
   * freetype 2.13.2
   * gst-libav 1.22.5
   * gst-plugins-base 1.22.5
