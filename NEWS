@@ -21,6 +21,7 @@ Package updates:
   * libaom 3.7.0
   * libarchive 3.7.2
   * libavif 1.0.1
+  * libdeflate 1.19
   * libjpeg 3.0.0
   * libressl 3.7.3
   * libsndfile 1.2.2
