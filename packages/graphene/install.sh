@@ -29,7 +29,7 @@ meson setup \
       --cross-file cross_toolchain.txt \
       --default-library shared \
       -Dgtk_doc=false \
-      -Dgobject_types=true \
+      -Dgobject_types=false \
       -Dintrospection=disabled \
       -Darm_neon=false \
       -Dtests=false \
