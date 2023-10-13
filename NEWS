@@ -1,6 +1,6 @@
 === release 1.2 ===
 
-2023-09-24 Vincent Torri <vincent.torri@gmail.com>
+2023-10-13 Vincent Torri <vincent.torri@gmail.com>
 
 Package additions:
 
@@ -10,7 +10,7 @@ Package additions:
 Package updates:
 
   * brotli 1.1.0
-  * curl 8.3.0
+  * curl 8.4.0
   * freetype 2.13.2
   * gst-libav 1.22.5
   * gst-plugins-base 1.22.5
