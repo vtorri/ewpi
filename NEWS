@@ -12,10 +12,10 @@ Package updates:
   * brotli 1.1.0
   * curl 8.4.0
   * freetype 2.13.2
-  * gst-libav 1.22.5
-  * gst-plugins-base 1.22.5
-  * gst-plugins-good 1.22.5
-  * gstreamer 1.22.5
+  * gst-libav 1.22.6
+  * gst-plugins-base 1.22.6
+  * gst-plugins-good 1.22.6
+  * gstreamer 1.22.6
   * harfbuzz 8.2.1
   * highway 1.0.7
   * libaom 3.7.0
