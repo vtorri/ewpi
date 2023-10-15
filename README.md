@@ -156,7 +156,7 @@ Examples :
  * libkvazaar 2.2.0 (BSD 3-clause)
  * liblerc 4.0.0 (Apache 2.0)
  * libmodplug 0.8.9 (public domain)
- * libmysofa 1.3.1 (BSD 3-clause)
+ * libmysofa 1.3.2 (BSD 3-clause)
  * libogg 1.3.5 (BSD 3-clause)
  * libopenh264 2.3.1 (BSD 2-clause)
  * libopenmpt 0.7.2 (BSD 3-clause)
