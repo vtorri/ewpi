@@ -1,4 +1,4 @@
 name: libheif
-version: 1.16.2
-url: https://github.com/strukturag/libheif/releases/download/v1.16.2/libheif-1.16.2.tar.gz
+version: 1.17.0
+url: https://github.com/strukturag/libheif/releases/download/v1.17.0/libheif-1.17.0.tar.gz
 deps: libde265 libaom libwebp
