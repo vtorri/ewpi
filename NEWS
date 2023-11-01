@@ -18,6 +18,7 @@ Package updates:
   * gstreamer 1.22.6
   * harfbuzz 8.2.2
   * highway 1.0.7
+  * icu 74.1
   * libaom 3.7.0
   * libarchive 3.7.2
   * libavif 1.0.1
