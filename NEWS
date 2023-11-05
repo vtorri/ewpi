@@ -11,6 +11,7 @@ Package updates:
 
   * brotli 1.1.0
   * curl 8.4.0
+  * dbus 1.14.10
   * freetype 2.13.2
   * gst-libav 1.22.6
   * gst-plugins-base 1.22.6
