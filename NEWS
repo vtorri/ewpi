@@ -13,6 +13,7 @@ Package updates:
   * curl 8.4.0
   * dbus 1.14.10
   * freetype 2.13.2
+  * gettext 0.22.3
   * gst-libav 1.22.6
   * gst-plugins-base 1.22.6
   * gst-plugins-good 1.22.6
