@@ -149,7 +149,7 @@ Examples :
  * libgcrypt 1.10.2 (LGPL 2.1)
  * libgme 0.6.3 (LGPL 2.1)
  * libgpg-error 1.47 (LGPL 2.1)
- * libgsm 1.0.19 (MIT)
+ * libgsm 1.0.22 (MIT)
  * libilbc 3.0.4 (BSD 3-clause)
  * libjpeg 3.0.1 (IJG and zlib)
  * libjxl git (BSD 3-clause)
