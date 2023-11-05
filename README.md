@@ -159,7 +159,7 @@ Examples :
  * libmysofa 1.3.2 (BSD 3-clause)
  * libogg 1.3.5 (BSD 3-clause)
  * libopenh264 2.3.1 (BSD 2-clause)
- * libopenmpt 0.7.2 (BSD 3-clause)
+ * libopenmpt 0.7.3 (BSD 3-clause)
  * libpng 1.6.40 (BSD 3-clause)
  * libpsl 0.21.2 (MIT)
  * libraw 0.21.1 (LGPL v2.1)
