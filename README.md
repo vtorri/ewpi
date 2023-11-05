@@ -164,7 +164,7 @@ Examples :
  * libpsl 0.21.2 (MIT)
  * libraw 0.21.1 (LGPL v2.1)
  * libressl 3.8.2 (Openssl and ISC licenses)
- * libsnappy 1.1.9 (BSD 3-clause)
+ * libsnappy 1.1.10 (BSD 3-clause)
  * libsndfile 1.2.2 (LGPL 2.1)
  * libsoxr 0.1.3 (LGPL 2.1)
  * libssh2 1.11.0 (BSD 3-clause)
