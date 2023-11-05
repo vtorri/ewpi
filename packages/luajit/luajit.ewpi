@@ -1,4 +1,4 @@
 name: luajit
-version: 2.0.5
-url: http://luajit.org/download/LuaJIT-2.0.5.tar.gz
+version: 2.1.0
+url: https://github.com/LuaJIT/LuaJIT.git
 deps:
