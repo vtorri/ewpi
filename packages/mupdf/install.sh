@@ -34,5 +34,6 @@ make prefix=$3 \
      USE_SYSTEM_JBIG2DEC=yes \
      SYS_JBIG2DEC_CFLAGS="-I$3/include" \
      SYS_JBIG2DEC_LIBS="-L$3/lib -ljbig2dec" \
+     XCFLAGS="-DFZ_ENABLE_XPS=0 -DFZ_ENABLE_SVG=0 -DFZ_ENABLE_CBZ=0 -DFZ_ENABLE_IMG=0 -DFZ_ENABLE_HTML=0 -DFZ_ENABLE_EPUB=0" \
      OS=$OS \
      install > ../make.log 2>&1
