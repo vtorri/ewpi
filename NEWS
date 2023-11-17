@@ -1,6 +1,6 @@
 === release 1.2 ===
 
-2023-11-05 Vincent Torri <vincent.torri@gmail.com>
+2023-11-17 Vincent Torri <vincent.torri@gmail.com>
 
 Package additions:
 
@@ -15,10 +15,10 @@ Package updates:
   * ffmpeg 6.1
   * freetype 2.13.2
   * gettext 0.22.3
-  * gst-libav 1.22.6
-  * gst-plugins-base 1.22.6
-  * gst-plugins-good 1.22.6
-  * gstreamer 1.22.6
+  * gst-libav 1.22.7
+  * gst-plugins-base 1.22.7
+  * gst-plugins-good 1.22.7
+  * gstreamer 1.22.7
   * harfbuzz 8.3.0
   * highway 1.0.7
   * icu 74.1
