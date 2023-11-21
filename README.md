@@ -103,7 +103,7 @@ Examples :
  * ./ewpi --prefix=/opt/ewpi_32 --host=i686-w64-mingw32
  * ./ewpi --host=x86_64-w64-mingw32 --efl --jobs=4 --clean
 
-## Packages installed (86 packages)
+## Packages installed (88 packages)
 
 ### Libraries compatible with LGPL v2.1
 
@@ -163,7 +163,6 @@ Examples :
  * libpng 1.6.40 (BSD 3-clause)
  * libpsl 0.21.2 (MIT)
  * libraw 0.21.1 (LGPL v2.1)
- * libressl 3.8.2 (Openssl and ISC licenses)
  * libsnappy 1.1.10 (BSD 3-clause)
  * libsndfile 1.2.2 (LGPL 2.1)
  * libsoxr 0.1.3 (LGPL 2.1)
@@ -181,6 +180,7 @@ Examples :
  * mpg123 1.32.3 (LGPL 2.1)
  * nghttp2 1.58.0 (MIT)
  * openjpeg 2.5.0 (BSD 2-clause)
+ * openssl 3.1.4 (Apache 2.0)
  * opus 1.4.0 (BSD 3-clause)
  * orc 0.4.34 (BSD 2-clause)
  * pixman 0.42.2 (MIT)

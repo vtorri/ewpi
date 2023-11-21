@@ -41,10 +41,10 @@ rm -rf builddir && mkdir builddir && cd builddir
              --enable-libopus \
              --enable-libsnappy \
              --enable-libsoxr \
-             --enable-libtls \
              --enable-libvorbis \
              --enable-libwebp \
              --enable-libxml2 \
+             --enable-openssl \
              --disable-sdl2 \
 	     --disable-vulkan \
              --disable-programs \

@@ -1,0 +1,4 @@
+name: openssl
+version: 3.1.4
+url: https://www.openssl.org/source/openssl-3.1.4.tar.gz
+deps:

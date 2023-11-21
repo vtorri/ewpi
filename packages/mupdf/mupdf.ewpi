@@ -1,4 +1,4 @@
 name: mupdf
 version: 1.23.4
 url: https://mupdf.com/downloads/archive/mupdf-1.23.4-source.tar.lz
-deps: libressl freetype harfbuzz libjpeg openjpeg zlib curl jbig2dec
+deps: openssl freetype harfbuzz libjpeg openjpeg zlib curl jbig2dec
