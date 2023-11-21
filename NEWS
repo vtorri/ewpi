@@ -1,12 +1,12 @@
 === release 1.2 ===
 
-2023-11-19 Vincent Torri <vincent.torri@gmail.com>
+2023-11-21 Vincent Torri <vincent.torri@gmail.com>
 
 Package additions:
 
   * libblake2 0.98.1
   * openssl 3.1.4
-  * shared-mime-info 2.2
+  * shared-mime-info 2.4
 
 Package removals:
   * libressl 3.8.2 (replaced with openssl)

@@ -1,4 +1,4 @@
 name: shared-mime-info
-version: 2.2
-url: https://gitlab.freedesktop.org/xdg/shared-mime-info.git
+version: 2.4
+url: https://gitlab.freedesktop.org/xdg/shared-mime-info/-/archive/2.4/shared-mime-info-2.4.tar.bz2
 deps: gettext libxml2 glib2
