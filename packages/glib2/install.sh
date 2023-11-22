@@ -22,7 +22,12 @@ meson setup \
       --strip \
       --cross-file cross_toolchain.txt \
       --default-library shared \
+      -Dforce_posix_threads=false \
       -Dtests=false \
+      -Dglib_debug=disabled \
+      -Dglib_assert=false \
+      -Dglib_checks=false \
+      -Dlibelf=disabled \
       builddir > ../config.log 2>&1
 
 ninja $verbninja -C builddir install > ../make.log 2>&1

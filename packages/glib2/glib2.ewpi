@@ -1,4 +1,4 @@
 name: glib2
 version: 2.76.3
 url: https://download.gnome.org/sources/glib/2.76/glib-2.76.3.tar.xz
-deps: libffi zlib iconv gettext
+deps: libffi zlib gettext
