@@ -26,6 +26,8 @@ fi
     enable-mdc2 \
     enable-rc5  \
     enable-rfc3779 \
+    no-apps \
+    no-docs \
     > ../config.log 2>&1
 
 make $verbmake install > ../make.log 2>&1
