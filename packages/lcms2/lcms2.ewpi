@@ -1,4 +1,4 @@
 name: lcms2
-version: 2.15.0
-url: https://github.com/mm2/Little-CMS/releases/download/lcms2.15/lcms2-2.15.tar.gz
-deps: zlib libjpeg libtiff
+version: 2.16
+url: https://github.com/mm2/Little-CMS/releases/download/lcms2.16/lcms2-2.16.tar.gz
+deps:
