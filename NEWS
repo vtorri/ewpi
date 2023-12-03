@@ -5,7 +5,7 @@
 Package additions:
 
   * libblake2 0.98.1
-  * openssl 3.1.4
+  * openssl 3.2.0
   * shared-mime-info 2.4
 
 Package removals:
