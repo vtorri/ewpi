@@ -1,6 +1,6 @@
 === release 1.2 ===
 
-2023-121-03 Vincent Torri <vincent.torri@gmail.com>
+2023-12-04 Vincent Torri <vincent.torri@gmail.com>
 
 Package additions:
 
@@ -29,7 +29,7 @@ Package updates:
   * lcms2 2.16
   * libaom 3.7.0
   * libarchive 3.7.2
-  * libavif 1.0.2
+  * libavif 1.0.3
   * libdav1d 1.3.0
   * libde265 1.0.14
   * libdeflate 1.19
