@@ -31,6 +31,7 @@ rm -rf builddir && mkdir builddir && cd builddir
              --enable-libgme \
              --enable-libgsm \
              --enable-libilbc \
+             --enable-libjxl \
              --enable-libkvazaar \
              --enable-libmodplug \
              --enable-libmp3lame \
