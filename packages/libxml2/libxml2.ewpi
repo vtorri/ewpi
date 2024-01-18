@@ -1,4 +1,4 @@
 name: libxml2
-version: 2.11.5
-url: https://download.gnome.org/sources/libxml2/2.11/libxml2-2.11.5.tar.xz
+version: 2.12.4
+url: https://download.gnome.org/sources/libxml2/2.12/libxml2-2.12.4.tar.xz
 deps: zlib xz iconv icu
