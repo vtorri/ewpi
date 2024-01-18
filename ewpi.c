@@ -301,7 +301,7 @@ _ew_requirements(const char *host)
         strcpy(buf, host);
         strcat(buf, "-");
         strcat(buf, _ew_req_host[i]);
-        strcat(buf, " --version > NUL 2>&1");
+        strcat(buf, " --version > /dev/null 2>&1");
         ret = system(buf);
         printf("  %s : %s\n", _ew_req_host[i], (ret == 0) ? "yes" : "no");
         fflush(stdout);
@@ -316,7 +316,7 @@ _ew_requirements(const char *host)
         else
             ver = "--version";
 
-        snprintf(buf, 4095, "%s %s > NUL 2>&1", _ew_req[i], ver);
+        snprintf(buf, 4095, "%s %s > /dev/null 2>&1", _ew_req[i], ver);
         ret = system(buf);
         printf("  %s : %s\n", _ew_req[i], (ret == 0) ? "yes" : "no");
         fflush(stdout);
