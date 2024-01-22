@@ -187,7 +187,7 @@ Examples :
  * regex 1.2.1 (MIT)
  * taglib 1.13.1 (LGPL 2.1)
  * xz 5.4.5 (lzma : public domain)
- * zlib 1.3 (zlib license)
+ * zlib 1.3.1 (zlib license)
  * zstd 1.5.5 (BSD 3-clause)
 
 ### Libraries compatible with LGPL v3
