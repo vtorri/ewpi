@@ -23,6 +23,7 @@ cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_SHARED_LIBS:BOOL=ON \
     -DBUILD_BINDINGS:BOOL=OFF \
+    -DBUILD_TESTING=OFF \
     -DZLIB_ROOT=$prefix_unix \
     -G "Unix Makefiles" \
     .. > ../../config.log 2>&1
