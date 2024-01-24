@@ -1,4 +1,4 @@
 name: libjpeg
-version: 3.0.1
-url: https://github.com/libjpeg-turbo/libjpeg-turbo/archive/refs/tags/3.0.1.tar.gz
+version: 3.0.2
+url: https://github.com/libjpeg-turbo/libjpeg-turbo/releases/download/3.0.2/libjpeg-turbo-3.0.2.tar.gz
 deps:
