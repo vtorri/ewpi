@@ -1,4 +1,4 @@
 name: taglib
 version: 2.0.0
 url: https://github.com/taglib/taglib/archive/refs/tags/v2.0.tar.gz
-deps: zlib
+deps: utfcpp zlib

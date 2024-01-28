@@ -14,6 +14,8 @@ fi
 
 sed -i -e "s|@prefix@|$3|g;s|@host@|$4|g;s|@proc@|$proc|g;s|@winver@|$winver|g" cross_toolchain.txt
 
+sed -i -e "s|if(NOT utf8cpp_FOUND)|if(utf8cpp_FOUND)|g" CMakeLists.txt
+
 rm -rf builddir && mkdir builddir && cd builddir
 
 cmake \
