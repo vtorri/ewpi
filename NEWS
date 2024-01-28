@@ -7,6 +7,7 @@ Package additions:
   * libblake2 0.98.1
   * openssl 3.2.0
   * shared-mime-info 2.4
+  * utfcpp 4.0.5
 
 Package removals:
   * libressl 3.8.2 (replaced with openssl)
