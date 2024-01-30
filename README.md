@@ -182,7 +182,7 @@ Examples :
  * openjpeg 2.5.0 (BSD 2-clause)
  * openssl 3.2.0 (Apache 2.0)
  * opus 1.4.0 (BSD 3-clause)
- * orc 0.4.35 (BSD 2-clause)
+ * orc 0.4.36 (BSD 2-clause)
  * pixman 0.42.2 (MIT)
  * regex 1.2.1 (MIT)
  * utfcpp 4.0.5 (BSL 1.0)
