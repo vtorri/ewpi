@@ -172,7 +172,7 @@ Examples :
  * libvorbis 1.3.7 (BSD 3-clause)
  * libwavpack 5.6.0 (BSD 3-clause)
  * libwebp 1.3.2 (BSD 3-clause)
- * libxml2 2.12.4 (MIT)
+ * libxml2 2.12.5 (MIT)
  * libyuv 1.88.0 (BSD 3-clause)
  * luajit 2.1.0 (MIT + public domain for some parts)
  * lz4 1.9.4 (BSD 2-clause for the library)
