@@ -137,7 +137,7 @@ Examples :
  * libaom 3.7.0 (BSD 2-clause)
  * libarchive 3.7.2 (BSD 2-clause)
  * libass 0.17.1 (ISC)
- * libavif 1.0.3 (BSD 2-clause)
+ * libavif 1.0.4 (BSD 2-clause)
  * libbdplus 0.2.0 (LGPL 2.1)
  * libblake2 0.98.1 (CC0 1.0)
  * libbluray 1.3.4 (LGPL 2.1)
