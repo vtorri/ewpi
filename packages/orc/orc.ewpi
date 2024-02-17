@@ -1,4 +1,4 @@
 name: orc
-version: 0.4.36
-url: https://gstreamer.freedesktop.org/src/orc/orc-0.4.36.tar.xz
+version: 0.4.37
+url: https://gstreamer.freedesktop.org/src/orc/orc-0.4.37.tar.xz
 deps:
