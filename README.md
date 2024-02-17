@@ -142,7 +142,7 @@ Examples :
  * libblake2 0.98.1 (CC0 1.0)
  * libbluray 1.3.4 (LGPL 2.1)
  * libbs2b 3.1.0 (MIT)
- * libdav1d 1.3.0 (BSD 2-clause)
+ * libdav1d 1.4.0 (BSD 2-clause)
  * libdeflate 1.19 (MIT)
  * libexif 0.6.24 (LGPL v2.1)
  * libffi 3.4.5 (MIT)
