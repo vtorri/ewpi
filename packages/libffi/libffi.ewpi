@@ -1,4 +1,4 @@
 name: libffi
-version: 3.4.5
-url: https://github.com/libffi/libffi/releases/download/v3.4.5/libffi-3.4.5.tar.gz
+version: 3.4.6
+url: https://github.com/libffi/libffi/releases/download/v3.4.6/libffi-3.4.6.tar.gz
 deps:
