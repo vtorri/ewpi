@@ -255,6 +255,7 @@ static const char *_ew_req[] =
     "make",
     "cmake",
     "python",
+    "perl",
     "meson",
     "ninja",
     "yasm",
