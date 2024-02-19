@@ -48,13 +48,13 @@ To build the NSIS installer, the EnVar plug-in is mandatory. See https://nsis.so
 
 ## Fedora 32 bits
 
-1. dnf install autoconf automake libtool cmake yasm nasm gperf python perl ninja-build pkgconf mingw32-libgomp mingw32-gcc mingw32-gcc-c++ python3-pip bison flex make gcc-c++ mingw32-nsis
+1. dnf install autoconf automake libtool gettext cmake yasm nasm gperf python perl ninja-build pkgconf mingw32-libgomp mingw32-gcc mingw32-gcc-c++ python3-pip bison flex make gcc-c++ mingw32-nsis
 2. run "pip3 install meson"
 3. Verify that meson >= 0.60.0 is installed
 
 ## Fedora 64 bits
 
-1. dnf install autoconf automake libtool cmake yasm nasm gperf python perl ninja-build pkgconf mingw64-libgomp mingw64-gcc mingw64-gcc-c++ python3-pip bison flex make gcc-c++ mingw32-nsis
+1. dnf install autoconf automake libtool gettext cmake yasm nasm gperf python perl ninja-build pkgconf mingw64-libgomp mingw64-gcc mingw64-gcc-c++ python3-pip bison flex make gcc-c++ mingw32-nsis
 2. run "pip3 install meson"
 3. Verify that meson >= 0.60.0 is installed
 
