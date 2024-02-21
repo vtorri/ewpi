@@ -1,4 +1,4 @@
 name: libjxl
-version: 0.9.1
-url: https://github.com/libjxl/libjxl/archive/refs/tags/v0.9.1.tar.gz
+version: 0.10.0
+url: https://github.com/libjxl/libjxl/archive/refs/tags/v0.10.0.tar.gz
 deps: brotli highway lcms2
