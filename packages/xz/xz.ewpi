@@ -1,4 +1,4 @@
 name: xz
-version: 5.4.6
-url: https://github.com/tukaani-project/xz/releases/download/v5.4.6/xz-5.4.6.tar.xz
+version: 5.6.0
+url: https://github.com/tukaani-project/xz/releases/download/v5.6.0/xz-5.6.0.tar.xz
 deps:
