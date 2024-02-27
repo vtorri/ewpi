@@ -4,7 +4,7 @@
 #include <string.h>
 #include <sys/types.h>
 #include <sys/stat.h>
-# include <dirent.h>
+#include <dirent.h>
 #include <unistd.h>
 
 #ifdef _WIN32
@@ -250,22 +250,22 @@ static const char *_ew_req_host[] =
     NULL
 };
 
-static const char *_ew_req[] =
+static const char *_ew_req[][2] =
 {
-    "make",
-    "cmake",
-    "python",
-    "perl",
-    "meson",
-    "ninja",
-    "yasm",
-    "nasm",
-    "gperf",
-    "wget",
-    "bison",
-    "flex",
-    "makensis",
-    NULL
+    { "make", "--version" },
+    { "cmake", "--version" },
+    { "python", "--version" },
+    { "perl", "--version" },
+    { "meson", "--version" },
+    { "ninja", "--version" },
+    { "yasm", "--version" },
+    { "nasm", "--version" },
+    { "gperf", "--version" },
+    { "wget", "--version" },
+    { "bison", "--version" },
+    { "flex", "--version" },
+    { "makensis", "-VERSION" },
+    { NULL, NULL }
 };
 
 static int
@@ -302,24 +302,18 @@ _ew_requirements(const char *host)
         strcpy(buf, host);
         strcat(buf, "-");
         strcat(buf, _ew_req_host[i]);
-        strcat(buf, " --version > /dev/null 2>&1");
+        strcat(buf, " --version > request.txt 2>&1");
         ret = system(buf);
         printf("  %s : %s\n", _ew_req_host[i], (ret == 0) ? "yes" : "no");
         fflush(stdout);
         if (ret != 0) return 0;
     }
 
-    for (int i = 0; _ew_req[i]; i++)
+    for (int i = 0; _ew_req[i][0]; i++)
     {
-        const char *ver;
-        if (strcmp(_ew_req[i], "makensis") == 0)
-            ver = "-VERSION";
-        else
-            ver = "--version";
-
-        snprintf(buf, 4095, "%s %s > /dev/null 2>&1", _ew_req[i], ver);
+        snprintf(buf, 4095, "%s %s > request.txt 2>&1", _ew_req[i][0], _ew_req[i][1]);
         ret = system(buf);
-        printf("  %s : %s\n", _ew_req[i], (ret == 0) ? "yes" : "no");
+        printf("  %s : %s\n", _ew_req[i][0], (ret == 0) ? "yes" : "no");
         fflush(stdout);
         if (ret != 0) return 0;
     }
@@ -1216,12 +1210,10 @@ _ew_recursive_rm(const char *path)
 
             closedir(dir);
         }
-        //printf("path: %s\n", path);
         rmdir(path);
     }
     else
     {
-        //printf("file : %s\n", path);
         unlink(path);
     }
 }
@@ -1289,23 +1281,95 @@ _ew_packages_clean(void)
 }
 
 static void
+_ew_recurse_strip(const char *path, const char *strip)
+{
+    DIR *dir;
+    struct dirent *dp;
+    size_t l;
+
+    if (!path || !*path)
+        return;
+
+    dir = opendir(path);
+    if (!dir)
+        return;
+
+    l = strlen(path);
+
+    do
+    {
+        dp = readdir(dir);
+        if (dp)
+        {
+            char file[4096];
+            struct stat buf;
+            size_t len;
+
+            if ((*dp->d_name == '.') ||
+                (*(dp->d_name + 1) == '.'))
+                continue;
+
+            len = strlen(dp->d_name);
+            if ((l + 1 + len + 1) >= 4096)
+                continue;
+
+            memcpy(file, path, l);
+            memcpy(file + l, "/", 1);
+            memcpy(file + l + 1, dp->d_name, len + 1);
+            if (stat(file, &buf))
+                continue;
+
+            if (S_ISDIR(buf.st_mode))
+            {
+                _ew_recurse_strip(file, strip);
+            }
+            else
+            {
+                char *ext;
+                ext = strrchr(file, '.');
+                if (ext)
+                {
+                    ext++;
+                    if (strcmp(ext, "dll") == 0)
+                    {
+                        char strip_cmd[4096];
+                        int ret;
+
+                        snprintf(strip_cmd, sizeof(strip_cmd), "%s %s",
+                                 strip, file);
+                        printf("  %s\n", file);
+                        fflush(stdout);
+                        ret = system(strip_cmd);
+                        if (ret != 0)
+                        {
+                            printf("can not strip '%s\n'\n", file);
+                            fflush(stdout);
+                        }
+                    }
+                }
+            }
+        }
+    } while (dp);
+
+    closedir(dir);
+}
+
+static void
 _ew_packages_strip(const char *prefix, const char *host)
 {
-    char buf[4096];
-    int ret;
+    char strip[4096];
+    char path[4096];
 
     printf("\n:: Stripping DLL...\n");
     fflush(stdout);
 
-    snprintf(buf, 4095,
-             "sh ./ewpi_strip.sh %s %s",
-             prefix, host);
-    ret = system(buf);
-    if (ret != 0)
-    {
-        printf(" Can not strip DLL\n");
-        fflush(stdout);
-    }
+    snprintf(strip, sizeof(strip), "%s-strip", host);
+
+    snprintf(path, sizeof(path), "%s/bin", prefix);
+    _ew_recurse_strip(path, strip);
+
+    snprintf(path, sizeof(path), "%s/lib", prefix);
+    _ew_recurse_strip(path, strip);
 
     printf("\n");
 }
