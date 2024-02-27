@@ -21,6 +21,7 @@ Package updates:
   * ffmpeg 6.1.1
   * freetype 2.13.2
   * gettext 0.22.4
+  * giflib 5.2.2
   * gst-libav 1.22.10
   * gst-plugins-base 1.22.10
   * gst-plugins-good 1.22.10
