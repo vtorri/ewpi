@@ -252,18 +252,18 @@ static const char *_ew_req_host[] =
 
 static const char *_ew_req[][2] =
 {
-    { "make", "--version" },
-    { "cmake", "--version" },
-    { "python", "--version" },
-    { "perl", "--version" },
-    { "meson", "--version" },
-    { "ninja", "--version" },
-    { "yasm", "--version" },
-    { "nasm", "--version" },
-    { "gperf", "--version" },
-    { "wget", "--version" },
-    { "bison", "--version" },
-    { "flex", "--version" },
+    { "make",     "--version" },
+    { "cmake",    "--version" },
+    { "python",   "--version" },
+    { "perl",     "--version" },
+    { "meson",    "--version" },
+    { "ninja",    "--version" },
+    { "yasm",     "--version" },
+    { "nasm",     "--version" },
+    { "gperf",    "--version" },
+    { "wget",     "--version" },
+    { "bison",    "--version" },
+    { "flex",     "--version" },
     { "makensis", "-VERSION" },
     { NULL, NULL }
 };
@@ -277,26 +277,40 @@ _ew_requirements(const char *host)
     for (int i = 0; _ew_req_host[i]; i++)
     {
 #ifdef _WIN32
-        const char *path;
-        char cmd[4096];
+        char old_file[4096];
+        char new_file[4096];
+        HMODULE mod;
+        char *last;
+        DWORD len;
+        BOOL res;
+
+        mod = LoadLibrary("gcc.exe");
+        if (!mod)
+            return 0;
+
+        len = GetModuleFileName(mod, old_file, sizeof(old_file));
+        FreeLibrary(mod);
+
+        if (!len)
+            return 0;
+
+        old_file[len] = 0; /* not necessary, but i'm paranoid */
+        last = strrchr(old_file, '\\');
+        *(last + 1) = 0;
+        strcpy(new_file, old_file);
 
         if (i >= 2)
         {
-            if (strcmp(host, "x86_64-w64-mingw32") == 0)
-                path = "/mingw64/bin/";
-            else
-                path = "/mingw32/bin/";
-            strcpy(cmd, "cp ");
-            strcat(cmd, path);
-            strcat(cmd, _ew_req_host[i]);
-            strcat(cmd, ".exe");
-            strcat(cmd, " ");
-            strcat(cmd, path);
-            strcat(cmd, host);
-            strcat(cmd, "-");
-            strcat(cmd, _ew_req_host[i]);
-            strcat(cmd, ".exe");
-            system(cmd);
+            strcat(old_file, _ew_req_host[i]);
+            strcat(old_file, ".exe");
+
+            strcat(new_file, host);
+            strcat(new_file, "-");
+            strcat(new_file, _ew_req_host[i]);
+            strcat(new_file, ".exe");
+
+            res = CopyFile(old_file, new_file, FALSE);
+            if (!res) return 0;
         }
 #endif
         strcpy(buf, host);
