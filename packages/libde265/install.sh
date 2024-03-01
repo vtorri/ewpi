@@ -22,6 +22,7 @@ cmake \
     -DCMAKE_VERBOSE_MAKEFILE:BOOL=$verbcmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DENABLE_SDL=OFF \
+    -DENABLE_DECODER=OFF \
     -G "Unix Makefiles" \
     .. > ../../config.log 2>&1
 
