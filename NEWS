@@ -22,10 +22,10 @@ Package updates:
   * freetype 2.13.2
   * gettext 0.22.4
   * giflib 5.2.2
-  * gst-libav 1.22.10
-  * gst-plugins-base 1.22.10
-  * gst-plugins-good 1.22.10
-  * gstreamer 1.22.10
+  * gst-libav 1.24.0
+  * gst-plugins-base 1.24.0
+  * gst-plugins-good 1.24.0
+  * gstreamer 1.24.0
   * harfbuzz 8.3.0
   * highway 1.1.0
   * icu 74.1
