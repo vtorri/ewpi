@@ -175,7 +175,7 @@ Examples :
  * libwebp 1.3.2 (BSD 3-clause)
  * libxml2 2.12.5 (MIT)
  * libyuv 1.88.7 (BSD 3-clause)
- * luajit 2.1.0 (MIT + public domain for some parts)
+ * luajit 2.1.20240311 (MIT + public domain for some parts)
  * lz4 1.9.4 (BSD 2-clause for the library)
  * mp3lame 3.100 (LGPL 2.1)
  * mpg123 1.32.5 (LGPL 2.1)

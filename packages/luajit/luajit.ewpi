@@ -1,4 +1,4 @@
 name: luajit
-version: 2.1.0
+version: 2.1.20240311
 url: https://github.com/LuaJIT/LuaJIT.git
 deps:
