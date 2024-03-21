@@ -1,4 +1,4 @@
 name: libaom
-version: 3.8.1
+version: 3.8.2
 url: https://aomedia.googlesource.com/aom.git
 deps: libvmaf
