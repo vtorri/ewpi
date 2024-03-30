@@ -2,6 +2,32 @@
 
 . ../../common.sh
 
-./configure --prefix=$3 --host=$4 --disable-static --enable-threads=vista --disable-lzmainfo --disable-lzma-links --disable-scripts --disable-doc > ../config.log 2>&1
+git fetch && git fetch --tags
+git checkout 0b99783d63f27606936bb79a16c52d0d70c0b56f
 
-make -j $jobopt $verbmake install > ../make.log 2>&1
+cp ../cross_toolchain.txt .
+
+if test "x$4" = "xx86_64-w64-mingw32" ; then
+    proc="AMD64"
+    machine=-m64
+else
+    proc="X86"
+    machine=-m32
+fi
+
+sed -i -e "s|@prefix@|$3|g;s|@host@|$4|g;s|@proc@|$proc|g;s|@winver@|$winver|g" cross_toolchain.txt
+
+rm -rf builddir && mkdir builddir && cd builddir
+
+cmake \
+    -DCMAKE_TOOLCHAIN_FILE=../cross_toolchain.txt \
+    -DCMAKE_INSTALL_PREFIX=$prefix_unix \
+    -DCMAKE_VERBOSE_MAKEFILE:BOOL=$verbcmake \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DBUILD_SHARED_LIBS=TRUE \
+    -DENABLE_SMALL=FALSE \
+    -DSUPPORTED_THREADING_METHODS=vista \
+    -G "Unix Makefiles" \
+    .. > ../../config.log 2>&1
+
+make -j $jobopt install > ../../make.log 2>&1
