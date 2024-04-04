@@ -46,6 +46,6 @@ cmake \
     -DJPEGXL_FORCE_SYSTEM_LCMS2=ON \
     -DBUILD_TESTING=OFF \
     -G "Unix Makefiles" \
-    .. >> ../../config.log 2>&1
+    .. > ../../config.log 2>&1
 
 make -j $jobopt install > ../../make.log 2>&1
