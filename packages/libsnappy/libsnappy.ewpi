@@ -1,4 +1,4 @@
 name: libsnappy
-version: 1.1.10
-url: https://github.com/google/snappy/archive/refs/tags/1.1.10.tar.gz
+version: 1.2.0
+url: https://github.com/google/snappy/archive/refs/tags/1.2.0.tar.gz
 deps:
