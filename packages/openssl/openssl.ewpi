@@ -1,4 +1,4 @@
 name: openssl
-version: 3.2.1
-url: https://github.com/openssl/openssl/releases/download/openssl-3.2.1/openssl-3.2.1.tar.gz
+version: 3.3.0
+url: https://github.com/openssl/openssl/releases/download/openssl-3.3.0/openssl-3.3.0.tar.gz
 deps:
