@@ -28,6 +28,7 @@ rm -rf builddir && mkdir builddir && cd builddir
              --enable-libfontconfig \
              --enable-libfreetype \
              --enable-libfribidi \
+             --enable-libharfbuzz \
              --enable-libgme \
              --enable-libgsm \
              --enable-libilbc \
@@ -48,6 +49,7 @@ rm -rf builddir && mkdir builddir && cd builddir
              --enable-openssl \
              --disable-sdl2 \
 	     --disable-vulkan \
+             --disable-doc \
              --disable-programs \
              > ../../config.log 2>&1
 
