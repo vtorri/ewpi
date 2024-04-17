@@ -49,6 +49,7 @@ rm -rf builddir && mkdir builddir && cd builddir
              --enable-openssl \
              --disable-sdl2 \
 	     --disable-vulkan \
+             --disable-debug \
              --disable-doc \
              --disable-programs \
              > ../../config.log 2>&1
