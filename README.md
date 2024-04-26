@@ -136,7 +136,7 @@ Examples :
  * lcms2 2.16 (MIT)
  * libaacs 0.11.1 (LGPL 2.1)
  * libaom 3.8.2 (BSD 2-clause)
- * libarchive 3.7.3 (BSD 2-clause)
+ * libarchive 3.7.4 (BSD 2-clause)
  * libass 0.17.1 (ISC)
  * libavif 1.0.4 (BSD 2-clause)
  * libbdplus 0.2.0 (LGPL 2.1)
