@@ -172,7 +172,7 @@ Examples :
  * libvmaf 3.0.0 (BSD -2-clause + patent)
  * libvorbis 1.3.7 (BSD 3-clause)
  * libwavpack 5.6.0 (BSD 3-clause)
- * libwebp 1.3.2 (BSD 3-clause)
+ * libwebp 1.4.0 (BSD 3-clause)
  * libxml2 2.12.6 (MIT)
  * libyuv 1.88.7 (BSD 3-clause)
  * luajit 2.1.20240311 (MIT + public domain for some parts)
