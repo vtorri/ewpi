@@ -178,7 +178,7 @@ Examples :
  * luajit 2.1.20240311 (MIT + public domain for some parts)
  * lz4 1.9.4 (BSD 2-clause for the library)
  * mp3lame 3.100 (LGPL 2.1)
- * mpg123 1.32.5 (LGPL 2.1)
+ * mpg123 1.32.6 (LGPL 2.1)
  * nghttp2 1.61.0 (MIT)
  * openjpeg 2.5.2 (BSD 2-clause)
  * openssl 3.3.0 (Apache 2.0)
