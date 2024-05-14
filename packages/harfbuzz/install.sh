@@ -20,6 +20,7 @@ meson setup \
       --strip \
       --cross-file cross_toolchain.txt \
       --default-library shared \
+      -Dcpp_std=c++17 \
       -Dintrospection=disabled \
       -Dtests=disabled \
       -Ddocs=disabled \
