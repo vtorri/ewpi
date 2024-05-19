@@ -5,7 +5,7 @@ ar = '@host@-ar'
 ranlib = '@host@-ranlib'
 strip = '@host@-strip'
 windres = '@host@-windres'
-pkgconfig = 'pkg-config'
+pkg-config = 'pkg-config'
 
 [host_machine]
 system = 'windows'
@@ -13,7 +13,7 @@ cpu_family = '@cpu_family@'
 cpu = '@cpu@'
 endian = 'little'
 
-[properties]
+[built-in options]
 c_args = ['-I@prefix@/include', '-O2', '-pipe', '-march=@arch@']
 c_link_args = ['-L@prefix@/lib', '-s', '-lssp']
 cpp_args = ['-I@prefix@/include', '-O2', '-pipe', '-march=@arch@']
