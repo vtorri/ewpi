@@ -1,6 +1,6 @@
 === release 1.2 ===
 
-2024-05-19 Vincent Torri <vincent.torri@gmail.com>
+2024-05-28 Vincent Torri <vincent.torri@gmail.com>
 
 Package additions:
 
@@ -52,7 +52,7 @@ Package updates:
   * libpng 1.6.43
   * libpsl 0.21.5
   * libraw 0.21.2
-  * libsnappy 1.2.0
+  * libsnappy 1.2.1
   * libsndfile 1.2.2
   * libtiff 4.6.0
   * libvmaf 3.0.0
