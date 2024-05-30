@@ -2,9 +2,6 @@
 
 . ../../common.sh
 
-git fetch && git fetch --tags
-git checkout 0b99783d63f27606936bb79a16c52d0d70c0b56f
-
 cp ../cross_toolchain.txt .
 
 if test "x$4" = "xx86_64-w64-mingw32" ; then
