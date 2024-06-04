@@ -13,6 +13,7 @@ else
 fi
 
 sed -i -e "s|@prefix@|$3|g;s|@host@|$4|g;s|@proc@|$proc|g;s|@winver@|$winver|g" cross_toolchain.txt
+sed -i -e "s|add_subdirectory(player|#add_subdirectory(player|g;s|add_subdirectory(demo|#add_subdirectory(demo|g" CMakeLists.txt
 
 rm -rf builddir && mkdir builddir && cd builddir
 
