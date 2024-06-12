@@ -1,6 +1,6 @@
 === release 1.2 ===
 
-2024-05-28 Vincent Torri <vincent.torri@gmail.com>
+2024-06-13 Vincent Torri <vincent.torri@gmail.com>
 
 Package additions:
 
@@ -57,7 +57,7 @@ Package updates:
   * libtiff 4.6.0
   * libvmaf 3.0.0
   * libwebp 1.4.0
-  * libxml2 2.12.6
+  * libxml2 2.13.0
   * libyuv 1.88.7
   * luajit 2.1.20240311
   * mpg123 1.32.6

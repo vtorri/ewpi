@@ -2,12 +2,24 @@
 
 . ../../common.sh
 
-sed -i -e "s/lt_cv_deplibs_check_method='file_magic ^x86 archive import|^x86 DLL'/lt_cv_deplibs_check_method=pass_all/g" configure
+cp ../cross_toolchain.txt .
 
-sed -i -e "s/TRUE/1/g" encoding.c
+if test "x$4" = "xi686-w64-mingw32" ; then
+    sed -i -e 's/@cpu_family@/x86/g;s/@cpu@/i686/g' cross_toolchain.txt
+else
+    sed -i -e 's/@cpu_family@/x86_64/g;s/@cpu@/x86_64/g' cross_toolchain.txt
+fi
 
-export LDFLAGS="$LDFLAGS -lssp"
+sed -i -e "s/@host@/$4/g;s/@arch@/$1/g;s|@prefix@|$3|g" cross_toolchain.txt
 
-./configure --prefix=$3 --host=$4 --disable-static --with-python=no --with-icu=yes > ../config.log 2>&1
+rm -rf builddir
+meson setup \
+      --prefix=$3 \
+      --libdir=lib \
+      --buildtype=release \
+      --strip \
+      --cross-file cross_toolchain.txt \
+      --default-library shared \
+      builddir > ../config.log 2>&1
 
-make -j $jobopt $verbmake install > ../make.log 2>&1
+ninja $verbninja -C builddir install > ../make.log 2>&1
