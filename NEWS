@@ -1,6 +1,6 @@
 === release 1.2 ===
 
-2024-06-13 Vincent Torri <vincent.torri@gmail.com>
+2024-06-19 Vincent Torri <vincent.torri@gmail.com>
 
 Package additions:
 
@@ -36,7 +36,7 @@ Package updates:
   * libarchive 3.7.4
   * libass 0.17.2
   * libavif 1.0.4
-  * libdav1d 1.4.2
+  * libdav1d 1.4.3
   * libde265 1.0.15
   * libdeflate 1.20
   * libffi 3.4.6

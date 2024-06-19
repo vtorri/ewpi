@@ -1,4 +1,4 @@
 name: libdav1d
-version: 1.4.2
-url: https://downloads.videolan.org/pub/videolan/dav1d/1.4.2/dav1d-1.4.2.tar.xz
+version: 1.4.3
+url: https://downloads.videolan.org/pub/videolan/dav1d/1.4.3/dav1d-1.4.3.tar.xz
 deps:
