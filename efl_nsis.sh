@@ -9,7 +9,7 @@
 path=`echo $1 | sed 's,/,\\\\\\\\,g'`
 echo $path
 
-path=E:\\\\Documents\\\\programmes_x64\\\\msys2\\\\home\\\\vtorri\\\\efl_64
+path=$HOME/efl_64
 version=1.26
 
 
