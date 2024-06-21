@@ -40,6 +40,7 @@ Package updates:
   * libde265 1.0.15
   * libdeflate 1.20
   * libffi 3.4.6
+  * libgcrypt 1.11.0
   * libgpg-error 1.50
   * libgsm 1.0.22
   * libheif 1.17.6
