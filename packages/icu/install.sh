@@ -18,7 +18,18 @@ esac
 
 cd source
 
-./runConfigureICU MinGW --prefix=$3 --host=$4 $cross --enable-tools --disable-tests --disable-samples > ../../config.log 2>&1
+CXXFLAGS="$CXXFLAGS -fext-numeric-literals"
+./runConfigureICU MinGW \
+                  --prefix=$3 \
+                  --host=$4 \
+                  $cross \
+                  -enable-release \
+                  --enable-shared \
+                  --disable-static \
+                  --enable-tools \
+                  --disable-tests \
+                  --disable-samples \
+                  > ../../config.log 2>&1
 
 make -j $jobopt > ../../make.log 2>&1
 make install >> ../../make.log 2>&1
