@@ -264,7 +264,6 @@ static const char *_ew_req[][2] =
     { "wget",     "--version" },
     { "bison",    "--version" },
     { "flex",     "--version" },
-    { "xmlto",    "--version" },
     { "makensis", "-VERSION" },
     { NULL, NULL }
 };
@@ -326,10 +325,7 @@ _ew_requirements(const char *host)
 
     for (int i = 0; _ew_req[i][0]; i++)
     {
-        if (strcmp(_ew_req[i][0], "xmlto") == 0)
-            snprintf(buf, 4095, "sh %s %s > request.txt 2>&1", _ew_req[i][0], _ew_req[i][1]);
-        else
-            snprintf(buf, 4095, "%s %s > request.txt 2>&1", _ew_req[i][0], _ew_req[i][1]);
+        snprintf(buf, 4095, "%s %s > request.txt 2>&1", _ew_req[i][0], _ew_req[i][1]);
         ret = system(buf);
         printf("  %s : %s\n", _ew_req[i][0], (ret == 0) ? "yes" : "no");
         fflush(stdout);
