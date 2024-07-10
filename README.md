@@ -195,7 +195,7 @@ Examples :
 ### Libraries compatible with LGPL v3
 
  * libde265 1.0.15 (LGPL v3)
- * libheif 1.17.6 (LGPL v3)
+ * libheif 1.18.0 (LGPL v3)
 
 ### Libraries compatible with GPL v2
 

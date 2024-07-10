@@ -1,6 +1,6 @@
 === release 1.2 ===
 
-2024-07-06 Vincent Torri <vincent.torri@gmail.com>
+2024-07-10 Vincent Torri <vincent.torri@gmail.com>
 
 Package additions:
 
@@ -43,7 +43,7 @@ Package updates:
   * libgcrypt 1.11.0
   * libgpg-error 1.50
   * libgsm 1.0.22
-  * libheif 1.17.6
+  * libheif 1.18.0
   * libjpeg 3.0.3
   * libjxl 0.10.3
   * libkvazaar 2.3.1
