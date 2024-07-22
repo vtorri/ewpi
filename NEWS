@@ -1,6 +1,6 @@
 === release 1.2 ===
 
-2024-07-14 Vincent Torri <vincent.torri@gmail.com>
+2024-07-22 Vincent Torri <vincent.torri@gmail.com>
 
 Package additions:
 
@@ -61,6 +61,7 @@ Package updates:
   * libxml2 2.13.2
   * libyuv 1.88.7
   * luajit 2.1.20240311
+  * lz4 1.10.0
   * mpg123 1.32.6
   * mupdf 1.24.2
   * nghttp2 1.62.1
