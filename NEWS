@@ -1,6 +1,6 @@
 === release 1.2 ===
 
-2024-07-25 Vincent Torri <vincent.torri@gmail.com>
+2024-07-30 Vincent Torri <vincent.torri@gmail.com>
 
 Package additions:
 
@@ -35,7 +35,7 @@ Package updates:
   * libaom 3.9.1
   * libarchive 3.7.4
   * libass 0.17.3
-  * libavif 1.1.0
+  * libavif 1.1.1
   * libdav1d 1.4.3
   * libde265 1.0.15
   * libdeflate 1.20
