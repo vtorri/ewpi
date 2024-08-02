@@ -1,4 +1,4 @@
 name: gstreamer
-version: 1.24.3
-url: https://gstreamer.freedesktop.org/src/gstreamer/gstreamer-1.24.3.tar.xz
+version: 1.24.6
+url: https://gstreamer.freedesktop.org/src/gstreamer/gstreamer-1.24.6.tar.xz
 deps: glib2 gettext

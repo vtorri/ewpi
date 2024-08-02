@@ -1,6 +1,6 @@
 === release 1.2 ===
 
-2024-07-30 Vincent Torri <vincent.torri@gmail.com>
+2024-08-02 Vincent Torri <vincent.torri@gmail.com>
 
 Package additions:
 
@@ -15,18 +15,18 @@ Package removals:
 Package updates:
 
   * brotli 1.1.0
-  * curl 8.9.0
+  * curl 8.9.1
   * dbus 1.14.10
   * expat 2.6.2
-  * ffmpeg 7.0.0
+  * ffmpeg 7.0.1
   * freetype 2.13.2
   * fribidi 1.0.15
   * gettext 0.22.4
   * giflib 5.2.2
-  * gst-libav 1.24.3
-  * gst-plugins-base 1.24.3
-  * gst-plugins-good 1.24.3
-  * gstreamer 1.24.3
+  * gst-libav 1.24.6
+  * gst-plugins-base 1.24.6
+  * gst-plugins-good 1.24.6
+  * gstreamer 1.24.6
   * harfbuzz 9.0.0
   * highway 1.2.0
   * icu 75.1
@@ -67,7 +67,7 @@ Package updates:
   * nghttp2 1.62.1
   * openjpeg 2.5.2
   * opus 1.5.2
-  * orc 0.4.38
+  * orc 0.4.39
   * pixman 0.43.4
   * taglib 2.0.1
   * xz 5.6.2
