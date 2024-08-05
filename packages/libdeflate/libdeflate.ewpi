@@ -1,4 +1,4 @@
 name: libdeflate
-version: 1.20
-url: https://github.com/ebiggers/libdeflate/releases/download/v1.20/libdeflate-1.20.tar.gz
+version: 1.21
+url: https://github.com/ebiggers/libdeflate/releases/download/v1.21/libdeflate-1.21.tar.gz
 deps:
