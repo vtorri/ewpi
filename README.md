@@ -118,7 +118,7 @@ Examples :
  * ffmpeg 7.0.1 (LGPL 2.1)
  * flac 1.4.3 (LGPL 2.1)
  * fontconfig 2.14.2 (MIT)
- * freetype 2.13.2 (FreeType license)
+ * freetype 2.13.3 (FreeType license)
  * fribidi 1.0.15 (LGPL 2.1)
  * gettext 0.22.4 (only libintl : LGPL 2.1)
  * giflib 5.2.2 (MIT)
@@ -179,7 +179,7 @@ Examples :
  * lz4 1.10.0 (BSD 2-clause for the library)
  * mp3lame 3.100 (LGPL 2.1)
  * mpg123 1.32.7 (LGPL 2.1)
- * nghttp2 1.62.1 (MIT)
+ * nghttp2 1.63.0 (MIT)
  * openjpeg 2.5.2 (BSD 2-clause)
  * openssl 3.3.0 (Apache 2.0)
  * opus 1.5.2 (BSD 3-clause)
@@ -187,7 +187,7 @@ Examples :
  * pixman 0.43.4 (MIT)
  * regex 1.2.1 (MIT)
  * utfcpp 4.0.5 (BSL 1.0)
- * taglib 2.0.1 (LGPL 2.1)
+ * taglib 2.0.2 (LGPL 2.1)
  * xz 5.6.2 (lzma : public domain)
  * zlib 1.3.1 (zlib license)
  * zstd 1.5.6 (BSD 3-clause)
@@ -205,4 +205,4 @@ Examples :
 ### Libraries compatible with AGPL v3
 
  * jbig2dec 0.20 (AGPL v3)
- * mupdf 1.24.2 (AGPL v3)
+ * mupdf 1.24.8 (AGPL v3)
