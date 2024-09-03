@@ -20,6 +20,7 @@ meson setup \
       --strip \
       --cross-file cross_toolchain.txt \
       --default-library shared \
+      -Dgl=disabled \
       -Dexamples=disabled \
       -Dtests=disabled \
       builddir > ../config.log 2>&1

@@ -1,6 +1,6 @@
 === release 1.2 ===
 
-2024-08-30 Vincent Torri <vincent.torri@gmail.com>
+2024-09-03 Vincent Torri <vincent.torri@gmail.com>
 
 Package additions:
 
@@ -23,10 +23,10 @@ Package updates:
   * fribidi 1.0.15
   * gettext 0.22.4
   * giflib 5.2.2
-  * gst-libav 1.24.6
-  * gst-plugins-base 1.24.6
-  * gst-plugins-good 1.24.6
-  * gstreamer 1.24.6
+  * gst-libav 1.24.7
+  * gst-plugins-base 1.24.7
+  * gst-plugins-good 1.24.7
+  * gstreamer 1.24.7
   * harfbuzz 9.0.0
   * highway 1.2.0
   * icu 75.1
