@@ -44,4 +44,5 @@ Libs: -L\${libdir} -lyuv
 Cflags: -I\${includedir}
 EOF
 
+cp libyuv.dll.a $3/lib
 cp libyuv.pc $3/lib/pkgconfig
