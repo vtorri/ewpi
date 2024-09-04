@@ -13,6 +13,7 @@ make verbose=$verbose generate
 make prefix=$3 \
      verbose=$verbose \
      -j $jobopt \
+     shared=yes \
      USE_SYSTEM_FREETYPE=yes \
      SYS_FREETYPE_CFLAGS="`pkg-config --cflags freetype2`" \
      SYS_FREETYPE_LIBS="`pkg-config --libs freetype2`" \
@@ -28,12 +29,12 @@ make prefix=$3 \
      USE_SYSTEM_ZLIB=yes \
      SYS_ZLIB_CFLAGS="`pkg-config --cflags zlib`" \
      SYS_ZLIB_LIBS="`pkg-config --libs zlib`" \
-     USE_SYSTEM_CURL=yes \
+     USE_SYSTEM_CURL=no \
      SYS_CURL_CFLAGS="`pkg-config --cflags libcurl`" \
      SYS_CURL_LIBS="`pkg-config --libs libcurl`" \
      USE_SYSTEM_JBIG2DEC=yes \
      SYS_JBIG2DEC_CFLAGS="-I$3/include" \
      SYS_JBIG2DEC_LIBS="-L$3/lib -ljbig2dec" \
-     XCFLAGS="-DFZ_ENABLE_XPS=0 -DFZ_ENABLE_SVG=0 -DFZ_ENABLE_CBZ=0 -DFZ_ENABLE_IMG=0 -DFZ_ENABLE_HTML=0 -DFZ_ENABLE_EPUB=0" \
+     XCFLAGS="-DFZ_ENABLE_XPS=0 -DFZ_ENABLE_SVG=0 -DFZ_ENABLE_CBZ=0 -DFZ_ENABLE_IMG=0 -DFZ_ENABLE_HTML=0 -DFZ_ENABLE_EPUB=0 -DFZ_ENABLE_JS=0" \
      OS=$OS \
      install > ../make.log 2>&1
