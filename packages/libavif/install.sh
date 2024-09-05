@@ -31,8 +31,8 @@ cmake \
     -DCMAKE_INSTALL_PREFIX=$prefix_unix \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_SHARED_LIBS=TRUE \
-    -DAVIF_CODEC_AOM:BOOL=ON \
-    -DAVIF_CODEC_DAV1D:BOOL=ON \
+    -DAVIF_CODEC_AOM=SYSTEM \
+    -DAVIF_CODEC_DAV1D=SYSTEM \
     -DAVIF_BUILD_APPS:BOOL=OFF \
     -G Ninja \
     .. > ../../config.log 2>&1
