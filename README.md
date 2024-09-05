@@ -174,7 +174,7 @@ Examples :
  * libwavpack 5.6.0 (BSD 3-clause)
  * libwebp 1.4.0 (BSD 3-clause)
  * libxml2 2.13.3 (MIT)
- * libyuv 1.88.7 (BSD 3-clause)
+ * libyuv 1.89.5 (BSD 3-clause)
  * luajit 2.1.20240311 (MIT + public domain for some parts)
  * lz4 1.10.0 (BSD 2-clause for the library)
  * mp3lame 3.100 (LGPL 2.1)
@@ -205,4 +205,4 @@ Examples :
 ### Libraries compatible with AGPL v3
 
  * jbig2dec 0.20 (AGPL v3)
- * mupdf 1.24.8 (AGPL v3)
+ * mupdf 1.24.9 (AGPL v3)

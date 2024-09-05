@@ -14,8 +14,6 @@ fi
 
 sed -i -e "s|@prefix@|$3|g;s|@host@|$4|g;s|@proc@|$proc|g;s|@winver@|$winver|g" cross_toolchain.txt
 
-sed -i -e "s|target_link_libraries( yuvconvert \${JPEG_LIBRARY} )|target_link_libraries( \${ly_lib_shared} \${JPEG_LIBRARY} )|g;s|PROGRAMS \${CMAKE_BINARY_DIR}/yuvconvert|TARGETS yuvconvert|g" CMakeLists.txt
-
 rm -rf builddir && mkdir builddir && cd builddir
 
 cmake \
@@ -27,7 +25,11 @@ cmake \
     -G "Unix Makefiles" \
     .. > ../../config.log 2>&1
 
+sed -i -e "s|yuvconvert|yuvconvert.exe|g" cmake_install.cmake
+
 make -j $jobopt install > ../../make.log 2>&1
+
+# See include/libyuv/version.h for the version
 
 cat > libyuv.pc <<EOF
 prefix=$3
@@ -38,11 +40,10 @@ includedir=\${prefix}/include
 
 Name: libyuv
 Description: YUV conversion and scaling library
-Version: 1840
+Version: 1895
 Requires.private: libjpeg
 Libs: -L\${libdir} -lyuv
 Cflags: -I\${includedir}
 EOF
 
-cp libyuv.dll.a $3/lib
 cp libyuv.pc $3/lib/pkgconfig
