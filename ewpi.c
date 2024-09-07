@@ -21,6 +21,7 @@
 #endif
 
 #include "ewpi_map.h"
+#include "ewpi_spawn.h"
 
 #define EWPI_DEBUG 0
 
@@ -313,23 +314,24 @@ _ew_requirements(const char *host)
             if (!res) return 0;
         }
 #endif
+
         strcpy(buf, host);
         strcat(buf, "-");
         strcat(buf, _ew_req_host[i]);
-        strcat(buf, " --version > request.txt 2>&1");
-        ret = system(buf);
-        printf("  %s : %s\n", _ew_req_host[i], (ret == 0) ? "yes" : "no");
+        strcat(buf, " --version");
+        ret = ewpi_spawn(buf);
+        printf("  %s : %s\n", _ew_req_host[i], ret ? "yes" : "no");
         fflush(stdout);
-        if (ret != 0) return 0;
+        if (!ret) return 0;
     }
 
     for (int i = 0; _ew_req[i][0]; i++)
     {
-        snprintf(buf, 4095, "%s %s > request.txt 2>&1", _ew_req[i][0], _ew_req[i][1]);
-        ret = system(buf);
-        printf("  %s : %s\n", _ew_req[i][0], (ret == 0) ? "yes" : "no");
+        snprintf(buf, 4095, "%s %s", _ew_req[i][0], _ew_req[i][1]);
+        ret = ewpi_spawn(buf);
+        printf("  %s : %s\n", _ew_req[i][0], ret ? "yes" : "no");
         fflush(stdout);
-        if (ret != 0) return 0;
+        if (ret == 0) return 0;
     }
 
     return 1;
