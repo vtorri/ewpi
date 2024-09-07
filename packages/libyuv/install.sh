@@ -25,8 +25,6 @@ cmake \
     -G "Unix Makefiles" \
     .. > ../../config.log 2>&1
 
-sed -i -e "s|yuvconvert|yuvconvert.exe|g" cmake_install.cmake
-
 make -j $jobopt install > ../../make.log 2>&1
 
 # See include/libyuv/version.h for the version
