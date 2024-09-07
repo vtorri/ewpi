@@ -1,2 +1,2 @@
 
-int ewpi_spawn(char *cmd);
+int ewpi_spawn(const char *host, const char *prog, const char *option);

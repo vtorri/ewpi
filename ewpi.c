@@ -272,7 +272,6 @@ static const char *_ew_req[][2] =
 static int
 _ew_requirements(const char *host)
 {
-    char buf[4096];
     int ret;
 
     for (int i = 0; _ew_req_host[i]; i++)
@@ -315,11 +314,7 @@ _ew_requirements(const char *host)
         }
 #endif
 
-        strcpy(buf, host);
-        strcat(buf, "-");
-        strcat(buf, _ew_req_host[i]);
-        strcat(buf, " --version");
-        ret = ewpi_spawn(buf);
+        ret = ewpi_spawn(host, _ew_req_host[i], " --version");
         printf("  %s : %s\n", _ew_req_host[i], ret ? "yes" : "no");
         fflush(stdout);
         if (!ret) return 0;
@@ -327,8 +322,7 @@ _ew_requirements(const char *host)
 
     for (int i = 0; _ew_req[i][0]; i++)
     {
-        snprintf(buf, 4095, "%s %s", _ew_req[i][0], _ew_req[i][1]);
-        ret = ewpi_spawn(buf);
+        ret = ewpi_spawn(NULL, _ew_req[i][0], _ew_req[i][1]);
         printf("  %s : %s\n", _ew_req[i][0], ret ? "yes" : "no");
         fflush(stdout);
         if (ret == 0) return 0;

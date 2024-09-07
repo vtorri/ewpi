@@ -3,14 +3,18 @@
 #ifdef _WIN32
 # include <windows.h>
 #else
+# include <unistd.h>
+# include <fcntl.h>
+# include <sys/wait.h>
 #endif
 
 #include "ewpi_spawn.h"
 
 #ifdef _WIN32
 
-int ewpi_spawn(char *cmd)
+int ewpi_spawn(const char *host, const char *prog, const char *option)
 {
+    char cmd[256];
     STARTUPINFO si;
     PROCESS_INFORMATION pi;
     SECURITY_ATTRIBUTES sa;
@@ -44,6 +48,16 @@ int ewpi_spawn(char *cmd)
     si.dwFlags = STARTF_USESTDHANDLES;
     si.hStdError = pipe_err_write;
     si.hStdOutput = pipe_out_write;
+
+    *cmd = '\0';
+    if (host)
+    {
+        strcat(cmd, host);
+        strcat(cmd, "-");
+    }
+    strcat(cmd, prog);
+    strcat(cmd, " ");
+    strcat(cmd, option);
 
     if (!CreateProcess(NULL, cmd, NULL, NULL,
                        TRUE, 0UL, NULL, NULL, &si, &pi))
@@ -79,8 +93,43 @@ int ewpi_spawn(char *cmd)
 
 #else
 
-int ewpi_spawn(const char *process, const char *option)
+int ewpi_spawn(const char *host, const char *prog, const char *option)
 {
+    pid_t pid;
+
+    pid = fork();
+    if (pid == 0)
+    {
+        /* child */
+        char cmd[256];
+        char *args[3];
+        int fd;
+
+        fd = open("/dev/null", O_WRONLY);
+        dup2(fd, 1);
+        dup2(fd, 2);
+        close(fd);
+
+        *cmd = '\0';
+        if (host)
+        {
+            strcat(cmd, host);
+            strcat(cmd, "-");
+        }
+        strcat(cmd, prog);
+        args[0] = cmd;
+        args[1] = option;
+        args[2] = NULL;
+        execvp(args[0], args);
+    }
+    else
+    {
+        /* parent */
+        int status;
+
+        waitpid(pid, &status, 0);
+        return status == 0;
+    }
 }
 
 #endif
