@@ -3,9 +3,11 @@
 #ifdef _WIN32
 # include <windows.h>
 #else
-# include <unistd.h>
+# include <errno.h>
 # include <fcntl.h>
+# include <stdlib.h>
 # include <sys/wait.h>
+# include <unistd.h>
 #endif
 
 #include "ewpi_spawn.h"
@@ -98,6 +100,9 @@ int ewpi_spawn(const char *host, const char *prog, const char *option)
     pid_t pid;
 
     pid = fork();
+    if (pid < 0)
+        return 0;
+
     if (pid == 0)
     {
         /* child */
@@ -106,9 +111,10 @@ int ewpi_spawn(const char *host, const char *prog, const char *option)
         int fd;
 
         fd = open("/dev/null", O_WRONLY);
-        dup2(fd, 1);
-        dup2(fd, 2);
-        close(fd);
+        if (fd <  0) exit(1);
+        if (dup2(fd, 1) < 0) exit(1);
+        if (dup2(fd, 2) < 0) exit(1);
+        if (close(fd) < 0) exit(1);;
 
         *cmd = '\0';
         if (host)
@@ -118,17 +124,22 @@ int ewpi_spawn(const char *host, const char *prog, const char *option)
         }
         strcat(cmd, prog);
         args[0] = cmd;
-        args[1] = option;
+        args[1] = (char *)option;
         args[2] = NULL;
         execvp(args[0], args);
+        exit(errno);
     }
     else
     {
         /* parent */
         int status;
+        int ret;
 
-        waitpid(pid, &status, 0);
-        return status == 0;
+        ret = waitpid(pid, &status, 0);
+        if (ret != 0)
+            return 0;
+
+        return WIFEXITED(status) ? WEXITSTATUS(status) == 0 : 0;
     }
 }
 
