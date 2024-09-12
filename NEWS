@@ -1,6 +1,6 @@
 === release 1.2 ===
 
-2024-09-05 Vincent Torri <vincent.torri@gmail.com>
+2024-09-12 Vincent Torri <vincent.torri@gmail.com>
 
 Package additions:
 
@@ -15,7 +15,7 @@ Package removals:
 Package updates:
 
   * brotli 1.1.0
-  * curl 8.9.1
+  * curl 8.10.0
   * dbus 1.14.10
   * expat 2.6.3
   * ffmpeg 7.0.2

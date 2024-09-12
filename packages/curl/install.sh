@@ -21,6 +21,8 @@ cmake \
     -DCMAKE_INSTALL_PREFIX=$prefix_unix \
     -DCMAKE_VERBOSE_MAKEFILE:BOOL=$verbcmake \
     -DCMAKE_BUILD_TYPE=Release \
+    -DBUILD_LIBCURL_DOCS=OFF \
+    -DBUILD_MISC_DOCS=OFF \
     -DENABLE_MANUAL=OFF \
     -DBUILD_CURL_EXE=OFF \
     -DENABLE_THREADED_RESOLVER=ON \
@@ -33,7 +35,7 @@ cmake \
     -DCURL_USE_LIBSSH2=ON \
     -DCURL_TARGET_WINDOWS_VERSION=$winver \
     -DBUILD_TESTING=OFF \
-    -G "Unix Makefiles" \
+    -G "Ninja" \
     .. > ../../config.log 2>&1
 
-make -j $jobopt $verbmake install > ../../make.log 2>&1
+ninja $verbninja install > ../../make.log 2>&1
