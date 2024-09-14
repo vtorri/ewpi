@@ -29,7 +29,7 @@ cmake \
     -DPNG_DEBUG=FALSE \
     -DPNG_HARDWARE_OPTIMIZATIONS=TRUE \
     -DPNG_BUILD_ZLIB=FALSE \
-    -G "Unix Makefiles" \
+    -G "Ninja" \
     .. > ../../config.log 2>&1
 
-make -j $jobopt install > ../../make.log 2>&1
+ninja $verbninja install > ../../make.log 2>&1

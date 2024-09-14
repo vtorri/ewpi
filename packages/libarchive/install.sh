@@ -26,7 +26,7 @@ cmake \
     -DENABLE_CPIO=OFF \
     -DENABLE_CAT=OFF \
     -DENABLE_TEST=OFF \
-    -G "Unix Makefiles" \
+    -G "Ninja" \
     .. > ../../config.log 2>&1
 
-make -j $jobopt $verbmake install > ../../make.log 2>&1
+ninja $verbninja install > ../../make.log 2>&1
