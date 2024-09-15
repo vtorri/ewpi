@@ -152,7 +152,7 @@ Examples :
  * libgpg-error 1.50 (LGPL 2.1)
  * libgsm 1.0.22 (MIT)
  * libilbc 3.0.4 (BSD 3-clause)
- * libjpeg 3.0.3 (IJG and zlib)
+ * libjpeg 3.0.4 (IJG and zlib)
  * libjxl 0.10.3 (BSD 3-clause)
  * libkvazaar 2.3.1 (BSD 3-clause)
  * liblerc 4.0.0 (Apache 2.0)
