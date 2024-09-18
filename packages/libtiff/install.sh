@@ -37,7 +37,7 @@ cmake \
     -Dtiff-contrib=OFF \
     -Dtiff-docs=OFF \
     -Dtiff-deprecated=OFF \
-    -G "Unix Makefiles" \
+    -G "Ninja" \
     .. > ../../config.log 2>&1
 
-make -j $jobopt $verbmake install > ../../make.log 2>&1
+ninja $verbninja install > ../../make.log 2>&1
