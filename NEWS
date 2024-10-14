@@ -1,6 +1,6 @@
 === release 1.2 ===
 
-2024-10-06 Vincent Torri <vincent.torri@gmail.com>
+2024-10-14 Vincent Torri <vincent.torri@gmail.com>
 
 Package additions:
 
@@ -33,7 +33,7 @@ Package updates:
   * jbig2dec 0.20
   * lcms2 2.16
   * libaom 3.10.0
-  * libarchive 3.7.6
+  * libarchive 3.7.7
   * libass 0.17.3
   * libavif 1.1.1
   * libdav1d 1.4.3
