@@ -167,7 +167,7 @@ Examples :
  * libsnappy 1.2.1 (BSD 3-clause)
  * libsndfile 1.2.2 (LGPL 2.1)
  * libsoxr 0.1.3 (LGPL 2.1)
- * libssh2 1.11.0 (BSD 3-clause)
+ * libssh2 1.11.1 (BSD 3-clause)
  * libtiff 4.7.0 (BSD 2-clause)
  * libvmaf 3.0.0 (BSD -2-clause + patent)
  * libvorbis 1.3.7 (BSD 3-clause)

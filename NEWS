@@ -1,6 +1,6 @@
 === release 1.2 ===
 
-2024-10-14 Vincent Torri <vincent.torri@gmail.com>
+2024-10-19 Vincent Torri <vincent.torri@gmail.com>
 
 Package additions:
 
@@ -116,7 +116,7 @@ Package updates:
   * libopenmpt 0.7.2
   * libpng 1.6.40
   * libressl 3.7.2
-  * libssh2 1.11.0
+  * libssh2 1.11.1
   * libtiff 4.5.1
   * libwavpack 5.6.0
   * libwebp 1.3.0
