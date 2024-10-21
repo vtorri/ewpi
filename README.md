@@ -179,7 +179,7 @@ Examples :
  * lz4 1.10.0 (BSD 2-clause for the library)
  * mp3lame 3.100 (LGPL 2.1)
  * mpg123 1.32.7 (LGPL 2.1)
- * nghttp2 1.63.0 (MIT)
+ * nghttp2 1.64.0 (MIT)
  * openjpeg 2.5.2 (BSD 2-clause)
  * openssl 3.3.0 (Apache 2.0)
  * opus 1.5.2 (BSD 3-clause)
