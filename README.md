@@ -181,7 +181,7 @@ Examples :
  * mpg123 1.32.8 (LGPL 2.1)
  * nghttp2 1.64.0 (MIT)
  * openjpeg 2.5.2 (BSD 2-clause)
- * openssl 3.3.0 (Apache 2.0)
+ * openssl 3.4.0 (Apache 2.0)
  * opus 1.5.2 (BSD 3-clause)
  * orc 0.4.39 (BSD 2-clause)
  * pixman 0.43.4 (MIT)
