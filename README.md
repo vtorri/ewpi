@@ -111,11 +111,11 @@ Examples :
  * brotli 1.1.0 (MIT)
  * bzip2 1.0.8 (BSD 4-clause, LGPL 2.1 compatible)
  * check 0.15.2(LGPL 2.1)
- * curl 8.10.1 (MIT)
+ * curl 8.11.0 (MIT)
  * dbus 1.14.10 (Academic Free License version 2.1)
  * dejavu-fonts 2.37
- * expat 2.6.3 (MIT)
- * ffmpeg 7.0.2 (LGPL 2.1)
+ * expat 2.6.4 (MIT)
+ * ffmpeg 7.1.0 (LGPL 2.1)
  * flac 1.4.3 (LGPL 2.1)
  * fontconfig 2.14.2 (MIT)
  * freetype 2.13.3 (FreeType license)
@@ -129,7 +129,7 @@ Examples :
  * gst-plugins-base 1.24.7 (LGPL 2.1)
  * gst-plugins-good 1.24.7 (LGPL 2.1)
  * gstreamer 1.24.7 (LGPL 2.1)
- * harfbuzz 10.0.0 (MIT)
+ * harfbuzz 10.1.0 (MIT)
  * highway 1.2.0 (Apache 2.0)
  * iconv 0.0.8 (public domain)
  * icu 76.1 (MIT)
@@ -159,7 +159,7 @@ Examples :
  * libmodplug 0.8.9 (public domain)
  * libmysofa 1.3.2 (BSD 3-clause)
  * libogg 1.3.5 (BSD 3-clause)
- * libopenh264 2.4.1 (BSD 2-clause)
+ * libopenh264 2.5.0 (BSD 2-clause)
  * libopenmpt 0.7.3 (BSD 3-clause)
  * libpng 1.6.44 (BSD 3-clause)
  * libpsl 0.21.5 (MIT)
@@ -178,7 +178,7 @@ Examples :
  * luajit 2.1.20240311 (MIT + public domain for some parts)
  * lz4 1.10.0 (BSD 2-clause for the library)
  * mp3lame 3.100 (LGPL 2.1)
- * mpg123 1.32.8 (LGPL 2.1)
+ * mpg123 1.32.9 (LGPL 2.1)
  * nghttp2 1.64.0 (MIT)
  * openjpeg 2.5.2 (BSD 2-clause)
  * openssl 3.4.0 (Apache 2.0)
@@ -186,7 +186,7 @@ Examples :
  * orc 0.4.39 (BSD 2-clause)
  * pixman 0.43.4 (MIT)
  * regex 1.2.1 (MIT)
- * utfcpp 4.0.5 (BSL 1.0)
+ * utfcpp 4.0.6 (BSL 1.0)
  * taglib 2.0.2 (LGPL 2.1)
  * xz 5.6.2 (lzma : public domain)
  * zlib 1.3.1 (zlib license)
@@ -195,7 +195,7 @@ Examples :
 ### Libraries compatible with LGPL v3
 
  * libde265 1.0.15 (LGPL v3)
- * libheif 1.18.2 (LGPL v3)
+ * libheif 1.19.2 (LGPL v3)
 
 ### Libraries compatible with GPL v2
 

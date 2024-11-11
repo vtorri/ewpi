@@ -45,6 +45,7 @@ export CPPFLAGS="$CPPFLAGS -I$3/include/libxml2 -DWINICONV_CONST="
              --enable-libopus \
              --enable-libsnappy \
              --enable-libsoxr \
+             --enable-libvmaf \
              --enable-libvorbis \
              --enable-libwebp \
              --enable-libxml2 \
