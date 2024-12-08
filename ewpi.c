@@ -265,6 +265,7 @@ static const char *_ew_req[][2] =
     { "wget",     "--version" },
     { "bison",    "--version" },
     { "flex",     "--version" },
+    { "itstool",  "--version" },
     { "makensis", "-VERSION" },
     { NULL, NULL }
 };
