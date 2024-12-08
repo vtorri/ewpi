@@ -1,6 +1,6 @@
 === release 1.2 ===
 
-2024-11-29 Vincent Torri <vincent.torri@gmail.com>
+2024-12-08 Vincent Torri <vincent.torri@gmail.com>
 
 Package additions:
 
@@ -20,7 +20,7 @@ Package updates:
   * expat 2.6.4
   * ffmpeg 7.1.0
   * freetype 2.13.3
-  * fribidi 1.0.15
+  * fribidi 1.0.16
   * gettext 0.22.4
   * giflib 5.2.2
   * gst-libav 1.24.7
@@ -41,7 +41,7 @@ Package updates:
   * libdeflate 1.22
   * libffi 3.4.6
   * libgcrypt 1.11.0
-  * libgpg-error 1.50
+  * libgpg-error 1.51
   * libgsm 1.0.22
   * libheif 1.19.5
   * libjpeg 3.0.4
@@ -72,7 +72,7 @@ Package updates:
   * pixman 0.43.4
   * taglib 2.0.2
   * utfcpp 4.0.6
-  * xz 5.6.2
+  * xz 5.6.3
   * zlib 1.3.1
   * zstd 1.5.6
 
