@@ -180,7 +180,7 @@ Examples :
  * mp3lame 3.100 (LGPL 2.1)
  * mpg123 1.32.9 (LGPL 2.1)
  * nghttp2 1.64.0 (MIT)
- * openjpeg 2.5.2 (BSD 2-clause)
+ * openjpeg 2.5.3 (BSD 2-clause)
  * openssl 3.4.0 (Apache 2.0)
  * opus 1.5.2 (BSD 3-clause)
  * orc 0.4.39 (BSD 2-clause)
