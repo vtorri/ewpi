@@ -111,7 +111,7 @@ Examples :
  * brotli 1.1.0 (MIT)
  * bzip2 1.0.8 (BSD 4-clause, LGPL 2.1 compatible)
  * check 0.15.2(LGPL 2.1)
- * curl 8.11.0 (MIT)
+ * curl 8.11.1 (MIT)
  * dbus 1.14.10 (Academic Free License version 2.1)
  * dejavu-fonts 2.37
  * expat 2.6.4 (MIT)
@@ -152,7 +152,7 @@ Examples :
  * libgpg-error 1.51 (LGPL 2.1)
  * libgsm 1.0.22 (MIT)
  * libilbc 3.0.4 (BSD 3-clause)
- * libjpeg 3.0.4 (IJG and zlib)
+ * libjpeg 3.1.0 (IJG and zlib)
  * libjxl 0.11.0 (BSD 3-clause)
  * libkvazaar 2.3.1 (BSD 3-clause)
  * liblerc 4.0.0 (Apache 2.0)
