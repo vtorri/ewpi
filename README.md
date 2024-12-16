@@ -144,7 +144,7 @@ Examples :
  * libbluray 1.3.4 (LGPL 2.1)
  * libbs2b 3.1.0 (MIT)
  * libdav1d 1.4.3 (BSD 2-clause)
- * libdeflate 1.22 (MIT)
+ * libdeflate 1.23 (MIT)
  * libexif 0.6.24 (LGPL v2.1)
  * libffi 3.4.6 (MIT)
  * libgcrypt 1.11.0 (LGPL 2.1)
