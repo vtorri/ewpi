@@ -1,0 +1,4 @@
+name: bullet
+version: 3.25
+url: https://github.com/bulletphysics/bullet3/archive/refs/tags/3.25.tar.gz
+deps:
