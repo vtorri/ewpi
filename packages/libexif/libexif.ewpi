@@ -1,4 +1,4 @@
 name: libexif
-version: 0.6.24
-url: https://github.com/libexif/libexif/releases/download/v0.6.24/libexif-0.6.24.tar.bz2
+version: 0.6.25
+url: https://github.com/libexif/libexif/releases/download/v0.6.25/libexif-0.6.25.tar.bz2
 deps: iconv gettext

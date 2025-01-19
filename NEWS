@@ -1,6 +1,6 @@
 === release 1.2 ===
 
-2025-01-11 Vincent Torri <vincent.torri@gmail.com>
+2025-01-19 Vincent Torri <vincent.torri@gmail.com>
 
 Package additions:
 
@@ -40,6 +40,7 @@ Package updates:
   * libdav1d 1.4.3
   * libde265 1.0.15
   * libdeflate 1.23
+  * libexif 0.6.25
   * libffi 3.4.6
   * libgcrypt 1.11.0
   * libgpg-error 1.51
