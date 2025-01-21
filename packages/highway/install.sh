@@ -2,8 +2,6 @@
 
 . ../../common.sh
 
-git checkout 8ed33fe64048c633340e548fc4a92caad74b903c
-
 cp ../cross_toolchain.txt .
 
 if test "x$4" = "xx86_64-w64-mingw32" ; then

@@ -1,6 +1,6 @@
 === release 1.2 ===
 
-2025-01-19 Vincent Torri <vincent.torri@gmail.com>
+2025-01-21 Vincent Torri <vincent.torri@gmail.com>
 
 Package additions:
 
@@ -22,6 +22,7 @@ Package updates:
   * ffmpeg 7.1.0
   * freetype 2.13.3
   * fribidi 1.0.16
+  * fontconfig 2.16.0
   * gettext 0.22.4
   * giflib 5.2.2
   * gst-libav 1.24.7
@@ -33,11 +34,11 @@ Package updates:
   * icu 76.1
   * jbig2dec 0.20
   * lcms2 2.16
-  * libaom 3.10.0
+  * libaom 3.11.0
   * libarchive 3.7.7
   * libass 0.17.3
   * libavif 1.1.1
-  * libdav1d 1.4.3
+  * libdav1d 1.5.1
   * libde265 1.0.15
   * libdeflate 1.23
   * libexif 0.6.25
@@ -47,7 +48,7 @@ Package updates:
   * libgsm 1.0.22
   * libheif 1.19.5
   * libjpeg 3.1.0
-  * libjxl 0.11.0
+  * libjxl 0.11.1
   * libkvazaar 2.3.1
   * libmysofa 1.3.2
   * libopenh264 2.5.0
@@ -62,8 +63,8 @@ Package updates:
   * libvmaf 3.0.0
   * libwebp 1.4.0
   * libxml2 2.13.5
-  * libyuv 1.89.5
-  * luajit 2.1.20240311
+  * libyuv 1.89.9
+  * luajit 2.1.20250121
   * lz4 1.10.0
   * mpg123 1.32.10
   * mupdf 1.25.0

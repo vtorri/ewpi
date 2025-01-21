@@ -1,4 +1,4 @@
 name: libyuv
-version: 1895
+version: 1899
 url: https://chromium.googlesource.com/libyuv/libyuv.git
 deps: libjpeg
