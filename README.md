@@ -112,7 +112,7 @@ Examples :
  * bullet 3.25 (zlib)
  * bzip2 1.0.8 (BSD 4-clause, LGPL 2.1 compatible)
  * check 0.15.2(LGPL 2.1)
- * curl 8.11.1 (MIT)
+ * curl 8.12.0 (MIT)
  * dbus 1.14.10 (Academic Free License version 2.1)
  * dejavu-fonts 2.37
  * expat 2.6.4 (MIT)
@@ -121,7 +121,7 @@ Examples :
  * fontconfig 2.16.0 (MIT)
  * freetype 2.13.3 (FreeType license)
  * fribidi 1.0.16 (LGPL 2.1)
- * gettext 0.22.4 (only libintl : LGPL 2.1)
+ * gettext 0.23.1 (only libintl : LGPL 2.1)
  * giflib 5.2.2 (MIT)
  * glib2 2.76.3 (LGPL 2.1)
  * graphene 1.10.8 (MIT)
@@ -172,7 +172,7 @@ Examples :
  * libtiff 4.7.0 (BSD 2-clause)
  * libvmaf 3.0.0 (BSD -2-clause + patent)
  * libvorbis 1.3.7 (BSD 3-clause)
- * libwavpack 5.6.0 (BSD 3-clause)
+ * libwavpack 5.8.1 (BSD 3-clause)
  * libwebp 1.4.0 (BSD 3-clause)
  * libxml2 2.13.5 (MIT)
  * libyuv 1.89.9 (BSD 3-clause)
@@ -206,4 +206,4 @@ Examples :
 ### Libraries compatible with AGPL v3
 
  * jbig2dec 0.20 (AGPL v3)
- * mupdf 1.25.0 (AGPL v3)
+ * mupdf 1.25.2 (AGPL v3)
