@@ -1,6 +1,6 @@
 === release 1.2 ===
 
-2025-02-08 Vincent Torri <vincent.torri@gmail.com>
+2025-02-10 Vincent Torri <vincent.torri@gmail.com>
 
 Package additions:
 
@@ -33,7 +33,7 @@ Package updates:
   * highway 1.2.0
   * icu 76.1
   * jbig2dec 0.20
-  * lcms2 2.16
+  * lcms2 2.17
   * libaom 3.11.0
   * libarchive 3.7.7
   * libass 0.17.3
