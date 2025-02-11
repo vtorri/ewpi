@@ -21,6 +21,7 @@ meson setup \
       --strip \
       --cross-file cross_toolchain.txt \
       --default-library shared \
+      -Dpython=false \
       builddir > ../config.log 2>&1
 
 ninja $verbninja -C builddir install > ../make.log 2>&1

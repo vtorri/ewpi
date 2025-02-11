@@ -1,4 +1,4 @@
 name: flac
-version: 1.4.3
-url: https://github.com/xiph/flac/releases/download/1.4.3/flac-1.4.3.tar.xz
+version: 1.5.0
+url: https://github.com/xiph/flac/releases/download/1.5.0/flac-1.5.0.tar.xz
 deps: libogg

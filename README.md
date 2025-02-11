@@ -117,7 +117,7 @@ Examples :
  * dejavu-fonts 2.37
  * expat 2.6.4 (MIT)
  * ffmpeg 7.1.0 (LGPL 2.1)
- * flac 1.4.3 (LGPL 2.1)
+ * flac 1.5.0 (LGPL 2.1)
  * fontconfig 2.16.0 (MIT)
  * freetype 2.13.3 (FreeType license)
  * fribidi 1.0.16 (LGPL 2.1)
