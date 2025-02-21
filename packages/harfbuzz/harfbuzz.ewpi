@@ -1,4 +1,4 @@
 name: harfbuzz
-version: 10.2.0
-url: https://github.com/harfbuzz/harfbuzz/releases/download/10.2.0/harfbuzz-10.2.0.tar.xz
+version: 10.3.0
+url: https://github.com/harfbuzz/harfbuzz/releases/download/10.3.0/harfbuzz-10.3.0.tar.xz
 deps: zlib libpng freetype_bootstrap graphite2 icu
