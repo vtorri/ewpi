@@ -1,6 +1,6 @@
 === release 1.2 ===
 
-2025-02-27 Vincent Torri <vincent.torri@gmail.com>
+2025-03-01 Vincent Torri <vincent.torri@gmail.com>
 
 Package additions:
 
@@ -30,7 +30,7 @@ Package updates:
   * gst-plugins-base 1.24.7
   * gst-plugins-good 1.24.7
   * gstreamer 1.24.7
-  * harfbuzz 10.3.0
+  * harfbuzz 10.4.0
   * highway 1.2.0
   * icu 76.1
   * jbig2dec 0.20
