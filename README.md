@@ -121,7 +121,7 @@ Examples :
  * fontconfig 2.16.0 (MIT)
  * freetype 2.13.3 (FreeType license)
  * fribidi 1.0.16 (LGPL 2.1)
- * gettext 0.23.1 (only libintl : LGPL 2.1)
+ * gettext 0.24.0 (only libintl : LGPL 2.1)
  * giflib 5.2.2 (MIT)
  * glib2 2.76.3 (LGPL 2.1)
  * graphene 1.10.8 (MIT)
