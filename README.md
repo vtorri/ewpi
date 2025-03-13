@@ -115,7 +115,7 @@ Examples :
  * curl 8.12.1 (MIT)
  * dbus 1.14.10 (Academic Free License version 2.1)
  * dejavu-fonts 2.37
- * expat 2.6.4 (MIT)
+ * expat 2.7.0 (MIT)
  * ffmpeg 7.1.0 (LGPL 2.1)
  * flac 1.5.0 (LGPL 2.1)
  * fontconfig 2.16.0 (MIT)
