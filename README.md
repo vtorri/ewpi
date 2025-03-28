@@ -115,7 +115,7 @@ Examples :
  * curl 8.12.1 (MIT)
  * dbus 1.14.10 (Academic Free License version 2.1)
  * dejavu-fonts 2.37
- * expat 2.7.0 (MIT)
+ * expat 2.7.1 (MIT)
  * ffmpeg 7.1.0 (LGPL 2.1)
  * flac 1.5.0 (LGPL 2.1)
  * fontconfig 2.16.0 (MIT)
@@ -174,7 +174,7 @@ Examples :
  * libvorbis 1.3.7 (BSD 3-clause)
  * libwavpack 5.8.1 (BSD 3-clause)
  * libwebp 1.4.0 (BSD 3-clause)
- * libxml2 2.13.6 (MIT)
+ * libxml2 2.14.0 (MIT)
  * libyuv 1.89.9 (BSD 3-clause)
  * luajit 2.1.20250121 (MIT + public domain for some parts)
  * lz4 1.10.0 (BSD 2-clause for the library)
@@ -189,7 +189,7 @@ Examples :
  * regex 1.2.1 (MIT)
  * utfcpp 4.0.6 (BSL 1.0)
  * taglib 2.0.2 (LGPL 2.1)
- * xz 5.6.4 (lzma : public domain)
+ * xz 5.8.0 (lzma : public domain)
  * zlib 1.3.1 (zlib license)
  * zstd 1.5.7 (BSD 3-clause)
 

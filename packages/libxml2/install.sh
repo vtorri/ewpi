@@ -11,7 +11,8 @@ else
 fi
 
 sed -i -e "s/@host@/$4/g;s/@arch@/$1/g;s|@prefix@|$3|g" cross_toolchain.txt
-sed -i -e "s/icu-i18n/icu-i18n icu-uc/g" meson.build
+#sed -i -e "s/icu-i18n/icu-i18n icu-uc/g" meson.build
+cp xml2-config.in xml2-config-meson
 
 rm -rf builddir
 meson setup \
@@ -21,7 +22,7 @@ meson setup \
       --strip \
       --cross-file cross_toolchain.txt \
       --default-library shared \
-      -Dpython=false \
+      -Dpython=disabled \
       builddir > ../config.log 2>&1
 
 ninja $verbninja -C builddir install > ../make.log 2>&1

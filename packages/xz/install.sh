@@ -22,8 +22,16 @@ cmake \
     -DCMAKE_VERBOSE_MAKEFILE:BOOL=$verbcmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_SHARED_LIBS=TRUE \
+    -DBUILD_TESTING=OFF \
     -DENABLE_SMALL=FALSE \
     -DSUPPORTED_THREADING_METHODS=vista \
+    -DXZ_MICROLZMA_ENCODER=OFF \
+    -DXZ_MICROLZMA_DECODER=OFF \
+    -DXZ_TOOL_XZDEC=OFF \
+    -DXZ_TOOL_LZMADEC=OFF \
+    -DXZ_TOOL_LZMAINFO=OFF \
+    -DXZ_TOOL_XZ=OFF \
+    -DXZ_DOC=OFF \
     -G "Unix Makefiles" \
     .. > ../../config.log 2>&1
 
