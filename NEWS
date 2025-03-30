@@ -1,6 +1,6 @@
 === release 1.2 ===
 
-2025-03-28 Vincent Torri <vincent.torri@gmail.com>
+2025-03-29 Vincent Torri <vincent.torri@gmail.com>
 
 Package additions:
 
@@ -25,11 +25,12 @@ Package updates:
   * fribidi 1.0.16
   * fontconfig 2.16.0
   * gettext 0.24.0
+  * glib2 2.84.0
   * giflib 5.2.2
-  * gst-libav 1.24.7
-  * gst-plugins-base 1.24.7
-  * gst-plugins-good 1.24.7
-  * gstreamer 1.24.7
+  * gst-libav 1.26.0
+  * gst-plugins-base 1.26.0
+  * gst-plugins-good 1.26.0
+  * gstreamer 1.26.0
   * harfbuzz 11.0.0
   * highway 1.2.0
   * icu 77.1
@@ -57,7 +58,7 @@ Package updates:
   * libpng 1.6.47
   * libpsl 0.21.5
   * libraw 0.21.3
-  * libsnappy 1.2.1
+  * libsnappy 1.2.2
   * libsndfile 1.2.2
   * libssh2 1.11.1
   * libtiff 4.7.0
@@ -73,7 +74,7 @@ Package updates:
   * nghttp2 1.65.0
   * openjpeg 2.5.3
   * opus 1.5.2
-  * orc 0.4.39
+  * orc 0.4.41
   * pixman 0.43.4
   * taglib 2.0.2
   * utfcpp 4.0.6

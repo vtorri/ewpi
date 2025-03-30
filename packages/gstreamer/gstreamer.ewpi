@@ -1,4 +1,4 @@
 name: gstreamer
-version: 1.24.7
-url: https://gstreamer.freedesktop.org/src/gstreamer/gstreamer-1.24.7.tar.xz
+version: 1.26.0
+url: https://gstreamer.freedesktop.org/src/gstreamer/gstreamer-1.26.0.tar.xz
 deps: glib2 gettext
