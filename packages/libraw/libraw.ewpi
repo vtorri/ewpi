@@ -1,4 +1,4 @@
 name: libraw
-version: 0.21.3
-url: https://www.libraw.org/data/LibRaw-0.21.3.tar.gz
+version: 0.21.4
+url: https://www.libraw.org/data/LibRaw-0.21.4.tar.gz
 deps: libjpeg lcms2

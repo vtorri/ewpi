@@ -1,6 +1,6 @@
 === release 1.2 ===
 
-2025-04-10 Vincent Torri <vincent.torri@gmail.com>
+2025-04-14 Vincent Torri <vincent.torri@gmail.com>
 
 Package additions:
 
@@ -57,7 +57,7 @@ Package updates:
   * libopenmpt 0.7.3
   * libpng 1.6.47
   * libpsl 0.21.5
-  * libraw 0.21.3
+  * libraw 0.21.4
   * libsnappy 1.2.2
   * libsndfile 1.2.2
   * libssh2 1.11.1

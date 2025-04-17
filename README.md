@@ -164,7 +164,7 @@ Examples :
  * libopenmpt 0.7.3 (BSD 3-clause)
  * libpng 1.6.47 (BSD 3-clause)
  * libpsl 0.21.5 (MIT)
- * libraw 0.21.3 (LGPL v2.1)
+ * libraw 0.21.4 (LGPL v2.1)
  * libsnappy 1.2.2 (BSD 3-clause)
  * libsndfile 1.2.2 (LGPL 2.1)
  * libsoxr 0.1.3 (LGPL 2.1)
