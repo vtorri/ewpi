@@ -2,19 +2,33 @@
 
 . ../../common.sh
 
-sed -i '/^#/ ! s/\<iconv\.dll\>/libiconv.dll/g' Makefile
+cp ../cross_toolchain.txt .
 
-sed -i -- \
-  "s,\(-DDEFAULT_LIBICONV_DLL\)=\(\\\$(DEFAULT_LIBICONV_DLL)\),\1=\'\"\2\"\'," \
-  Makefile
+if test "x$4" = "xx86_64-w64-mingw32" ; then
+    proc="AMD64"
+    machine=-m64
+else
+    proc="X86"
+    machine=-m32
+fi
 
-sed -i \
-  -e '/\$(CC) -shared/ s,$(CC),& $(LDFLAGS) ,' \
-  -e '/ -o win_iconv.exe\>/ s,\$(CC),& $(LDFLAGS),' \
-  Makefile
+sed -i -e "s|@prefix@|$3|g;s|@host@|$4|g;s|@proc@|$proc|g;s|@winver@|$winver|g" cross_toolchain.txt
 
-make -j $jobopt clean > ../make.log 2>&1
-make -j $jobopt install prefix=$3 CC=$4-gcc AR=$4-ar RANLIB=$4-ranlib DLLTOOL=$4-dlltool >> ../make.log 2>&1
+rm -rf builddir && mkdir builddir && cd builddir
+
+cmake \
+    -DCMAKE_TOOLCHAIN_FILE=../cross_toolchain.txt \
+    -DCMAKE_INSTALL_PREFIX=$prefix_unix \
+    -DCMAKE_VERBOSE_MAKEFILE:BOOL=$verbcmake \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DWIN_ICONV_BUILD_STATIC=OFF \
+    -DWIN_ICONV_BUILD_EXECUTABLE=OFF \
+    -G "Ninja" \
+    .. > ../../config.log 2>&1
+
+ninja $verbninja install > ../../make.log 2>&1
+
+cd ..
 
 cat > iconv.pc <<EOF
 prefix=$3
@@ -25,7 +39,7 @@ includedir=\${prefix}/include
 
 Name: iconv
 Description: iconv implementation using Win32 API to convert
-Version: 0.0.8
+Version: 0.0.9
 Libs: -L\${libdir} -liconv
 Cflags: -DWINICONV_CONST= -I\${includedir}
 EOF
