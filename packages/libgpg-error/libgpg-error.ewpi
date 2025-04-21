@@ -1,4 +1,4 @@
 name: libgpg-error
-version: 1.51
-url: https://gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-1.51.tar.bz2
+version: 1.54
+url: https://gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-1.54.tar.bz2
 deps: iconv gettext

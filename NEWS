@@ -1,6 +1,6 @@
 === release 1.2 ===
 
-2025-04-18 Vincent Torri <vincent.torri@gmail.com>
+2025-04-21 Vincent Torri <vincent.torri@gmail.com>
 
 Package additions:
 
@@ -47,7 +47,7 @@ Package updates:
   * libexif 0.6.25
   * libffi 3.4.8
   * libgcrypt 1.11.0
-  * libgpg-error 1.51
+  * libgpg-error 1.54
   * libgsm 1.0.22
   * libheif 1.19.7
   * libjpeg 3.1.0
