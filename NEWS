@@ -1,6 +1,6 @@
 === release 1.2 ===
 
-2025-04-21 Vincent Torri <vincent.torri@gmail.com>
+2025-04-22 Vincent Torri <vincent.torri@gmail.com>
 
 Package additions:
 
@@ -33,7 +33,7 @@ Package updates:
   * gstreamer 1.26.0
   * harfbuzz 11.1.0
   * highway 1.2.0
-  * iconv 0.0.9
+  * iconv 0.0.10
   * icu 77.1
   * jbig2dec 0.20
   * lcms2 2.17

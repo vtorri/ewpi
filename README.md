@@ -132,7 +132,7 @@ Examples :
  * gstreamer 1.26.0 (LGPL 2.1)
  * harfbuzz 11.1.0 (MIT)
  * highway 1.2.0 (Apache 2.0)
- * iconv 0.0.9 (public domain)
+ * iconv 0.0.10 (public domain)
  * icu 77.1 (MIT)
  * lcms2 2.17 (MIT)
  * libaacs 0.11.1 (LGPL 2.1)
