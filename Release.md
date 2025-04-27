@@ -1,3 +1,4 @@
+ * verify that everything is pushed and NEWS and PEADME.md are up to date
  * update version _ew_vmaj and _ew_vmin in ewpi.c
  * rm -rf $HOME/ewpi_64
  * ./ewpi --jobs=2
