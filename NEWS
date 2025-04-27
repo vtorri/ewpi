@@ -1,6 +1,6 @@
 === release 1.2 ===
 
-2025-04-22 Vincent Torri <vincent.torri@gmail.com>
+2025-04-27 Vincent Torri <vincent.torri@gmail.com>
 
 Package additions:
 
@@ -71,7 +71,7 @@ Package updates:
   * luajit 2.1.20250121
   * lz4 1.10.0
   * mpg123 1.32.10
-  * mupdf 1.25.2
+  * mupdf 1.25.6
   * nghttp2 1.65.0
   * openjpeg 2.5.3
   * opus 1.5.2
