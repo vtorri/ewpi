@@ -32,6 +32,7 @@ cmake \
     -DXZ_TOOL_LZMAINFO=OFF \
     -DXZ_TOOL_XZ=OFF \
     -DXZ_DOC=OFF \
+    -DXZ_NLS=OFF \
     -G "Unix Makefiles" \
     .. > ../../config.log 2>&1
 
