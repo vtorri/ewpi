@@ -14,6 +14,8 @@ fi
 
 sed -i -e "s|@prefix@|$3|g;s|@host@|$4|g;s|@proc@|$proc|g;s|@winver@|$winver|g" cross_toolchain.txt
 
+sed -i -e "s|add_subdirectory(tests)||g;s|add_subdirectory(doc)||g" CMakeLists.txt
+
 rm -rf builddir && mkdir builddir && cd builddir
 
 cmake \
