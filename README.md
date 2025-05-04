@@ -162,7 +162,7 @@ Examples :
  * libogg 1.3.5 (BSD 3-clause)
  * libopenh264 2.6.0 (BSD 2-clause)
  * libopenmpt 0.7.3 (BSD 3-clause)
- * libpng 1.6.47 (BSD 3-clause)
+ * libpng 1.6.48 (BSD 3-clause)
  * libpsl 0.21.5 (MIT)
  * libraw 0.21.4 (LGPL v2.1)
  * libsnappy 1.2.2 (BSD 3-clause)
