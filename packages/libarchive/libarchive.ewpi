@@ -1,4 +1,4 @@
 name: libarchive
-version: 3.7.9
-url: https://github.com/libarchive/libarchive/releases/download/v3.7.9/libarchive-3.7.9.tar.xz
+version: 3.8.1
+url: https://github.com/libarchive/libarchive/releases/download/v3.8.1/libarchive-3.8.1.tar.xz
 deps: zlib xz openssl lz4 bzip2 zstd libblake2 expat iconv regex
