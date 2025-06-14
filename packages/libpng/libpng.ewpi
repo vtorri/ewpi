@@ -1,4 +1,4 @@
 name: libpng
-version: 1.6.48
-url: https://freefr.dl.sourceforge.net/project/libpng/libpng16/1.6.48/libpng-1.6.48.tar.xz
+version: 1.6.49
+url: https://freefr.dl.sourceforge.net/project/libpng/libpng16/1.6.49/libpng-1.6.49.tar.xz
 deps: zlib

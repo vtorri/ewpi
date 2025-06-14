@@ -1,6 +1,6 @@
 === release 1.3 ===
 
-2025-06-11 Vincent Torri <vincent.torri@gmail.com>
+2025-06-14 Vincent Torri <vincent.torri@gmail.com>
 
 Package updates:
 
@@ -17,7 +17,7 @@ Package updates:
   * libgpg-error 1.55
   * libheif 1.19.8
   * libjpeg 3.1.1
-  * libpng 1.6.48
+  * libpng 1.6.49
   * libxml2 2.14.3
   * mpg123 1.33.0
   * pixman 0.46.0
