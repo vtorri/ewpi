@@ -188,7 +188,7 @@ Examples :
  * pixman 0.46.0 (MIT)
  * regex 1.2.1 (MIT)
  * utfcpp 4.0.6 (BSL 1.0)
- * taglib 2.1 (LGPL 2.1)
+ * taglib 2.1.1 (LGPL 2.1)
  * xz 5.8.1 (lzma : public domain)
  * zlib 1.3.1 (zlib license)
  * zstd 1.5.7 (BSD 3-clause)
