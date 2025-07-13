@@ -1,6 +1,6 @@
 === release 1.3 ===
 
-2025-06-30 Vincent Torri <vincent.torri@gmail.com>
+2025-07-13 Vincent Torri <vincent.torri@gmail.com>
 
 Package updates:
 
@@ -13,14 +13,21 @@ Package updates:
   * libde265 1.0.16
   * libdeflate 1.24
   * libffi 3.5.1
+  * fontconfig 2.17.1
+  * gst-libav 1.26.3
+  * gst-plugins-base 1.26.3
+  * gst-plugins-good 1.26.3
+  * gstreamer 1.26.3
   * libgcrypt 1.11.1
   * libgpg-error 1.55
-  * libheif 1.19.8
+  * libheif 1.20.1
   * libjpeg 3.1.1
   * libpng 1.6.49
+  * libwebp 1.6.0
   * libxml2 2.14.4
   * mpg123 1.33.0
   * nghttp2 1.66.0
+  * openssl 3.5.1
   * pixman 0.46.0
   * taglib 2.1.1
 
