@@ -18,6 +18,7 @@ sed -i -e "s|add_subdirectory(player|#add_subdirectory(player|g;s|add_subdirecto
 rm -rf builddir && mkdir builddir && cd builddir
 
 cmake \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DCMAKE_TOOLCHAIN_FILE=../cross_toolchain.txt \
     -DCMAKE_INSTALL_PREFIX=$prefix_unix \
     -DCMAKE_VERBOSE_MAKEFILE:BOOL=$verbcmake \
