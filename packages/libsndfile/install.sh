@@ -17,6 +17,7 @@ sed -i -e "s|@prefix@|$3|g;s|@host@|$4|g;s|@proc@|$proc|g;s|@winver@|$winver|g" 
 rm -rf builddir && mkdir builddir && cd builddir
 
 cmake \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DCMAKE_TOOLCHAIN_FILE=../cross_toolchain.txt \
     -DCMAKE_INSTALL_PREFIX=$prefix_unix \
     -DCMAKE_VERBOSE_MAKEFILE:BOOL=$verbcmake \
