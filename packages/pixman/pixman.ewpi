@@ -1,4 +1,4 @@
 name: pixman
-version: 0.46.0
-url: https://www.x.org/releases/individual/lib/pixman-0.46.0.tar.xz
+version: 0.46.4
+url: https://www.x.org/releases/individual/lib/pixman-0.46.4.tar.xz
 deps:
