@@ -179,10 +179,10 @@ Examples :
  * luajit 2.1.20250121 (MIT + public domain for some parts)
  * lz4 1.10.0 (BSD 2-clause for the library)
  * mp3lame 3.100 (LGPL 2.1)
- * mpg123 1.33.0 (LGPL 2.1)
+ * mpg123 1.33.2 (LGPL 2.1)
  * nghttp2 1.66.0 (MIT)
  * openjpeg 2.5.3 (BSD 2-clause)
- * openssl 3.5.1 (Apache 2.0)
+ * openssl 3.5.2 (Apache 2.0)
  * opus 1.5.2 (BSD 3-clause)
  * orc 0.4.41 (BSD 2-clause)
  * pixman 0.46.4 (MIT)
@@ -196,7 +196,7 @@ Examples :
 ### Libraries compatible with LGPL v3
 
  * libde265 1.0.16 (LGPL v3)
- * libheif 1.20.1 (LGPL v3)
+ * libheif 1.20.2 (LGPL v3)
 
 ### Libraries compatible with GPL v2
 
