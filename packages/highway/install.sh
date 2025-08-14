@@ -2,8 +2,6 @@
 
 . ../../common.sh
 
-git checkout 8ed33fe64048c633340e548fc4a92caad74b903c
-
 cp ../cross_toolchain.txt .
 
 if test "x$4" = "xx86_64-w64-mingw32" ; then
@@ -26,7 +24,7 @@ cmake \
     -DBUILD_SHARED_LIBS=ON \
     -DBUILD_TESTING=OFF \
     -DHWY_ENABLE_EXAMPLES=OFF \
-    -G "Unix Makefiles" \
+    -G "Ninja" \
     .. >> ../../config.log 2>&1
 
-make -j $jobopt install > ../../make.log 2>&1
+ninja $verbninja install > ../../make.log 2>&1
