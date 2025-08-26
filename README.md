@@ -116,7 +116,7 @@ Examples :
  * dbus 1.16.2 (Academic Free License version 2.1)
  * dejavu-fonts 2.37
  * expat 2.7.1 (MIT)
- * ffmpeg 7.1.0 (LGPL 2.1)
+ * ffmpeg 8.0.0 (LGPL 2.1)
  * flac 1.5.0 (LGPL 2.1)
  * fontconfig 2.17.1 (MIT)
  * freetype 2.13.3 (FreeType license)
@@ -148,7 +148,7 @@ Examples :
  * libdeflate 1.24 (MIT)
  * libexif 0.6.25 (LGPL v2.1)
  * libffi 3.5.2 (MIT)
- * libgcrypt 1.11.1 (LGPL 2.1)
+ * libgcrypt 1.11.2 (LGPL 2.1)
  * libgme 0.6.3 (LGPL 2.1)
  * libgpg-error 1.55 (LGPL 2.1)
  * libgsm 1.0.22 (MIT)
