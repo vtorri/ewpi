@@ -1,13 +1,19 @@
 === release 1.3 ===
 
-2025-08-26 Vincent Torri <vincent.torri@gmail.com>
+2025-08-30 Vincent Torri <vincent.torri@gmail.com>
 
 Package updates:
 
   * curl 8.15.0
   * ffmpeg 8.0.0
+  * fontconfig 2.17.1
   * gettext 0.26.0
-  * harfbuzz 11.4.4
+  * gst-libav 1.26.4
+  * gst-plugins-base 1.26.4
+  * gst-plugins-good 1.26.4
+  * gstreamer 1.26.4
+  * harfbuzz 11.4.5
+  * highway 1.3.0
   * libaom 3.12.1
   * libarchive 3.8.1
   * libass 0.17.4
@@ -15,12 +21,6 @@ Package updates:
   * libde265 1.0.16
   * libdeflate 1.24
   * libffi 3.5.2
-  * fontconfig 2.17.1
-  * gst-libav 1.26.4
-  * gst-plugins-base 1.26.4
-  * gst-plugins-good 1.26.4
-  * gstreamer 1.26.4
-  * highway 1.3.0
   * libgcrypt 1.11.2
   * libgpg-error 1.55
   * libheif 1.20.2
