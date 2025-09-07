@@ -20,6 +20,7 @@ meson setup \
       --strip \
       --cross-file cross_toolchain.txt \
       --default-library shared \
+      -Dharfbuzz=dynamic \
       builddir > ../config.log 2>&1
 
 ninja $verbninja -C builddir install > ../make.log 2>&1
