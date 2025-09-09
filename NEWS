@@ -1,6 +1,9 @@
 === release 1.3 ===
 
-2025-09-07 Vincent Torri <vincent.torri@gmail.com>
+2025-09-09 Vincent Torri <vincent.torri@gmail.com>
+
+Package removals:
+  * freetype_bootstrap
 
 Package updates:
 
