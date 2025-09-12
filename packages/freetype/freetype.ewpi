@@ -1,4 +1,4 @@
 name: freetype
-version: 2.14.0
-url: http://download.savannah.gnu.org/releases/freetype/freetype-2.14.0.tar.xz
+version: 2.14.1
+url: http://download.savannah.gnu.org/releases/freetype/freetype-2.14.1.tar.xz
 deps: zlib libpng bzip2 brotli

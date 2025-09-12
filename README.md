@@ -119,7 +119,7 @@ Examples :
  * ffmpeg 8.0.0 (LGPL 2.1)
  * flac 1.5.0 (LGPL 2.1)
  * fontconfig 2.17.1 (MIT)
- * freetype 2.14.0 (FreeType license)
+ * freetype 2.14.1 (FreeType license)
  * fribidi 1.0.16 (LGPL 2.1)
  * gettext 0.26.0 (only libintl : LGPL 2.1)
  * giflib 5.2.2 (MIT)
