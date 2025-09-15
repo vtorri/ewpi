@@ -38,7 +38,7 @@ includedir=\${prefix}/include
 
 Name: libyuv
 Description: YUV conversion and scaling library
-Version: 1899
+Version: 1917
 Requires.private: libjpeg
 Libs: -L\${libdir} -lyuv
 Cflags: -I\${includedir}

@@ -2,14 +2,33 @@
 
 . ../../common.sh
 
-case ${EWPI_OS} in
-    MSYS*|MINGW*)
-    ;;
-    *)
-        disableogg=--disable-oggtest
-    ;;
-esac
+cp ../cross_toolchain.txt .
 
-./configure --prefix=$3 --host=$4 --disable-static --enable-examples $disableogg > ../config.log 2>&1
+if test "x$4" = "xx86_64-w64-mingw32" ; then
+    proc="AMD64"
+    machine=-m64
+else
+    proc="X86"
+    machine=-m32
+fi
 
-make -j $jobopt $verbmake install > ../make.log 2>&1
+sed -i -e "s|@prefix@|$3|g;s|@host@|$4|g;s|@proc@|$proc|g;s|@winver@|$winver|g" cross_toolchain.txt
+
+sed -i -e "s|cmake_minimum_required(VERSION 2.8.12)|cmake_minimum_required(VERSION 3.6)|g" CMakeLists.txt
+sed -i -e "s|LIBRARY|LIBRARY vorbis|g" win32/vorbis.def
+sed -i -e "s|LIBRARY|LIBRARY vorbisenc|g" win32/vorbisenc.def
+sed -i -e "s|LIBRARY|LIBRARY vorbisfile|g" win32/vorbisfile.def
+
+rm -rf builddir && mkdir builddir && cd builddir
+
+
+cmake \
+    -DCMAKE_TOOLCHAIN_FILE=../cross_toolchain.txt \
+    -DCMAKE_INSTALL_PREFIX=$prefix_unix \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DBUILD_SHARED_LIBS=ON \
+    -DINSTALL_PKG_CONFIG_MODULE=ON \
+    -G "Ninja" \
+    .. > ../../config.log 2>&1
+
+ninja $verbninja -j $jobopt install > ../../make.log 2>&1
