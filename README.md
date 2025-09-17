@@ -115,7 +115,7 @@ Examples :
  * curl 8.16.0 (MIT)
  * dbus 1.16.2 (Academic Free License version 2.1)
  * dejavu-fonts 2.37
- * expat 2.7.1 (MIT)
+ * expat 2.7.2 (MIT)
  * ffmpeg 8.0.0 (LGPL 2.1)
  * flac 1.5.0 (LGPL 2.1)
  * fontconfig 2.17.1 (MIT)
@@ -182,7 +182,7 @@ Examples :
  * mpg123 1.33.2 (LGPL 2.1)
  * nghttp2 1.67.1 (MIT)
  * openjpeg 2.5.3 (BSD 2-clause)
- * openssl 3.5.2 (Apache 2.0)
+ * openssl 3.5.3 (Apache 2.0)
  * opus 1.5.2 (BSD 3-clause)
  * orc 0.4.41 (BSD 2-clause)
  * pixman 0.46.4 (MIT)
