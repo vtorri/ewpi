@@ -24,7 +24,6 @@ cmake \
     -DBUILD_STATIC_LIBS=OFF \
     -DBUILD_CODEC=OFF \
     -DBUILD_JPIP=OFF \
-    -DBUILD_PKGCONFIG_FILES=ON \
     -G "Unix Makefiles" \
     .. > ../../config.log 2>&1
 
