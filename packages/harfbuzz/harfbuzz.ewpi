@@ -1,4 +1,4 @@
 name: harfbuzz
-version: 11.5.0
-url: https://github.com/harfbuzz/harfbuzz/releases/download/11.5.0/harfbuzz-11.5.0.tar.xz
+version: 11.5.1
+url: https://github.com/harfbuzz/harfbuzz/releases/download/11.5.1/harfbuzz-11.5.1.tar.xz
 deps: zlib libpng freetype graphite2 icu
