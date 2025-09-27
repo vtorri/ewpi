@@ -23,7 +23,9 @@ cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_SHARED_LIBS=ON \
     -DBUILD_TESTING=OFF \
+    -DHWY_ENABLE_CONTRIB=OFF \
     -DHWY_ENABLE_EXAMPLES=OFF \
+    -DHWY_ENABLE_TESTS=OFF \
     -G "Ninja" \
     .. >> ../../config.log 2>&1
 
