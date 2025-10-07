@@ -1,4 +1,4 @@
 name: mpg123
-version: 1.33.2
-url: https://mpg123.de/download/mpg123-1.33.2.tar.bz2
+version: 1.33.3
+url: https://mpg123.de/download/mpg123-1.33.3.tar.bz2
 deps:
