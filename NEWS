@@ -1,6 +1,6 @@
 === release 1.3 ===
 
-2025-10-09 Vincent Torri <vincent.torri@gmail.com>
+2025-10-16 Vincent Torri <vincent.torri@gmail.com>
 
 Package removals:
   * freetype_bootstrap
@@ -20,7 +20,7 @@ Package updates:
   * harfbuzz 12.1.0
   * highway 1.3.0
   * libaom 3.13.1
-  * libarchive 3.8.1
+  * libarchive 3.8.2
   * libass 0.17.4
   * libavif 1.3.0
   * libbluray 1.4.0
