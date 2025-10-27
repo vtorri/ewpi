@@ -108,7 +108,7 @@ Examples :
 
 ### Libraries compatible with LGPL v2.1
 
- * brotli 1.1.0 (MIT)
+ * brotli 1.2.0 (MIT)
  * bullet 3.25 (zlib)
  * bzip2 1.0.8 (BSD 4-clause, LGPL 2.1 compatible)
  * check 0.15.2(LGPL 2.1)
