@@ -1,6 +1,6 @@
 === release 1.3 ===
 
-2025-10-27 Vincent Torri <vincent.torri@gmail.com>
+2025-10-31 Vincent Torri <vincent.torri@gmail.com>
 
 Package removals:
   * freetype_bootstrap
@@ -20,6 +20,7 @@ Package updates:
   * gstreamer 1.26.7
   * harfbuzz 12.1.0
   * highway 1.3.0
+  * icu 78.1
   * libaom 3.13.1
   * libarchive 3.8.2
   * libass 0.17.4

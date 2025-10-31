@@ -133,7 +133,7 @@ Examples :
  * harfbuzz 12.1.0 (MIT)
  * highway 1.3.0 (Apache 2.0)
  * iconv 0.0.10 (public domain)
- * icu 77.1 (MIT)
+ * icu 78.1 (MIT)
  * lcms2 2.17 (MIT)
  * libaacs 0.11.1 (LGPL 2.1)
  * libaom 3.13.1 (BSD 2-clause)
