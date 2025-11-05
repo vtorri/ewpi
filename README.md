@@ -112,7 +112,7 @@ Examples :
  * bullet 3.25 (zlib)
  * bzip2 1.0.8 (BSD 4-clause, LGPL 2.1 compatible)
  * check 0.15.2(LGPL 2.1)
- * curl 8.16.0 (MIT)
+ * curl 8.17.0 (MIT)
  * dbus 1.16.2 (Academic Free License version 2.1)
  * dejavu-fonts 2.37
  * expat 2.7.3 (MIT)

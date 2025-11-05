@@ -8,7 +8,7 @@ Package removals:
 Package updates:
 
   * brotli 1.2.0
-  * curl 8.16.0
+  * curl 8.17.0
   * expat 2.7.3
   * ffmpeg 8.0.0
   * fontconfig 2.17.1
