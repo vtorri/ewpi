@@ -10,3 +10,5 @@
  * gzip -9 ewpi-vmaj.vmin.tar
  * git archive --output=./ewpi-vmaj.vmin.tar vvmaj.vmin
  * xz -9 ewpi-vmaj.vmin.tar
+ * go to https://github.com/vtorri/ewpi/releases and click on the pen (top right) to edit
+ * scroll down to attach the 2 files to the assets
