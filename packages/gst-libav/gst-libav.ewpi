@@ -1,4 +1,4 @@
 name: gst-libav
-version: 1.26.7
-url: https://gstreamer.freedesktop.org/src/gst-libav/gst-libav-1.26.7.tar.xz
+version: 1.26.10
+url: https://gstreamer.freedesktop.org/src/gst-libav/gst-libav-1.26.10.tar.xz
 deps: gstreamer gst-plugins-base ffmpeg

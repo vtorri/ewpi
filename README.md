@@ -112,7 +112,7 @@ Examples :
  * bullet 3.25 (zlib)
  * bzip2 1.0.8 (BSD 4-clause, LGPL 2.1 compatible)
  * check 0.15.2(LGPL 2.1)
- * curl 8.17.0 (MIT)
+ * curl 8.18.0 (MIT)
  * dbus 1.16.2 (Academic Free License version 2.1)
  * dejavu-fonts 2.37
  * expat 2.7.3 (MIT)
@@ -126,10 +126,10 @@ Examples :
  * glib2 2.84.0 (LGPL 2.1)
  * graphene 1.10.8 (MIT)
  * graphite2 1.3.14 (LGPL 2.1)
- * gst-libav 1.26.7 (LGPL 2.1)
- * gst-plugins-base 1.26.7 (LGPL 2.1)
- * gst-plugins-good 1.26.7 (LGPL 2.1)
- * gstreamer 1.26.7 (LGPL 2.1)
+ * gst-libav 1.26.10 (LGPL 2.1)
+ * gst-plugins-base 1.26.10 (LGPL 2.1)
+ * gst-plugins-good 1.26.10 (LGPL 2.1)
+ * gstreamer 1.26.10 (LGPL 2.1)
  * harfbuzz 12.3.0 (MIT)
  * highway 1.3.0 (Apache 2.0)
  * iconv 0.0.10 (public domain)
@@ -188,7 +188,7 @@ Examples :
  * pixman 0.46.4 (MIT)
  * regex 1.2.1 (MIT)
  * taglib 2.1.1 (LGPL 2.1)
- * utfcpp 4.0.8 (BSL 1.0)
+ * utfcpp 4.0.9 (BSL 1.0)
  * xz 5.8.2 (lzma : public domain)
  * zlib 1.3.1 (zlib license)
  * zstd 1.5.7 (BSD 3-clause)
@@ -196,7 +196,7 @@ Examples :
 ### Libraries compatible with LGPL v3
 
  * libde265 1.0.16 (LGPL v3)
- * libheif 1.20.2 (LGPL v3)
+ * libheif 1.21.1 (LGPL v3)
 
 ### Libraries compatible with GPL v2
 
@@ -206,4 +206,4 @@ Examples :
 ### Libraries compatible with AGPL v3
 
  * jbig2dec 0.20 (AGPL v3)
- * mupdf 1.26.8 (AGPL v3)
+ * mupdf 1.27.0 (AGPL v3)
