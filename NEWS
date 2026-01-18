@@ -1,6 +1,6 @@
 === release 1.3 ===
 
-2026-01-08 Vincent Torri <vincent.torri@gmail.com>
+2026-01-18 Vincent Torri <vincent.torri@gmail.com>
 
 Package removals:
   * freetype_bootstrap
@@ -33,7 +33,7 @@ Package updates:
   * libffi 3.5.2
   * libgcrypt 1.11.2
   * libgpg-error 1.56
-  * libheif 1.21.1
+  * libheif 1.21.2
   * libjpeg 3.1.3
   * libkvazaar 2.3.2
   * libogg 1.3.6
@@ -41,6 +41,7 @@ Package updates:
   * libpng 1.6.52
   * libraw 0.22.0
   * libtiff 4.7.1
+  * libwavpack 5.9.0
   * libwebp 1.6.0
   * libxml2 2.15.1
   * libyuv 1.91.7

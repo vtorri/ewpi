@@ -172,7 +172,7 @@ Examples :
  * libtiff 4.7.1 (BSD 2-clause)
  * libvmaf 3.0.0 (BSD -2-clause + patent)
  * libvorbis 1.3.7 (BSD 3-clause)
- * libwavpack 5.8.1 (BSD 3-clause)
+ * libwavpack 5.9.0 (BSD 3-clause)
  * libwebp 1.6.0 (BSD 3-clause)
  * libxml2 2.15.1 (MIT)
  * libyuv 1.91.7 (BSD 3-clause)
@@ -196,7 +196,7 @@ Examples :
 ### Libraries compatible with LGPL v3
 
  * libde265 1.0.16 (LGPL v3)
- * libheif 1.21.1 (LGPL v3)
+ * libheif 1.21.2 (LGPL v3)
 
 ### Libraries compatible with GPL v2
 
