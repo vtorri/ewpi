@@ -1,6 +1,6 @@
 === release 1.3 ===
 
-2026-01-18 Vincent Torri <vincent.torri@gmail.com>
+2026-02-10 Vincent Torri <vincent.torri@gmail.com>
 
 Package removals:
   * freetype_bootstrap
@@ -9,7 +9,7 @@ Package updates:
 
   * brotli 1.2.0
   * curl 8.18.0
-  * expat 2.7.3
+  * expat 2.7.4
   * ffmpeg 8.0.0
   * fontconfig 2.17.1
   * freetype 2.14.1
@@ -18,7 +18,7 @@ Package updates:
   * gst-plugins-base 1.26.10
   * gst-plugins-good 1.26.10
   * gstreamer 1.26.10
-  * harfbuzz 12.3.0
+  * harfbuzz 12.3.2
   * highway 1.3.0
   * icu 78.1
   * lcms2 2.17
