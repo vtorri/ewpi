@@ -182,15 +182,15 @@ Examples :
  * mpg123 1.33.3 (LGPL 2.1)
  * nghttp2 1.68.0 (MIT)
  * openjpeg 2.5.4 (BSD 2-clause)
- * openssl 3.6.0 (Apache 2.0)
+ * openssl 3.6.1 (Apache 2.0)
  * opus 1.5.2 (BSD 3-clause)
  * orc 0.4.41 (BSD 2-clause)
  * pixman 0.46.4 (MIT)
  * regex 1.2.1 (MIT)
- * taglib 2.1.1 (LGPL 2.1)
+ * taglib 2.2 (LGPL 2.1)
  * utfcpp 4.0.9 (BSL 1.0)
  * xz 5.8.2 (lzma : public domain)
- * zlib 1.3.1 (zlib license)
+ * zlib 1.3.2 (zlib license)
  * zstd 1.5.7 (BSD 3-clause)
 
 ### Libraries compatible with LGPL v3
