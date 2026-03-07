@@ -187,7 +187,7 @@ Examples :
  * orc 0.4.41 (BSD 2-clause)
  * pixman 0.46.4 (MIT)
  * regex 1.2.1 (MIT)
- * taglib 2.2 (LGPL 2.1)
+ * taglib 2.2.1 (LGPL 2.1)
  * utfcpp 4.0.9 (BSL 1.0)
  * xz 5.8.2 (lzma : public domain)
  * zlib 1.3.2 (zlib license)
