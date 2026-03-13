@@ -6,9 +6,9 @@
  * git tag v1.1 master
  * git push origin v1.1
  * https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository
- * git archive --output=./ewpi-vmaj.vmin.tar vvmaj.vmin
+ * git archive --output=./ewpi-vmaj.vmin.tar vvmaj.vmin ':(exclude).gitignore' ':(exclude).github'
  * gzip -9 ewpi-vmaj.vmin.tar
- * git archive --output=./ewpi-vmaj.vmin.tar vvmaj.vmin
+ * git archive --output=./ewpi-vmaj.vmin.tar vvmaj.vmin ':(exclude).gitignore' ':(exclude).github'
  * xz -9 ewpi-vmaj.vmin.tar
  * go to https://github.com/vtorri/ewpi/releases and click on the pen (top right) to edit
  * scroll down to attach the 2 files to the assets
