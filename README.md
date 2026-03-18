@@ -115,8 +115,8 @@ Examples :
  * curl 8.19.0 (MIT)
  * dbus 1.16.2 (Academic Free License version 2.1)
  * dejavu-fonts 2.37
- * expat 2.7.4 (MIT)
- * ffmpeg 8.0.0 (LGPL 2.1)
+ * expat 2.7.5 (MIT)
+ * ffmpeg 8.1.0 (LGPL 2.1)
  * flac 1.5.0 (LGPL 2.1)
  * fontconfig 2.17.1 (MIT)
  * freetype 2.14.2 (FreeType license)
@@ -133,7 +133,7 @@ Examples :
  * harfbuzz 13.1.1 (MIT)
  * highway 1.3.0 (Apache 2.0)
  * iconv 0.0.10 (public domain)
- * icu 78.1 (MIT)
+ * icu 78.3 (MIT)
  * lcms2 2.18 (MIT)
  * libaacs 0.11.1 (LGPL 2.1)
  * libaom 3.13.1 (BSD 2-clause)
@@ -148,9 +148,9 @@ Examples :
  * libdeflate 1.25 (MIT)
  * libexif 0.6.25 (LGPL v2.1)
  * libffi 3.5.2 (MIT)
- * libgcrypt 1.11.2 (LGPL 2.1)
+ * libgcrypt 1.12.1 (LGPL 2.1)
  * libgme 0.6.3 (LGPL 2.1)
- * libgpg-error 1.56 (LGPL 2.1)
+ * libgpg-error 1.59 (LGPL 2.1)
  * libgsm 1.0.22 (MIT)
  * libilbc 3.0.4 (BSD 3-clause)
  * libjpeg 3.1.3 (IJG and zlib)
@@ -195,7 +195,7 @@ Examples :
 
 ### Libraries compatible with LGPL v3
 
- * libde265 1.0.16 (LGPL v3)
+ * libde265 1.0.17 (LGPL v3)
  * libheif 1.21.2 (LGPL v3)
 
 ### Libraries compatible with GPL v2

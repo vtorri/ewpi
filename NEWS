@@ -1,6 +1,6 @@
 === release 1.3 ===
 
-2026-03-13 Vincent Torri <vincent.torri@gmail.com>
+2026-03-18 Vincent Torri <vincent.torri@gmail.com>
 
 Package removals:
   * freetype_bootstrap
@@ -9,8 +9,8 @@ Package updates:
 
   * brotli 1.2.0
   * curl 8.19.0
-  * expat 2.7.4
-  * ffmpeg 8.0.0
+  * expat 2.7.5
+  * ffmpeg 8.1.0
   * fontconfig 2.17.1
   * freetype 2.14.2
   * gettext 0.26.0
@@ -20,7 +20,7 @@ Package updates:
   * gstreamer 1.26.10
   * harfbuzz 13.1.1
   * highway 1.3.0
-  * icu 78.1
+  * icu 78.3
   * lcms2 2.17
   * libaom 3.13.1
   * libarchive 3.8.6
@@ -28,11 +28,11 @@ Package updates:
   * libavif 1.4.0
   * libbluray 1.4.0
   * libdav1d 1.5.2
-  * libde265 1.0.16
+  * libde265 1.0.17
   * libdeflate 1.25
   * libffi 3.5.2
-  * libgcrypt 1.11.2
-  * libgpg-error 1.56
+  * libgcrypt 1.12.1
+  * libgpg-error 1.59
   * libheif 1.21.2
   * libjpeg 3.1.3
   * libjxl 0.11.2
