@@ -175,7 +175,7 @@ Examples :
  * libwavpack 5.9.0 (BSD 3-clause)
  * libwebp 1.6.0 (BSD 3-clause)
  * libxml2 2.15.2 (MIT)
- * libyuv 1.91.7 (BSD 3-clause)
+ * libyuv 1.92.2 (BSD 3-clause)
  * luajit 2.1.20250914 (MIT + public domain for some parts)
  * lz4 1.10.0 (BSD 2-clause for the library)
  * mp3lame 3.100 (LGPL 2.1)
