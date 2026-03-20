@@ -16,8 +16,6 @@ sed -i -e "s|@prefix@|$3|g;s|@host@|$4|g;s|@proc@|$proc|g;s|@winver@|$winver|g" 
 
 case ${EWPI_OS} in
     MSYS*|MINGW*)
-        sed -i -e "s|%zu|%Iu|g" apps/avifenc.c
-        sed -i -e "s|%zu|%Iu|g" apps/avifdec.c
         sed -i -e "s|%zu|%Iu|g" apps/shared/avifutil.c
     ;;
     *)
