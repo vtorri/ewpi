@@ -1,6 +1,6 @@
 === release 1.3 ===
 
-2026-03-20 Vincent Torri <vincent.torri@gmail.com>
+2026-03-23 Vincent Torri <vincent.torri@gmail.com>
 
 Package removals:
   * freetype_bootstrap
@@ -12,7 +12,7 @@ Package updates:
   * expat 2.7.5
   * ffmpeg 8.1.0
   * fontconfig 2.17.1
-  * freetype 2.14.2
+  * freetype 2.14.3
   * gettext 0.26.0
   * gst-libav 1.26.10
   * gst-plugins-base 1.26.10
