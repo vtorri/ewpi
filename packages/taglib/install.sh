@@ -22,7 +22,7 @@ cmake \
     -DCMAKE_VERBOSE_MAKEFILE:BOOL=$verbcmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_SHARED_LIBS:BOOL=ON \
-    -DBUILD_BINDINGS:BOOL=OFF \
+    -DBUILD_BINDINGS:BOOL=ON \
     -DBUILD_TESTING=OFF \
     -DZLIB_ROOT=$prefix_unix \
     -G "Unix Makefiles" \
