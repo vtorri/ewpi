@@ -189,7 +189,7 @@ Examples :
  * regex 1.2.1 (MIT)
  * taglib 2.2.1 (LGPL 2.1)
  * utfcpp 4.0.9 (BSL 1.0)
- * xz 5.8.2 (lzma : public domain)
+ * xz 5.8.3 (lzma : public domain)
  * zlib 1.3.2 (zlib license)
  * zstd 1.5.7 (BSD 3-clause)
 
