@@ -170,7 +170,7 @@ Examples :
  * libsoxr 0.1.3 (LGPL 2.1)
  * libssh2 1.11.1 (BSD 3-clause)
  * libtiff 4.7.1 (BSD 2-clause)
- * libvmaf 3.0.0 (BSD -2-clause + patent)
+ * libvmaf 3.1.0 (BSD -2-clause + patent)
  * libvorbis 1.3.7 (BSD 3-clause)
  * libwavpack 5.9.0 (BSD 3-clause)
  * libwebp 1.6.0 (BSD 3-clause)
