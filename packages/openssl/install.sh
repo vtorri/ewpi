@@ -21,7 +21,6 @@ fi
     shared \
     zlib-dynamic \
     enable-camellia \
-    enable-capieng \
     enable-idea \
     enable-mdc2 \
     enable-rc5  \
