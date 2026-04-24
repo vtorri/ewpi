@@ -115,7 +115,7 @@ Examples :
  * curl 8.19.0 (MIT)
  * dbus 1.16.2 (Academic Free License version 2.1)
  * dejavu-fonts 2.37
- * expat 2.7.5 (MIT)
+ * expat 2.8.0 (MIT)
  * ffmpeg 8.1.0 (LGPL 2.1)
  * flac 1.5.0 (LGPL 2.1)
  * fontconfig 2.17.1 (MIT)
@@ -134,7 +134,7 @@ Examples :
  * highway 1.4.0 (Apache 2.0)
  * iconv 0.0.10 (public domain)
  * icu 78.3 (MIT)
- * lcms2 2.18 (MIT)
+ * lcms2 2.19 (MIT)
  * libaacs 0.11.1 (LGPL 2.1)
  * libaom 3.13.3 (BSD 2-clause)
  * libarchive 3.8.6 (BSD 2-clause)
