@@ -131,7 +131,7 @@ Examples :
  * gst-plugins-good 1.26.10 (LGPL 2.1)
  * gstreamer 1.26.10 (LGPL 2.1)
  * harfbuzz 14.2.0 (MIT)
- * highway 1.3.0 (Apache 2.0)
+ * highway 1.4.0 (Apache 2.0)
  * iconv 0.0.10 (public domain)
  * icu 78.3 (MIT)
  * lcms2 2.18 (MIT)
