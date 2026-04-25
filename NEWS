@@ -1,6 +1,6 @@
 === release 1.3 ===
 
-2026-04-24 Vincent Torri <vincent.torri@gmail.com>
+2026-04-25 Vincent Torri <vincent.torri@gmail.com>
 
 Package removals:
   * freetype_bootstrap
@@ -50,7 +50,7 @@ Package updates:
   * libxml2 2.15.3
   * libyuv 1.92.2
   * luajit 2.1.20250914
-  * mpg123 1.33.3
+  * mpg123 1.33.5
   * mupdf 1.27.0
   * nghttp2 1.69.0
   * openjpeg 2.5.4
