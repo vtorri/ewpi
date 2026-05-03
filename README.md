@@ -150,7 +150,7 @@ Examples :
  * libffi 3.5.2 (MIT)
  * libgcrypt 1.12.1 (LGPL 2.1)
  * libgme 0.6.3 (LGPL 2.1)
- * libgpg-error 1.59 (LGPL 2.1)
+ * libgpg-error 1.60 (LGPL 2.1)
  * libgsm 1.0.22 (MIT)
  * libilbc 3.0.4 (BSD 3-clause)
  * libjpeg 3.1.4 (IJG and zlib)
