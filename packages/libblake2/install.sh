@@ -2,6 +2,8 @@
 
 . ../../common.sh
 
+git fetch && git fetch --tags
+git checkout 643decfbf8ae600c3387686754d74c84144950d1
 git fetch origin pull/38/head:meson
 git checkout meson
 
@@ -23,6 +25,7 @@ meson setup \
       --strip \
       --cross-file cross_toolchain.txt \
       --default-library shared \
+      -Dnative=false \
       builddir > ../config.log 2>&1
 
 ninja $verbninja -C builddir install > ../make.log 2>&1
