@@ -107,7 +107,7 @@ RequestExecutionLevel user
 !define EwpiDir  "@prefix@"
 
 ;; needed DLL, from Fedora mingw toolchain
-!define GccDir "C:\Documents\msys2_2\mingw64\bin"
+!define GccDir "C:\Users\VTorri\Documents\msys2\ucrt64\bin"
 
 Section "!DLL (required)" SecEwpiInstDLL
 
