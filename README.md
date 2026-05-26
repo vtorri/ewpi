@@ -188,7 +188,7 @@ Examples :
  * pixman 0.46.4 (MIT)
  * regex 1.2.1 (MIT)
  * taglib 2.2.1 (LGPL 2.1)
- * utfcpp 4.1.0 (BSL 1.0)
+ * utfcpp 4.1.1 (BSL 1.0)
  * xz 5.8.3 (lzma : public domain)
  * zlib 1.3.2 (zlib license)
  * zstd 1.5.7 (BSD 3-clause)
@@ -196,7 +196,7 @@ Examples :
 ### Libraries compatible with LGPL v3
 
  * libde265 1.0.19 (LGPL v3)
- * libheif 1.22.0 (LGPL v3)
+ * libheif 1.22.2 (LGPL v3)
 
 ### Libraries compatible with GPL v2
 
