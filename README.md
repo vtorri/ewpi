@@ -125,7 +125,7 @@ Examples :
  * giflib 5.2.2 (MIT)
  * glib2 2.84.0 (LGPL 2.1)
  * graphene 1.10.8 (MIT)
- * graphite2 1.3.14 (LGPL 2.1)
+ * graphite2 1.3.15 (LGPL 2.1)
  * gst-libav 1.26.10 (LGPL 2.1)
  * gst-plugins-base 1.26.10 (LGPL 2.1)
  * gst-plugins-good 1.26.10 (LGPL 2.1)
