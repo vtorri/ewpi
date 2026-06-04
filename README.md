@@ -130,7 +130,7 @@ Examples :
  * gst-plugins-base 1.26.10 (LGPL 2.1)
  * gst-plugins-good 1.26.10 (LGPL 2.1)
  * gstreamer 1.26.10 (LGPL 2.1)
- * harfbuzz 14.2.0 (MIT)
+ * harfbuzz 14.2.1 (MIT)
  * highway 1.4.0 (Apache 2.0)
  * iconv 0.0.10 (public domain)
  * icu 78.3 (MIT)
@@ -195,7 +195,7 @@ Examples :
 
 ### Libraries compatible with LGPL v3
 
- * libde265 1.1.0 (LGPL v3)
+ * libde265 1.1.1 (LGPL v3)
  * libheif 1.23.0 (LGPL v3)
 
 ### Libraries compatible with GPL v2
