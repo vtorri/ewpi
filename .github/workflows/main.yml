@@ -36,4 +36,6 @@ jobs:
       - name: Build on Windows
         shell: msys2 {0}
         run: |
-          bash '.github/workflows/make.sh'
+          set -euo pipefail
+          gcc -O2 -std=c99 -o ewpi ewpi*.c
+          ./ewpi --verbose --strip --nsis --efl
