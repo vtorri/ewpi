@@ -31,6 +31,7 @@ cmake \
     -DWITH_DAV1D=OFF \
     -DWITH_RAV1E=OFF \
     -DWITH_SvtEnc=OFF \
+    -DWITH_X264=OFF \
     -DWITH_X265=OFF \
     -G "Unix Makefiles" \
     .. > ../../config.log 2>&1
