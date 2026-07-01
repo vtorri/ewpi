@@ -30,8 +30,8 @@ jobs:
         with:
           msystem: mingw64
           update: true
-          install: base-devel autoconf automake libtool tar git wget python perl flex bison gettext-devel pkgconf make mingw-w64-x86_64-gettext-tools mingw-w64-x86_64-gperf mingw-w64-x86_64-nasm mingw-w64-x86_64-yasm mingw-w64-x86_64-cmake mingw-w64-x86_64-toolchain mingw-w64-x86_64-ninja mingw-w64-x86_64-meson mingw-w64-x86_64-nsis mingw-w64-x86_64-itstool mingw-w64-x86_64-gettext-tools
+          install: gdb base-devel autoconf automake libtool tar git wget python perl flex bison gettext-devel pkgconf make mingw-w64-x86_64-gettext-tools mingw-w64-x86_64-gperf mingw-w64-x86_64-nasm mingw-w64-x86_64-yasm mingw-w64-x86_64-cmake mingw-w64-x86_64-toolchain mingw-w64-x86_64-ninja mingw-w64-x86_64-meson mingw-w64-x86_64-nsis mingw-w64-x86_64-itstool mingw-w64-x86_64-gettext-tools
       - name: Build on Windows
         run: |
           gcc -O2 -std=c99 -o ewpi ewpi*.c
-          ./ewpi --verbose
+          gdb -ex run --args ./ewpi --verbose
