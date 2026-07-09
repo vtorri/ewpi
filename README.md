@@ -147,7 +147,7 @@ Examples :
  * libdav1d 1.5.3 (BSD 2-clause)
  * libdeflate 1.25 (MIT)
  * libexif 0.6.26 (LGPL v2.1)
- * libffi 3.6.0 (MIT)
+ * libffi 3.7.0 (MIT)
  * libgcrypt 1.12.2 (LGPL 2.1)
  * libgme 0.6.3 (LGPL 2.1)
  * libgpg-error 1.60 (LGPL 2.1)
