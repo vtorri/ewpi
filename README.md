@@ -116,7 +116,7 @@ Examples :
  * dbus 1.16.2 (Academic Free License version 2.1)
  * dejavu-fonts 2.37
  * expat 2.8.2 (MIT)
- * ffmpeg 8.1.0 (LGPL 2.1)
+ * ffmpeg 8.1.2 (LGPL 2.1)
  * flac 1.5.0 (LGPL 2.1)
  * fontconfig 2.17.1 (MIT)
  * freetype 2.14.3 (FreeType license)
@@ -206,4 +206,4 @@ Examples :
 ### Libraries compatible with AGPL v3
 
  * jbig2dec 0.20 (AGPL v3)
- * mupdf 1.27.2 (AGPL v3)
+ * mupdf 1.28.0 (AGPL v3)
