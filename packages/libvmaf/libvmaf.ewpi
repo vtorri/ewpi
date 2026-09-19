@@ -1,4 +1,4 @@
 name: libvmaf
-version: 3.2.0
-url: https://github.com/Netflix/vmaf/archive/refs/tags/v3.2.0.tar.gz
+version: 3.2.1
+url: https://github.com/Netflix/vmaf/archive/refs/tags/v3.2.1.tar.gz
 deps:

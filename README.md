@@ -165,12 +165,12 @@ Examples :
  * libpng 1.6.52 (BSD 3-clause)
  * libpsl 0.23.3 (MIT)
  * libraw 0.22.2 (LGPL v2.1)
- * libsnappy 1.2.2 (BSD 3-clause)
+ * libsnappy 1.3.1 (BSD 3-clause)
  * libsndfile 1.2.2 (LGPL 2.1)
  * libsoxr 0.1.3 (LGPL 2.1)
  * libssh2 1.11.1 (BSD 3-clause)
  * libtiff 4.7.2 (BSD 2-clause)
- * libvmaf 3.2.0 (BSD -2-clause + patent)
+ * libvmaf 3.2.1 (BSD -2-clause + patent)
  * libvorbis 1.3.7 (BSD 3-clause)
  * libwavpack 5.9.0 (BSD 3-clause)
  * libwebp 1.6.0 (BSD 3-clause)
@@ -195,7 +195,7 @@ Examples :
 
 ### Libraries compatible with LGPL v3
 
- * libde265 1.1.2 (LGPL v3)
+ * libde265 1.1.3 (LGPL v3)
  * libheif 1.23.4 (LGPL v3)
 
 ### Libraries compatible with GPL v2
