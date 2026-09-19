@@ -1,6 +1,7 @@
 #include <string.h>
 
 #ifdef _WIN32
+# include <stdio.h>
 # include <windows.h>
 #else
 # include <errno.h>
@@ -16,79 +17,108 @@
 
 int ewpi_spawn(const char *host, const char *prog, const char *option)
 {
-    char cmd[256];
-    STARTUPINFO si;
+    char cmd[1024];
+    STARTUPINFOA si;
     PROCESS_INFORMATION pi;
     SECURITY_ATTRIBUTES sa;
-    HANDLE pipe_out_read;
-    HANDLE pipe_out_write;
-    HANDLE pipe_err_read;
-    HANDLE pipe_err_write;
-    DWORD exit_code;
-    BOOL res;
+    HANDLE pipe_out_read = NULL;
+    HANDLE pipe_out_write = NULL;
+    HANDLE pipe_err_read = NULL;
+    HANDLE pipe_err_write = NULL;
+    DWORD exit_code = 1;
+    BOOL res = FALSE;
+    int written;
 
+    if (prog == NULL || *prog == '\0')
+        return 0;
+
+    if (option == NULL)
+        option = "";
+
+    if (host != NULL && *host != '\0')
+    {
+        written = snprintf(cmd, sizeof(cmd), "%s-%s %s",
+                           host, prog, option);
+    }
+    else
+    {
+        written = snprintf(cmd, sizeof(cmd), "%s %s",
+                           prog, option);
+    }
+
+    if (written < 0 || (size_t)written >= sizeof(cmd))
+        return 0;
+
+    ZeroMemory(&sa, sizeof(sa));
     sa.nLength = sizeof(SECURITY_ATTRIBUTES);
     sa.lpSecurityDescriptor = NULL;
     sa.bInheritHandle = TRUE;
 
     if (!CreatePipe(&pipe_out_read, &pipe_out_write, &sa, 0))
-        return 0;
+        goto cleanup;
 
-    if (!SetHandleInformation(pipe_out_read, HANDLE_FLAG_INHERIT, 0) )
-        goto close_pipe_out;
+    if (!SetHandleInformation(pipe_out_read, HANDLE_FLAG_INHERIT, 0))
+        goto cleanup;
 
     if (!CreatePipe(&pipe_err_read, &pipe_err_write, &sa, 0))
-        goto close_pipe_out;
+        goto cleanup;
 
     if (!SetHandleInformation(pipe_err_read, HANDLE_FLAG_INHERIT, 0))
-        goto close_pipe_err;
+        goto cleanup;
 
-    ZeroMemory(&pi, sizeof(PROCESS_INFORMATION));
+    ZeroMemory(&pi, sizeof(pi));
 
-    ZeroMemory(&si, sizeof(STARTUPINFO));
-    si.cb = sizeof(STARTUPINFO);
+    ZeroMemory(&si, sizeof(si));
+    si.cb = sizeof(si);
     si.dwFlags = STARTF_USESTDHANDLES;
     si.hStdError = pipe_err_write;
     si.hStdOutput = pipe_out_write;
 
-    *cmd = '\0';
-    if (host)
-    {
-        strcat(cmd, host);
-        strcat(cmd, "-");
-    }
-    strcat(cmd, prog);
-    strcat(cmd, " ");
-    strcat(cmd, option);
-
-    if (!CreateProcess(NULL, cmd, NULL, NULL,
-                       TRUE, 0UL, NULL, NULL, &si, &pi))
-        goto close_pipe_err;
+    if (!CreateProcessA(NULL, cmd, NULL, NULL,
+                        TRUE, 0UL, NULL, NULL, &si, &pi))
+        goto cleanup;
 
     CloseHandle(pipe_err_write);
+    pipe_err_write = NULL;
     CloseHandle(pipe_out_write);
+    pipe_out_write = NULL;
 
     WaitForSingleObject(pi.hProcess, INFINITE);
 
     res = GetExitCodeProcess(pi.hProcess, &exit_code);
 
     CloseHandle(pi.hProcess);
+    pi.hProcess = NULL;
+
     CloseHandle(pi.hThread);
+    pi.hThread = NULL;
 
     if (!res)
-        goto close_pipe_err;
+        goto cleanup;
 
     if (exit_code != 0UL)
-        goto close_pipe_err;
+        goto cleanup;
 
     return 1;
 
-  close_pipe_err:
-    CloseHandle(pipe_err_read);
-    CloseHandle(pipe_err_write);
-  close_pipe_out:
-    CloseHandle(pipe_out_read);
-    CloseHandle(pipe_out_write);
+cleanup:
+    if (pi.hProcess != NULL)
+        CloseHandle(pi.hProcess);
+
+    if (pi.hThread != NULL)
+        CloseHandle(pi.hThread);
+
+    if (pipe_out_read != NULL)
+        CloseHandle(pipe_out_read);
+
+    if (pipe_out_write != NULL)
+        CloseHandle(pipe_out_write);
+
+    if (pipe_err_read != NULL)
+        CloseHandle(pipe_err_read);
+
+    if (pipe_err_write != NULL)
+        CloseHandle(pipe_err_write);
 
     return 0;
 }
