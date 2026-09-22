@@ -1,4 +1,4 @@
 name: harfbuzz
-version: 14.4.0
-url: https://github.com/harfbuzz/harfbuzz/releases/download/14.4.0/harfbuzz-14.4.0.tar.xz
+version: 14.5.0
+url: https://github.com/harfbuzz/harfbuzz/releases/download/14.5.0/harfbuzz-14.5.0.tar.xz
 deps: zlib libpng freetype graphite2 icu
