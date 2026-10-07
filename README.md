@@ -115,7 +115,7 @@ Examples :
  * curl 8.22.0 (MIT)
  * dbus 1.16.2 (Academic Free License version 2.1)
  * dejavu-fonts 2.37
- * expat 2.8.5 (MIT)
+ * expat 2.9.0 (MIT)
  * ffmpeg 9.0.0 (LGPL 2.1)
  * flac 1.5.0 (LGPL 2.1)
  * fontconfig 2.18.2 (MIT)
@@ -130,7 +130,7 @@ Examples :
  * gst-plugins-base 1.26.10 (LGPL 2.1)
  * gst-plugins-good 1.26.10 (LGPL 2.1)
  * gstreamer 1.26.10 (LGPL 2.1)
- * harfbuzz 14.5.1 (MIT)
+ * harfbuzz 14.6.0 (MIT)
  * highway 1.4.0 (Apache 2.0)
  * iconv 0.0.10 (public domain)
  * icu 78.3 (MIT)
@@ -196,7 +196,7 @@ Examples :
 ### Libraries compatible with LGPL v3
 
  * libde265 1.1.3 (LGPL v3)
- * libheif 1.23.4 (LGPL v3)
+ * libheif 1.23.6 (LGPL v3)
 
 ### Libraries compatible with GPL v2
 
