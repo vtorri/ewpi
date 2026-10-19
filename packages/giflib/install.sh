@@ -14,9 +14,9 @@ $4-gcc \
     gif_font.c \
     gif_hash.c \
     openbsd-reallocarray.c \
-    > ../make.log 2>&1
+    >../make.log 2>&1
 
-mkdir -p $3/{bin,include,lib}
+mkdir -p "$3/bin" "$3/include" "$3/lib"
 cp libgif-7.dll $3/bin
 cp libgif.dll.a $3/lib
 cp gif_lib.h $3/include

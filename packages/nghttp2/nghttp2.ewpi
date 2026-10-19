@@ -1,4 +1,5 @@
 name: nghttp2
 version: 1.70.0
 url: https://github.com/nghttp2/nghttp2/releases/download/v1.70.0/nghttp2-1.70.0.tar.xz
+sha512SUM: 8d8a95dcd05dfe8a032b78d99b7d32a9f0ad2c952c4548de4c6b4af0d2f3c584b0a2854b31516eca20b0c9c30f20d0d040edfe9961a3084e96353012f711b9d1
 deps:

@@ -1,4 +1,5 @@
 name: libdeflate
 version: 1.26
 url: https://github.com/ebiggers/libdeflate/releases/download/v1.26/libdeflate-1.26.tar.gz
+sha512SUM: 6dc52a62e536b9aa4d270c27d5046cd239ea8a8d062e0d11a8c37f0d287e7df0628ce9f308016b78ae5327723c314e023831a0403ee6440df15afcf9ac0ccc12
 deps:

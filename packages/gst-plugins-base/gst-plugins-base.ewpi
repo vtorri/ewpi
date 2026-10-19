@@ -1,4 +1,5 @@
 name: gst-plugins-base
 version: 1.26.10
 url: https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-1.26.10.tar.xz
+sha512SUM: 02a464888b24e790ba75e9620a222b93804641563ac5350d9c99ed1720a898cf08ea006c0d66cac8ffbd3d4f3b9b859ac20c74b4c2544ef721043eb4d5e9ab72
 deps: glib2 gstreamer graphene orc libvorbis opus zlib gettext

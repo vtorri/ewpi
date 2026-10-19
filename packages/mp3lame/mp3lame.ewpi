@@ -1,4 +1,5 @@
 name: mp3lame
 version: 3.100
 url: https://freefr.dl.sourceforge.net/project/lame/lame/3.100/lame-3.100.tar.gz
+sha512SUM: 0844b9eadb4aacf8000444621451277de365041cc1d97b7f7a589da0b7a23899310afd4e4d81114b9912aa97832621d20588034715573d417b2923948c08634b
 deps:

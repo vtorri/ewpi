@@ -1,4 +1,5 @@
 name: gettext
 version: 0.26.0
 url: https://ftp.gnu.org/pub/gnu/gettext/gettext-0.26.tar.lz
+sha512SUM: d8eca312360925ab9c6242de633654e9bfd680a43f85067f4a572d780f240b6e9ace18f5f52e8e55a1142674e92fa06e4914c6f24c638ae5bd7021e2dbc1dbb5
 deps: iconv

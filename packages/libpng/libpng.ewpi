@@ -1,4 +1,5 @@
 name: libpng
 version: 1.6.52
 url: https://freefr.dl.sourceforge.net/project/libpng/libpng16/1.6.52/libpng-1.6.52.tar.xz
+sha512SUM: 2bb1318f36712fc007613373a44a3276b4ed129b51b908464d9577ea9704d3caa469ec5bc7ebfb8b1de57ba3998c0b3375cd105054011ec54c21e9f208ec3c8b
 deps: zlib

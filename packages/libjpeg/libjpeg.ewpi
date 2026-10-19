@@ -1,4 +1,5 @@
 name: libjpeg
 version: 3.2.0
 url: https://github.com/libjpeg-turbo/libjpeg-turbo/releases/download/3.2.0/libjpeg-turbo-3.2.0.tar.gz
+sha512SUM: 13536db56c16e5364690ae2d31343a203e3b653c853c1f5314d36c8eb06700e92342737f1381f0171b3eb0223384c5fbcde91b55a46576952c4e75dc049cd045
 deps:

@@ -1,4 +1,5 @@
 name: libbdplus
 version: 0.2.0
 url: https://download.videolan.org/pub/videolan/libbdplus/0.2.0/libbdplus-0.2.0.tar.bz2
+sha512SUM: 172e4932fb5540fbdb5b86e1d42cfaddf60b81416d2de50c8add83fb7f1bd7c296c975fd84a6ec42566977086dccfe07db5ce696038862bc75c6494c647998d6
 deps: libgpg-error libgcrypt libaacs

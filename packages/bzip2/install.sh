@@ -10,16 +10,16 @@ $4-gcc \
     -o libbz2-1.dll \
     -Wall -Winline \
     -D_FILE_OFFSET_BITS=64 \
-    blocksort.c  \
-    huffman.c    \
-    crctable.c   \
-    randtable.c  \
-    compress.c   \
+    blocksort.c \
+    huffman.c \
+    crctable.c \
+    randtable.c \
+    compress.c \
     decompress.c \
     bzlib.c \
-    > ../make.log 2>&1
+    >../make.log 2>&1
 
-cat > bzip2.pc <<EOF
+cat >bzip2.pc <<EOF
 prefix=$3
 exec_prefix=\${prefix}
 bindir=\${exec_prefix}/bin
@@ -33,7 +33,7 @@ Libs: -L\${libdir} -lbz2
 Cflags: -I\${includedir}
 EOF
 
-mkdir -p $3/{bin,include,lib/pkgconfig}
+mkdir -p "$3/bin" "$3/include" "$3/lib/pkgconfig"
 cp libbz2-1.dll $3/bin
 cp libbz2.dll.a $3/lib
 cp bzip2.pc $3/lib/pkgconfig

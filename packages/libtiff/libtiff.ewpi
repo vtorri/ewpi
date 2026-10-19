@@ -1,4 +1,5 @@
 name: libtiff
 version: 4.7.2
 url: https://download.osgeo.org/libtiff/tiff-4.7.2.tar.xz
+sha512SUM: 884dbd26f9eebcff4676696757ac315836c460696d403609a3f804368be3571f5f0e99a96dd7cc9fedc5dc2adfc087175d5d6823dca9eba10c733aa1676d78de
 deps: zlib libjpeg libwebp liblerc libdeflate xz zstd

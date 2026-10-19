@@ -1,4 +1,5 @@
 name: libgsm
 version: 1.0.22
 url: http://www.quut.com/gsm/gsm-1.0.22.tar.gz
+sha512SUM: f4284f096ed4d606ddece5c1b28edb63feacc26a0b664f1350c040dbf50113d27bedfd9896bf1620cb4fc3a6c8f6a5244955a6c625ded833dcee607c63c97dd2
 deps:

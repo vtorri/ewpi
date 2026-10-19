@@ -68,7 +68,7 @@ To build the NSIS installer, the EnVar plug-in is mandatory. See https://nsis.so
 
 after cloning ewpi and changing to the ewpi directory:
 
-gcc -O2 -std=c99 -o ewpi ewpi.c ewpi_map.c
+gcc -O2 -std=c99 -o ewpi ewpi.c ewpi_map.c ewpi_spawn.c
 
 # Usage
 
@@ -93,11 +93,16 @@ Optional arguments:
   --verbose     verbose mode
   --strip       strip DLL
   --nsis        strip DLL and create the NSIS installer
-  --efl         install the EFL
+  --package=NAME  build NAME and its dependencies (repeatable)
+  --efl         install the EFL meta-package as well
   --jobs=VAL    maximum number of used jobs [default=maximum]
   --clean       remove the archives and the created directories
                   (not removed by default)
 ```
+
+Tarball recipes carry a `sha512SUM:` line. ewpi checks the download against that pin and refuses a mismatch. Git recipes are not pinned.
+
+`drivers.sh` holds the shared `ewpi_cmake`, `ewpi_meson` and `ewpi_autoconf` recipes. Package `install.sh` scripts keep only the flags and patches that are specific to that library.
 
 Examples :
 
@@ -112,14 +117,14 @@ Examples :
  * bullet 3.25 (zlib)
  * bzip2 1.0.8 (BSD 4-clause, LGPL 2.1 compatible)
  * check 0.15.2(LGPL 2.1)
- * curl 8.22.0 (MIT)
+ * curl 8.23.0 (MIT)
  * dbus 1.16.2 (Academic Free License version 2.1)
  * dejavu-fonts 2.37
- * expat 2.8.5 (MIT)
+ * expat 2.9.0 (MIT)
  * ffmpeg 9.0.0 (LGPL 2.1)
  * flac 1.5.0 (LGPL 2.1)
  * fontconfig 2.18.2 (MIT)
- * freetype 2.14.3 (FreeType license)
+ * freetype 2.15.0 (FreeType license)
  * fribidi 1.0.17 (LGPL 2.1)
  * gettext 0.26.0 (only libintl : LGPL 2.1)
  * giflib 5.2.2 (MIT)
@@ -130,14 +135,14 @@ Examples :
  * gst-plugins-base 1.26.10 (LGPL 2.1)
  * gst-plugins-good 1.26.10 (LGPL 2.1)
  * gstreamer 1.26.10 (LGPL 2.1)
- * harfbuzz 14.5.1 (MIT)
+ * harfbuzz 14.6.0 (MIT)
  * highway 1.4.0 (Apache 2.0)
  * iconv 0.0.10 (public domain)
  * icu 78.3 (MIT)
  * lcms2 2.19.1 (MIT)
  * libaacs 0.11.1 (LGPL 2.1)
  * libaom 3.14.1 (BSD 2-clause)
- * libarchive 3.8.8 (BSD 2-clause)
+ * libarchive 3.8.10 (BSD 2-clause)
  * libass 0.17.5 (ISC)
  * libavif 1.4.2 (BSD 2-clause)
  * libbdplus 0.2.0 (LGPL 2.1)
@@ -196,7 +201,7 @@ Examples :
 ### Libraries compatible with LGPL v3
 
  * libde265 1.1.3 (LGPL v3)
- * libheif 1.23.4 (LGPL v3)
+ * libheif 1.23.6 (LGPL v3)
 
 ### Libraries compatible with GPL v2
 

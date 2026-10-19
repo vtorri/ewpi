@@ -1,4 +1,5 @@
 name: taglib
 version: 2.3.2
 url: https://github.com/taglib/taglib/releases/download/v2.3.2/taglib-2.3.2.tar.gz
+sha512SUM: d9f68d075c24cb3535e4ae5e5b062c05d732cbcd7c8a8c0fe4935da27dc7a01e897fd3158f2059e11e46a31b18c3a9caffc66510b7459e1e8c48f29d1ae84c82
 deps: utfcpp zlib

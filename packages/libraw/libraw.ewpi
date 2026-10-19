@@ -1,4 +1,5 @@
 name: libraw
 version: 0.22.2
 url: https://www.libraw.org/data/LibRaw-0.22.2.tar.gz
+sha512SUM: 9333bc667c8e68a3572c336d3e2ecda82c5987e7feecb6ceb4e1df7dc7291747ffe66f6d3e01b121946ba4e2b1be95295c030d2754a5ae1cd638cffc8213141a
 deps: libjpeg lcms2

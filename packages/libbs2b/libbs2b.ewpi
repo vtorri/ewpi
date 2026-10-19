@@ -1,4 +1,5 @@
 name: libbs2b
 version: 3.1.0
 url: https://freefr.dl.sourceforge.net/project/bs2b/libbs2b/3.1.0/libbs2b-3.1.0.tar.gz
+sha512SUM: 3fba925fb07b28183f3bf3abe31c13915cb8c3fdd2a7c567819ab912a61463fd5769c4644faa3a114bd68ed7cd51d6fbf5304ab83a02f1004ae34fb93a748fbb
 deps: libsndfile

@@ -1,4 +1,5 @@
 name: lz4
 version: 1.10.0
 url: https://github.com/lz4/lz4/archive/refs/tags/v1.10.0.tar.gz
+sha512SUM: 8c4ceb217e6dc8e7e0beba99adc736aca8963867bcf9f970d621978ba11ce92855912f8b66138037a1d2ae171e8e17beb7be99281fea840106aa60373c455b28
 deps:
