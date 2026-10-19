@@ -1,4 +1,5 @@
 name: libsoxr
 version: 0.1.3
 url: https://github.com/chirlu/soxr/archive/refs/tags/0.1.3.tar.gz
+sha512SUM: 87e261afa319205631701ceabaa9696f7f8927392cbe1a02e068f022dd486cafab4816f1c2f03b326a68e5bc1d8c942f716b478ebce7bc7294b3c3f54df2da5c
 deps:

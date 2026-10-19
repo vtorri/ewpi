@@ -8,6 +8,4 @@ sed -i -e 's/SUBDIRS = libdjvu tools share \$(am__append_1) \$(am__append_2)/SUB
 
 export LIBS="-liconv $LIBS"
 
-./configure --prefix=$3 --host=$4 --disable-static > ../config.log 2>&1
-
-make -j $jobopt $verbmake install > ../make.log 2>&1
+ewpi_autoconf --disable-static

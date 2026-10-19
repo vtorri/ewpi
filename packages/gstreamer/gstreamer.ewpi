@@ -1,4 +1,5 @@
 name: gstreamer
 version: 1.26.10
 url: https://gstreamer.freedesktop.org/src/gstreamer/gstreamer-1.26.10.tar.xz
+sha512SUM: c12a2347052b4f92d5180bc62d0c854900f724fb9a3a4f238b6c6d1abeaef217f11551d0f6148ef04eecfbf74bb54d82ab415ec09fcb09aeabbfcc470437e944
 deps: glib2 gettext

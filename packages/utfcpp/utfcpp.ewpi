@@ -1,4 +1,5 @@
 name: utfcpp
 version: 4.2.1
 url: https://github.com/nemtrif/utfcpp/archive/refs/tags/v4.2.1.tar.gz
+sha512SUM: 07d0e4bebb0c80a5fdabbd4ae0c005c17a99b88e01db70976ba01878ce1f9771ffaf33e510985d4c80f19b31df23e5ce4abbc1fc89460819c5b29b6e774a8b21
 deps:

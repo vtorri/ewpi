@@ -1,4 +1,5 @@
 name: check
 version: 0.15.2
 url: https://github.com/libcheck/check/releases/download/0.15.2/check-0.15.2.tar.gz
+sha512SUM: 77fb34348bc1b1517801865afee5064121a245c10685e6bb6b8f743552646a0643cfdf9fd3dfbf9b2297d9430dfdd49616cf7daf41298d2dbd699f10d654a025
 deps:

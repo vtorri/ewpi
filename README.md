@@ -68,7 +68,7 @@ To build the NSIS installer, the EnVar plug-in is mandatory. See https://nsis.so
 
 after cloning ewpi and changing to the ewpi directory:
 
-gcc -O2 -std=c99 -o ewpi ewpi.c ewpi_map.c
+gcc -O2 -std=c99 -o ewpi ewpi.c ewpi_map.c ewpi_spawn.c
 
 # Usage
 
@@ -93,11 +93,16 @@ Optional arguments:
   --verbose     verbose mode
   --strip       strip DLL
   --nsis        strip DLL and create the NSIS installer
-  --efl         install the EFL
+  --package=NAME  build NAME and its dependencies (repeatable)
+  --efl         install the EFL meta-package as well
   --jobs=VAL    maximum number of used jobs [default=maximum]
   --clean       remove the archives and the created directories
                   (not removed by default)
 ```
+
+Tarball recipes carry a `sha512SUM:` line. ewpi checks the download against that pin and refuses a mismatch. Git recipes are not pinned.
+
+`drivers.sh` holds the shared `ewpi_cmake`, `ewpi_meson` and `ewpi_autoconf` recipes. Package `install.sh` scripts keep only the flags and patches that are specific to that library.
 
 Examples :
 

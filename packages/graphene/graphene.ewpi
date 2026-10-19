@@ -1,4 +1,5 @@
 name: graphene
 version: 1.10.8
 url: https://github.com/ebassi/graphene/archive/refs/tags/1.10.8.tar.gz
+sha512SUM: 526b0c17049459b687ceb7f6c26c9d982535e4048e74a0b6282704f9811d3c2e7e0e6cfef166aa953306b6cf77add6677bc600ae0c66cc052dc04c3d0345bd68
 deps: glib2

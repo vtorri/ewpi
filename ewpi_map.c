@@ -103,7 +103,7 @@ ewpi_map_new(Map *map, const char *filename)
         goto close_fd;
     }
 
-    map->length = st.st_size;
+    map->length = (size_t)st.st_size;
 
     map->base = mmap(NULL, map->length, PROT_READ, MAP_SHARED, map->fd, 0);
     if (!map->base)

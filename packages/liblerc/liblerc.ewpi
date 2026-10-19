@@ -1,4 +1,5 @@
 name: liblerc
 version: 4.2.0
 url: https://github.com/Esri/lerc/archive/refs/tags/v4.2.0.tar.gz
+sha512SUM: 6ed82108d0ba4a6141cfb9ac7174a206488235e40e0eb2d34fa959716f6da3c6ec32562ceb5c9e77d02e1be5c73f24c81a3835f11dd57e4f87ca4003adafe47a
 deps:

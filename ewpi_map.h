@@ -1,4 +1,4 @@
-
+#include <stddef.h>
 
 typedef struct
 {

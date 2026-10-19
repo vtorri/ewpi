@@ -1,4 +1,5 @@
 name: libsndfile
 version: 1.2.2
 url: https://github.com/libsndfile/libsndfile/releases/download/1.2.2/libsndfile-1.2.2.tar.xz
+sha512SUM: a6e3ea3ac5d91befaa99f6a31a3fac44e7b7c11f1de4698167317a461d5a19a2651d47486a920b34400f18367b4f6173bf0c1c9ba80eb682cece1b5beee352a0
 deps: flac libogg libvorbis opus mpg123

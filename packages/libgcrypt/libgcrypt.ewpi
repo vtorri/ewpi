@@ -1,4 +1,5 @@
 name: libgcrypt
 version: 1.12.2
 url: https://www.gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.12.2.tar.bz2
+sha512SUM: dc1a4a6c00a0d84d90c8d71f4bd121b968c80df74137d6e8867f1f4cc014a539efb5238c1a1429d7cb95e493a40718fc19252edc592ffe0f43057b372896591c
 deps: libgpg-error

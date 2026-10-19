@@ -1,4 +1,5 @@
 name: openssl
 version: 4.0.3
 url: https://github.com/openssl/openssl/releases/download/openssl-4.0.3/openssl-4.0.3.tar.gz
+sha512SUM: cc424e5f8470a47e2c7345e95516a6a0e2a5eee0fe4feef3de3d39b75071b1f42f4a2388d1c8926652bba4082108b7050ddc30b274543b62937c46bdcad3b3c0
 deps:

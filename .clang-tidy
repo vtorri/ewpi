@@ -1,0 +1,26 @@
+---
+Checks: >
+  clang-diagnostic-*,
+  clang-analyzer-*,
+  bugprone-*,
+  cert-*,
+  portability-*,
+  readability-*,
+  -readability-magic-numbers,
+  -readability-identifier-length,
+  -readability-function-cognitive-complexity,
+  -readability-braces-around-statements,
+  -readability-isolate-declaration,
+  -bugprone-easily-swappable-parameters,
+  -bugprone-reserved-identifier,
+  -bugprone-macro-parentheses,
+  -bugprone-branch-clone,
+  -cert-dcl37-c,
+  -cert-dcl51-cpp,
+  -cert-err33-c,
+  -cert-err34-c,
+  -cert-env33-c,
+  -clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling,
+  -clang-analyzer-valist.Uninitialized
+WarningsAsErrors: '*'
+HeaderFilterRegex: 'ewpi.*\.h$'
