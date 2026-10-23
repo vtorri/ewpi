@@ -1,4 +1,4 @@
 name: brotli
-version: 1.2.0
-url: https://github.com/google/brotli/archive/v1.2.0.tar.gz
+version: 1.2.1
+url: https://github.com/google/brotli/archive/v1.2.1.tar.gz
 deps:

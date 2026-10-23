@@ -108,7 +108,7 @@ Examples :
 
 ### Libraries compatible with LGPL v2.1
 
- * brotli 1.2.0 (MIT)
+ * brotli 1.2.1 (MIT)
  * bullet 3.25 (zlib)
  * bzip2 1.0.8 (BSD 4-clause, LGPL 2.1 compatible)
  * check 0.15.2(LGPL 2.1)
@@ -130,10 +130,10 @@ Examples :
  * gst-plugins-base 1.26.10 (LGPL 2.1)
  * gst-plugins-good 1.26.10 (LGPL 2.1)
  * gstreamer 1.26.10 (LGPL 2.1)
- * harfbuzz 14.6.0 (MIT)
+ * harfbuzz 15.0.0 (MIT)
  * highway 1.4.0 (Apache 2.0)
  * iconv 0.0.10 (public domain)
- * icu 78.3 (MIT)
+ * icu 79.1 (MIT)
  * lcms2 2.19.1 (MIT)
  * libaacs 0.11.1 (LGPL 2.1)
  * libaom 3.14.1 (BSD 2-clause)
