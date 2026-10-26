@@ -164,7 +164,7 @@ Examples :
  * libopenmpt 0.8.3 (BSD 3-clause)
  * libpng 1.6.52 (BSD 3-clause)
  * libpsl 0.23.3 (MIT)
- * libraw 0.22.2 (LGPL v2.1)
+ * libraw 0.22.3 (LGPL v2.1)
  * libsnappy 1.3.1 (BSD 3-clause)
  * libsndfile 1.2.2 (LGPL 2.1)
  * libsoxr 0.1.3 (LGPL 2.1)
@@ -196,7 +196,7 @@ Examples :
 ### Libraries compatible with LGPL v3
 
  * libde265 1.1.3 (LGPL v3)
- * libheif 1.23.6 (LGPL v3)
+ * libheif 1.23.7 (LGPL v3)
 
 ### Libraries compatible with GPL v2
 
