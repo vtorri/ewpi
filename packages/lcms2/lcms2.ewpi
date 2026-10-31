@@ -1,4 +1,4 @@
 name: lcms2
-version: 2.19.1
-url: https://github.com/mm2/Little-CMS/releases/download/lcms2.19.1/lcms2-2.19.1.tar.gz
+version: 2.20.0
+url: https://github.com/mm2/Little-CMS/releases/download/lcms2.20/lcms2-2.20.tar.gz
 deps:
