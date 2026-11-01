@@ -16,7 +16,7 @@
 
 #ifdef _WIN32
 
-int ewpi_spawnv(const char *host, const char *prog, const char *arg)
+static int _ewpi_spawnv(const char *host, const char *prog, const char *arg)
 {
     char cmd[1024];
     STARTUPINFOA si;
@@ -131,7 +131,7 @@ int ewpi_spawn(const char *host, const char *prog, const char *option)
 
 #else
 
-int ewpi_spawnv(const char *host, const char *prog, const char *arg)
+static int _ewpi_spawnv(const char *host, const char *prog, const char *arg)
 {
     pid_t pid;
 
@@ -184,13 +184,12 @@ int ewpi_spawnv(const char *host, const char *prog, const char *arg)
         return WIFEXITED(status) ? (WEXITSTATUS(status) == 0) : 0;
     }
 }
+#endif
 
 int ewpi_spawn(const char *host, const char *prog, const char *option)
 {
-    return ewpi_spawnv(host, prog, option);
+    return _ewpi_spawnv(host, prog, option);
 }
-
-#endif
 
 #ifdef _WIN32
 
@@ -340,4 +339,3 @@ int ewpi_run(const char *cwd, const char *const argv[])
     }
 #endif
 }
-

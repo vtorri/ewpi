@@ -113,7 +113,7 @@ Examples :
 
 ### Libraries compatible with LGPL v2.1
 
- * brotli 1.2.0 (MIT)
+ * brotli 1.2.1 (MIT)
  * bullet 3.25 (zlib)
  * bzip2 1.0.8 (BSD 4-clause, LGPL 2.1 compatible)
  * check 0.15.2(LGPL 2.1)
@@ -125,7 +125,7 @@ Examples :
  * flac 1.5.0 (LGPL 2.1)
  * fontconfig 2.18.2 (MIT)
  * freetype 2.15.0 (FreeType license)
- * fribidi 1.0.17 (LGPL 2.1)
+ * fribidi 1.0.18 (LGPL 2.1)
  * gettext 0.26.0 (only libintl : LGPL 2.1)
  * giflib 5.2.2 (MIT)
  * glib2 2.84.0 (LGPL 2.1)
@@ -135,14 +135,14 @@ Examples :
  * gst-plugins-base 1.26.10 (LGPL 2.1)
  * gst-plugins-good 1.26.10 (LGPL 2.1)
  * gstreamer 1.26.10 (LGPL 2.1)
- * harfbuzz 14.6.0 (MIT)
+ * harfbuzz 15.0.0 (MIT)
  * highway 1.4.0 (Apache 2.0)
  * iconv 0.0.10 (public domain)
- * icu 78.3 (MIT)
- * lcms2 2.19.1 (MIT)
+ * icu 79.1 (MIT)
+ * lcms2 2.20.0 (MIT)
  * libaacs 0.11.1 (LGPL 2.1)
  * libaom 3.14.1 (BSD 2-clause)
- * libarchive 3.8.10 (BSD 2-clause)
+ * libarchive 3.8.11 (BSD 2-clause)
  * libass 0.17.5 (ISC)
  * libavif 1.4.2 (BSD 2-clause)
  * libbdplus 0.2.0 (LGPL 2.1)
@@ -158,10 +158,10 @@ Examples :
  * libgpg-error 1.60 (LGPL 2.1)
  * libgsm 1.0.22 (MIT)
  * libilbc 3.0.4 (BSD 3-clause)
- * libjpeg 3.2.0 (IJG and zlib)
+ * libjpeg 3.2.1 (IJG and zlib)
  * libjxl 0.12.0 (BSD 3-clause)
  * libkvazaar 2.3.2 (BSD 3-clause)
- * liblerc 4.2.0 (Apache 2.0)
+ * liblerc 4.3.0 (Apache 2.0)
  * libmodplug 0.8.9 (public domain)
  * libmysofa 1.3.2 (BSD 3-clause)
  * libogg 1.3.6 (BSD 3-clause)
@@ -169,7 +169,7 @@ Examples :
  * libopenmpt 0.8.3 (BSD 3-clause)
  * libpng 1.6.52 (BSD 3-clause)
  * libpsl 0.23.3 (MIT)
- * libraw 0.22.2 (LGPL v2.1)
+ * libraw 0.22.3 (LGPL v2.1)
  * libsnappy 1.3.1 (BSD 3-clause)
  * libsndfile 1.2.2 (LGPL 2.1)
  * libsoxr 0.1.3 (LGPL 2.1)
@@ -187,7 +187,7 @@ Examples :
  * mpg123 1.33.7 (LGPL 2.1)
  * nghttp2 1.70.0 (MIT)
  * openjpeg 2.5.4 (BSD 2-clause)
- * openssl 4.0.3 (Apache 2.0)
+ * openssl 4.1.0 (Apache 2.0)
  * opus 1.5.2 (BSD 3-clause)
  * orc 0.4.41 (BSD 2-clause)
  * pixman 0.46.4 (MIT)
@@ -201,7 +201,7 @@ Examples :
 ### Libraries compatible with LGPL v3
 
  * libde265 1.1.3 (LGPL v3)
- * libheif 1.23.6 (LGPL v3)
+ * libheif 1.23.7 (LGPL v3)
 
 ### Libraries compatible with GPL v2
 
