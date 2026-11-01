@@ -16,7 +16,7 @@
 
 #ifdef _WIN32
 
-static int _ewpi_spawnv(const char *host, const char *prog, const char *arg)
+int ewpi_spawnv(const char *host, const char *prog, const char *arg)
 {
     char cmd[1024];
     STARTUPINFOA si;
@@ -126,7 +126,7 @@ cleanup:
 
 #else
 
-static int _ewpi_spawnv(const char *host, const char *prog, const char *arg)
+int ewpi_spawnv(const char *host, const char *prog, const char *arg)
 {
     pid_t pid;
 
@@ -183,7 +183,7 @@ static int _ewpi_spawnv(const char *host, const char *prog, const char *arg)
 
 int ewpi_spawn(const char *host, const char *prog, const char *option)
 {
-    return _ewpi_spawnv(host, prog, option);
+    return ewpi_spawnv(host, prog, option);
 }
 
 #ifdef _WIN32
