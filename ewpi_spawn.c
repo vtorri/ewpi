@@ -124,6 +124,11 @@ cleanup:
     return 0;
 }
 
+int ewpi_spawn(const char *host, const char *prog, const char *option)
+{
+    return ewpi_spawnv(host, prog, option);
+}
+
 #else
 
 static int _ewpi_spawnv(const char *host, const char *prog, const char *arg)

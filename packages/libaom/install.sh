@@ -7,17 +7,15 @@ git checkout 33c921efad52392d6c7047a6768a1337cd106998
 
 cp ../cross_toolchain.txt .
 
-if test "x$4" = "xx86_64-w64-mingw32" ; then
+if test "x$4" = "xx86_64-w64-mingw32"; then
     proc="AMD64"
-    machine=-m64
 else
     proc="X86"
-    machine=-m32
 fi
 
 sed -i -e "s|@prefix@|$3|g;s|@host@|$4|g;s|@proc@|$proc|g;s|@winver@|$winver|g" cross_toolchain.txt
 
-rm -rf builddir && mkdir builddir && cd builddir
+rm -rf builddir && mkdir builddir && cd builddir || exit
 
 cmake \
     -DCMAKE_TOOLCHAIN_FILE=../cross_toolchain.txt \
@@ -34,6 +32,6 @@ cmake \
     -DENABLE_TESTS=FALSE \
     -DENABLE_TOOLS=FALSE \
     -G "Unix Makefiles" \
-    .. > ../../config.log 2>&1
+    .. >../../config.log 2>&1
 
-make -j $jobopt install > ../../make.log 2>&1
+make -j $jobopt install >../../make.log 2>&1

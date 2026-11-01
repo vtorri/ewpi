@@ -7,39 +7,76 @@ on:
   pull_request:
     branches:
       - master
+  push:
+    branches:
+      - master
+  workflow_dispatch:
 
 jobs:
-  make:
-    runs-on: ${{ matrix.os }}
+  lint:
+    runs-on: ubuntu-latest
     timeout-minutes: 15
-    strategy:
-      matrix:
-        os:
-          - ubuntu-latest
-          - windows-latest
-        arch:
-          - x86_64
-
     steps:
       - name: Checkout
         uses: actions/checkout@v7
 
-      - name: Setup
+      - name: Lint and host compile
+        shell: bash
+        run: bash .github/workflows/main.sh lint
+
+  smoke:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      # MINGW64, not CLANG64. ewpi looks up the mingw host triplet
+      # (x86_64-w64-mingw32-gcc) and, on Windows, copies gcc.exe to that name.
+      - name: Setup MSYS2
         if: runner.os == 'Windows'
         uses: msys2/setup-msys2@v2
         with:
           msystem: mingw64
           update: true
-          install: base-devel autoconf automake libtool tar git wget python perl flex bison gettext-devel pkgconf make mingw-w64-x86_64-gettext-tools mingw-w64-x86_64-gperf mingw-w64-x86_64-nasm mingw-w64-x86_64-yasm mingw-w64-x86_64-cmake mingw-w64-x86_64-toolchain mingw-w64-x86_64-ninja mingw-w64-x86_64-meson mingw-w64-x86_64-nsis mingw-w64-x86_64-itstool mingw-w64-x86_64-gettext-tools
+          install: >-
+            base-devel
+            autoconf
+            automake
+            libtool
+            tar
+            git
+            wget
+            python
+            perl
+            flex
+            bison
+            gettext-devel
+            pkgconf
+            make
+            mingw-w64-x86_64-gettext-tools
+            mingw-w64-x86_64-gperf
+            mingw-w64-x86_64-nasm
+            yasm
+            mingw-w64-x86_64-cmake
+            mingw-w64-x86_64-toolchain
+            mingw-w64-x86_64-ninja
+            mingw-w64-x86_64-meson
+            mingw-w64-x86_64-nsis
+            mingw-w64-x86_64-itstool
 
-      - name: Build on Windows
+      - name: Build zlib
         if: runner.os == 'Windows'
         shell: msys2 {0}
-        run: |
-          bash -x .github/workflows/main.sh
+        run: bash .github/workflows/main.sh smoke
 
-      - name: Build on Unix
+      - name: Build zlib
         if: runner.os != 'Windows'
         shell: bash
-        run: |
-          bash -x .github/workflows/main.sh
+        run: bash .github/workflows/main.sh smoke

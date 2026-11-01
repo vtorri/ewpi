@@ -1,4 +1,5 @@
 name: djvulibre
 version: 3.5.28
 url: http://downloads.sourceforge.net/djvu/djvulibre-3.5.28.tar.gz
+sha512SUM: db3b8a5b56d700e911be32057f721a2a597e6f52e6fade203ad75ad76ab2d8facff2e474fd18beea703ccd5fa6425352e619a8fda40e69add1724dbee26050c6
 deps: libjpeg libtiff iconv

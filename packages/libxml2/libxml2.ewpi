@@ -1,4 +1,5 @@
 name: libxml2
 version: 2.15.4
 url: https://download.gnome.org/sources/libxml2/2.15/libxml2-2.15.4.tar.xz
+sha512SUM: e162ed16ad6fb6c6ef1c40c6bed66a5f76db177fc24410cc261c9ddc6b19e9b003315db67f67cbcadaf08e546f0672de87bf6f297014af50fe544a781647f584
 deps: zlib xz iconv icu

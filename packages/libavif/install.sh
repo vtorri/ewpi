@@ -4,25 +4,22 @@
 
 cp ../cross_toolchain.txt .
 
-if test "x$4" = "xx86_64-w64-mingw32" ; then
+if test "x$4" = "xx86_64-w64-mingw32"; then
     proc="AMD64"
-    machine=-m64
 else
     proc="X86"
-    machine=-m32
 fi
 
 sed -i -e "s|@prefix@|$3|g;s|@host@|$4|g;s|@proc@|$proc|g;s|@winver@|$winver|g" cross_toolchain.txt
 
 case ${EWPI_OS} in
-    MSYS*|MINGW*)
+    MSYS* | MINGW*)
         sed -i -e "s|%zu|%Iu|g" apps/shared/avifutil.c
-    ;;
-    *)
-    ;;
+        ;;
+    *) ;;
 esac
 
-rm -rf builddir && mkdir builddir && cd builddir
+rm -rf builddir && mkdir builddir && cd builddir || exit
 
 cmake \
     -DCMAKE_TOOLCHAIN_FILE=../cross_toolchain.txt \
@@ -33,14 +30,13 @@ cmake \
     -DAVIF_CODEC_DAV1D=SYSTEM \
     -DAVIF_BUILD_APPS:BOOL=OFF \
     -G Ninja \
-    .. > ../../config.log 2>&1
+    .. >../../config.log 2>&1
 
 case ${EWPI_OS} in
-    MSYS*|MINGW*)
-    ;;
+    MSYS* | MINGW*) ;;
     *)
         sed -i -e "s|-I/usr/include||g" build.ninja
-    ;;
+        ;;
 esac
 
-ninja $verbninja install > ../../make.log 2>&1
+ninja $verbninja install >../../make.log 2>&1

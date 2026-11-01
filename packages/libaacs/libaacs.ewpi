@@ -1,4 +1,5 @@
 name: libaacs
 version: 0.11.1
 url: https://download.videolan.org/pub/videolan/libaacs/0.11.1/libaacs-0.11.1.tar.bz2
+sha512SUM: 42dcba5fd593c9a8ec7af11251006b083ad2c49ec198734d1d66f67c2ded4557d77617600edbf0c5250e9b0407ef9a2f906d59d154bda8ecfc8adfd234fb2c42
 deps: libgpg-error libgcrypt

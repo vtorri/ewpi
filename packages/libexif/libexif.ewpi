@@ -1,4 +1,5 @@
 name: libexif
 version: 0.6.26
 url: https://github.com/libexif/libexif/releases/download/v0.6.26/libexif-0.6.26.tar.xz
+sha512SUM: 944b65d1dfda431f2c8c5179965cb4a501c1524a8383d6d5ab7e1c77da62fa6ac4751b975edcec58948a11debb3a64ee3da3dfe0fa82c499033b434f294f5ff3
 deps: iconv gettext

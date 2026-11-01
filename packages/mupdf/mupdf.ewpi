@@ -1,4 +1,5 @@
 name: mupdf
 version: 1.28.0
 url: https://mupdf.com/downloads/archive/mupdf-1.28.0-source.tar.lz
+sha512SUM: 7be11ba946e6f892286d08983b3cfe8b8f9b99b7973a931352b08bb7a8da7182292e62cb21fa7e2787ec5860ba05c95c4a82857e048637650c4677214de1b5ee
 deps: openssl freetype harfbuzz libjpeg openjpeg zlib curl jbig2dec

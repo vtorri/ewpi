@@ -1,4 +1,5 @@
 name: libgpg-error
 version: 1.60
 url: https://gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-1.60.tar.bz2
+sha512SUM: e8beaa63ce56a34070b2e6b0978a9b91c5e8fa094a957c8dd6fec42cc02cbd47670b94fc19fdcec474358cc2ebb28f6fc21b3465e992fbd9c04eec576717b8ca
 deps: iconv gettext

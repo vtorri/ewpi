@@ -1,4 +1,5 @@
 name: fontconfig
 version: 2.18.2
 url: https://gitlab.freedesktop.org/api/v4/projects/890/packages/generic/fontconfig/2.18.2/fontconfig-2.18.2.tar.xz
+sha512SUM: eba8f7fe5409159d6a9e0fd562dd3a7643da94b41fc0fdb2b742d5f4950ca2d6e636461352b2f148720653c83957373d28329ed20b50e7efd76ecfc60b2f3434
 deps: freetype iconv expat gettext

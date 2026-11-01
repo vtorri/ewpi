@@ -1,4 +1,5 @@
 name: libavif
 version: 1.4.2
 url: https://github.com/AOMediaCodec/libavif/archive/refs/tags/v1.4.2.tar.gz
+sha512SUM: cbf31827884058acc54d3b1fa0f2059f022691609a76e0f913981d5b8c1be60f52069a25b61c888c09e963161d1f4c9bf692c0716ab0ee067a4ccaa4e36d9ce1
 deps: libyuv libdav1d libaom

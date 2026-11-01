@@ -6,14 +6,13 @@
 # $4 : arch_suf (32|64)
 # $5 : winver
 
-path=`echo $1 | sed 's,/,\\\\\\\\,g'`
+path=$(echo $1 | sed 's,/,\\\\\\\\,g')
 echo $path
 
 cp -f ewpi.nsi.in ewpi.nsi
 
 sed -i -e "s|@prefix@|${path}|g;s|@version@|$2|g;s|@arch@|$3|g;s|@arch_suf@|$4|g;s|@winver@|$5|g" ewpi.nsi
-makensis ewpi.nsi > ewpi_nsis.log 2>&1
-
+makensis ewpi.nsi >ewpi_nsis.log 2>&1
 
 #cp -f efl.nsi.in efl.nsi
 

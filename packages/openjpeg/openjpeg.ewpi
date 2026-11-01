@@ -1,4 +1,5 @@
 name: openjpeg
 version: 2.5.4
 url: https://github.com/uclouvain/openjpeg/archive/refs/tags/v2.5.4.tar.gz
+sha512SUM: 702a10e20caaf8209684ded7c9fcf32f5ba6a972cf2d9fcf2611cdc6a446d2c3bb60324205758e6b6f92278c8cf4ef0fbae511e6ffb45ed6e8df514db0c6ab25
 deps:

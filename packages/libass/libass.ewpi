@@ -1,4 +1,5 @@
 name: libass
 version: 0.17.5
 url: https://github.com/libass/libass/releases/download/0.17.5/libass-0.17.5.tar.xz
+sha512SUM: b9e06023e9f5760ba1946f8dbcd8c411908bc6c77030099098f8252edabd31c98a6523cffb7cccf7b62e12bb374d136600a98e29a7916ccc218100ff694bfb7c
 deps: iconv freetype fontconfig fribidi harfbuzz

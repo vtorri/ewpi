@@ -1,4 +1,5 @@
 name: libjxl
 version: 0.12.0
 url: https://github.com/libjxl/libjxl/archive/refs/tags/v0.12.0.tar.gz
+sha512SUM: 71d45123e47588c8028c0e01a7820c7a18d98df05c29b5318ab6858eaff5f249879763907201ba19a93f817c6ef75c393c1974d2a0cc8e461c4e2709ca6fa45f
 deps: brotli highway lcms2

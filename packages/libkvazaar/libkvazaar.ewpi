@@ -1,4 +1,5 @@
 name: libkvazaar
 version: 2.3.2
 url: https://github.com/ultravideo/kvazaar/releases/download/v2.3.2/kvazaar-2.3.2.tar.xz
+sha512SUM: 4e152d9e897f021a082c90658eb6692311b46e6f30c47e2f405a46b199679e39d2a76743faf59f8a2542cfed9d7e3661ae647d53416d36d7211b2aa0bf3948df
 deps:

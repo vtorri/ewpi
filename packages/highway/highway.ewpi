@@ -1,4 +1,5 @@
 name: highway
 version: 1.4.0
 url: https://github.com/google/highway/releases/download/1.4.0/highway-1.4.0.tar.gz
+sha512SUM: f3859e5ec2afde7798407a7eef46a48418e4b3b26dc48d5802930aaba040bd627403d0c0e8bae7d43cdd29b3bd5a9abcc2f0c528067eae444195aea46f6669a9
 deps:
