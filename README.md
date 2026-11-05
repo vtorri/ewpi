@@ -115,7 +115,7 @@ Examples :
  * curl 8.23.0 (MIT)
  * dbus 1.16.2 (Academic Free License version 2.1)
  * dejavu-fonts 2.37
- * expat 2.9.0 (MIT)
+ * expat 2.10.0 (MIT)
  * ffmpeg 9.0.0 (LGPL 2.1)
  * flac 1.5.0 (LGPL 2.1)
  * fontconfig 2.18.2 (MIT)
@@ -130,7 +130,7 @@ Examples :
  * gst-plugins-base 1.26.10 (LGPL 2.1)
  * gst-plugins-good 1.26.10 (LGPL 2.1)
  * gstreamer 1.26.10 (LGPL 2.1)
- * harfbuzz 15.0.0 (MIT)
+ * harfbuzz 15.1.0 (MIT)
  * highway 1.4.0 (Apache 2.0)
  * iconv 0.0.10 (public domain)
  * icu 79.1 (MIT)
@@ -177,7 +177,7 @@ Examples :
  * libxml2 2.15.4 (MIT)
  * libyuv 1.92.2 (BSD 3-clause)
  * luajit 2.1.20250914 (MIT + public domain for some parts)
- * lz4 1.10.0 (BSD 2-clause for the library)
+ * lz4 1.11.0 (BSD 2-clause for the library)
  * mp3lame 3.100 (LGPL 2.1)
  * mpg123 1.33.7 (LGPL 2.1)
  * nghttp2 1.70.0 (MIT)
@@ -190,7 +190,7 @@ Examples :
  * taglib 2.3.2 (LGPL 2.1)
  * utfcpp 4.2.1 (BSL 1.0)
  * xz 5.8.3 (lzma : public domain)
- * zlib 1.3.2 (zlib license)
+ * zlib 1.4.0 (zlib license)
  * zstd 1.5.7 (BSD 3-clause)
 
 ### Libraries compatible with LGPL v3

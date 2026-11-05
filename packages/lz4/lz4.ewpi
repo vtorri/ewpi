@@ -1,4 +1,4 @@
 name: lz4
-version: 1.10.0
-url: https://github.com/lz4/lz4/archive/refs/tags/v1.10.0.tar.gz
+version: 1.11.0
+url: https://github.com/lz4/lz4/archive/refs/tags/v1.11.0.tar.gz
 deps:
