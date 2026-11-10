@@ -1,4 +1,4 @@
 name: iconv
-version: 0.0.10
-url: https://github.com/win-iconv/win-iconv/archive/v0.0.10.tar.gz
+version: 0.0.11
+url: https://github.com/win-iconv/win-iconv/archive/v0.0.11.tar.gz
 deps:
