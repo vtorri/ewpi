@@ -1,6 +1,6 @@
 === release 1.3 ===
 
-2026-11-12 Vincent Torri <vincent.torri@gmail.com>
+2026-11-24 Vincent Torri <vincent.torri@gmail.com>
 
 Package removals:
   * freetype_bootstrap
@@ -9,18 +9,19 @@ Package updates:
 
   * brotli 1.2.1
   * curl 8.23.0
-  * expat 2.10.0
+  * expat 2.11.0
   * ffmpeg 9.0.0
   * fribidi 1.0.18
   * fontconfig 2.18.2
   * freetype 2.15.0
   * graphite2 1.3.15
   * gettext 0.26.0
+  * glib2 2.90.0
   * gst-libav 1.28.8
   * gst-plugins-base 1.28.8
   * gst-plugins-good 1.28.8
   * gstreamer 1.28.8
-  * harfbuzz 15.1.0
+  * harfbuzz 15.2.0
   * highway 1.4.0
   * iconv 0.0.11
   * icu 79.1
@@ -34,7 +35,7 @@ Package updates:
   * libde265 1.1.3
   * libdeflate 1.26
   * libexif 0.6.26
-  * libffi 3.8.0
+  * libffi 3.8.1
   * libgcrypt 1.12.2
   * libgpg-error 1.60
   * libheif 1.23.7
@@ -62,9 +63,10 @@ Package updates:
   * openssl 4.1.0
   * pixman 0.46.4
   * taglib 2.3.2
-  * utfcpp 4.2.1
+  * utfcpp 5.0.0
   * xz 5.8.3
   * zlib 1.4.0
+  * zstd 1.6.0
 
 === release 1.2 ===
 
